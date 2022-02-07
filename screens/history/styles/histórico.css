@@ -1,0 +1,27 @@
+.lado-sidebar{
+    display: inline-block;
+    background-color: blue  ;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  } 
+   
+  .buttons{
+    margin-left: 50px;
+  }
+  #nva{
+      display: inline-block;
+      margin-left: 700px;
+  }
