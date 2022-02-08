@@ -39,14 +39,25 @@ session_start();
       ?>
 
       <form action="logar.php" method="POST">
-        <fieldset class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Digite seu email</label>
+        <fieldset>
+          <label for="">E-mail</label>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" name="email" placeholder="Digite seu email" autofocus>
+          </div>
         </fieldset>
-        <fieldset class="form-floating mb-3">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Digite sua senha</label>
+
+        <fieldset>
+          <label for="">Senha</label>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" name="senha" placeholder="Digite sua senha">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <i class="far fa-eye"></i>
+              </div>
+            </div>
+          </div>
         </fieldset>
+
         <div class="icheck-primary">
           <input type="checkbox" id="remember">
           <label for="remember">Lembrar - me</label>
@@ -74,6 +85,7 @@ session_start();
 
   <!-- Kit fontawesome -->
   <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
+  <script src="./js/password.js"></script>
   <!-- jQuery -->
   <script src="../../plugins/jquery/jquery.min.js"></script>
   <!-- Scripts Bootstrap -->
