@@ -8,7 +8,7 @@ function changeVisiblePassword() {
 
     inputIsPassword ? inputPassword.type = "text" : inputPassword.type = "password"
 
-    let eyeIsVisible = iconEye.className === "far fa-eye"
+    let eyeIsVisible = iconEye.className === "far fa-eye-slash"
 
-    eyeIsVisible ? iconEye.className = "far fa-eye-slash" : iconEye.className = "far fa-eye"
+    eyeIsVisible ? iconEye.className = "far fa-eye" : iconEye.className = "far fa-eye-slash"
 }

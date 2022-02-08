@@ -75,7 +75,7 @@ session_start();
             <input type="password" class="form-control" name="senha" placeholder="Digite sua senha">
             <div class="input-group-append">
               <div class="input-group-text">
-                <i class="far fa-eye-slash"></i>
+                <i class="far fa-eye"></i>
               </div>
             </div>
           </div>
