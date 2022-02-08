@@ -1,6 +1,5 @@
 <?php
 session_start();
-require __DIR__ . '/../../connection/connection.php';
 ?>
 
 <!DOCTYPE html>
@@ -39,20 +38,20 @@ require __DIR__ . '/../../connection/connection.php';
       }
       ?>
 
-      <form action="Realiza_login.php" method="POST">
-        <div class="form-floating mb-3">
+      <form action="logar.php" method="POST">
+        <fieldset class="form-floating mb-3">
           <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating mb-3">
+          <label for="floatingInput">Digite seu email</label>
+        </fieldset>
+        <fieldset class="form-floating mb-3">
           <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Password</label>
-        </div>
+          <label for="floatingPassword">Digite sua senha</label>
+        </fieldset>
         <div class="icheck-primary">
           <input type="checkbox" id="remember">
           <label for="remember">Lembrar - me</label>
           <p>
-            Já possui conta? Cadastre - se <a href="../cadastro/cadastro.php" class="text-center"><b>aqui</b></a>
+            Já possui conta? Cadastre - se <a href="../cadastro/cadastro.php" class="text-center">aqui</a>
           </p>
         </div>
         <button type="submit" class="btn btn-primary btn-block" name="btnLogin" id="btnLogin">Sign In</button>

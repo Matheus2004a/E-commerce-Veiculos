@@ -1,3 +1,4 @@
-main{
+.card{
     width: 30%;
+    min-width: 70vh !important;
 }

@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . "/../../connection/connection.php"
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -18,12 +18,15 @@ require __DIR__ . "/../../connection/connection.php"
   <!-- Theme style -->
   <link rel="stylesheet" href="./dist/css/adminlte.min.css">
   <!-- Bootstrap-5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="../../config/setup.css">
   <link rel="stylesheet" href="./styles/cadastro.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body class="hold-transition register-page">
+  <?php
+  require __DIR__ . "/../../components/messages-alerts/icons.php";
+  ?>
   <div class="register-logo">
     <a href="../../index2.html"><b>Admin</b>LTE</a>
   </div>
@@ -32,10 +35,20 @@ require __DIR__ . "/../../connection/connection.php"
     <div class="card-body register-card-body">
       <p class="login-box-msg">Crie sua conta</p>
       <form action="cadastrar.php" method="post">
+        <?php
+        if (isset($_SESSION["success-register"])) {
+          echo $_SESSION["success-register"];
+          unset($_SESSION["success-register"]);
+        } else if (isset($_SESSION["unsuccess-register"])) {
+          echo $_SESSION["unsuccess-register"];
+          unset($_SESSION["unsuccess-register"]);
+        }
+        ?>
+
         <fieldset>
           <label for="">Nome completo</label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Digite seu nome completo" autofocus>
+            <input type="text" class="form-control" name="nome-completo" placeholder="Digite seu nome completo" autofocus>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -47,7 +60,7 @@ require __DIR__ . "/../../connection/connection.php"
         <fieldset>
           <label for="">E-mail</label>
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Digite seu email">
+            <input type="email" class="form-control" name="email" placeholder="Digite seu email">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -59,7 +72,7 @@ require __DIR__ . "/../../connection/connection.php"
         <fieldset>
           <label for="">Senha</label>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Digite sua senha">
+            <input type="password" class="form-control" name="senha" placeholder="Digite sua senha">
             <div class="input-group-append">
               <div class="input-group-text">
                 <i class="far fa-eye-slash"></i>
@@ -70,11 +83,11 @@ require __DIR__ . "/../../connection/connection.php"
 
         <fieldset>
           <label for="">Categoria de usuário</label>
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" name="categoria" aria-label="Default select example" placeholder="">
             <option selected>Selecione sua categoria</option>
-            <option value="1">Mecânico</option>
-            <option value="2">Fornecedor</option>
-            <option value="3">Cliente</option>
+            <option value="Mecânico">Mecânico</option>
+            <option value="Fornecedor">Fornecedor</option>
+            <option value="Cliente">Cliente</option>
           </select>
         </fieldset>
 
