@@ -121,10 +121,8 @@ session_start();
 
   <!-- Kit fontawesome -->
   <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
-  <!-- jQuery -->
-  <script src="../../plugins/jquery/jquery.min.js"></script>
+  <script src="./js/password.js"></script>
   <!-- AdminLTE App -->
-  <script src="../../dist/js/adminlte.min.js"></script>
 </body>
 
 </html>
