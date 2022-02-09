@@ -18,8 +18,8 @@ session_start();
   <!-- Theme style -->
   <link rel="stylesheet" href="./dist/css/adminlte.min.css">
   <!-- Bootstrap-5 -->
-  <link rel="stylesheet" href="../../config/setup.css">
   <link rel="stylesheet" href="./styles/cadastro.css">
+  <link rel="stylesheet" href="../../config/setup.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
@@ -83,7 +83,7 @@ session_start();
 
         <fieldset>
           <label for="">Categoria de usuário</label>
-          <select class="form-select" name="categoria" aria-label="Default select example" placeholder="">
+          <select class="form-select mb-3" name="categoria" aria-label="Default select example">
             <option selected>Selecione sua categoria</option>
             <option value="Mecânico">Mecânico</option>
             <option value="Fornecedor">Fornecedor</option>
