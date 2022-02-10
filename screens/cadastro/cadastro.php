@@ -16,7 +16,7 @@ session_start();
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="./icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- Bootstrap-5 -->
   <link rel="stylesheet" href="./styles/cadastro.css">
   <link rel="stylesheet" href="../../config/setup.css">
