@@ -43,7 +43,7 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <figure>
-          <img src="./assets/images/carousel.jpg" class="d-block w-100 images" alt="image-carousel">
+          <img src="./screens/home/assets/images/carousel.jpg" class="d-block w-100 images" alt="image-carousel">
         </figure>
         <div class="carousel-caption d-none d-md-block">
           <h5>First slide label</h5>
@@ -52,7 +52,7 @@
       </div>
       <div class="carousel-item">
         <figure>
-          <img src="./assets/images/lago.jpg" class="d-block w-100 images" alt="image-lago">
+          <img src="./screens/home/assets/images/lago.jpg" class="d-block w-100 images" alt="image-lago">
         </figure>
         <div class="carousel-caption d-none d-md-block">
           <h5>Second slide label</h5>
@@ -61,7 +61,7 @@
       </div>
       <div class="carousel-item">
         <figure>
-          <img src="./assets/images/por-do-sol.jpg" class="d-block w-100 images" alt="image-por-do-sol">
+          <img src="./screens/home/assets/images/por-do-sol.jpg" class="d-block w-100 images" alt="image-por-do-sol">
         </figure>
         <div class="carousel-caption d-none d-md-block">
           <h5>Third slide label</h5>
@@ -86,19 +86,19 @@
         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
         <article>
           <div class="card" style="width: 18rem;">
-            <img src="./assets/images/lago.jpg" class="card-img-top" alt="...">
+            <img src="./screens/home/assets/images/lago.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
           <div class="card" style="width: 18rem;">
-            <img src="./assets/images/lago.jpg" class="card-img-top" alt="...">
+            <img src="./screens/home/assets/images/lago.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
           <div class="card" style="width: 18rem;">
-            <img src="./assets/images/lago.jpg" class="card-img-top" alt="...">
+            <img src="./screens/home/assets/images/lago.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
@@ -187,27 +187,27 @@
       <ul>
         <li>
           <figure>
-            <img src="./assets/svg/american.png" alt="icon-card-american">
+            <img src="./screens/home/assets/svg/american.png" alt="icon-card-american">
           </figure>
         </li>
         <li>
           <figure>
-            <img src="./assets/svg/paypal.png" alt="icon-card-paypal">
+            <img src="./screens/home/assets/svg/paypal.png" alt="icon-card-paypal">
           </figure>
         </li>
         <li>
           <figure>
-            <img src="./assets/svg/mastercard.png" alt="icon-card-mastercard">
+            <img src="./screens/home/assets/svg/mastercard.png" alt="icon-card-mastercard">
           </figure>
         </li>
         <li>
           <figure>
-            <img src="./assets/svg/pago.png" alt="icon-card-pago">
+            <img src="./screens/home/assets/svg/pago.png" alt="icon-card-pago">
           </figure>
         </li>
         <li>
           <figure>
-            <img src="./assets/svg/boleto.png" alt="icon-card-boleto">
+            <img src="./screens/home/assets/svg/boleto.png" alt="icon-card-boleto">
           </figure>
         </li>
       </ul>
