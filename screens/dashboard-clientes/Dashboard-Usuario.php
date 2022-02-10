@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../login/verify-session.php';
+require __DIR__ . '../../login/verify-session.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,24 +11,23 @@ require __DIR__ . '/../login/verify-session.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="./plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="./plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="./plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="./plugins/summernote/summernote-bs4.min.css">
   <!-- Setup CSS -->
   <link rel="stylesheet" href="../../config/setup.css">
-  <link rel="stylesheet" href="./dashboard.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <title>Dashboard Usuário</title>
@@ -267,7 +266,6 @@ require __DIR__ . '/../login/verify-session.php';
               <input type="text" placeholder="Digite aqui"><br><br>
               <div class="card bg-gradient-success">
                 <div class="card-header border-0">
-
                   <h3 class="card-title">
                     <i class="far fa-calendar-alt"></i>
                     Calendar
@@ -293,7 +291,6 @@ require __DIR__ . '/../login/verify-session.php';
                       <i class="fas fa-times"></i>
                     </button>
                   </div>
-                  <!-- /. tools -->
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body pt-0">
@@ -317,7 +314,7 @@ require __DIR__ . '/../login/verify-session.php';
   </div>
   </div>
 
-  <!--Gráficos gerados apartir do google charts!-->
+  <!--Gráficos gerados a partir do google charts!-->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load('current', {

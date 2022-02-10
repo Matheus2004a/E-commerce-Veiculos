@@ -11,14 +11,12 @@ session_start();
   <title>Registration Page</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="./css/all.min.css">
   <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="./icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="../../dist/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- Bootstrap-5 -->
-  <link rel="stylesheet" href="./styles/cadastro.css">
+  <link rel="stylesheet" href="./css/cadastro.css">
   <link rel="stylesheet" href="../../config/setup.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
