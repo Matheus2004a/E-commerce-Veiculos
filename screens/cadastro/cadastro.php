@@ -113,6 +113,9 @@ session_start();
       </div>
       <footer>
         <p>Já possui conta? <a href="../login/login.php">Faça login</a></p>
+        <a href="../../index.php">
+          <button type="button" class="btn btn-primary">Voltar</button>
+        </a>
       </footer>
     </div>
   </main>

@@ -78,9 +78,14 @@ session_start();
           <i class="fab fa-google-plus mr-2"></i> Logar com Google+
         </a>
       </div>
-      <p class="mb-1">
-        <a href="forgot-password.html">Esqueceu sua senha?</a>
-      </p>
+      <footer>
+        <p>
+          <a href="forgot-password.html">Esqueceu sua senha?</a>
+        </p>
+        <a href="../../index.php">
+          <button type="button" class="btn btn-primary">Voltar</button>
+        </a>
+      </footer>
     </div>
   </div>
 
