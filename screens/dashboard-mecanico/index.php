@@ -99,12 +99,24 @@
             </header>
 
             <div class="main-content">
-                <section class="section-analytics">
+                <section class="section-analytics mb-3">
                     <h2>Análises</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum quis quam ut pulvinar. Aliquam massa est, bibendum in mattis eu, varius ac diam. Donec lobortis urna consequat, tincidunt turpis sit amet, posuere mi. Aliquam congue elementum scelerisque. Vivamus a nisl ut libero blandit eleifend. Nam ac enim a neque scelerisque luctus sed laoreet lacus. Phasellus volutpat felis vitae metus viverra euismod. Proin non sapien quis nisi elementum porta. Vestibulum blandit porttitor elit, sed ornare metus convallis vel.</p>
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <canvas id="chart-analytics"></canvas>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Status de vendas</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
-                
-                <section class="section-statics">
+
+                <section class="section-statics mb-3">
                     <h2>Estatísticas</h2>
                     <div>
                         <canvas id="myChart"></canvas>
