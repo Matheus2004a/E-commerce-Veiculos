@@ -2,10 +2,10 @@ const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Jan', 'Fev', 'March', 'Green', 'Purple', 'Orange'],
+        labels: ['Jan', 'Fev', 'March', 'Abr', 'Maio', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
         datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [12, 19, 3, 5, 2, 3, 24, 38, 6, 10, 4, 6],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -26,9 +26,6 @@ const myChart = new Chart(ctx, {
         }]
     },
     options: {
-        animation: {
-
-        },
         scales: {
             y: {
                 beginAtZero: true

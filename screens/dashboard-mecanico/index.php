@@ -117,7 +117,12 @@
                 </section>
 
                 <section class="section-statics mb-3">
-                    <h2>Estatísticas</h2>
+                    <div class="d-flex justify-content-between">
+                        <h2>Estatísticas</h2>
+                        <label>
+                            <input type="date" name="" id="" class="p-2 rounded">
+                        </label>
+                    </div>
                     <div>
                         <canvas id="myChart"></canvas>
                     </div>
