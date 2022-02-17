@@ -19,13 +19,13 @@
           <a class="active" aria-current="page" href="#">Home</a>
         </li>
         <li>
-          <a href="#">Todos os serviços</a>
+          <a href="#services">Todos os serviços</a>
         </li>
         <li>
-          <a href="#">Sobre</a>
+          <a href="#about">Sobre</a>
         </li>
         <li>
-          <a href="#">Contate - nos</a>
+          <a href="#contact">Contate - nos</a>
         </li>
         <li>
           <a href="./screens/login/login.php">Login</a>
@@ -34,71 +34,78 @@
     </nav>
   </header>
 
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <figure>
-          <img src="./screens/home/assets/images/carousel.jpg" class="d-block w-100 images" alt="image-carousel">
-        </figure>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <figure>
-          <img src="./screens/home/assets/images/lago.jpg" class="d-block w-100 images" alt="image-lago">
-        </figure>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <figure>
-          <img src="./screens/home/assets/images/por-do-sol.jpg" class="d-block w-100 images" alt="image-por-do-sol">
-        </figure>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
 
-  <div class="container">
-    <main>
-      <section class="section-services">
-        <h2>Lorem Ipsum</h2>
+  <main>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <figure>
+            <img src="./screens/home/assets/images/mustang.jpg" class="d-block w-100 images" alt="image-carousel">
+          </figure>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <figure>
+            <img src="./screens/home/assets/images/audi.jpg" class="d-block w-100 images" alt="image">
+          </figure>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <figure>
+            <img src="./screens/home/assets/images/bmw.jpg" class="d-block w-100 images" alt="image-por-do-sol">
+          </figure>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="container">
+      <section class="section-services" id="services">
+        <h2>Serviços</h2>
         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
         <article>
           <div class="card" style="width: 18rem;">
-            <img src="./screens/home/assets/images/lago.jpg" class="card-img-top" alt="...">
+            <span>
+              <i class="fa-solid fa-location-dot"></i>
+            </span>
             <div class="card-body">
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
           <div class="card" style="width: 18rem;">
-            <img src="./screens/home/assets/images/lago.jpg" class="card-img-top" alt="...">
+            <span>
+              <i class="fa-solid fa-truck"></i>
+            </span>
             <div class="card-body">
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
           <div class="card" style="width: 18rem;">
-            <img src="./screens/home/assets/images/lago.jpg" class="card-img-top" alt="...">
+            <span>
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+            </span>
             <div class="card-body">
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
@@ -106,13 +113,13 @@
         </article>
       </section>
 
-      <section class="presentation-system">
-        <h2>Lorem Ipsum</h2>
+      <section class="presentation-system" id="about">
+        <h2>Sobre nós</h2>
         <iframe src="https://www.youtube.com/embed/HnykKULVkoc" alt="video-presentation-system" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </section>
 
-      <section class="section-accordions">
-        <h2>Lorem Ipsum</h2>
+      <section class="section-accordions" id="">
+        <h2>Dúvidas</h2>
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
@@ -152,15 +159,16 @@
           </div>
         </div>
       </section>
+    </div>
 
-      <!-- Button return to top page -->
-      <a href="#top-page">
-        <button class="button-top-page"><i class="fas fa-arrow-up"></i></button>
-      </a>
-    </main>
-  </div>
+    <!-- Button return to top page -->
+    <a href="#top-page">
+      <button class="button-top-page"><i class="fas fa-arrow-up"></i></button>
+    </a>
+  </main>
 
-  <footer class="footer-blog">
+
+  <footer class="footer-blog" id="contact">
     <div class="list-ordenate">
       <h5>Contatos</h5>
       <a href="">Lorem Ipsum</a>
