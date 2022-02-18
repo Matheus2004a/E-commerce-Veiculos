@@ -10,91 +10,98 @@
     <link rel="stylesheet" href="../../config/setup.css">
     <link rel="stylesheet" href="../../dist/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../../dist/bootstrap/css/bootstrap.min.css">
+    <!-- BoxIcons -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
     <div class="flex-direction-dashboard">
-        <div class="sidebar">
-            <a href="" class="brand">
-                <figure>
-                    <img src="../../dist/img/AdminLTELogo.png" alt="brand-dashboard">
-                </figure>
-            </a>
-
-            <nav>
-                <ul>
-                    <li>
-                        <span>
-                            <i class="fa-solid fa-house"></i>
-                        </span>
-                        <a href="">Home</a>
+        <nav class="sidebar close">
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img src="logo.png" alt="">
+                    </span>
+                    <div class="text logo-text">
+                        <span class="name">Usuário X</span>
+                        <span class="profession">Em Teste</span>
+                    </div>
+                </div>
+                <i class='bx bx-chevron-right toggle'></i>
+            </header>
+            <div class="menu-bar">
+                <div class="menu">
+                    <li class="search-box">
+                        <i class='bx bx-search icon'></i>
+                        <input type="search" placeholder="Pesquisar...">
                     </li>
-                    <li>
-                        <span>
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </span>
-                        <a href="">Pesquisar</a>
-                    </li>
-                    <li>
-                        <span>
-                            <i class="fa-solid fa-user"></i>
-                        </span>
-                        <a href="">Minha conta</a>
-                    </li>
-                    <li>
-                        <span>
-                            <i class="fa-solid fa-bell"></i>
-                            <span>
-                                <i class="fa-solid fa-circle circle-notification"></i>
-                            </span>
-                        </span>
-                        <a href="">Notificações</a>
-                    </li>
-                    <li>
-                        <span>
-                            <i class="fa-solid fa-truck"></i>
-                        </span>
-                        <a href="">Fornecedores</a>
-                    </li>
-                    <li>
-                        <span>
-                            <i class="fa-solid fa-wrench"></i>
-                        </span>
-                        <a href="">Manutenções</a>
-                    </li>
-                    <li>
-                        <span>
-                            <i class="fa-solid fa-credit-card"></i>
-                        </span>
-                        <a href="">Pagamentos</a>
-                    </li>
-                    <li>
-                        <span>
-                            <i class="fa-solid fa-message"></i>
-                        </span>
-                        <a href="">Conversas</a>
-                    </li>
-                    <li>
-                        <span>
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </span>
-                        <a href="">Pedidos</a>
-                    </li>
-                    <li>
-                        <span>
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        </span>
-                        <a href="../login/logout.php">Logout</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-home-alt icon'></i>
+                                <span class="text nav-text">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-bell icon'></i>
+                                <span class="text nav-text">Notificações</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bxs-truck icon'></i>
+                                <span class="text nav-text">Fornecedores</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bxs-wrench icon'></i>
+                                <span class="text nav-text">Manutenções</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-conversation icon'></i>
+                                <span class="text nav-text">Mensagens</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-cart icon'></i>
+                                <span class="text nav-text">Pedidos</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bottom-content">
+                    <ul>
+                        <li class="">
+                            <a href="../login/logout.php">
+                                <i class='bx bx-log-out icon'></i>
+                                <span class="text nav-text">Sair</span>
+                            </a>
+                        </li>
+                        <li class="mode">
+                            <div class="sun-moon">
+                                <i class='bx bx-moon icon moon'></i>
+                                <i class='bx bx-sun icon sun'></i>
+                            </div>
+                            <span class="mode-text text">Modo Noite</span>
+                            <div class="toggle-switch">
+                                <span class="switch"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
         <main>
             <header>
                 <h4>Bem - vindo, <code>Nome do Mecânico</code></h4>
                 <div class="input-group">
-                    <input class="form-control me-2" type="search" placeholder="Pesquise aqui" aria-label="Search">
+                    <input class="form-control" type="search" placeholder="Pesquise aqui" aria-label="Search">
                 </div>
             </header>
 
@@ -120,7 +127,7 @@
                     <div class="d-flex justify-content-between">
                         <h2>Estatísticas</h2>
                         <label>
-                            <input type="date" name="" id="" class="p-2 rounded">
+                            <input type="date" name="" id="" class="p-2 rounded form-control">
                         </label>
                     </div>
                     <div>

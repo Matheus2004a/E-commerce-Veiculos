@@ -6,6 +6,7 @@
 
 nav ul{
     list-style: none;
+    padding: 0;
 }
 
 a{
@@ -16,7 +17,7 @@ button,i{
     cursor: pointer;
 }
 
-button{
+button,input{
     border: none;
     outline: none;
 }
