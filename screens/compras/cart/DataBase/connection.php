@@ -1,7 +1,5 @@
 <?php
-	
 	class Conexao{
-
 	    private $usuario = 'root';
 	    private $senha = '';
 

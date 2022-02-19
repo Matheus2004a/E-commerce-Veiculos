@@ -1,6 +1,5 @@
 <?php
-
-	include_once '../DataBase/conexao.php';
+	require __DIR__ . '/../../DataBase/connection.php';
 
 	session_start();
 	$Uf = isset($_GET['search']) ? $_GET['search'] : 0;
@@ -13,7 +12,7 @@
 	$stmt->execute();
 	$resultado_cidades = $stmt->fetchAll();
 	
-	foreach( $resultado_cidades as $row_cidade ) { 
+	foreach($resultado_cidades as $row_cidade) { 
 		echo '<option value="'.$row_cidade['Id'].'">'.$row_cidade['Nome'].'</option>';
 	}
 ?>

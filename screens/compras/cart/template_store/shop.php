@@ -1,9 +1,9 @@
 <?php
 	session_start();
 	require_once 'head.html';
-	include_once '../App/Controller/ProdutoController.php';
-	include_once '../App/Controller/CarrinhoController.php';
-	include_once '../App/Controller/ClienteController.php';
+	require __DIR__ . '/../App/Controller/ProdutoController.php';
+	require __DIR__ . '/../App/Controller/CarrinhoController.php';
+	require __DIR__ . '/../App/Controller/ClienteController.php';
 	
 	$user = new ClienteController();
 	$result = $user->isLoggedIn();	
@@ -86,7 +86,7 @@
 										</div>
 										<div class="desc">
 											<h3>'.$produto[1].'</h3>
-											<p class="price"><span>R$ '.number_format($produto[3],2,",",".").'</span></p>
+											<p class="price"><span>R$ ' . number_format($produto[3],2,",",".").'</span></p>
 										</div>
 									</div>
 								</div>';	
@@ -106,7 +106,7 @@
 				</div>
 
 				<?php
-					include_once("footer.html");
+					require_once "footer.html";
 				?>
 			</div>
 
@@ -117,4 +117,3 @@
 	
 	</body>
 </html>
-
