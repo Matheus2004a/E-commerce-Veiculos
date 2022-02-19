@@ -1,7 +1,7 @@
 <?php
 $server_name = "localhost";
 $username = "root";
-$password = "Mapef@09112004a";
+$password = "";
 $database_name = "bd_veiculos-tcc";
 
 // Create connection

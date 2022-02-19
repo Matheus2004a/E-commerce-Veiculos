@@ -1,13 +1,14 @@
-<!--**
- * @author Cesar Szpak - Celke -   cesar@celke.com.br
- * @pagina desenvolvida usando framework bootstrap,
- * o código é aberto e o uso é free,
- * porém lembre -se de conceder os créditos ao desenvolvedor.
- *-->
-<?php include_once("connection.php");
+<?php require __DIR__ . "../../../connection/connection.php";
+
 $result_cursos = "SELECT * FROM tbl_produtos";
 $resultado_cursos = mysqli_query($conn, $result_cursos);
 
+$linha = mysqli_fetch_array($resultado_cursos);
+
+$cod = $linha[0];
+ $nome = $linha[1];
+ $img = $linha[2];
+ $preco = number_format($linha[3],2,",",".");
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +31,7 @@ $resultado_cursos = mysqli_query($conn, $result_cursos);
 	  <a href="../dashboard-clientes/Dashboard-Usuario.php">Dashboard</a>
 	  <a href="../history/histórico.php">Histórico</a>
 	</div>
-		<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+		<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
 		<div class="container theme-showcase" role="main">
 			<div class="page-header">
 				  
@@ -46,7 +47,8 @@ $resultado_cursos = mysqli_query($conn, $result_cursos);
 								<h3 style="font-size: 15px"><?php echo $rows_cursos['nome']; ?></h3>
 								<h3>  R$ <?php echo $rows_cursos['preco']; ?></h3>
 
-								<p><a href="#" class="btn btn-primary" role="button">Comprar</a> </p>
+								<?php echo"<p><a href='descricao_peca.php?cod=".$cod."&acao=incluir' class='btn btn-primary' role='button'>Comprar</a> </p>" ?>
+								
 							</div>
 						</div>
 					</div>
