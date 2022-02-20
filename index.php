@@ -12,7 +12,8 @@
 <body>
   <a name="top-page"></a>
   <header>
-    <a class="brand" href="#">Logomarca</a>
+    <img src="./images/icones/brand header.png" class="brand">
+    <!-- <a class="brand" href="#">Logomarca</a> !-->
     <nav class="menus">
       <ul>
         <li>
