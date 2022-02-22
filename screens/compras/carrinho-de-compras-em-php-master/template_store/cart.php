@@ -1,4 +1,17 @@
 <?php
+	
+	require __DIR__.'vendor/autoload.php';
+	require __DIR__.'vendor/guzzlehttp/guzzle/';
+
+		$client = new \vendor\GuzzleHttp\Client();
+
+		$response = $client->request('POST', 'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions?email=email&token=token', [
+		'headers' => [
+			'Accept' => 'application/xml',
+		],
+		]);
+
+echo $response->getBody();
 	session_start();
 	include_once 'head.html';
 	include_once '../DataBase/conexao.php';
@@ -225,7 +238,8 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
-
+		<script type="text/javascript" src=
+		"https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
 	</body>
 </html>
 

@@ -1,6 +1,6 @@
 <?php
 
-	include_once '../DataBase/conexao.php';
+require __DIR__. '../DataBase/conexao.php';
 
 	session_start();
 	$Uf = isset($_GET['search']) ? $_GET['search'] : 0;

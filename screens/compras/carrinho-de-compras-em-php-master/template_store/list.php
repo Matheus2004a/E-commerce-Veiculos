@@ -2,8 +2,8 @@
 	session_start();
 
 	include_once 'head.html';
-	include_once '../App/Controller/ListController.php';
-	include_once '../App/Controller/ClienteController.php';
+	require __DIR__.'../App/Controller/ListController.php';
+	require __DIR__. '../App/Controller/ClienteController.php';
 
 	$user = new ClienteController();
 	$result = $user->isLoggedIn();
@@ -66,6 +66,43 @@
 			  	</ul>
 		  	</div>
 		</aside>
+		<div>
+			<h3 style="display: inline-block;"> Cadastrar Produto</h3>
+			<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Cadastrar</button>
+		</div>
+		<!-- Modal !-->
+		<!-- The Modal -->
+		<div class="modal" id="myModal">
+    	<div class="modal-dialog">
+      	<div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="margin-left: 20px;">
+		<form action="insere_produtos.php" method="POST">
+          <h4> Nome Produto:</h4><input type="text" name="nome_Prod" width="10px" height="10px"><br>
+		  <h4> Descrição Produto:</h4><input type="text" name="desc_Prod" width="10px" height="10px">
+          <h4> Preço:</h4> <input type="number" name="preco_Prod" width="10px" height="10px">
+		  <h4> Imagem Produto:</h4><input type="file"  name="img_Prod" id="img_Prod" width="10px" height="10px"><br>
+		  <button class="btn btn-primary" type="submit" id="enviar_Prod" name="enviar_Prod" value="cadastrar">Inserir Produto</button>
+		</form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+  
+</div>
 
 		<div class="colorlib-shop">
 			<div class="container">

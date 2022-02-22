@@ -1,8 +1,8 @@
 <?php
 	session_start();
 	include_once 'head.html';
-	include_once '../DataBase/conexao.php';
-	include_once '../App/Controller/ClienteController.php';
+	require __DIR__.'../DataBase/conexao.php';
+	require __DIR__. '../App/Controller/ClienteController.php';
 
 	$user = new ClienteController();
 	$conn = new Conexao();
