@@ -14,8 +14,8 @@
 echo $response->getBody();
 	session_start();
 	include_once 'head.html';
-	include_once '../DataBase/conexao.php';
-	include_once '../App/Controller/ClienteController.php';
+	require __DIR__ . '/../DataBase/connection.php';
+	require __DIR__ . '/../App/Controller/ClienteController.php';
 
 	$conn = new Conexao();
 	$conn = $conn->conexao();
