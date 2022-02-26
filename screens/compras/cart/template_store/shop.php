@@ -22,11 +22,11 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="index.php">Use New Mic</a></div>
+							<div id="colorlib-logo"><a href="index.php"><img src="../../../../images/icones/brand header.png" alt=""></a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li><a href="index.php">Home</a></li>
+								
 								<li class="active"><a href="shop.php">Produtos</a></li>
 								<?php
 									if ($result == true) {
@@ -64,7 +64,7 @@
 			  	</ul>
 		  	</div>
 		</aside>
-
+										<a href="">dawd</a>
 		<div class="colorlib-shop">
 			<div class="container">
 				<div class="row">
@@ -74,22 +74,31 @@
 								$produtos = ProdutoController::allProdutos();
 								foreach ($produtos as $produto) {
 									echo
-								'<div class="col-md-4 text-center">
+								'<form action="descricaoProd.php" method="POST">
+								<div class="col-md-4 text-center">
 									<div class="product-entry">
 										<div class="product-img" style="background-image: url(images/'.$produto[4].'.jpg'.');"
 											<p class="tag"><span class="new"></span></p>
 											<div class="cart">
 												<p>
-													<span class="addtocart"><a href="../App/Controller/addCarrinho.php?produto='.$produto[0].'"><i class="icon-shopping-cart"></i></a></span> 
+													<span class="addtocart"><button type="submit" > </button>"<i class="icon-shopping-cart"></i></a></span> 
 												</p>
 											</div>
 										</div>
 										<div class="desc">
-											<h3>'.$produto[1].'</h3>
-											<p class="price"><span>R$ ' . number_format($produto[3],2,",",".").'</span></p>
+											<h3 value="'.$produto[1].' ">'.$produto[1].'</h3>
+											<p class="price" style="display:inline-block">R$ ' . number_format($produto[3],2,",",".").'</p>
+											<img src="images/icons/carrinho-de-compras.png" style="display:inline-block;">
 										</div>
+										<div> 
+											<img src="images/icons/star.png" > 
+											<img src="images/icons/star.png" > 
+											<img src="images/icons/star.png" > 
+											<img src="images/icons/star.png" > 
+											</div>
 									</div>
-								</div>';	
+								</div>
+								</form>';	
 								}
 							?>	
 							<div class="row">

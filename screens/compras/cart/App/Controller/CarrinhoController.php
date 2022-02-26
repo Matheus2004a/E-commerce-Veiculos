@@ -1,5 +1,5 @@
 <?php
-include_once '../DataBase/conexao.php';
+include_once '../DataBase/connection.php';
 
 class CarrinhoController {
 

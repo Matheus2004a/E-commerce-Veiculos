@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include_once '../../DataBase/conexao.php';
+	include_once '../../DataBase/connection.php';
 	include_once 'ClienteController.php';
 		
 	$cpf = $_SESSION["user_cpf"];
