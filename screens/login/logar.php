@@ -16,7 +16,7 @@ if (empty($_POST['email']) && empty($_POST['senha']) && empty($_POST['submit']))
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $password = mysqli_real_escape_string($conn, $_POST['senha']);
 
-$sql = "SELECT `email`, `senha` FROM `cadastro_clientes` WHERE email = '$email' AND senha = '$password'";
+$sql = "SELECT `usuario`, `senha` FROM `realiza_login` WHERE usuario = '$email' AND senha = '$password'";
 
 $result = mysqli_query($conn, $sql);
 

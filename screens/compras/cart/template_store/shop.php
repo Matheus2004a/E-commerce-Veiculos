@@ -1,24 +1,13 @@
 <?php
-<<<<<<< HEAD:screens/compras/carrinho-de-compras-em-php-master/template_store/shop.php
 session_start();
 include_once 'head.html';
 require __DIR__ .  '/../App/Controller/ClienteController.php';
+require __DIR__.'/../App/Controller/ProdutoController.php';
 
 $user = new ClienteController();
 
 $result = $user->isLoggedIn();
-=======
-	session_start();
-	require_once 'head.html';
-	require __DIR__ . '/../App/Controller/ProdutoController.php';
-	require __DIR__ . '/../App/Controller/CarrinhoController.php';
-	require __DIR__ . '/../App/Controller/ClienteController.php';
-	
-	$user = new ClienteController();
-	$result = $user->isLoggedIn();	
->>>>>>> 5d086f1103eddf7bdddc42f7872e79d9fabce2a7:screens/compras/cart/template_store/shop.php
 ?>
-
 <!DOCTYPE HTML>	
 <html>
 
@@ -65,12 +54,8 @@ $result = $user->isLoggedIn();
 			include_once("footer.html")
 			?>
 		</aside>
-<<<<<<< HEAD:screens/compras/carrinho-de-compras-em-php-master/template_store/shop.php
-	</div>
 
-</body>
 
-=======
 
 		<div class="colorlib-shop">
 			<div class="container">

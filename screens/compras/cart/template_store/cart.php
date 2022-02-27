@@ -1,17 +1,4 @@
 <?php
-	
-	require __DIR__.'vendor/autoload.php';
-	require __DIR__.'vendor/guzzlehttp/guzzle/';
-
-		$client = new \vendor\GuzzleHttp\Client();
-
-		$response = $client->request('POST', 'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions?email=email&token=token', [
-		'headers' => [
-			'Accept' => 'application/xml',
-		],
-		]);
-
-echo $response->getBody();
 	session_start();
 	include_once 'head.html';
 	require __DIR__ . '/../DataBase/connection.php';
