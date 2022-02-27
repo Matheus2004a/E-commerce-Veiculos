@@ -1,11 +1,6 @@
 <?php
 	session_start();
 
-	include_once 'head.html';
-<<<<<<< HEAD:screens/compras/carrinho-de-compras-em-php-master/template_store/list.php
-	require __DIR__.'../App/Controller/ListController.php';
-	require __DIR__. '../App/Controller/ClienteController.php';
-=======
 	require __DIR__ . '/../App/Controller/ListController.php';
 	require __DIR__ . '/../App/Controller/ClienteController.php';
 >>>>>>> 5d086f1103eddf7bdddc42f7872e79d9fabce2a7:screens/compras/cart/template_store/list.php

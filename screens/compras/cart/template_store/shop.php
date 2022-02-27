@@ -2,7 +2,7 @@
 session_start();
 include_once 'head.html';
 require __DIR__ .  '/../App/Controller/ClienteController.php';
-require __DIR__.'/../App/Controller/ProdutoController.php';
+require __DIR__ . '/App/Controller/ProdutoController.php';
 
 $user = new ClienteController();
 
