@@ -116,7 +116,24 @@
 				<form method="post" action="../App/Controller/insertFinalizado.php" class="colorlib-form">
 				<div class="row">
 					<div class="col-md-7">
+						<h4>Nome Completo </h4>
+								<input type="text" placeholder="Nome Completo" > 
+
+						<h4> E-mail</h4>
+									<input type="email" placeholder="E-mail" >
+						<h4> CPF </h4>
+									<input type="number" placeholder="CPF" maxlength="11" >
+						<h4 > Telefone </h4>
+									<input type="text" placeholder="Telefone" > 
+						<h4 style="display: inline-block;"> Numero do cartão</h4>
+									<input type="number" placeholder="Numero Cartão">
+						<h4> CVV </h4>
+									<input type="number" placeholder="CVV" maxlength="3">
 						
+						<h4>Tipo de Pagamento </h4>
+									<select class="form-control" name="payment_method">
+										<option value=""> Selecione</option>
+									</select>
 							<h2>Endereço para entrega</h2>
 			              	<div class="row">
 				               <div class="col-md-12">
