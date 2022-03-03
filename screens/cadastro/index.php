@@ -8,7 +8,7 @@ session_start();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registration Page</title>
+  <title>Página de cadastro</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- icheck bootstrap -->
@@ -80,6 +80,17 @@ session_start();
         </fieldset>
 
         <fieldset>
+          <label for="">Telefone</label>
+          <div class="input-group mb-3">
+            <input type="tel" class="form-control" name="senha" placeholder="Digite seu telefone">
+            <div class="input-group-append">
+              <div class="input-group-text">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
           <label for="">Categoria de usuário</label>
           <select class="form-select mb-3" name="categoria" aria-label="Default select example">
             <option selected>Selecione sua categoria</option>
@@ -100,11 +111,6 @@ session_start();
 
       <div class="social-auth-links text-center">
         <p>OR</p>
-        <button type="button" class="btn btn-block btn-primary">
-          <a href=""></a>
-          <i class="fab fa-facebook mr-2"></i>
-          Continuar com Facebook
-        </button>
         <button type="button" class="btn btn-block btn-danger">
           <a href=""></a>
           <i class="fab fa-google-plus mr-2"></i>
