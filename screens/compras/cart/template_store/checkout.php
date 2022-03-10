@@ -130,12 +130,60 @@
 							<h6 class="my-0">'.$row[4].'x'.$row[0].' </h6>
 							<span>R$ '.number_format($row[1]*$row[4],2,",",".").'</span>
 							</div>
+<<<<<<< HEAD
 							<span class="text-muted"> '.number_format($total,2,",",".").'</span>
 						</li>';
 					}
 					
 					?>
         </ul>
+=======
+							<div class="process text-center active">
+								<p><span>02</span></p>
+								<h3>Pagamento</h3>
+							</div>
+							<div class="process text-center">
+								<p><span>03</span></p>
+								<h3>Finalizado</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<form method="post" action="../App/Controller/insertFinalizado.php" class="colorlib-form">
+				<div class="row">
+					<div class="col-md-7">
+						<h4>Nome Completo </h4>
+								<input type="text" placeholder="Nome Completo" > 
+
+						<h4> E-mail</h4>
+									<input type="email" placeholder="E-mail" >
+						<h4> CPF </h4>
+									<input type="number" placeholder="CPF" maxlength="11" >
+						<h4 > Telefone </h4>
+									<input type="text" placeholder="Telefone" > 
+						<h4 style="display: inline-block;"> Numero do cartão</h4>
+									<input type="number" placeholder="Numero Cartão">
+						<h4> CVV </h4>
+									<input type="number" placeholder="CVV" maxlength="3">
+						
+						<h4>Tipo de Pagamento </h4>
+									<select class="form-control" name="payment_method">
+										<option value=""> Selecione</option>
+									</select>
+							<h2>Endereço para entrega</h2>
+			              	<div class="row">
+				               <div class="col-md-12">
+				                  <div class="form-group">
+				                  	<label for="country">Estado</label>
+				                    <div class="form-field">
+				                     	<i class="icon icon-arrow-down3"></i>
+				                     	<select class="form-control" name="id_estado" id="id_estado" required>
+											<option value=""> Selecione...</option>
+											 
+												<?php foreach( $resultado_estados as $row ) { 
+													echo '<option value="'.$row['Uf'].'">'.$row['Nome'].'</option>';
+												} ?>
+>>>>>>> 897243377bfcd93509f293bf15d5c5e516a913aa
 
         <form class="card p-2">
           <div class="input-group">

@@ -1,8 +1,9 @@
 <?php
 session_start();
 include_once 'head.html';
+require __DIR__ . '/../DataBase/connection.php';
 require __DIR__ .  '/../App/Controller/ClienteController.php';
-require __DIR__ . '/App/Controller/ProdutoController.php';
+require __DIR__ . '/../App/Controller/ProdutoController.php';
 
 $user = new ClienteController();
 
@@ -13,8 +14,9 @@ $result = $user->isLoggedIn();
 
 <head>
 	<?php
-	include_once("head.html")
-	?>
+
+
+?>
 </head>
 
 <body>
@@ -27,7 +29,7 @@ $result = $user->isLoggedIn();
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="index.php">Use New Mic</a></div>
+							<div id="colorlib-logo"><a href="#"><img src="../../../../images/icones/brand header.png"></a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
@@ -72,7 +74,7 @@ $result = $user->isLoggedIn();
 											<p class="tag"><span class="new"></span></p>
 											<div class="cart">
 												<p>
-													<span class="addtocart"><a href="../App/Controller/addCarrinho.php?produto='.$produto[0].'"><i class="icon-shopping-cart"></i></a></span> 
+													<span class="addtocart"><a href="./product-detail.php?produto='.$produto[0].'"><i class="icon-shopping-cart"></i></a></span> 
 												</p>
 											</div>
 										</div>

@@ -1,9 +1,9 @@
 <?php
 	session_start();
-
+	
+	include_once 'head.html';
 	require __DIR__ . '/../App/Controller/ListController.php';
 	require __DIR__ . '/../App/Controller/ClienteController.php';
->>>>>>> 5d086f1103eddf7bdddc42f7872e79d9fabce2a7:screens/compras/cart/template_store/list.php
 
 	$user = new ClienteController();
 	$result = $user->isLoggedIn();
@@ -24,11 +24,10 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="index.php">Use New Mic</a></div>
+							<div id="colorlib-logo"><a href="#"><img src="../../../../images/icones/brand header.png"></a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li><a href="index.php">Home</a></li>
 								<li><a href="shop.php">Produtos</a></li>
 								<?php
 									if ($result == true) {
