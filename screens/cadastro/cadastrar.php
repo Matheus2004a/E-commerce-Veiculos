@@ -4,7 +4,8 @@
 
   $name_complete = mysqli_real_escape_string($conn, $_POST['nome-completo']);
   $email = mysqli_real_escape_string($conn, $_POST['email']);
-  $password = mysqli_real_escape_string($conn, trim(md5( $_POST['senha'])));
+  $password = mysqli_real_escape_string($conn, password_hash($_POST['senha'], PASSWORD_DEFAULT));
+  $telephone = mysqli_real_escape_string($conn, $_POST['telefone']);
   $category_user = mysqli_real_escape_string($conn, $_POST['categoria']);
 
   $sql = "INSERT INTO `cadastro_clientes` (`nome_completo`, `email`, `senha`, `categoria`) VALUES('$name_complete','$email','$password','$category_user')";
