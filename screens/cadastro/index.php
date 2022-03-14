@@ -25,9 +25,10 @@ session_start();
   <?php
   require __DIR__ . "/../../components/messages-alerts/icons.php";
   ?>
-  <div class="register-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
-  </div>
+
+  <header class="register-logo">
+    <a href=""><b>Admin</b>LTE</a>
+  </header>
 
   <main class="card">
     <div class="card-body register-card-body">
@@ -82,7 +83,7 @@ session_start();
         <fieldset>
           <label for="">Telefone</label>
           <div class="input-group mb-3">
-            <input type="tel" class="form-control" name="senha" placeholder="Digite seu telefone">
+            <input type="tel" class="form-control" name="telefone" placeholder="Digite seu telefone">
             <div class="input-group-append">
               <div class="input-group-text">
               </div>
@@ -118,7 +119,7 @@ session_start();
         </button>
       </div>
       <footer>
-        <p>Já possui conta? <a href="../login/login.php">Faça login</a></p>
+        <p>Já possui conta? <a href="../login/index.php">Faça login</a></p>
         <a href="../../index.php">
           <button type="button" class="btn btn-primary">Voltar</button>
         </a>
@@ -129,7 +130,6 @@ session_start();
   <!-- Kit fontawesome -->
   <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
   <script src="./js/password.js"></script>
-  <!-- AdminLTE App -->
 </body>
 
 </html>
