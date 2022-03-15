@@ -67,26 +67,17 @@ session_start();
             Já possui conta? Cadastre - se <a href="../cadastro/index.php" class="text-center">aqui</a>
           </p>
         </div>
-        <button type="submit" class="btn btn-primary btn-block" name="btnLogin" id="btnLogin" value="Enviar">Login</button>
+        <button type="submit" class="btn btn-primary btn-block mb-3" name="btnLogin" id="btnLogin" value="Enviar">Login</button>
       </form>
 
-      <div class="social-auth-links text-center mb-3">
-        <p>OR</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Logar com Facebook
+      <footer>
+        <p>
+          <a href="forgot-password.html">Esqueceu sua senha?</a>
+        </p>
+        <a href="../../index.php">
+          <button type="button" class="btn btn-primary">Voltar</button>
         </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Logar com Google+
-        </a>
-      </div>
-        <footer>
-          <p>
-            <a href="forgot-password.html">Esqueceu sua senha?</a>
-          </p>
-          <a href="../../index.php">
-            <button type="button" class="btn btn-primary">Voltar</button>
-          </a>
-        </footer>
+      </footer>
     </div>
   </main>
 

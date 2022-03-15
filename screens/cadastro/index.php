@@ -107,17 +107,9 @@ session_start();
             Eu concordo com os <a href="#">termos</a>
           </label>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Criar conta</button>
+        <button type="submit" class="btn btn-primary btn-block mb-3">Criar conta</button>
       </form>
 
-      <div class="social-auth-links text-center">
-        <p>OR</p>
-        <button type="button" class="btn btn-block btn-danger">
-          <a href=""></a>
-          <i class="fab fa-google-plus mr-2"></i>
-          Continuar com Google+
-        </button>
-      </div>
       <footer>
         <p>Já possui conta? <a href="../login/index.php">Faça login</a></p>
         <a href="../../index.php">
