@@ -7,11 +7,11 @@
 
 	if (empty($_POST['email']) && empty($_POST['senha']) && empty($_POST['submit'])) {
 		$_SESSION['no-authenticated'] = "<div class='alert alert-danger d-flex align-items-center' role='alert'>
-						<svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#exclamation-triangle-fill'/></svg>
-						<div>
-							Campos inválidos ou vazios
-						</div>
-					</div>";
+			<svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#exclamation-triangle-fill'/></svg>
+				<div>
+					Campos inválidos ou vazios
+				</div>
+			</div>";
 		header('location: index.php');
 	} else {
 		$sql = "SELECT `nome_completo`, `email`, `senha` FROM `tbl_cadastro_clientes` WHERE email = '$email'";
@@ -30,7 +30,12 @@
 			$_SESSION['username'] = $row['nome_completo'];
 			header('location: ../../screens/requests/index.php');
 		} else {
-			$_SESSION['no-authenticated'] = "Login ou senha incorreta";
+			$_SESSION['no-authenticated'] = "<div class='alert alert-danger d-flex align-items-center' role='alert'>
+				<svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#exclamation-triangle-fill'/></svg>
+				<div>
+					Login ou senha incorreta
+				</div>
+			</div>";
 			header('location: index.php');
 		}
 	}
