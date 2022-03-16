@@ -29,6 +29,9 @@
           <a href="#contact">Contate - nos</a>
         </li>
         <li>
+          <a href="./screens/home/mapa_site.php">Mapa do Site</a>
+        </li>
+        <li>
           <a href="./screens/login/login.php">Login</a>
         </li>
       </ul>
