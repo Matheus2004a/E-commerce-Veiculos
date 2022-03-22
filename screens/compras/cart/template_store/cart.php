@@ -71,26 +71,8 @@
 					</div>
 				</div>
 			</div>
-		</nav>
-		<aside id="colorlib-hero" class="breadcrumbs">
-			<div class="flexslider">
-				<ul class="slides">
-			   	<li style="background-image: url(images/3.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h1>Carrinho de compras</h1>
-				   					<h2 class="bread"><span><a href="index.php">Home</a></span><span>Carrinho de compras</span></h2>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			  	</ul>
-		  	</div>
-		</aside>
+		</nav><br>
+		
 
 		<div class="colorlib-shop">
 			<div class="container">
@@ -157,7 +139,7 @@
 											<form method="post" action="../App/Controller/updateQtd.php">
 												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="'.$row[4].'" min="1" max="100"> 
 												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" value="'.$row[3].'"> <br>
-												<button class="btn btn-primary"> alterar </button>
+												<button class="btn btn-primary" style="background-color:viridiam,;color:white;"> alterar </button>
 											</form>
 										</div>
 									</div>
@@ -215,17 +197,12 @@
 			</div>
 		</div>
 
-		<?php
-			require_once("footer.html")
-		?>
 
 	</div>
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
-		<script type="text/javascript" src=
-		"https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
 	</body>
 </html>
 
