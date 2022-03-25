@@ -2,7 +2,7 @@
 /**
  * Este arquivo retorna todos os pedidos concluidos do cliente.
  */
-include_once '../DataBase/conexao.php';
+include_once '../DataBase/connection.php';
 
 class ListController {
 

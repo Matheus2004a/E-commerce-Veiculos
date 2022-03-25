@@ -2,7 +2,7 @@
 $server_name = "localhost";
 $username = "root";
 $password = "Mapef@09112004a";
-$database_name = "bd_veiculos-tcc";
+$database_name = "bd_veiculos_tcc";
 
 // Create connection
 $conn = mysqli_connect($server_name, $username, $password, $database_name);
