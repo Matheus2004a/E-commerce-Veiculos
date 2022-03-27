@@ -121,7 +121,7 @@ session_start();
 
   <!-- Kit fontawesome -->
   <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
-  <script src="./js/password.js"></script>
+  <script src="../../components/password.js"></script>
   <!-- AdminLTE App -->
 </body>
 
