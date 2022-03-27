@@ -1,4 +1,4 @@
-const inputPassword = document.querySelectorAll("fieldset .input-group input")[1]
+const inputPassword = document.querySelector("fieldset .input-group input[type='password']")
 const iconEye = document.querySelector("fieldset .input-group-text .fa-eye")
 
 iconEye.addEventListener("click", changeVisiblePassword)
