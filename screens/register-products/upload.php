@@ -2,12 +2,14 @@
 session_start();
 require __DIR__ . '/../../connection/connection.php';
 
+$extensions_allows = ["jpg", "jpeg", "png"];
+
 if (isset($_FILES['file'])) {
-    $name_product = $_POST['name-product'];
-    $category_product = $_POST['category-product'];
-    $cod_product = $_POST['cod-product'];
-    $price_product = $_POST['price-product'];
-    $desc_product = $_POST['describe-product'];
+    $name_product = mysqli_real_escape_string($conn, $_POST['name-product']);
+    $category_product = mysqli_real_escape_string($conn, $_POST['category-product']);
+    $cod_product = mysqli_real_escape_string($conn, $_POST['cod-product']);
+    $price_product = mysqli_real_escape_string($conn, $_POST['price-product']);
+    $desc_product = mysqli_real_escape_string($conn, $_POST['describe-product']);
 
     $file = $_FILES['file'];
 
@@ -20,17 +22,21 @@ if (isset($_FILES['file'])) {
     $new_name_file = uniqid();
     // Converte a extensão do arquivo para letras minúsculas
     $extension_file = strtolower(pathinfo($name_file, PATHINFO_EXTENSION));
+    $path_file = $new_name_file . "." . $extension_file;
 
-    if ($extension_file != "jpg" && $extension_file != "png") {
+    if (in_array($extension_file, $extensions_allows)) {
+        $sql = "INSERT INTO `tbl_cad_produtos`(`cod_produto`, `nome_arquivo`, `foto_prod`) VALUES ('$cod_product', '$new_name_file', '$path_file')";
+        register_product($conn, $sql);
+    } else {
         die("Tipo de arquivo não aceito");
     }
+} else {
+    echo "Arquivo não enviado";
+}
 
-    $path_file = "../../uploads/" . $new_name_file . "." . $extension_file;
-    // Faz o upload do arquivo para a pasta de uploads
-    $moved_file = move_uploaded_file($file['tmp_name'], $path_file);
-
-    if ($moved_file) {
-        var_dump($conn->query("INSERT INTO `tbl_cad_produtos` (`cod_produto`, `nome_arquivo`, `foto_prod`) VALUES ('$cod_product', '$name_file', '$path_file')" or die($conn->error)));
+function register_product($conn, $sql)
+{
+    if (mysqli_query($conn, $sql)) {
         echo "<div class='alert alert-success d-flex align-items-center'role='alert'>
             <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'><use xlink:href='#check-circle-fill'/></svg>
             <div>
@@ -38,16 +44,13 @@ if (isset($_FILES['file'])) {
             </div>
           </div>";
     } else {
-        // echo "Falha ao enviar arquivo";
-        echo "<div class='alert alert-danger d-flex align-items-center' role='alert'>
-            <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#exclamation-triangle-fill'/></svg>
+        echo "<div class='alert alert-success d-flex align-items-center'role='alert'>
+            <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#check-circle-fill'/></svg>
             <div>
-            Produto não/já cadastrado
+              Produto já cadastrado
             </div>
-        </div>";
+          </div>";
     }
-} else {
-    echo "Arquivo não enviado";
 }
 
 mysqli_close($conn);
