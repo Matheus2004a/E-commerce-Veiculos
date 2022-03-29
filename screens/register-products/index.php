@@ -15,11 +15,23 @@ session_start();
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
+<?php
+require __DIR__ . '/../../components/messages-alerts/icons.php';
+?>
+
 <body>
     <main class="container">
         <h2 class="text-center">Cadastrar produto</h2>
         <form action="upload.php" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
-
+            <?php
+            if (isset($_SESSION['register-product'])) {
+                echo $_SESSION['register-product'];
+                unset($_SESSION['register-product']);
+            } else if (isset($_SESSION['no-register-product'])) {
+                echo $_SESSION['no-register-product'];
+                unset($_SESSION['no-register-product']);
+            }
+            ?>
             <div class="col-md-6">
                 <label for="validationCustom01" class="form-label">Nome do produto</label>
                 <input type="text" class="form-control" name="name-product" id="validationCustom01" required autofocus>
