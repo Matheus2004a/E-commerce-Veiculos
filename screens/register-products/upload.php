@@ -22,10 +22,11 @@ if (isset($_FILES['file'])) {
     $new_name_file = uniqid();
     // Converte a extensão do arquivo para letras minúsculas
     $extension_file = strtolower(pathinfo($name_file, PATHINFO_EXTENSION));
-    $path_file = $new_name_file . "." . $extension_file;
+    $path_file = "../../uploads/" . $new_name_file . "." . $extension_file;
 
     if (in_array($extension_file, $extensions_allows)) {
-        $sql = "INSERT INTO `tbl_cad_produtos`(`cod_produto`, `nome_arquivo`, `foto_prod`) VALUES ('$cod_product', '$new_name_file', '$path_file')";
+        move_uploaded_file($file['tmp_name'], $path_file);
+        $sql = "INSERT INTO `tbl_cad_produtos` (`nome_arquivo`, `foto_prod`) VALUES ('$name_file','$path_file')";
         register_product($conn, $sql);
     } else {
         die("Tipo de arquivo não aceito");
@@ -37,19 +38,21 @@ if (isset($_FILES['file'])) {
 function register_product($conn, $sql)
 {
     if (mysqli_query($conn, $sql)) {
-        echo "<div class='alert alert-success d-flex align-items-center'role='alert'>
+        $_SESSION['register-product'] = "<div class='alert alert-success d-flex align-items-center'role='alert'>
             <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'><use xlink:href='#check-circle-fill'/></svg>
             <div>
               Produto cadastrado com sucesso
             </div>
           </div>";
+        header("location: index.php");
     } else {
-        echo "<div class='alert alert-success d-flex align-items-center'role='alert'>
-            <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#check-circle-fill'/></svg>
-            <div>
-              Produto já cadastrado
-            </div>
-          </div>";
+        $_SESSION['no-register-product'] = "<div class='alert alert-danger d-flex align-items-center' role='alert'>
+        <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#exclamation-triangle-fill'/></svg>
+        <div>
+          Produto já cadastrado
+        </div>
+      </div>";
+        header("location: index.php");
     }
 }
 
