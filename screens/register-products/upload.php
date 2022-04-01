@@ -4,13 +4,13 @@ require __DIR__ . '/../../connection/connection.php';
 
 $extensions_allows = ["jpg", "jpeg", "png"];
 
-if (isset($_FILES['file'])) {
-    $name_product = mysqli_real_escape_string($conn, $_POST['name-product']);
-    $category_product = mysqli_real_escape_string($conn, $_POST['category-product']);
-    $cod_product = mysqli_real_escape_string($conn, $_POST['cod-product']);
-    $price_product = mysqli_real_escape_string($conn, $_POST['price-product']);
-    $desc_product = mysqli_real_escape_string($conn, $_POST['describe-product']);
+$name_product = mysqli_real_escape_string($conn, $_POST['name-product']);
+$category_product = mysqli_real_escape_string($conn, $_POST['category-product']);
+$cod_product = mysqli_real_escape_string($conn, $_POST['cod-product']);
+$price_product = mysqli_real_escape_string($conn, $_POST['price-product']);
+$desc_product = mysqli_real_escape_string($conn, $_POST['describe-product']);
 
+if (isset($_FILES['file'])) {
     $file = $_FILES['file'];
 
     if ($file['error']) {
@@ -26,7 +26,7 @@ if (isset($_FILES['file'])) {
 
     if (in_array($extension_file, $extensions_allows)) {
         move_uploaded_file($file['tmp_name'], $path_file);
-        $sql = "INSERT INTO `tbl_cad_produtos` (`nome_arquivo`, `foto_prod`) VALUES ('$name_file','$path_file')";
+        $sql = "INSERT INTO `tbl_cad_produtos`(`cod_produto`, `nome_prod`, `categ_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`) VALUES ('$cod_product','$name_product','$category_product','$price_product','$desc_product','$path_file')";
         register_product($conn, $sql);
     } else {
         die("Tipo de arquivo não aceito");
