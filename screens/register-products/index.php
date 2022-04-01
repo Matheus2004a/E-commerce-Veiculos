@@ -43,10 +43,10 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
             <div class="col-md-6">
                 <label for="validationCustom04" class="form-label">Categoria do produto</label>
                 <select class="form-select" name="category-product" id="validationCustom04" required>
-                    <option selected disabled value="">Selecione sua categoria</option>
-                    <option>Rodas</option>
-                    <option>Filtros de ar</option>
-                    <option>Óleo</option>
+                    <option selected disabled>Selecione sua categoria</option>
+                    <option value="Rodas">Rodas</option>
+                    <option value="Filtros-de-ar">Filtros de ar</option>
+                    <option value="Óleo">Óleo</option>
                 </select>
                 <div class="invalid-feedback">
                     Digite a categoria do produto.
