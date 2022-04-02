@@ -25,9 +25,8 @@ if (isset($_FILES['file'])) {
     $path_file = "../../uploads/" . $new_name_file . "." . $extension_file;
 
     if (in_array($extension_file, $extensions_allows)) {
-        move_uploaded_file($file['tmp_name'], $path_file);
         $sql = "INSERT INTO `tbl_cad_produtos`(`cod_produto`, `nome_prod`, `categ_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`) VALUES ('$cod_product','$name_product','$category_product','$price_product','$desc_product','$path_file')";
-        register_product($conn, $sql);
+        register_product($conn, $sql, $file, $path_file);
     } else {
         die("Tipo de arquivo não aceito");
     }
@@ -35,7 +34,7 @@ if (isset($_FILES['file'])) {
     echo "Arquivo não enviado";
 }
 
-function register_product($conn, $sql)
+function register_product($conn, $sql, $file, $path_file)
 {
     if (mysqli_query($conn, $sql)) {
         $_SESSION['register-product'] = "<div class='alert alert-success d-flex align-items-center'role='alert'>
@@ -43,7 +42,8 @@ function register_product($conn, $sql)
             <div>
               Produto cadastrado com sucesso
             </div>
-          </div>";
+            </div>";
+            move_uploaded_file($file['tmp_name'], $path_file);
         header("location: index.php");
     } else {
         $_SESSION['no-register-product'] = "<div class='alert alert-danger d-flex align-items-center' role='alert'>
