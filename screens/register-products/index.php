@@ -1,6 +1,6 @@
 <?php
 session_start();
-// require __DIR__ . '/../login/verify-session.php';
+require 'verify-access.php';
 ?>
 
 <!DOCTYPE html>

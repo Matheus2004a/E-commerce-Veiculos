@@ -6,7 +6,7 @@
 	$password = mysqli_real_escape_string($conn, $_POST['senha']);
 
 	if (isset($_POST['email']) && isset($_POST['senha'])) {
-		$sql = "SELECT `nome_completo`, `email`, `senha` FROM `tbl_cadastro_clientes` WHERE email = '$email'";
+		$sql = "SELECT `nome_completo`, `email`, `senha`, `categoria` FROM `tbl_cadastro_clientes` WHERE email = '$email'";
 		$result = mysqli_query($conn, $sql);
 		
 		if ($result) {
@@ -28,6 +28,7 @@
 		// Verifica se a senha digitada é igual a que está criptografada no banco
 		if (password_verify($password, $row['senha'])) {
 			$_SESSION['username'] = $row['nome_completo'];
+			$_SESSION['category'] = $row['categoria'];
 			header('location: ../../screens/requests/index.php');
 		} else {
 			$_SESSION['no-authenticated'] = "<div class='alert alert-danger d-flex align-items-center' role='alert'>
