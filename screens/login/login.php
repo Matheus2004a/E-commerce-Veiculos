@@ -40,4 +40,5 @@
 			header('location: index.php');
 		}
 	}
+	mysqli_close($conn);
 ?>
