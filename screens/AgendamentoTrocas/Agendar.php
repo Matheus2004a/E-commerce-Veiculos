@@ -8,36 +8,17 @@
     <title>Agendar Serviços</title>
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./style/style.css">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="./style/jquery-ui.css">
+
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"> -->
+
 </head>
 
-<body>
-    <header>
-        <img src="../../images/icones/brand header.png" class="brand">
-        <!-- <a class="brand" href="#">Logomarca</a> !-->
-        <nav class="menus">
-            <ul>
-                <li>
-                    <a class="active" aria-current="page" href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#services">Todos os serviços</a>
-                </li>
-                <li>
-                    <a href="#about">Sobre</a>
-                </li>
-                <li>
-                    <a href="#contact">Contate - nos</a>
-                </li>
-                <li>
-                    <a href="./screens/home/mapa_site.php">Mapa do Site</a>
-                </li>
-                <li>
-                    <a href="./screens/login/login.php">Login</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+<body onload="loadPage()">
+
     <nav class="sidebar close">
         <header>
             <div class="image-text">
@@ -125,8 +106,36 @@
         </div>
 
     </nav>
-
+    <div class="header">
+        <header>
+            <img src="../../images/icones/brand header.png" class="brand">
+            <!-- <a class="brand" href="#">Logomarca</a> !-->
+            <nav class="menus">
+                <ul>
+                    <li>
+                        <a class="active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#services">Todos os serviços</a>
+                    </li>
+                    <li>
+                        <a href="#about">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contate - nos</a>
+                    </li>
+                    <li>
+                        <a href="./screens/home/mapa_site.php">Mapa do Site</a>
+                    </li>
+                    <li>
+                        <a href="./screens/login/login.php">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </div>
     <div class="home">
+
         <div class="container">
             <div class="perfil">
                 <img src="./Images/Ellipse 15.png" alt="">
@@ -146,13 +155,13 @@
         </div>
 
         <div class="calendario">
-            <input type="date" name="date" id="date" min="2022-04-12" max="2022-04-22">
-            <span>Lorem Ipsum is simply dummy text of the printing and typ
-                esetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span>
+            <input type="text" name="" id="inputdate" readonly value="Selecione uma data">
+            <div id="datepicker"></div>
         </div>
 
+
         <div class="horarios">
+            <span id="spanHorario">Horarios disponiveis no dia</span>
 
             <input type="button" value="09:15">
             <input type="button" value="09:50">
@@ -171,33 +180,20 @@
             <input id="btnConfirm" type="button" value="Confirmar">
         </div>
     </div>
+    <script src="script.js"></script>
     <script>
-        const body = document.querySelector('body'),
-            sidebar = body.querySelector('nav'),
-            toggle = body.querySelector(".toggle"),
-            searchBtn = body.querySelector(".search-box"),
-            modeSwitch = body.querySelector(".toggle-switch"),
-            modeText = body.querySelector(".mode-text");
-
-
-        toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-        })
-
-        searchBtn.addEventListener("click", () => {
-            sidebar.classList.remove("close");
-        })
-
-        modeSwitch.addEventListener("click", () => {
-            body.classList.toggle("dark");
-
-            if (body.classList.contains("dark")) {
-                modeText.innerText = "Modo Dia";
-            } else {
-                modeText.innerText = "Modo Noite";
-
+        function getDia(date) {
+            document.getElementById("date").value = date
+        }
+        $("#datepicker").datepicker({
+            dateFormat: "dd-mm-yy",
+            onSelect: function() {
+                var dateSelected = $(this).datepicker("getDate");
+                document.getElementById("inputdate").value = dateSelected
+                getDia(dateSelected)
+                console.log(dateSelected)
             }
-        });
+        })
     </script>
 </body>
 
