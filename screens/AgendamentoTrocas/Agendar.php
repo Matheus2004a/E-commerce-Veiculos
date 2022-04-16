@@ -136,7 +136,10 @@
     </div>
     <div class="home">
 
-        <div class="container">
+        <div class="left">
+            <!-- ================================================================================= -->
+            <!-- DIV1 -->
+            
             <div class="perfil">
                 <img src="./Images/Ellipse 15.png" alt="">
                 <div class="spanPerfil">
@@ -152,26 +155,38 @@
                 <button type="submit" class="btn btn-secondary btn-lg">Chat</button>
                 <button type="submit" class="btn btn-secondary btn-lg">Cancelar</button>
             </div>
+
+            <!-- ============================================================================================== -->
+            <!-- DIV2 -->
+            <div class="DataHorario">
+                <div class="cardCard">
+                    <span id="spanData">Selecione um dia</span>
+                    <input type="text" id="datepicker" placeholder="Clique para selecioar a data" required>
+
+
+                    <span id="spanHorario">Horarios disponiveis no dia</span>
+
+                    <input type="button" value="09:15">
+                    <input type="button" value="09:50">
+                    <input type="button" value="10:40">
+                    <input type="button" value="12:15">
+                    <input type="button" value="12:45">
+                    <input type="button" value="14:45">
+                    <input type="button" value="15:25">
+                    <input type="button" value="16:15">
+                    <input type="button" value="17:00">
+                </div>
+            </div>
         </div>
-
-        <div class="calendario">
-            <input type="text" name="" id="inputdate" readonly value="Selecione uma data">
-            <div id="datepicker"></div>
-        </div>
+        <!-- FIM DA DIV DO CONTAINER -->
+        <!-- ================================================================================================= -->
 
 
-        <div class="horarios">
-            <span id="spanHorario">Horarios disponiveis no dia</span>
+        <div class="right">
+            <div class="descricao">
+                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was</span>
 
-            <input type="button" value="09:15">
-            <input type="button" value="09:50">
-            <input type="button" value="10:40">
-            <input type="button" value="12:15">
-            <input type="button" value="12:45">
-            <input type="button" value="14:45">
-            <input type="button" value="15:25">
-            <input type="button" value="16:15">
-            <input type="button" value="17:00">
+            </div>
 
             <div class="observacoes">
                 <span>Observações</span>
@@ -182,15 +197,10 @@
     </div>
     <script src="script.js"></script>
     <script>
-        function getDia(date) {
-            document.getElementById("date").value = date
-        }
         $("#datepicker").datepicker({
-            dateFormat: "dd-mm-yy",
+            dateFormat: "dd/mm/yy",
             onSelect: function() {
                 var dateSelected = $(this).datepicker("getDate");
-                document.getElementById("inputdate").value = dateSelected
-                getDia(dateSelected)
                 console.log(dateSelected)
             }
         })
