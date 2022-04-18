@@ -26,3 +26,9 @@ function loadPage() {
         }
     });
 }
+
+function buttonSelected(id) {
+    let hora = document.getElementById(id).value
+    document.getElementById("detalheHora").innerHTML = hora
+}
+

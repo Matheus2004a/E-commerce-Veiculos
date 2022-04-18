@@ -139,7 +139,7 @@
         <div class="left">
             <!-- ================================================================================= -->
             <!-- DIV1 -->
-            
+
             <div class="perfil">
                 <img src="./Images/Ellipse 15.png" alt="">
                 <div class="spanPerfil">
@@ -166,15 +166,15 @@
 
                     <span id="spanHorario">Horarios disponiveis no dia</span>
 
-                    <input type="button" value="09:15">
-                    <input type="button" value="09:50">
-                    <input type="button" value="10:40">
-                    <input type="button" value="12:15">
-                    <input type="button" value="12:45">
-                    <input type="button" value="14:45">
-                    <input type="button" value="15:25">
-                    <input type="button" value="16:15">
-                    <input type="button" value="17:00">
+                    <input type="button" id="btn1" onclick="buttonSelected(id)" value="09:15">
+                    <input type="button" id="btn2" onclick="buttonSelected(id)" value="09:50">
+                    <input type="button" id="btn3" onclick="buttonSelected(id)" value="10:40">
+                    <input type="button" id="btn4" onclick="buttonSelected(id)" value="12:15">
+                    <input type="button" id="btn5" onclick="buttonSelected(id)" value="12:45">
+                    <input type="button" id="btn6" onclick="buttonSelected(id)" value="14:45">
+                    <input type="button" id="btn7" onclick="buttonSelected(id)" value="15:25">
+                    <input type="button" id="btn8" onclick="buttonSelected(id)" value="16:15">
+                    <input type="button" id="btn9" onclick="buttonSelected(id)" value="17:00">
                 </div>
             </div>
         </div>
@@ -189,8 +189,14 @@
             </div>
 
             <div class="observacoes">
-                <span>Observações</span>
-                <textarea class="form-control" cols="10" rows="5"></textarea>
+                <span id="spanDetalhes">Detalhes</span>
+                <div class="detalhes">
+                    
+                        <span>Data: <span id="detalheData"></span></span>
+                        <span>Horario: <span id="detalheHora"></span></span>
+                    
+                </div>
+                <textarea class="form-control" cols="10" rows="2" placeholder="OBSERVAÇÕES"></textarea>
             </div>
             <input id="btnConfirm" type="button" value="Confirmar">
         </div>
@@ -199,9 +205,11 @@
     <script>
         $("#datepicker").datepicker({
             dateFormat: "dd/mm/yy",
+            minDate: new Date(),
             onSelect: function() {
-                var dateSelected = $(this).datepicker("getDate");
-                console.log(dateSelected)
+                let dateSelected = $(this).datepicker("getDate");
+                let date = document.getElementById("datepicker").value
+                document.getElementById("detalheData").innerHTML = date
             }
         })
     </script>
