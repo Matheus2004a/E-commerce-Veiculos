@@ -1,0 +1,98 @@
+.select-person{
+	width: 323px;
+	height: 375px;
+	background-color:#FFFF;
+	border-style: solid;
+	border-radius: 10px;
+	margin-left: 50px;
+	margin-top:15px;
+	margin-right:10%;
+}
+.select-item-favorito{
+	display:inline-block;
+	margin-left: 10px;
+	border-bottom-style: outset; 
+
+}
+.select-item-todos{
+	display: inline-block;
+	border-bottom-style: outset; 
+}
+.search-persons{
+	padding-top:10px;	
+}
+#search-person{
+	width: 289px;
+	height: 36px;
+	margin-top: 10px;
+	background-image: url("./images/Icon.png");
+	background-repeat: no-repeat ;
+
+	
+}
+
+#img-usuario{
+	display: inline-block;
+}
+
+#nome-usuario{
+	display: inline-block;
+	margin-left: 10px;	
+}
+#horaUtilizacao{
+	display: inline-block;
+	margin-left: 1rem;
+	font-weight: bold;
+	color: #666;
+
+}
+#divisao-person{
+	margin-top: -2%;
+}
+.button-search-2{
+	margin-left: 50px;
+	margin-top:-10px;
+}
+#mensagem-Enviada{
+	display: inline-block;
+}
+#mensagens-Recebidas{
+	display: inline-block;
+	margin-left: 50px;
+
+
+}
+.conversa{
+	width: 460%;
+	height: 150%;
+	border-style: solid;
+
+}
+#img-sender{
+	margin-top:5%;
+	margin-left: 1%;
+	display: inline-block;
+	
+}
+#nome-sender{
+	display: inline-block;
+	margin-left: 10px;
+	font-weight: bold;
+	
+}
+#message-senders-cliente{
+	width: 30%;
+	height: 60px;
+	margin-left: 10%;
+	background-color: #666;	
+	font-weight: bold;
+	text-align: center;
+	color:#FFFF;
+	border-radius: 10px;	
+}
+#nome-receiver{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    
+}
