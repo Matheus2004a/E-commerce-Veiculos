@@ -9,9 +9,9 @@
 
 <body>
 	<h3> Chat </h3>
-
-	<div class="d-flex bd-highlight mb-3">
-		<div class="select-person">
+<div class="flex-container">
+<!-- Select person !--> 
+<div class="select-person">
 			<div class="p-2 bd-highlight">
 				<!-- Conversas !-->
 				<div class="select-item-todos">
@@ -36,8 +36,12 @@
 				</div>
 				<hr id="divisao-person">
 			</div>
-		</div><!-- Fim div select person !-->
-		<div class="p-3 bd-highlight">
+		</div>
+	<!-- Fim div select person !-->
+
+	<!--Mensagens !--> 
+
+	<div class="conversas">
 			<!-- Conversas !-->
 			<div class="conversa">
 				<div id="img-sender">
@@ -50,22 +54,46 @@
 					<p id="message-senders-cliente">Ola Mundo!</p>
 				</div>
 				<!-- Mensagem Mecânico !-->
-				<div class="d-flex flex-row-reverse bd-highlight">
+				<div id="dados-usuario">
+					<div class="d-flex justify-content-end">
 					<div id="nome-receiver">
-						<p>Nome Usuário</p>
-					</div>	
-					<div id="img-receiver">
-						<img src="./images/foto fornecedor.png" alt="">
-					</div>
+							<p>Nome Usuário</p>
+						</div>	
+						<div id="img-receiver">
+							<img src="./images/foto fornecedor.png" alt="">
+						</div>
 						
+					</div><!-- Fim div 	d-flex justify-content-end !-->
+				</div>
+					<div class="d-flex justify-content-end">
+						<div id="mensagem-mecanico">
+							<p>ola Mundo</p>
+						</div>
+						
+					</div>
 
 				</div>
+				<!-- Fim mensagem mecânico !-->
+					<!-- Input Mensagem !--> 
+				<div class="input-mensagems">
+					<input type="text"  class="input-mensagem" name="input-mensagens" id="input-mensagens" placeholder="Digite sua mensagem aqui">
+					<button class="sender">
+					<img src="./images/send.png" alt="">
 
+					</button>
+									</div>
+				<!--Fim div Input Mensagem !--> 
 
 				</div>
+				
 			</div>
 		</div>
 	</div>
+</div>
+	
+		
+	
+		
 
 </body>
 
