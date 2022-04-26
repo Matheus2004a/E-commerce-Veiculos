@@ -1049,7 +1049,8 @@ body .ui-tooltip {
 }
 
 .ui-widget.ui-widget-content {
-    border: none;
+    border: .1px solid #b8b8b8;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .ui-widget-content {
