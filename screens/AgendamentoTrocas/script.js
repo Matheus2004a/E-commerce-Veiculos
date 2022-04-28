@@ -1,34 +1,28 @@
-function loadPage() {
-    const body = document.querySelector('body'),
-        sidebar = body.querySelector('nav'),
-        toggle = body.querySelector(".toggle"),
-        searchBtn = body.querySelector(".search-box"),
-        modeSwitch = body.querySelector(".toggle-switch"),
-        modeText = body.querySelector(".mode-text");
+var dia
+var horario
+var obs
+var oldDate = new Date()
+var minDay = oldDate.toLocaleDateString("pt-BR")
+minDay = minDay.split('/').reverse().join('-');
 
-
-    toggle.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-    })
-
-    searchBtn.addEventListener("click", () => {
-        sidebar.classList.remove("close");
-    })
-
-    modeSwitch.addEventListener("click", () => {
-        body.classList.toggle("dark");
-
-        if (body.classList.contains("dark")) {
-            modeText.innerText = "Modo Dia";
-        } else {
-            modeText.innerText = "Modo Noite";
-
-        }
-    });
+function setMinDay() {
+    document.getElementById("inputDate").setAttribute("min", minDay);
 }
 
-function buttonSelected(id) {
-    let hora = document.getElementById(id).value
-    document.getElementById("detalheHora").innerHTML = hora
+function pickDate(data) {
+    data = data.split('-').reverse().join('/');
+    document.getElementById("spanData").innerHTML = data
+    dia = data
 }
 
+function pickHour(hora) {
+    document.getElementById("spanHora").innerHTML = hora
+    horario = hora
+}
+
+function pickValues() {
+    obs = document.getElementById("obs").value
+    document.getElementById("hiddenData").value = dia
+    document.getElementById("hiddenHora").value = horario
+    document.getElementById("hiddenObs").value = obs
+}

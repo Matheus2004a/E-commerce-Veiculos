@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+
+<body onload="setMinDay()">
+    <div class="container">
+        <!-- DIV CONTAINER LADO ESQUERDO DA TELA -->
+        <div class="nav-left">
+
+            <!-- CONTAINER PERFIL -->
+            <div class="perfil">
+                <img src="./assets/euPerfil.jpg" alt="img perfil">
+                <div class="divNameDesc">
+                    <span class="spanName">Talison Brendon</span>
+                    <span class="spanDescription">Mecanico formado a 7 anos pelo senai</span>
+                </div>
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                        <title>Close</title>
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="32" d="M368 368L144 144M368 144L144 368" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- CONTAINER BOTEOS CHAT E CANCEL -->
+            <div class="chatCancel">
+                <button class="chat">Chat</button>
+                <button class="cancel">Cancelar</button>
+            </div>
+
+            <!-- CONTAINER DA DESCRIÇÃO E NOME DO SERVIÇO -->
+            <div class="description">
+                <span class="nameService">Alinhamento de roda</span>
+                <span class="titleDescription">Descrição</span>
+                <span class="descriptionService">Lorem Ipsum is simply dummy text of the printing and typesetting
+                    industry. Lorem Ipsum has been the industry's standard dummy text ever since </span>
+            </div>
+        </div>
+        <!-- FIM DIV CONTAINER LADO ESQUERDO -->
+
+        <!-- DIV CONTAINER LADO DIREITO DA TELA -->
+        <div class="nav-right">
+            <div class="containerAction">
+                <input type="date" id="inputDate" onchange="pickDate(value)" >
+                <div class="buttonHour">
+                    <button value="12:16" id="btnHora" onclick="pickHour(value)">12:16</button>
+                    <button value="12:16" id="btnHora" onclick="pickHour(value)">12:16</button>
+                    <button value="12:16" id="btnHora" onclick="pickHour(value)">12:16</button>
+                    <button value="12:16" id="btnHora" onclick="pickHour(value)">12:16</button>
+                    <button value="12:16" id="btnHora" onclick="pickHour(value)">12:16</button>
+                    <button value="12:16" id="btnHora" onclick="pickHour(value)">12:16</button>
+                </div>
+                <span id="spanTitleDetails">Detalhes</span>
+                <div class="details">
+                    <span>Data: <span id="spanData"></span></span>
+                    <span>Hora: <span id="spanHora"></span>
+                    </span>
+                </div>
+                <span class="spanObservations">Observações</span>
+                <textarea id="obs" rows="3" placeholder="Digite aqui"></textarea>
+                <form action="teste.php" method="post">
+                    <input type="hidden" name="data" id="hiddenData">
+                    <input type="hidden" name="hora" id="hiddenHora">
+                    <input type="hidden" name="observacao" id="hiddenObs">
+                    <input type="submit" class="btnConfirm" value="Confirmar" onclick="pickValues()">
+                </form>
+            </div>
+        </div>
+        <!-- FIM DIV CONTAINER LADO DIREITO -->
+    </div>
+</body>
+
+</html>
