@@ -1,8 +1,8 @@
 <?php
-$server_name = "localhost";
+$server_name = "127.0.0.1";
 $username = "root";
-$password = "";
-$database_name = "bd_veiculos-tcc";
+$password = "Mapef@09112004a";
+$database_name = "bd_veiculos_tcc";
 
 // Create connection
 $conn = mysqli_connect($server_name, $username, $password, $database_name);

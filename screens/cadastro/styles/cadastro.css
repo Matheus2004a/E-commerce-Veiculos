@@ -1,8 +1,10 @@
-.card{
-    width: 30%;
-    min-width: 70vh !important;
+.rows{
+    display: grid; 
+    grid-template-columns: repeat(2,48.5%);
+    gap: 1rem;
 }
 
-.card fieldset i{
-    cursor: pointer;
+form{
+    display: grid;
+    gap: 1rem;
 }
