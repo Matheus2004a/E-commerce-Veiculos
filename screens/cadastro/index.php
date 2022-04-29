@@ -21,6 +21,7 @@ session_start();
   <link rel="stylesheet" href="../../config/setup.css">
   <link rel="stylesheet" href="./styles/cadastro.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 
 <body class="hold-transition register-page">
@@ -56,7 +57,7 @@ session_start();
 
           <fieldset>
             <label for="">CPF</label>
-            <input type="text" class="form-control" name="cpf" placeholder="Digite seu cpf" required>
+            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Digite seu cpf" autocomplete="off" maxlength="14" required>
             <div class="invalid-feedback">
               Insira seu cpf.
             </div>
@@ -99,7 +100,7 @@ session_start();
         <div class="rows">
           <fieldset>
             <label for="">Telefone</label>
-            <input type="tel" class="form-control" name="telefone" placeholder="Digite seu telefone" required>
+            <input type="tel" class="form-control" name="telefone" id="telefone" placeholder="Digite seu telefone" autocomplete="off" maxlength="13" required>
             <div class="invalid-feedback">
               Insira seu telefone.
             </div>
@@ -129,7 +130,12 @@ session_start();
   <!-- Kit fontawesome -->
   <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
   <script src="./js/password.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js" integrity="sha512-hAJgR+pK6+s492clbGlnrRnt2J1CJK6kZ82FZy08tm6XG2Xl/ex9oVZLE6Krz+W+Iv4Gsr8U2mGMdh0ckRH61Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="../../validations/main.js"></script>
+  <script>
+    $("#telefone").mask("(99) 99999-9999")
+    $("#cpf").mask("000.000.000-00")
+  </script>
 </body>
 
 </html>
