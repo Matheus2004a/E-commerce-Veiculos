@@ -24,7 +24,7 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
 
 <body class="hold-transition register-page">
     <?php
-        include "../../components/header.php";
+    include "../../components/header.php";
     ?>
 
     <main class="container card">
@@ -40,15 +40,15 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
                     unset($_SESSION['no-register-product']);
                 }
                 ?>
-                <div class="col-md-6">
+                <fieldset class="col-md-6">
                     <label for="validationCustom01" class="form-label">Nome do produto</label>
                     <input type="text" class="form-control" name="name-product" id="validationCustom01" required autofocus>
                     <div class="invalid-feedback">
                         Digite o nome do produto.
                     </div>
-                </div>
+                </fieldset>
 
-                <div class="col-md-6">
+                <fieldset class="col-md-6">
                     <label for="validationCustom04" class="form-label">Categoria do produto</label>
                     <select class="form-select" name="category-product" id="validationCustom04" required>
                         <option selected disabled value="">Selecione sua categoria</option>
@@ -59,47 +59,47 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
                     <div class="invalid-feedback">
                         Digite a categoria do produto.
                     </div>
-                </div>
+                </fieldset>
 
-                <div class="col-md-6">
+                <fieldset class="col-md-6">
                     <label for="validationCustom05" class="form-label">Preço</label>
-                    <input type="text" class="form-control" name="price-product" id="validationCustom05" required>
+                    <input type="text" class="form-control" name="price-product" id="price-product" maxlength="10" autocomplete="off" required>
                     <div class="invalid-feedback">
                         Digite o preço do produto.
                     </div>
-                </div>
+                </fieldset>
 
-                <div class="col-md-6">
-                    <label for="validationCustom01" class="form-label">Fabricante</label>
-                    <input type="text" class="form-control" name="name-product" id="validationCustom01" required autofocus>
+                <fieldset class="col-md-6">
+                    <label for="validationCustom05" class="form-label">Código de barras</label>
+                    <input type="text" class="form-control" name="cod-product" id="money" maxlength="10" autocomplete="off" required>
                     <div class="invalid-feedback">
-                        Digite o nome do produto.
+                        Digite o código de barras do produto.
                     </div>
-                </div>
+                </fieldset>
 
-                <div class="col-md-6">
+                <fieldset class="col-md-6">
                     <label for="validationCustom01" class="form-label">Qtd em estoque</label>
-                    <input type="number" class="form-control" name="name-product" id="validationCustom01" required autofocus>
+                    <input type="number" class="form-control" name="qtd-product" id="validationCustom01" required>
                     <div class="invalid-feedback">
-                        Digite o nome do produto.
+                        Digite o qtd de estoque do produto.
                     </div>
-                </div>
+                </fieldset>
 
-                <div class="col-md-6">
-                    <label for="validationCustom05" class="form-label">Descrição do produto</label>
-                    <textarea type="text" class="form-control" name="describe-product" id="validationCustom05" required></textarea>
-                    <div class="invalid-feedback">
-                        Digite a descrição do produto.
-                    </div>
-                </div>
-
-                <div class="col-md-6">
+                <fieldset class="col-md-6">
                     <label for="validationCustom05" class="form-label">Foto do produto</label>
                     <input type="file" name="file" class="form-control" id="validationCustom05" required>
                     <div class="invalid-feedback">
                         Insira a foto do produto.
                     </div>
-                </div>
+                </fieldset>
+
+                <fieldset class="col-12">
+                    <label for="validationCustom05" class="form-label">Descrição do produto</label>
+                    <textarea type="text" class="form-control" name="describe-product" id="validationCustom05" required></textarea>
+                    <div class="invalid-feedback">
+                        Digite a descrição do produto.
+                    </div>
+                </fieldset>
 
                 <div class="col-6">
                     <a href="">
@@ -113,6 +113,13 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
 
     <script src="./js/main.js"></script>
     <script src="../../validations/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js" integrity="sha512-hAJgR+pK6+s492clbGlnrRnt2J1CJK6kZ82FZy08tm6XG2Xl/ex9oVZLE6Krz+W+Iv4Gsr8U2mGMdh0ckRH61Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('#price-product').mask('000.000,00', {
+            reverse: true
+        });
+    </script>
 </body>
 
 </html>
