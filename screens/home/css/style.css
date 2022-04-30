@@ -13,11 +13,10 @@ ul{
 }
 
 header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+
+  width: 100vw;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;

@@ -1,7 +1,7 @@
 <?php
-$server_name = "localhost";
-$username = "root";
-$password = "";
+$server_name = "bdtcc.mysql.database.azure.com";
+$username = "UserPadrao";
+$password = "kGz6o&dvjHzL%YI";
 $database_name = "bd_veiculos_tcc";
 
 // Create connection

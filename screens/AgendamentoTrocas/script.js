@@ -10,8 +10,7 @@ function setMinDay() {
 }
 
 function pickDate(data) {
-    data = data.split('-').reverse().join('/');
-    document.getElementById("spanData").innerHTML = data
+    document.getElementById("spanData").innerHTML = data.split('-').reverse().join('/');
     dia = data
 }
 
