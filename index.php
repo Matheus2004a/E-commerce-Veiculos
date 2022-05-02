@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php
+require "./functions/InserirEnquete.php";
+?>
 
 <head>
   <meta charset="utf-8">
@@ -7,6 +10,8 @@
   <title>Homepage</title>
   <link rel="stylesheet" href="./bootstrap-5.1.3-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./screens/home/css/style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 </head>
 
 <body>
@@ -165,13 +170,19 @@
       </section>
     </div>
 
+
+
+
+
+    </div>
+
     <!-- Button return to top page -->
     <a href="#top-page">
       <button class="button-top-page"><i class="fas fa-arrow-up"></i></button>
     </a>
   </main>
 
-
+  <!-- Footer !-->
   <footer class="footer-blog" id="contact">
     <div class="list-ordenate">
       <h5>Contatos</h5>
@@ -224,13 +235,57 @@
         </li>
       </ul>
     </div>
+    <div class="flex-container">
+      <div class="list-ordenate">
+        <h5> Avaliação </h5>
+        <form action="#" method="post">
+          <div class='radioAvaliacao'>
+
+            <p class='radio_cont'>Bom</p>
+            <input type='radio' name='radio_avaliacao' id='Bom' value='Bom' class='radio_cont'>
+            <p class='radio_cont'>Médio</p>
+            <input type='radio' name='radio_avaliacao' id='Medio' value='Medio' class='radio_cont'>
+            <p class='radio_cont'>Ruim</p>
+            <input type='radio' name='radio_avaliacao' id='Ruim' value='Ruim' class='radio_cont'>
+
+          </div>
+          <button type="submit" name="responder"> Responder </button>
+        </form>
+
+      </div>
   </footer>
+
+  <div class="mostrarAvaliacao" id="mostrarAvaliacao">
+    <?php include "./functions/demonstrarEnquete.php";?>
+  </div>
+  </div>
 
   <script src="./screens/home/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+  <script type="">
+    $(document).ready(function(){
+    $(document).on('submit','#form1',function(event){
+        event.preventDefault();
+        var dados=$(this).serialize();
+
+        $.ajax({
+            url: 'InserirEnquete.php',
+            method: 'post',
+            dataType: 'html',
+            data: dados,
+            success: function(data){
+                $('#mostrarAvaliacao').html(data);
+            }
+        });
+    });
+});
+  </script>
+
 </body>
 
 </html>
