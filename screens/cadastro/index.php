@@ -20,8 +20,7 @@ session_start();
   <!-- Bootstrap-5 -->
   <link rel="stylesheet" href="../../config/setup.css">
   <link rel="stylesheet" href="./styles/cadastro.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.min.css">
 </head>
 
 <body class="hold-transition register-page">
@@ -68,7 +67,7 @@ session_start();
           <fieldset>
             <label for="validationCustomUsername" class="form-label">Email</label>
             <div class="input-group has-validation">
-              <input type="text" class="form-control" name="email" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Digite seu email" required>
+              <input type="email" class="form-control" name="email" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Digite seu email" required>
               <span class="input-group-text" id="inputGroupPrepend">
                 <i class="fas fa-envelope"></i>
               </span>
@@ -92,11 +91,6 @@ session_start();
           </fieldset>
         </div>
 
-        <fieldset>
-          <label for="">Foto de perfil</label>
-          <input type="file" class="form-control" name="profile">
-        </fieldset>
-
         <div class="rows">
           <fieldset>
             <label for="">Telefone</label>
@@ -118,6 +112,35 @@ session_start();
             </div>
           </fieldset>
         </div>
+
+        <fieldset>
+          <label for="">Foto de perfil</label>
+          <input type="file" class="form-control" name="profile">
+        </fieldset>
+
+        <!-- file preview template -->
+        <div class="d-none" id="uploadPreviewTemplate">
+          <div class="card mt-1 mb-0 shadow-none border">
+            <div class="p-2">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
+                </div>
+                <div class="col ps-0">
+                  <a href="javascript:void(0);" class="text-muted fw-bold" id="nameFile" data-dz-name></a>
+                  <p class="mb-0" id="sizeFile" data-dz-size></p>
+                </div>
+                <div class="col-auto">
+                  <!-- Button -->
+                  <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
+                    <button class="button-close border-0 bg-transparent fs-2" aria-label="Close">&times;</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <button type="submit" class="btn btn-primary btn-block mb-3">Criar conta</button>
       </form>
 
@@ -130,8 +153,10 @@ session_start();
   <!-- Kit fontawesome -->
   <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
   <script src="./js/password.js"></script>
+  <script src="../../validations/forms.js"></script>
+  <script src="./js/preview-image.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js" integrity="sha512-hAJgR+pK6+s492clbGlnrRnt2J1CJK6kZ82FZy08tm6XG2Xl/ex9oVZLE6Krz+W+Iv4Gsr8U2mGMdh0ckRH61Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="../../validations/main.js"></script>
   <script>
     $("#telefone").mask("(99) 99999-9999")
     $("#cpf").mask("000.000.000-00")

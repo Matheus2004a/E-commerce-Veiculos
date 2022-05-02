@@ -10,7 +10,7 @@ $password = mysqli_real_escape_string($conn, password_hash($_POST['senha'], PASS
 $telephone = mysqli_real_escape_string($conn, $_POST['telefone']);
 $category_user = mysqli_real_escape_string($conn, $_POST['categoria']);
 
-$sql = "INSERT INTO `tbl_dados_pessoais`(`cpf`, `nome`, `email`, `senha`, `telefone`, `categoria`,`foto_perfil`) VALUES ('$cpf','$name_complete','$email','$password','$telephone','$category_user''$photo_profile')";
+$sql = "INSERT INTO `tbl_dados_pessoais`(`cpf`, `nome`, `email`, `senha`, `telefone`, `categoria`,`foto_perfil`) VALUES ('$cpf','$name_complete','$email','$password','$telephone','$category_user','$photo_profile')";
 
 if (mysqli_query($conn, $sql)) {
   $_SESSION["success-register"] = "<div class='alert alert-success d-flex align-items-center' role='alert'>
