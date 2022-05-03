@@ -12,7 +12,7 @@
 
 <body onload="setMinDay()">
     <?php
-    include "../../connection/connection.php";
+    require "../../connection/connection.php";
     ?>
     <div class="container">
         <!-- DIV CONTAINER LADO ESQUERDO DA TELA -->
