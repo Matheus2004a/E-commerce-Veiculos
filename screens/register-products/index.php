@@ -24,7 +24,7 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
 
 <body class="hold-transition register-page">
     <?php
-        include "../../components/header.php";
+    include "../../components/header.php";
     ?>
 
     <main class="container card">
@@ -70,26 +70,18 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
                 </div>
 
                 <div class="col-md-6">
-                    <label for="validationCustom01" class="form-label">Fabricante</label>
-                    <input type="text" class="form-control" name="name-product" id="validationCustom01" required autofocus>
+                    <label for="validationCustom01" class="form-label">Cód do produto</label>
+                    <input type="text" class="form-control" name="cod-product" id="validationCustom01" required autofocus>
                     <div class="invalid-feedback">
-                        Digite o nome do produto.
+                        Digite o código do produto.
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Qtd em estoque</label>
-                    <input type="number" class="form-control" name="name-product" id="validationCustom01" required autofocus>
+                    <input type="number" class="form-control" name="qtd-product" id="validationCustom01" required autofocus>
                     <div class="invalid-feedback">
                         Digite o nome do produto.
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="validationCustom05" class="form-label">Descrição do produto</label>
-                    <textarea type="text" class="form-control" name="describe-product" id="validationCustom05" required></textarea>
-                    <div class="invalid-feedback">
-                        Digite a descrição do produto.
                     </div>
                 </div>
 
@@ -98,6 +90,14 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
                     <input type="file" name="file" class="form-control" id="validationCustom05" required>
                     <div class="invalid-feedback">
                         Insira a foto do produto.
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="validationCustom05" class="form-label">Descrição do produto</label>
+                    <textarea type="text" class="form-control" name="describe-product" id="validationCustom05" required></textarea>
+                    <div class="invalid-feedback">
+                        Digite a descrição do produto.
                     </div>
                 </div>
 
