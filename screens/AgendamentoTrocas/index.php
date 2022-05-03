@@ -12,11 +12,10 @@
 
 <body onload="setMinDay()">
     <?php
-        include "../../connection/connection.php";
+    include "../../connection/connection.php";
     ?>
     <div class="container">
         <!-- DIV CONTAINER LADO ESQUERDO DA TELA -->
-
         <div class="header">header</div>
         <div class="nav-left">
 
@@ -27,11 +26,11 @@
                     <span class="spanName">Talison Brendon</span>
                     <span class="spanDescription">Mecanico formado a 7 anos pelo senai</span>
                 </div>
-                <button>
+                <button id="btnClosePerfil">
                     <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-                        <title>Close</title>
-                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368" />
-                    </svg>
+                        <title>Chevron Down</title>
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144" />
+                    </svg> 
                 </button>
             </div>
 
@@ -44,19 +43,19 @@
             <!-- CONTAINER DA DESCRIÇÃO E NOME DO SERVIÇO -->
             <?php
 
-                $sql = "select nome_servico, desc_servico, val_servico from tbl_servicos where id_servico = 1;";
-                $result = mysqli_query($conn,$sql);
+            $sql = "select nome_servico, desc_servico, val_servico from tbl_servicos where id_servico = 1;";
+            $result = mysqli_query($conn, $sql);
 
-                while($row = mysqli_fetch_assoc($result)) {
-                    $valor = $row['val_servico'];
+            while ($row = mysqli_fetch_assoc($result)) {
+                $valor = $row['val_servico'];
 
                 echo '<div class="description">';
-                echo     '<span class="nameService">'.$row['nome_servico'].'</span>';
-                echo     '<span class="valService">Valor: R$'.$row['val_servico'].'</span>';
+                echo     '<span class="nameService">' . $row['nome_servico'] . '</span>';
+                echo     '<span class="valService">Valor: R$' . $row['val_servico'] . '</span>';
                 echo     '<span class="titleDescription">Descrição</span>';
-                echo     '<span class="descriptionService">'.$row['desc_servico'].'</span>';
+                echo     '<span class="descriptionService">' . $row['desc_servico'] . '</span>';
                 echo '</div>';
-                }
+            }
             ?>
         </div>
         <!-- FIM DIV CONTAINER LADO ESQUERDO -->
@@ -69,30 +68,30 @@
 
                 <?php
 
-                    $sql = "select hora_disponivel  from tbl_horarios_servicos where fk_id_servico = 1;";
-                    $result = mysqli_query($conn, $sql);
+                $sql = "select hora_disponivel  from tbl_horarios_servicos where fk_id_servico = 1;";
+                $result = mysqli_query($conn, $sql);
 
-                    echo '<div class="buttonHour">';
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<table>
+                echo '<div class="buttonHour">';
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<table>
                                     <tbody>
                                         <tr>
                                             <td>
-                                            " . '<button value="' .$row['hora_disponivel'] . '" id="btnHora" onclick="pickHour(value)">' .$row['hora_disponivel'] . '</button>' . "
+                                            " . '<button value="' . $row['hora_disponivel'] . '" id="btnHora" onclick="pickHour(value)">' . $row['hora_disponivel'] . '</button>' . "
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>";
-                        }
-                    echo "</div>";
+                }
+                echo "</div>";
                 ?>
                 <hr>
                 <span id="spanTitleDetails">Detalhes</span>
                 <div class="details">
                     <span>Data: <span id="spanData"></span></span>
                     <span>Hora: <span id="spanHora"></span></span>
-                    <span>Valor: <span id="spanValor"><?php echo "$valor";?></span></span>
-                    
+                    <span>Valor: <span id="spanValor"><?php echo "$valor"; ?></span></span>
+
                 </div>
                 <span class="spanObservations">Observações</span>
                 <textarea id="obs" rows="3" placeholder="Digite aqui"></textarea>
@@ -106,8 +105,8 @@
         </div>
         <!-- FIM DIV CONTAINER LADO DIREITO -->
     </div>
-    <?php 
-        mysqli_close($conn);
+    <?php
+    mysqli_close($conn);
     ?>
 </body>
 
