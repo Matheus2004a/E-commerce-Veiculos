@@ -118,28 +118,9 @@ session_start();
           <input type="file" class="form-control" name="profile">
         </fieldset>
 
-        <!-- file preview template -->
-        <div class="d-none" id="uploadPreviewTemplate">
-          <div class="card mt-1 mb-0 shadow-none border">
-            <div class="p-2">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
-                </div>
-                <div class="col ps-0">
-                  <a href="javascript:void(0);" class="text-muted fw-bold" id="nameFile" data-dz-name></a>
-                  <p class="mb-0" id="sizeFile" data-dz-size></p>
-                </div>
-                <div class="col-auto">
-                  <!-- Button -->
-                  <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
-                    <button class="button-close border-0 bg-transparent fs-2" aria-label="Close">&times;</button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <?php
+          include "../../components/preview.php"
+        ?>
 
         <button type="submit" class="btn btn-primary btn-block mb-3">Criar conta</button>
       </form>
@@ -154,7 +135,7 @@ session_start();
   <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
   <script src="./js/password.js"></script>
   <script src="../../validations/forms.js"></script>
-  <script src="./js/preview-image.js"></script>
+  <script src="../../components/preview-image.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js" integrity="sha512-hAJgR+pK6+s492clbGlnrRnt2J1CJK6kZ82FZy08tm6XG2Xl/ex9oVZLE6Krz+W+Iv4Gsr8U2mGMdh0ckRH61Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
