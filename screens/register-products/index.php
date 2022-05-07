@@ -11,9 +11,9 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de produtos</title>
-    <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="../home/css/style.css">
 </head>
@@ -70,14 +70,6 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
                 </fieldset>
 
                 <fieldset class="col-md-6">
-                    <label for="validationCustom05" class="form-label">Código de barras</label>
-                    <input type="text" class="form-control" name="cod-product" id="money" maxlength="10" autocomplete="off" required>
-                    <div class="invalid-feedback">
-                        Digite o código de barras do produto.
-                    </div>
-                </fieldset>
-
-                <fieldset class="col-md-6">
                     <label for="validationCustom01" class="form-label">Qtd em estoque</label>
                     <input type="number" class="form-control" name="qtd-product" id="validationCustom01" required>
                     <div class="invalid-feedback">
@@ -85,7 +77,7 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
                     </div>
                 </fieldset>
 
-                <fieldset class="col-md-6">
+                <fieldset class="col-12">
                     <label for="validationCustom05" class="form-label">Foto do produto</label>
                     <input type="file" name="file" class="form-control" id="validationCustom05" required>
                     <div class="invalid-feedback">
