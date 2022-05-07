@@ -29,7 +29,7 @@
                     <span class="span-title">Digite o nome do serviço</span>
                     <input type="text" name="nameService" id="nameService" placeholder="Nome do serviço">
                     <span class="span-title">Faça uma descrição sobre o serviço</span>
-                    <textarea name="descriptionService" id="descriptionService" cols="30" rows="6" placeholder="Descrição do serviço"></textarea>
+                    <textarea name="descriptionService" id="descriptionService" cols="30" rows="5" placeholder="Descrição do serviço"></textarea>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
                     <span class="span-content">Selecione o horario</span>
                     <div class="hour">
                         <input type="time" name="hourService" id="hourService">
-                        <button onclick="salvar(event)">salvar</button>
+                        <button onclick="saveHour(event)">salvar</button>
                     </div>
                     <span class="span-title">Valor do serviço</span>
                     <input type="text" name="valService" id="valService" placeholder="R$">
@@ -50,12 +50,27 @@
                     <span class="span-title">Seus horários cadastrados</span>
                     <div class="horarios" id="horarios">
 
+                        <input type="text" name="hora1" id="1" readonly >
+                        <input type="text" name="hora2" id="2" readonly >
+                        <input type="text" name="hora3" id="3" readonly >
+                        <input type="text" name="hora4" id="4" readonly >
+                        <input type="text" name="hora5" id="5" readonly >
+                        <input type="text" name="hora6" id="6" readonly >
+
+
                     </div>
 
 
                 </div>
             </div>
-            <input type="submit" value="Cadastrar serviço">
+            <input type="hidden" name="horasCadastradas" id="horasCadastradas">
+            <input type="submit" value="Cadastrar serviço" onclick="verificarDados(event)">
+        </div>
+        <div class="containerModal" id="containerModal">
+            <div class="modal">
+                <span id="spanModal">Por favor preencha todos os dados para cadastrar o serviço!</span>
+                <button onclick="closeModal(event)">OK</button>
+            </div>
         </div>
     </form>
 </body>
