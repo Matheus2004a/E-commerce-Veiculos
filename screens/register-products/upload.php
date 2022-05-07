@@ -6,9 +6,11 @@ $extensions_allows = ["jpg", "jpeg", "png"];
 
 $name_product = mysqli_real_escape_string($conn, $_POST['name-product']);
 $category_product = mysqli_real_escape_string($conn, $_POST['category-product']);
-$cod_product = mysqli_real_escape_string($conn, $_POST['cod-product']);
 $price_product = mysqli_real_escape_string($conn, $_POST['price-product']);
+$price_product = str_replace(".", "", $price_product);
+$price_product = str_replace(",", ".", $price_product);
 $desc_product = mysqli_real_escape_string($conn, $_POST['describe-product']);
+$qtd_product = mysqli_real_escape_string($conn, $_POST['qtd-product']);
 
 if (isset($_FILES['file'])) {
     $file = $_FILES['file'];
@@ -25,10 +27,10 @@ if (isset($_FILES['file'])) {
     $path_file = "../../uploads/" . $new_name_file . "." . $extension_file;
 
     if (in_array($extension_file, $extensions_allows)) {
-        $sql = "INSERT INTO `tbl_cad_produtos`(`cod_produto`, `nome_prod`, `categ_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`) VALUES ('$cod_product','$name_product','$category_product','$price_product','$desc_product','$path_file')";
+        $sql ="INSERT INTO `tbl_produtos`(`nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque`) VALUES ('$name_product','$category_product','$price_product','$desc_product','$path_file',$qtd_product)";
         register_product($conn, $sql, $file, $path_file);
     } else {
-        die("Tipo de arquivo não aceito");
+        die("Tipo de extensão inválida.");
     }
 } else {
     echo "Arquivo não enviado";
