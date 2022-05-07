@@ -11,9 +11,9 @@
 </head>
 
 <body>
-    <form class="container" action="scriptCadastrar.php" method="POST">
+    <form class="container" action="scriptCadastrar.php" method="POST" id="container">
         <div class="header">header</div>
-        <div class="nav-top">
+        <div class="nav-top" id="nav-top">
             <div class="content-top">
                 <div class="left-content-top">
                     <div class="perfil">
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="nav-bottom">
+        <div class="nav-bottom" id="nav-bottom">
             <div class="content-bottom">
                 <div class="left-content-bottom">
                     <span class="span-title">Agendar horarios (min 3 horarios)</span>
@@ -50,12 +50,12 @@
                     <span class="span-title">Seus horários cadastrados</span>
                     <div class="horarios" id="horarios">
 
-                        <input type="text" name="hora1" id="1" readonly >
-                        <input type="text" name="hora2" id="2" readonly >
-                        <input type="text" name="hora3" id="3" readonly >
-                        <input type="text" name="hora4" id="4" readonly >
-                        <input type="text" name="hora5" id="5" readonly >
-                        <input type="text" name="hora6" id="6" readonly >
+                        <input type="text" name="hora1" id="1" readonly>
+                        <input type="text" name="hora2" id="2" readonly>
+                        <input type="text" name="hora3" id="3" readonly>
+                        <input type="text" name="hora4" id="4" readonly>
+                        <input type="text" name="hora5" id="5" readonly>
+                        <input type="text" name="hora6" id="6" readonly>
 
 
                     </div>
@@ -66,11 +66,9 @@
             <input type="hidden" name="horasCadastradas" id="horasCadastradas">
             <input type="submit" value="Cadastrar serviço" onclick="verificarDados(event)">
         </div>
-        <div class="containerModal" id="containerModal">
-            <div class="modal">
-                <span id="spanModal">Por favor preencha todos os dados para cadastrar o serviço!</span>
-                <button onclick="closeModal(event)">OK</button>
-            </div>
+        <div class="modal" id="modal">
+            <span id="spanModal">Por favor preencha todos os dados para cadastrar o serviço!</span>
+            <button onclick="closeModal(event)">OK</button>
         </div>
     </form>
 </body>

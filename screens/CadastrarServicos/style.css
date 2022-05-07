@@ -15,7 +15,7 @@ body {
 .container {
     width: 100vw;
     height: 100vh;
-    background: rgb(255, 255, 255);
+    background: #D6DAE5;
 
     display: grid;
     grid-template-areas: "h" "t" "b";
@@ -26,6 +26,7 @@ body {
 .header {
     grid-area: h;
     background: rgb(49, 4, 250);
+    height: 10vh;
 }
 
 .nav-top {
@@ -206,7 +207,7 @@ body {
 }
 
 input[type="submit"] {
-    margin-top: 20px;
+    margin: 30px;
     border: none;
     background: #2681ED;
     padding: 10px;
@@ -224,15 +225,11 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    margin-top: 18px;
-    margin-bottom: 2px;
     box-shadow: 4px 4px 6px rgba(0,0,0,.4);
 }
 
 input[type="submit"]:active {
     border: 1px solid black;
-    padding: 9px;
-    margin-top: 20px;
 }
 
 
@@ -261,20 +258,12 @@ input[type="submit"]:active {
 
 /* MODAL DE NOTIFICAR INPUT */
 
-.containerModal {
-    visibility: hidden;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,.6);
-}
-
 .modal {
     position: fixed;
     top: 40%;
     left: 40%;
     background: #fff;
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 360px;
     padding: 30px;
@@ -331,9 +320,5 @@ input[type="submit"]:active {
         left: 0;
         width: fit-content;
         margin: 10px;
-    }
-
-    .containerModal {
-        height: 1200px;
     }
 }
