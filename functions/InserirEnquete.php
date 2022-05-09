@@ -1,27 +1,29 @@
 <?php
-
-require_once "./connection/connection.php";
-
-if (isset($_POST['responder'])) {
-
-    $radioEnquete = $_POST['radio_avaliacao'];
-
-    if ($radioEnquete == 'Bom') {
-      $query = mysqli_prepare($conn, "update tbl_enquetes  set qtd_votos= qtd_votos+1 where id_enquete=1 ");
-      mysqli_stmt_execute($query);
+  include './connection/connection.php';
+  $radioEnquete = $_POST['radio_avaliacao'];
+  
+    function inserirEnquete($conn,$radioEnquete){
+      if(isset($_POST['responder'])){
+        
+        if ($radioEnquete == 'Bom') {
+      $query =  " update tbl_enquetes  set qtd_votos= qtd_votos+1 where id_enquete=1";
+      
+      
     }
     if ($radioEnquete == 'Medio') {
-      $query = mysqli_prepare($conn, " update tbl_enquetes  set qtd_votos= qtd_votos+1 where id_enquete=2");
-      mysqli_stmt_execute($query);
+      $query = " update tbl_enquetes  set qtd_votos= qtd_votos+1 where id_enquete=2";
+      
     }
     if ($radioEnquete == 'Ruim') {
-      $query = mysqli_prepare($conn, " update tbl_enquetes  set qtd_votos= qtd_votos+1 where id_enquete=3");
-      mysqli_stmt_execute($query);
+      $query =  " update tbl_enquetes  set qtd_votos= qtd_votos+1 where id_enquete=3";
+      
     }
     // $inserao = mysqli_query($conn,$query);
-
-
+    $insere = mysqli_query($conn,$query);
   }
+  }
+
+  
 
 
 

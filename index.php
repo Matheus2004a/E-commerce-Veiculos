@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php
-require "./functions/InserirEnquete.php";
-?>
+<?php 
+session_start();
+$_SESSION["enqueteRespondida"] = 1;
+ ?>
 
 <head>
   <meta charset="utf-8">
@@ -237,54 +238,54 @@ require "./functions/InserirEnquete.php";
     </div>
     <div class="flex-container">
       <div class="list-ordenate">
-        <h5> Avaliação </h5>
-        <form action="#" method="post">
-          <div class='radioAvaliacao'>
+        
+      <?php 
 
-            <p class='radio_cont'>Bom</p>
-            <input type='radio' name='radio_avaliacao' id='Bom' value='Bom' class='radio_cont'>
-            <p class='radio_cont'>Médio</p>
-            <input type='radio' name='radio_avaliacao' id='Medio' value='Medio' class='radio_cont'>
-            <p class='radio_cont'>Ruim</p>
-            <input type='radio' name='radio_avaliacao' id='Ruim' value='Ruim' class='radio_cont'>
-
-          </div>
-          <button type="submit" name="responder"> Responder </button>
-        </form>
-
-      </div>
-  </footer>
-
+          include './functions/InserirEnquete.php';
+          inserirEnquete($conn,$radioEnquete);
+          if($_SESSION["enqueteRespondida"] == 1){
+              echo '
+              <h5> Avaliação </h5>
+              <form method="POST" action="#">
+                <div class="radioAvaliacao">
+      
+                  <p class="radio_cont">Bom</p>
+                  <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Bom" class="radio_cont">
+                  <p class="radio_cont">Médio</p>
+                  <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Medio" class="radio_cont">
+                  <p class="radio_cont">Ruim</p>
+                  <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Ruim" class="radio_cont">
+      
+                </div>
+                <button type="submit" name="responder" id="resposta"> Responder </button>
+              </form>
+      
+            </div>
+        </footer>
+              ';
+        }
+      ?>
   <div class="mostrarAvaliacao" id="mostrarAvaliacao">
-    <?php include "./functions/demonstrarEnquete.php";?>
+    <?php 
+      if($_SESSION['enqueteRespondida']== 1){
+      
+      include "./functions/demonstrarEnquete.php"; 
+      }
+    ?>
+  </div>
+  <div class="mensagem_sucesso" id="mensagem_sucesso">
+
   </div>
   </div>
 
   <script src="./screens/home/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-  <script type="">
-    $(document).ready(function(){
-    $(document).on('submit','#form1',function(event){
-        event.preventDefault();
-        var dados=$(this).serialize();
 
-        $.ajax({
-            url: 'InserirEnquete.php',
-            method: 'post',
-            dataType: 'html',
-            data: dados,
-            success: function(data){
-                $('#mostrarAvaliacao').html(data);
-            }
-        });
-    });
-});
-  </script>
+
 
 </body>
 
