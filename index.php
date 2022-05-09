@@ -188,27 +188,27 @@
       <ul>
         <li>
           <figure>
-            <img src="./screens/home/assets/svg/american.png" alt="icon-card-american">
+            <img src="./images/american.png" alt="icon-card-american">
           </figure>
         </li>
         <li>
           <figure>
-            <img src="./screens/home/assets/svg/paypal.png" alt="icon-card-paypal">
+            <img src="./images/paypal.png" alt="icon-card-paypal">
           </figure>
         </li>
         <li>
           <figure>
-            <img src="./screens/home/assets/svg/mastercard.png" alt="icon-card-mastercard">
+            <img src="./images/mastercard.png" alt="icon-card-mastercard">
           </figure>
         </li>
         <li>
           <figure>
-            <img src="./screens/home/assets/svg/pago.png" alt="icon-card-pago">
+            <img src="./images/pago.png" alt="icon-card-pago">
           </figure>
         </li>
         <li>
           <figure>
-            <img src="./screens/home/assets/svg/boleto.png" alt="icon-card-boleto">
+            <img src="./images/boleto.png" alt="icon-card-boleto">
           </figure>
         </li>
       </ul>
