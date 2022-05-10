@@ -39,6 +39,7 @@ body {
     text-decoration: none !important;
     color: #3d4449;
     padding: 1rem;
+    border: none;
 }
 
 .navbar-links li:hover {
