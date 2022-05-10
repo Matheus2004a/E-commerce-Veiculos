@@ -1,8 +1,8 @@
 <?php
   include './connection/connection.php';
-  $radioEnquete = $_POST['radio_avaliacao'];
   
-    function inserirEnquete($conn,$radioEnquete){
+    function inserirEnquete($conn){
+      $radioEnquete = $_POST['radio_avaliacao'];
       if(isset($_POST['responder'])){
         
         if ($radioEnquete == 'Bom') {
@@ -20,7 +20,10 @@
     }
     // $inserao = mysqli_query($conn,$query);
     $insere = mysqli_query($conn,$query);
+    setcookie('statusEnquete',1);
+    ob_end_flush();
   }
+   
   }
 
   

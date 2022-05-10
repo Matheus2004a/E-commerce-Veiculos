@@ -1,10 +1,9 @@
+<?php
+  ob_start();
+  setcookie('statusEnquete',0);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php 
-session_start();
-$_SESSION["enqueteRespondida"] = 1;
- ?>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -237,52 +236,64 @@ $_SESSION["enqueteRespondida"] = 1;
       </ul>
     </div>
     <div class="flex-container">
-      <div class="list-ordenate">
+
+      <?php
+
+      include './functions/InserirEnquete.php';
+      inserirEnquete($conn);
+      
+
+      if($_COOKIE['statusEnquete'] == 0){
+        echo'
+        <div class="list-ordenate">
+        <h5> Avaliação </h5>
+        <form method="POST" action="#" >
+          <div class="radioAvaliacao">
+
+            <p class="radio_cont">Bom</p>
+            <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Bom" class="radio_cont">
+            <p class="radio_cont">Médio</p>
+            <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Medio" class="radio_cont">
+            <p class="radio_cont">Ruim</p>
+            <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Ruim" class="radio_cont">
+
+          </div>
+          <button type="submit" name="responder" id="resposta"> Responder </button>
+        </form>
+
+      </div>
+        ';
         
-      <?php 
-
-          include './functions/InserirEnquete.php';
-          inserirEnquete($conn,$radioEnquete);
-          if($_SESSION["enqueteRespondida"] == 1){
-              echo '
-              <h5> Avaliação </h5>
-              <form method="POST" action="#">
-                <div class="radioAvaliacao">
-      
-                  <p class="radio_cont">Bom</p>
-                  <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Bom" class="radio_cont">
-                  <p class="radio_cont">Médio</p>
-                  <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Medio" class="radio_cont">
-                  <p class="radio_cont">Ruim</p>
-                  <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Ruim" class="radio_cont">
-      
-                </div>
-                <button type="submit" name="responder" id="resposta"> Responder </button>
-              </form>
-      
-            </div>
-        </footer>
-              ';
-        }
-      ?>
-  <div class="mostrarAvaliacao" id="mostrarAvaliacao">
-    <?php 
-      if($_SESSION['enqueteRespondida']== 1){
-      
-      include "./functions/demonstrarEnquete.php"; 
       }
-    ?>
-  </div>
-  <div class="mensagem_sucesso" id="mensagem_sucesso">
+      
+      
+      ?>
+     
 
-  </div>
-  </div>
+      <div class="mostrarAvaliacao" id="mostrarAvaliacao">
+        <?php
+      
+        if($_COOKIE['statusEnquete'] == 0) {
+          include "./functions/demonstrarEnquete.php";
+          demonstrarEnquete($conn);
+          
+        }
+        
+        ?>
 
-  <script src="./screens/home/js/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      </div>
+
+    </div>
+
+    <script src="./screens/home/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      enquete = localStorage;
+      localStorage.setItem('statusEnquete', 0);
+    </script>
 
 
 
