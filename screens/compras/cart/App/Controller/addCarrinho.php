@@ -7,11 +7,7 @@
  */
 
 session_start();
-include_once '../../DataBase/connection.php';
-include_once 'ClienteController.php';
-
-$user = new ClienteController();
-$result = $user->isLoggedIn();
+require __DIR__ . '/../../../../../connection/connection.php';
 
 if($result == true){
     $produto = $_GET['produto'];
@@ -42,8 +38,6 @@ if($result == true){
         $stmt = null;  
     }
     header('Location: ../../template_store/shop.php'); 
-}else{
-    header('Location: ../../template_store/login.php'); 
 }
 
 
