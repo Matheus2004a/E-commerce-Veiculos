@@ -1,5 +1,5 @@
 <?php
 
-header('Location: template_store/index.php');
+header('Location: template_store/shop.php');
 
 ?>

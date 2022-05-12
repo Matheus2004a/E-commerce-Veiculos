@@ -1,7 +1,7 @@
 <?php
 
 	session_start();
-	include_once '../../DataBase/conexao.php';
+	include_once '../../DataBase/connection.php';
 	include_once 'ClienteController.php';
 
 	$user = new ClienteController();

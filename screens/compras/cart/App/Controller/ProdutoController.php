@@ -2,7 +2,7 @@
 /**
  * Arquivo que retorna todos os produtos disponiveis do db
  */
-include_once '../DataBase/conexao.php';
+include_once '../DataBase/connection.php';
 
 class ProdutoController {
 

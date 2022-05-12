@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include_once 'head.html';
 require __DIR__ . '/../DataBase/connection.php';

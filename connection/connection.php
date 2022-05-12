@@ -1,4 +1,8 @@
 <?php
+$server_name = "localhost";
+$username = "root";
+$password = "Mapef@09112004a";
+$database_name = "bd_veiculos_tcc";
 
 $host = 'localhost';
 

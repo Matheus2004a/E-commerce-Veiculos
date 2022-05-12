@@ -16,13 +16,14 @@
 
 <body>
   <a name="top-page"></a>
+  
   <header>
     <img src="./images/icones/brand header.png" class="brand">
     <!-- <a class="brand" href="#">Logomarca</a> !-->
     <nav class="menus">
       <ul>
         <li>
-          <a class="active" aria-current="page" href="#">Home</a>
+          <a href="#home">Home</a>
         </li>
         <li>
           <a href="#services">Todos os serviços</a>
@@ -42,7 +43,6 @@
       </ul>
     </nav>
   </header>
-
 
   <main>
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">

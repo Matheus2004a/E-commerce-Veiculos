@@ -1,5 +1,6 @@
 <?php
-	require __DIR__ . '/../../DataBase/connection.php';
+	require __DIR__ . '/../DataBase/connection.php';
+
 
 	session_start();
 	$Uf = isset($_GET['search']) ? $_GET['search'] : 0;
