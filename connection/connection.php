@@ -2,7 +2,7 @@
 $server_name = "127.0.0.1";
 $username = "root";
 $password = "";
-$database_name = "bd_veiculos_tcc2";
+$database_name = "bd_veiculos_tcc";
 
 
 $conn = mysqli_connect($server_name, $username, $password, $database_name);
