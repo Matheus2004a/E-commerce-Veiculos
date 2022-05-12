@@ -22,17 +22,22 @@ require __DIR__ . "/../../connection/connection.php";
 
 	$filter = $_POST['search'] ?? '';
 
-	$sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod` AS preco, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE nome_prod LIKE '%$filter%' ORDER BY nome_prod";
+	$sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE nome_prod LIKE '%$filter%' ORDER BY nome_prod";
 
 	$filter_selected = $_POST['select-filter'] ?? '';
 
+	$order = "";
+
 	if ($filter_selected == "maior") {
-		$sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, MAX(`preco_custo_prod`) AS preco, `foto_prod`, `qtd_estoque` FROM `tbl_produtos`";
+		$order = "ORDER BY preco_custo_prod DESC";
+		$sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` $order";
 	} elseif ($filter_selected == "menor") {
-		$sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, MIN(`preco_custo_prod`) AS preco, `foto_prod`, `qtd_estoque` FROM `tbl_produtos`";
+		$order = "ORDER BY preco_custo_prod ASC";
+		$sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` $order";
 	} else {
-		$sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod` AS preco, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE nome_prod LIKE '%$filter%' ORDER BY nome_prod";
+		$sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE nome_prod LIKE '%$filter%' ORDER BY nome_prod";
 	}
+
 	$result_query = mysqli_query($conn, $sql);
 	?>
 
@@ -79,7 +84,7 @@ require __DIR__ . "/../../connection/connection.php";
 								</div>
 								<div class='p-3'>
 									<h3 class='text-base text-gray-700 truncate'>" . $row['nome_prod'] . "</h3>
-									<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900'>R$ " . $row['preco'] . "" . $_SESSION['status_estoq'] . "</p>
+									<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900'>R$ " . $row['preco_custo_prod'] . "" . $_SESSION['status_estoq'] . "</p>
 									<a href='./cart/App/Controller/addCarrinho.php'>
 										<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary'>Adicionar ao carrinho</button>
 									</a>
