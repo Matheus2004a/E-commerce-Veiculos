@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php 
+    session_start();
+    include "../../connection/connection.php";
+    $verificaDadosMecanico = 'SELECT email,telefone,foto_perfil FROM tbl_dados_pessoais WHERE nome = "'.$_SESSION['username'].'"';
+    $realizaConsultaDados = mysqli_query($conn,$verificaDadosMecanico);
 
+    $fetchDadod = mysqli_fetch_assoc($realizaConsultaDados);
+
+
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,12 +27,13 @@
                 <div class="left-content-top">
                     <div class="perfil">
                         <img src="./assets/euPerfil.jpg" alt="">
-                        <span class="span-title">Talison Brendon</span>
+                        
+                       <?php echo' <span class="span-title">'.$_SESSION['username'].'</span>'; ?>
                     </div>
                     <span class="span-title">Email:</span>
-                    <span class="span-content">nicota1234@gmail.com</span>
+                    <?php echo' <span class="span-content">'.$fetchDadod['email'].'</span>'; ?>
                     <span class="span-title">Telefone</span>
-                    <span class="span-content">(99) 99999-9999</span>
+                    <?php echo' <span class="span-content">'.$fetchDadod['telefone'].'</span>'; ?>
                 </div>
                 <div class="right-content-top">
                     <span class="span-title">Digite o nome do serviço</span>

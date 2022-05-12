@@ -17,7 +17,7 @@
     }
 
     for ($i=0; $i < count($horarios); $i++) { 
-        $sql = "INSERT INTO `bd_veiculos_tcc`.`tbl_horarios_servicos` (`hora_disponivel`, `fk_id_servico`) VALUES ('".$horarios[$i]."', '2')";
+        $sql = "INSERT INTO tbl_horarios (hora_disponivel, fk_id_servico) VALUES (".$horarios[$i].", 2)";
         if (mysqli_query($conn, $sql)) {
             echo "sucesso!!!";
         } else {

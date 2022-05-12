@@ -15,7 +15,7 @@
         <nav class="menus">
             <ul>
                 <li>
-                    <a class="active" aria-current="page" href="#">Home</a>
+                    <a class="active" aria-current="page" href="../../index.php">Home</a>
                 </li>
                 <li>
                     <a href="#">Todos os serviços</a>
@@ -24,10 +24,13 @@
                     <a href="#">Sobre</a>
                 </li>
                 <li>
-                    <a href="#">Contate - nos</a>
+                    <a href="../../screens/contact/contato.php">Contate - nos</a>
                 </li>
                 <li>
-                    <a href="./screens/login/login.php">Login</a>
+                    <a href="../../screens/login/index.php">Login</a>
+                </li>
+                <li>
+                    <a href="../../screens/login/logout.php">Sair</a>
                 </li>
             </ul>
         </nav>

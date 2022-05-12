@@ -1,302 +1,192 @@
+<!DOCTYPE HTML>
 <?php
-  ob_start();
-  setcookie('statusEnquete',0);
+session_start();
+$categoria = $_SESSION['category'];
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Homepage</title>
-  <link rel="stylesheet" href="./bootstrap-5.1.3-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./screens/home/css/style.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<html>
 
+<head>
+	<title>Editorial by HTML5 UP</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="./home_alternativa/assets/css/main.css" />
+	<link rel="stylesheet" href="./home_alternativa/assets/css/background_styles.css">
+	<link rel="stylesheet" href="./home_alternativa/assets/css/styles.css">
+	<script src="./home_alternativa/assets/js/script.js" defer></script>
 </head>
 
-<body>
-  <a name="top-page"></a>
-  
-  <header>
-    <img src="./images/icones/brand header.png" class="brand">
-    <!-- <a class="brand" href="#">Logomarca</a> !-->
-    <nav class="menus">
-      <ul>
-        <li>
-          <a href="#home">Home</a>
-        </li>
-        <li>
-          <a href="#services">Todos os serviços</a>
-        </li>
-        <li>
-          <a href="#about">Sobre</a>
-        </li>
-        <li>
-          <a href="#contact">Contate - nos</a>
-        </li>
-        <li>
-          <a href="./screens/home/mapa_site.php">Mapa do Site</a>
-        </li>
-        <li>
-          <a href="./screens/login/login.php">Login</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+<body class="is-preload">
+	<header>
+		<nav class="navbar">
+			<figure>
+				<img src="../images/icones/brand header.png" alt="" srcset="">
+			</figure>
+			<a href="#" class="toggle-button">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</a>
+			<div class="navbar-links">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Sobre</a></li>
+					<li><a href="./screens/login/index.php">Login</a></li>
+					<li><a href="./screens/compras/index.php">Compras</a></li>
+					<?php 
+						
+						if(!$categoria == "cliente"){
+							echo'
+								<li> <a href="./screens/CadastrarServicos/index.php> Cadastrar Produtos </a> </li>
+							';
+						}
+					?>
+					<li><a href="./screens/login/logout.php">Sair</a></li>
+					<li><a href="./screens/contact/contato.php">Contato</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
 
-  <main>
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <figure>
-            <img src="./screens/home/assets/images/mustang.jpg" class="d-block w-100 images" alt="image-carousel">
-          </figure>
-          <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <figure>
-            <img src="./screens/home/assets/images/audi.jpg" class="d-block w-100 images" alt="image">
-          </figure>
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <figure>
-            <img src="./screens/home/assets/images/bmw.jpg" class="d-block w-100 images" alt="image-por-do-sol">
-          </figure>
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-    <div class="container">
-      <section class="section-services" id="services">
-        <h2>Serviços</h2>
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        <article>
-          <div class="card" style="width: 18rem;">
-            <span>
-              <i class="fa-solid fa-location-dot"></i>
-            </span>
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <span>
-              <i class="fa-solid fa-truck"></i>
-            </span>
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <span>
-              <i class="fa-solid fa-screwdriver-wrench"></i>
-            </span>
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-        </article>
-      </section>
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h1>FMS<br />
+							</h1>
+							<p>Completamente Responsiva!</p>
+						</header>
+						<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante
+							interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet
+							egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.
+							Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+						<ul class="actions">
+							<li><a href="#" class="button big">Learn More</a></li>
+						</ul>
+					</div>
+					<span class="image object">
+						<img src="./home_alternativa/images/pic10.jpg" alt="" />
+					</span>
+				</section>
 
-      <section class="presentation-system" id="about">
-        <h2>Sobre nós</h2>
-        <iframe src="https://www.youtube.com/embed/HnykKULVkoc" alt="video-presentation-system" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </section>
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Erat lacinia</h2>
+					</header>
+					<div class="features">
+						<article>
+							<span class="icon fa-gem"></span>
+							<div class="content">
+								<h3>Portitor ullamcorper</h3>
+								<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
+									facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							</div>
+						</article>
+						<article>
+							<span class="icon solid fa-paper-plane"></span>
+							<div class="content">
+								<h3>Sapien veroeros</h3>
+								<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
+									facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							</div>
+						</article>
+						<article>
+							<span class="icon solid fa-rocket"></span>
+							<div class="content">
+								<h3>Quam lorem ipsum</h3>
+								<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
+									facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							</div>
+						</article>
+						<article>
+							<span class="icon solid fa-signal"></span>
+							<div class="content">
+								<h3>Sed magna finibus</h3>
+								<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
+									facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							</div>
+						</article>
+					</div>
+				</section>
 
-      <section class="section-accordions" id="">
-        <h2>Dúvidas</h2>
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Accordion Item #1
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Accordion Item #2
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Accordion Item #3
-              </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Produtos Mais Vendidos</h2>
+					</header>
+					<div class="posts">
+						<article>
+							<a href="#" class="image"><img src="./home_alternativa/images/pic01.jpg" alt="" /></a>
+							<h3>Interdum aenean</h3>
+							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
+								facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>
+						<article>
+							<a href="#" class="image"><img src="./home_alternativa/images/pic02.jpg" alt="" /></a>
+							<h3>Nulla amet dolore</h3>
+							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
+								facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>
+						<article>
+							<a href="#" class="image"><img src="./home_alternativa/images/pic03.jpg" alt="" /></a>
+							<h3>Tempus ullamcorper</h3>
+							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
+								facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>
+						<article>
+							<a href="#" class="image"><img src="./home_alternativa/images/pic04.jpg" alt="" /></a>
+							<h3>Sed etiam facilis</h3>
+							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
+								facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>
+						<article>
+							<a href="#" class="image"><img src="./home_alternativa/images/pic05.jpg" alt="" /></a>
+							<h3>Feugiat lorem aenean</h3>
+							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
+								facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>
+						<article>
+							<a href="#" class="image"><img src="./home_alternativa/images/pic06.jpg" alt="" /></a>
+							<h3>Amet varius aliquam</h3>
+							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
+								facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
 
-
-
-
-
-    </div>
-
-    <!-- Button return to top page -->
-    <a href="#top-page">
-      <button class="button-top-page"><i class="fas fa-arrow-up"></i></button>
-    </a>
-  </main>
-
-  <!-- Footer !-->
-  <footer class="footer-blog" id="contact">
-    <div class="list-ordenate">
-      <h5>Contatos</h5>
-      <a href="">Lorem Ipsum</a>
-      <a href="">Lorem Ipsum</a>
-      <a href="">Lorem Ipsum</a>
-    </div>
-
-    <div class="list-ordenate">
-      <h5>Suporte</h5>
-      <a href="">Lorem Ipsum</a>
-      <a href="">Lorem Ipsum</a>
-      <a href="">Lorem Ipsum</a>
-    </div>
-
-    <div class="list-ordenate">
-      <h5>Serviços</h5>
-      <a href="">Lorem Ipsum</a>
-      <a href="">Lorem Ipsum</a>
-      <a href="">Lorem Ipsum</a>
-    </div>
-
-    <div class="list-ordenate">
-      <h5>Pagamentos</h5>
-      <ul>
-        <li>
-          <figure>
-            <img src="./images/american.png" alt="icon-card-american">
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <img src="./images/paypal.png" alt="icon-card-paypal">
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <img src="./images/mastercard.png" alt="icon-card-mastercard">
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <img src="./images/pago.png" alt="icon-card-pago">
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <img src="./images/boleto.png" alt="icon-card-boleto">
-          </figure>
-        </li>
-      </ul>
-    </div>
-    <div class="flex-container">
-
-      <?php
-
-      include './functions/InserirEnquete.php';
-      inserirEnquete($conn);
-      
-
-      if($_COOKIE['statusEnquete'] == 0){
-        echo'
-        <div class="list-ordenate">
-        <h5> Avaliação </h5>
-        <form method="POST" action="#" >
-          <div class="radioAvaliacao">
-
-            <p class="radio_cont">Bom</p>
-            <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Bom" class="radio_cont">
-            <p class="radio_cont">Médio</p>
-            <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Medio" class="radio_cont">
-            <p class="radio_cont">Ruim</p>
-            <input type="radio" name="radio_avaliacao" id="radio_avaliacao" value="Ruim" class="radio_cont">
-
-          </div>
-          <button type="submit" name="responder" id="resposta"> Responder </button>
-        </form>
-
-      </div>
-        ';
-        
-      }
-      
-      
-      ?>
-     
-
-      <div class="mostrarAvaliacao" id="mostrarAvaliacao">
-        <?php
-      
-        if($_COOKIE['statusEnquete'] == 0) {
-          include "./functions/demonstrarEnquete.php";
-          demonstrarEnquete($conn);
-          
-        }
-        
-        ?>
-
-      </div>
-
-    </div>
-
-    <script src="./screens/home/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-      enquete = localStorage;
-      localStorage.setItem('statusEnquete', 0);
-    </script>
-
-
-
+	<!-- Scripts -->
+	<script src="./home_alternativa/assets/js/jquery.min.js"></script>
+	<script src="./home_alternativa/assets/js/browser.min.js"></script>
+	<script src="./home_alternativa/assets/js/breakpoints.min.js"></script>
+	<script src="./home_alternativa/assets/js/util.js"></script>
+	<script src="./home_alternativa/assets/js/main.js"></script>
 
 </body>
 
