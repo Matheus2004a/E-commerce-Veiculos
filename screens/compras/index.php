@@ -52,7 +52,9 @@ $preco = number_format($linha[3], 2, ",", ".");
 						</div>
 					</div>
 				</div>
-			<?php } ?>
+			<?php 
+				mysqli_close($conn);
+			} ?>
 		</div>
 	</div>
 
