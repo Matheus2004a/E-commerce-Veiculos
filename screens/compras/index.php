@@ -80,7 +80,7 @@ require __DIR__ . "/../../connection/connection.php";
 								<div class='p-3'>
 									<h3 class='text-base text-gray-700 truncate'>" . $row['nome_prod'] . "</h3>
 									<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900'>R$ " . $row['preco'] . "" . $_SESSION['status_estoq'] . "</p>
-									<a href='./cart/App/Controller/addCarrinho.php'>
+									<a href='./cart/template_store/cart.php?produto=".$row['id_prod']."'>
 										<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary'>Adicionar ao carrinho</button>
 									</a>
 								</div>
@@ -96,6 +96,7 @@ require __DIR__ . "/../../connection/connection.php";
 								  </div>";
 				}
 				mysqli_close($conn);
+				
 				?>
 			</article>
 		</div>

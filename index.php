@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 session_start();
-$categoria = $_SESSION['category'];
+
 ?>
 <html>
 
@@ -32,16 +32,17 @@ $categoria = $_SESSION['category'];
 					<li><a href="#">Sobre</a></li>
 					<li><a href="./screens/login/index.php">Login</a></li>
 					<li><a href="./screens/compras/index.php">Compras</a></li>
-					<?php 
-						
-						if(!$categoria == "cliente"){
-							echo'
-								<li> <a href="./screens/CadastrarServicos/index.php> Cadastrar Produtos </a> </li>
-							';
-						}
-					?>
+					
 					<li><a href="./screens/login/logout.php">Sair</a></li>
 					<li><a href="./screens/contact/contato.php">Contato</a></li>
+					<?php 
+					if(isset($_SESSION['image'])){
+						echo'<li> <img src="./images/Usuarios/'.$_SESSION['image']  .'" class="img_usuario" alt=""></li>';
+					}else{
+						unset($_SESSION['image']);
+					}
+					
+					?>
 				</ul>
 			</div>
 		</nav>
