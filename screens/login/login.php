@@ -29,7 +29,7 @@
 		if (password_verify($password, $row['senha'])) {
 			$_SESSION['username'] = $row['nome'];
 			$_SESSION['category'] = $row['categoria'];
-			header('location: ../../screens/requests/index.php');
+			header('location: ../../index.php');
 		} else {
 			$_SESSION['no-authenticated'] = "<div class='alert alert-danger d-flex align-items-center' role='alert'>
 				<svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#exclamation-triangle-fill'/></svg>
