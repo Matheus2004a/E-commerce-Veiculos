@@ -141,7 +141,7 @@ body {
     display: grid;
     grid-template-areas: "lb rb";
     grid-template-columns: 1fr 1fr;
-
+    margin-top:10px;
     padding: 15px;
     background: #F4F7FE;
     color: #000;

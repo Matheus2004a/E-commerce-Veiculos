@@ -8,6 +8,7 @@
 
     $fetchDadod = mysqli_fetch_assoc($realizaConsultaDados);
 
+    
 
 ?>
 <head>
@@ -26,14 +27,15 @@
             <div class="content-top">
                 <div class="left-content-top">
                     <div class="perfil">
-                        <img src="./assets/euPerfil.jpg" alt="">
                         
-                       <?php echo' <span class="span-title">'.$_SESSION['username'].'</span>'; ?>
+                       <?php echo' <img src="../../images/Usuarios/'.$_SESSION['image'].'" alt="">';?>
+                        
+                       <?php echo' <span class="span-title">'.$_SESSION['username'].'</span> ' ?>
                     </div>
                     <span class="span-title">Email:</span>
-                    <?php echo' <span class="span-content">'.$fetchDadod['email'].'</span>'; ?>
+                    <?php echo' <span class="span-content">'.$fetchDadod['email'].'</span> ' ?>
                     <span class="span-title">Telefone</span>
-                    <?php echo' <span class="span-content">'.$fetchDadod['telefone'].'</span>'; ?>
+                    <?php echo' <span class="span-content">'.$fetchDadod['telefone'].'</span> ' ?>
                 </div>
                 <div class="right-content-top">
                     <span class="span-title">Digite o nome do serviço</span>

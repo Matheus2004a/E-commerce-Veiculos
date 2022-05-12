@@ -1,16 +1,43 @@
 <?php
-include "../../../../connection/connection.php";
 session_start();
 include_once 'head.html';
+require __DIR__ . '/../DataBase/connection.php';
+require __DIR__ . '/../App/Controller/ClienteController.php';
 
-$Idproduto= $_GET['produto'];
+$conn = new Conexao();
+$conn = $conn->conexao();
 
+$user = new ClienteController();
+$result = $user->isLoggedIn();
 
-    $pegarDadosProduto = "SELECT nome_prod,preco_custo_prod,foto_prod,qtd_estoque FROM tbl_produtos WHERE id_prod = ".$Idproduto."";
+$stmt4 = $conn->prepare('
+		SELECT * FROM carrinho_has_produto;');
+$stmt4->execute();
+$count = 0;
+$count = $stmt4->rowCount();
 
-    $queryDadosProd = mysqli_query($conn,$pegarDadosProduto);
+if ($result == false) {
+	header('Location: login.php');
+}
 
-    $fetchDadosProd = mysqli_fetch_assoc($queryDadosProd);
+$cpf = $_SESSION["user_cpf"];
+$stmt = $conn->prepare('
+		SELECT produto.nome, produto.valor, produto.imagem, produto.idproduto, gerou.quantidade FROM produto 
+
+		INNER JOIN
+			(SELECT carrinho_has_produto.produto_idproduto, carrinho_has_produto.quantidade FROM carrinho_has_produto
+				INNER JOIN produto ON carrinho_has_produto.produto_idproduto = produto.idproduto
+				INNER JOIN carrinho ON carrinho_has_produto.carrinho_idcarrinho = carrinho.idcarrinho 
+		        WHERE carrinho.cliente_cpf = "' . $cpf . '"
+			GROUP BY carrinho_has_produto.produto_idproduto) as gerou 
+
+		ON produto.idproduto = gerou.produto_idproduto
+    	GROUP BY produto.nome;');
+
+$total = 0;
+$stmt->execute();
+
+$resultado_carrinho = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE HTML>
@@ -29,6 +56,17 @@ $Idproduto= $_GET['produto'];
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
 								<li><a href="shop.php">Produtos</a></li>
+								<?php
+								if ($result == true) {
+									echo '<li><a href="list.php"> Seus Produtos </a></li>';
+
+									echo '
+											<li class="active"><a href="cart.php"><i class="icon-shopping-cart"></i> Carrinho </a></li>
+											<li><a href="../App/Controller/logout.php"> Sair </a></li>';
+								} else {
+									echo '<li><a href="login.php"> Login/Cadastre-se </a></li>';
+								}
+								?>
 							</ul>
 						</div>
 					</div>
@@ -80,44 +118,47 @@ $Idproduto= $_GET['produto'];
 						<?php
 						$count = 0;
 						$total = 0;
-						foreach ($fetchDadosProd as $fetchDadosProd ) {
+						foreach ($resultado_carrinho as $row) {
 							echo '
 											
 								<div class="product-cart">
 									<div class="one-forth">
-										<div class="product-img" style="background-image: url(images/' . $fetchDadosProd["foto_prod"] . '.jpg);">
+										<div class="product-img" style="background-image: url(images/' . $row[2] . '.jpg);">
 										</div>
-										
+										<div class="display-tc">
+											<h3 id="nome">' . $row[0] . '</h3>
+										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<span class="price" for="id_valor" id="id_valor">R$ ' .$fetchDadosProd[2] . '</span>
+											<span class="price" for="id_valor" id="id_valor">R$ ' .
+								number_format($row[1], 2, ",", ".") . '</span>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
 											<form method="post" action="../App/Controller/updateQtd.php">
-												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="' . $fetchDadosProd[4] . '" min="1" max="100"> 
-												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" value="' . $fetchDadosProd[0] . '"> <br>
+												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="' . $row[4] . '" min="1" max="100"> 
+												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" value="' . $row[3] . '"> <br>
 												<button class="btn btn-primary" style="background-color:viridiam,;color:white;"> alterar </button>
 											</form>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<span for="id_total" class="price" id="id_total" name="id_total" >R$ ' . $fetchDadosProd[2] . '</span>
+											<span for="id_total" class="price" id="id_total" name="id_total" >R$ ' . number_format($row[1] * $row[4], 2, ",", ".") . '</span>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<a href="../App/Controller/delete.php?produto=' . $fetchDadosProd[0] . '" class="closed" style="background-color: #FFC300"></a>
+											<a href="../App/Controller/delete.php?produto=' . $row[3] . '" class="closed" style="background-color: #FFC300"></a>
 										</div>
 									</div>
 								</div>
 							';
 
-							//$count = $row[1] * $row[4];
-							//$total = $count + $total;
+							$count = $row[1] * $row[4];
+							$total = $count + $total;
 						}
 						?>
 
