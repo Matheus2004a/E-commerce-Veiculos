@@ -43,7 +43,7 @@
             <!-- CONTAINER DA DESCRIÇÃO E NOME DO SERVIÇO -->
             <?php
 
-            $sql = "select nome_servico, desc_servico, val_servico from tbl_servicos where id_servico = 2;";
+            $sql = "select nome_servico, desc_servico, val_servico from tbl_servicos where id_servico = 14;";
             $result = mysqli_query($conn, $sql);
 
             while ($row = mysqli_fetch_assoc($result)) {
@@ -68,7 +68,7 @@
 
                 <?php
 
-                $sql = "select hora_disponivel  from tbl_horarios_servicos where fk_id_servico = 2;";
+                $sql = "select hora_disponivel  from tbl_horarios where fk_id_servico = 7;";
                 $result = mysqli_query($conn, $sql);
 
                 echo '<div class="buttonHour">';

@@ -74,14 +74,14 @@ require __DIR__ . "/../../connection/connection.php";
 						<a href='desc-product.php?id=" . $row['id_prod'] . "'>
 								<div class='w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-t-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8'>
 									<figure>
-										<img src=' " . $row['foto_prod'] . "' alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
+										<img src=' " . $row['foto_prod'] . "' id='fotoProduto' value='".$row['foto_prod']."' alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
 									</figure>
 								</div>
 								<div class='p-3'>
-									<h3 class='text-base text-gray-700 truncate'>" . $row['nome_prod'] . "</h3>
-									<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900'>R$ " . $row['preco'] . "" . $_SESSION['status_estoq'] . "</p>
-									<a href='./cart/template_store/cart.php?produto=".$row['id_prod']."'>
-										<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary'>Adicionar ao carrinho</button>
+									<h3 class='text-base text-gray-700 truncate' id='nomeProduto' value='".$row['nome_prod']."'>" . $row['nome_prod'] . "</h3>
+									<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900' value='".$row['preco']."' id='precoProduto'>R$ " . $row['preco'] . "" . $_SESSION['status_estoq'] . "</p>
+									<a href='./cart/template_store/cart.php>
+										<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='AddCarrinho()'>Adicionar ao carrinho</button>
 									</a>
 								</div>
 							</a>
@@ -167,6 +167,16 @@ require __DIR__ . "/../../connection/connection.php";
 	<script src="../home/js/main.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
+	<script>
+
+		function AddCarrinho(){
+			localStorage.setItem("Nome",document.getElementById("nomeProduto").value)
+			localStorage.setItem("Preco",document.getElementById("precoProduto").value)
+			localStorage.setItem("Imagem", document.getElementById("fotoProduto").value)
+		}
+		
+		
+	</script>
 </body>
 
 </html>

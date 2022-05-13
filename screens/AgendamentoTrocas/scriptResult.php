@@ -21,7 +21,7 @@
         $hora = $_POST['hora'];
         $obs = $_POST['observacao'];
 
-        $sql = "INSERT INTO `bd_veiculos_tcc`.`tbl_agendamentos_servicos` (`data_agend`, `hora_agend`,`observacoes_agend`, `fk_id_cliente`, `fk_id_servico`) VALUES ('$data', '$hora','$obs', '1', '1') ";
+        $sql = "INSERT INTO `bd_veiculos_tcc`.`tbl_agendamentos_servicos` (`data_agend`, `hora_agend`, `fk_id_cliente`, `fk_id_servico`) VALUES ('$data', '$hora', '1', '1') ";
         if (mysqli_query($conn, $sql)) {
             success($data, $hora);
         } else {
