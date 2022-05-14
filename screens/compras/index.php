@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . "/../../connection/connection.php";
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +35,8 @@ require __DIR__ . "/../../connection/connection.php";
 		$sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod` AS preco, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE nome_prod LIKE '%$filter%' ORDER BY nome_prod";
 	}
 	$result_query = mysqli_query($conn, $sql);
+
+	
 	?>
 
 	<a name="top-page"></a>
@@ -62,6 +65,9 @@ require __DIR__ . "/../../connection/connection.php";
 			<h2 class="mb-4 text-2xl font-bold">Produtos</h2>
 			<article class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 				<?php
+				
+						
+				
 				if (mysqli_num_rows($result_query) > 0) {
 					while ($row = mysqli_fetch_assoc($result_query)) {
 						if ($row['qtd_estoque'] > 0) {
@@ -69,23 +75,26 @@ require __DIR__ . "/../../connection/connection.php";
 						} else {
 							$_SESSION['status_estoq'] = "<span class='text-xs text-red-600 bg-red-100 p-1 rounded'>Indisponível</span>";
 						}
-
+						
+						
 						echo "<div class='group shadow-md rounded-lg'>
 						<a href='desc-product.php?id=" . $row['id_prod'] . "'>
 								<div class='w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-t-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8'>
 									<figure>
-										<img src=' " . $row['foto_prod'] . "' id='fotoProduto' value='".$row['foto_prod']."' alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
+										<img src=' " . $row['foto_prod'] . "' id='ImageProd' value='".$row['foto_prod']."' alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
 									</figure>
 								</div>
 								<div class='p-3'>
-									<h3 class='text-base text-gray-700 truncate' id='nomeProduto' value='".$row['nome_prod']."'>" . $row['nome_prod'] . "</h3>
+									<h3 class='text-base text-gray-700 truncate' id='nomeProduto' value='11'>" . $row['nome_prod'] . "</h3>
 									<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900' value='".$row['preco']."' id='precoProduto'>R$ " . $row['preco'] . "" . $_SESSION['status_estoq'] . "</p>
-									<a href='./cart/template_store/cart.php>
-										<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='AddCarrinho()'>Adicionar ao carrinho</button>
+
+										<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()' ><a href='./cart/template_store/cart.php?acao=add&id_prod=".$row['id_prod']."'> Adicionar ao carrinho </a> </button>
 									</a>
 								</div>
 							</a>
 							</div>";
+							
+							
 					}
 				} else {
 					echo "<div class='alert alert-warning flex items-center w-full' role='alert'>
@@ -95,6 +104,7 @@ require __DIR__ . "/../../connection/connection.php";
 									</div>
 								  </div>";
 				}
+				
 				mysqli_close($conn);
 				
 				?>
@@ -110,7 +120,7 @@ require __DIR__ . "/../../connection/connection.php";
 	<footer class="footer-blog">
 		<div class="list-ordenate">
 			<h5>Contatos</h5>
-			<a href="">Lorem Ipsum</a>
+			<a href="./">Lorem Ipsum</a>
 			<a href="">Lorem Ipsum</a>
 			<a href="">Lorem Ipsum</a>
 		</div>
@@ -168,12 +178,19 @@ require __DIR__ . "/../../connection/connection.php";
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
 	<script>
-
-		function AddCarrinho(){
-			localStorage.setItem("Nome",document.getElementById("nomeProduto").value)
-			localStorage.setItem("Preco",document.getElementById("precoProduto").value)
-			localStorage.setItem("Imagem", document.getElementById("fotoProduto").value)
-		}
+		function saveData(){
+			if(typeof(Storage)!== "undefined"){
+				if(localStorage.cont){
+					localStorage.cont = Number(localStorage.cont)+1;
+				}else{
+					localStorage.cont = 1;
+				}
+				var cad;
+				cad = document.getElementById('ImageProd').value + ';' + document.getElementById('nomeProduto').value + ';' + document.getElementById('precoProduto').value;
+				localStorage.setItem("cad_"+localStorage.cont,cad);
+				
+			}
+		}		
 		
 		
 	</script>

@@ -17,11 +17,7 @@ $stmt4->execute();
 $count = 0;
 $count = $stmt4->rowCount();
 
-if ($result == false) {
-	header('location: login.php');
-} else if (!isset($_GET['enviar'])) {
-	header('location: cart.php');
-}
+
 ?>
 
 <!DOCTYPE HTML>

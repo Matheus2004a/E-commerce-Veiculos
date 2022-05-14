@@ -42,11 +42,7 @@ $total = 0;
 $stmt2->execute();
 $resultado_carrinho = $stmt2->fetchAll();
 
-if ($result == false) {
-  header('Location: login.php');
-} else if (!isset($_GET['proximo'])) {
-  header('Location: cart.php');
-}
+
 ?>
 <!doctype html>
 <html lang="pt-br">
