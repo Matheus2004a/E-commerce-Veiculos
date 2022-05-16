@@ -41,14 +41,14 @@ session_start();
 						}
 					?>
 					<?php 
+
 					if(isset($_SESSION['image'])){
-						echo'<li> <img src="./images/Usuarios/'.$_SESSION['image']  .'" class="img_usuario" alt=""></li>';
+						echo'<a href="./screens/MenuAdmnistrativo/index.php"> <li> <img src="./images/Usuarios/'.$_SESSION['image']  .'" class="img_usuario" alt=""></li> </a>';
 					}else{
 						unset($_SESSION['image']);
 					}
 					
 					?>
-					
 				</ul>
 			</div>
 		</nav>

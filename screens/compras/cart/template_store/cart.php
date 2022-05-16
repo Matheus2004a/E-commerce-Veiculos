@@ -6,10 +6,10 @@ require __DIR__ . '/../../../../connection/connection.php';
 if(!isset($_SESSION['carrinho'])){
 	$_SESSION['carrinho'] = array();
 }
-if(isset($_GET['acao'])){
+if(!empty($_GET['acao'])){
 	//ADICIONAR CARRINHO
 	if($_GET['acao'] == 'add'){
-		$id = intval($_GET['id_prod']);
+		$id = $_GET['id_prod'];
 		if(!isset($_SESSION['carrinho'][$id])){
 			$_SESSION['carrinho'][$id] = 1;
 		} else {
@@ -17,8 +17,6 @@ if(isset($_GET['acao'])){
 		}
 	}
 }
-$json =json_encode($_SESSION['carrinho']);
-echo $json;
 
 
 
@@ -93,56 +91,53 @@ $total = 0;
 						<?php
 						$count = 0;
 						$total = 0;
-						if (empty($id_Prod)) {
+						if (empty($id)) {
 							echo 'Carrinho Vazio';
 						}
 						
-						foreach ($_SESSION['carrinho'] as $id_2) {
+						foreach ($_SESSION['carrinho'] as $cd => $qtd) {
 							
-							$queryCart = "SELECT * FROM tbl_produtos WHERE id_prod  = '$id_2' ";
+							$queryCart = "SELECT * FROM tbl_produtos WHERE id_prod = '$cd'";
 								$resultQuery = mysqli_query($conn, $queryCart);
 								$row = mysqli_fetch_assoc($resultQuery);
-								$nome = $row['nome_prod'];
-								$preco = $row['preco_custo_prod'];
-								$imagem = $row['foto_prod'];
 							echo '
 											
 								<div class="product-cart">
 									<div class="one-forth">
-										<div class="product-img" style="background-image: url(../../../../uploads/' . $imagem . '.jpg);">
+										<div class="product-img" style="background-image: url(../../../../uploads/' . $row['foto_prod'] . '.jpg);">
 										</div>
 										<div class="display-tc">
-											<h3 id="nome">' . $nome . '</h3>
+											<h3 id="nome">' . $row['nome_prod'] . '</h3>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
 											<span class="price" for="id_valor" id="id_valor">R$ ' .
-								number_format($preco, 2, ",", ".") . '</span>
+								number_format($row['preco_custo_prod'], 2, ",", ".") . '</span>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
 											<form method="post" action="../App/Controller/updateQtd.php">
 												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="1" min="1" max="100"> 
-												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" value="' . $nome . '"> <br>
+												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" value="' . $row['nome_prod'] . '"> <br>
 											</form>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<span for="id_total" class="price" id="id_total" name="id_total" >R$ ' . number_format($preco, 2, ",", ".") . '</span>
+											<span for="id_total" class="price" id="id_total" name="id_total" >R$ ' . number_format($row['preco_custo_prod'], 2, ",", ".") . '</span>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<a href="../App/Controller/delete.php?produto=' .$nome . '" class="closed" style="background-color: #FFC300"></a>
+											<a href="../App/Controller/delete.php?produto=' .$row['nome_prod'] . '" class="closed" style="background-color: #FFC300"></a>
 										</div>
 									</div>
 								</div>
 							';
 
-							$count = $row['preco_custo_prod'];
+							//$count = $row['preco_custo_prod'];
 							$total = $count + $total;
 						}
 						?>
