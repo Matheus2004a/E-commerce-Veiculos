@@ -45,9 +45,9 @@
 				<h2>Área administrativa</h2>
 				
 				
-				<a href="formProduto.php">			
+				<a href="../register-products/index.php">			
 				<button type="submit" class="btn btn-block btn-lg btn-primary">
-					<a href="../register-products/index.php"></a>
+					
 					Incluir Produto
 					
 				</button>

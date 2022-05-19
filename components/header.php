@@ -27,6 +27,9 @@
                     <a href="../../screens/contact/contato.php">Contate - nos</a>
                 </li>
                 <li>
+                    <a href="../screens/compras/cart/template_store/cart.php">Carrinho</a>
+                </li>
+                <li>
                     <a href="../../screens/login/index.php">Login</a>
                 </li>
                 <li>

@@ -1,47 +1,23 @@
 <?php
 session_start();
-
+require "../../PagSeguro/utils.php";
+require "../../PagSeguro/config.php";
+include "../../../../connection/connection.php";
 // pegando session ID
-$url = "https://ws.sandbox.pagseguro.uol.com.br/v2/sessions";
-
-$credenciais = array(
-  "email" => "edersjc1000@gmail.com",
-  "token" => "6306914EF35C4FF1B4EB8359CDFE1DF8"
+$params = array(
+  'email' => $PAGSEGURO_EMAIL,
+  'token' => $PAGSEGURO_TOKEN
 );
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($credenciais));
-$resultado = curl_exec($curl);
-curl_close($curl);
-$session = simplexml_load_string($resultado)->id;
+$header = array();
 
-require __DIR__ . '/../DataBase/connection.php';
-require __DIR__ . '/../App/Controller/ClienteController.php';
+$response = curlExec($PAGSEGURO_API_URL."/sessions", $params, $header);
+$json = json_decode(json_encode(simplexml_load_string($response)));
+$sessionCode = $json->id;
 
 
-$user = new ClienteController();
-$result = $user->isLoggedIn();
-$conn = new Conexao();
-$conn = $conn->conexao();
 
-$cpf = $_SESSION["user_cpf"];
-$stmt2 = $conn->prepare('
-		SELECT produto.nome, produto.valor, produto.imagem, produto.idproduto, gerou.quantidade FROM produto 
-		INNER JOIN
-			(SELECT carrinho_has_produto.produto_idproduto, carrinho_has_produto.quantidade FROM carrinho_has_produto
-				INNER JOIN produto ON carrinho_has_produto.produto_idproduto = produto.idproduto
-				INNER JOIN carrinho ON carrinho_has_produto.carrinho_idcarrinho = carrinho.idcarrinho 
-		        WHERE carrinho.cliente_cpf = "' . $cpf . '"
-			GROUP BY carrinho_has_produto.produto_idproduto) as gerou 
-
-		ON produto.idproduto = gerou.produto_idproduto
-    	GROUP BY produto.nome;');
-
-$total = 0;
-$stmt2->execute();
-$resultado_carrinho = $stmt2->fetchAll();
-
+$id = $_GET['id'];
+echo $id;
 
 ?>
 <!doctype html>
@@ -100,32 +76,36 @@ $resultado_carrinho = $stmt2->fetchAll();
   <div class="container">
     <main>
       <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <img class="d-block mx-auto mb-4" src="../../../.././images/icones/brand header.png" alt="" width="72" height="57">
         <h2>Checkout</h2>
-        <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+
       </div>
 
       <div class="row g-5">
         <div class="col-md-5 col-lg-4 order-md-last">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-primary">Your cart</span>
-            <span class="badge bg-primary rounded-pill">3</span>
           </h4>
           <ul class="list-group mb-3">
             <?php
-
-
+            // Select Usuario Logado
+            $selectUser = "SELECT cpf,nome,email,telefone FROM tbl_dados_pessoais WHERE id_dados_pessoais = " . $_SESSION['idLogado'] . " ";
+            $queryUser = mysqli_query($conn, $selectUser);
+            $rowUser = mysqli_fetch_assoc($queryUser);
 
             $count = 0;
-            $total = 0;
-            foreach ($resultado_carrinho as $row) {
-              $count = $row[1] * $row[4];
-              $total = $count + $total;
+            $totd =$_GET['total'];
+            foreach ($_SESSION['carrinho'] as $cd => $qtd) {
+              $select = "SELECT * FROM tbl_produtos WHERE id_prod = " . $cd . " ";
+              $query = mysqli_query($conn, $select);
+              $row = mysqli_fetch_assoc($query);
+              $count = $row['preco_custo_prod'];
+              $total = $count;
               echo '
 						<li class="list-group-item d-flex justify-content-between lh-sm">
 							<div>
-							<h6 class="my-0">' . $row[4] . 'x' . $row[0] . ' </h6>
-							<span>R$ ' . number_format($row[1] * $row[4], 2, ",", ".") . '</span>
+							<h6 class="my-0">' . $row['nome_prod'] . 'x' . $qtd . ' </h6>
+							<span name="preco_prod" id="preco_prod" >R$ ' . number_format($row['preco_custo_prod'] * $qtd, 2, ",", ".") . '</span>
 							</div>
 
 							<span class="text-muted"> ' . number_format($total, 2, ",", ".") . '</span>
@@ -136,30 +116,29 @@ $resultado_carrinho = $stmt2->fetchAll();
           </ul>
 
 
-          <form class="card p-2">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Promo code">
-              <button type="submit" class="btn btn-secondary">Redeem</button>
-            </div>
-          </form>
+
         </div>
         <div class="col-md-7 col-lg-8">
           <h4 class="mb-3">Billing address</h4>
-          <form class="needs-validation" novalidate>
+          <form class="needs-validation" action="../../PagSeguro/pay.php"  method="post" novalidate>
             <div class="row g-3">
               <div class="col-sm-6">
                 <label for="NomeCompleto" class="form-label">First name</label>
-                <input type="text" class="form-control" id="NomeCompleto" placeholder="Primeiro Nome" value="" required>
+                <input type="text" class="form-control" id="NomeCompleto" name="NomeCompleto" placeholder="Primeiro Nome" value="" required>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
 
+              
+
+
               <div class="col-12">
                 <label for="cpf" class="form-label">CPF</label>
                 <div class="input-group has-validation">
-                  <span class="input-group-text">@</span>
-                  <input type="text" class="form-control" id="cpf" placeholder="CPF" required maxlength="11">
+
+                  <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" required maxlength="11">
+
                   <div class="invalid-feedback">
                     Your username is required.
                   </div>
@@ -168,7 +147,7 @@ $resultado_carrinho = $stmt2->fetchAll();
 
               <div class="col-12">
                 <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
@@ -176,14 +155,14 @@ $resultado_carrinho = $stmt2->fetchAll();
 
               <div class="col-12">
                 <label for="Telefone" class="form-label">Telefone </label>
-                <input type="tel" class="form-control" id="Telefone" required>
+                <input type="tel" class="form-control" name="telefone" id="Telefone" required>
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
               </div>
               <div class="col-3">
                 <label for="cepEndec" class="form-label">CEP</label>
-                <input type="text" class="form-control" id="cepEndec" placeholder="CEP" required>
+                <input type="text" class="form-control" name="cep" id="cepEndec" placeholder="CEP" required>
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
@@ -198,17 +177,17 @@ $resultado_carrinho = $stmt2->fetchAll();
 
               <div class="col-3">
                 <label for="numero" class="form-label">Numero</label>
-                <input type="text" class="form-control" id="numero" placeholder="Apartment or suite">
+                <input type="text" class="form-control" name="numero" id="numero" placeholder="Apartment or suite">
               </div>
 
               <div class="col-12">
                 <label for="bairroEnd" class="form-label">Bairro</label>
-                <input type="text" class="form-control" id="bairroEnd" placeholder="Apartment or suite">
+                <input type="text" class="form-control" id="bairroEnd" name="bairro" placeholder="Apartment or suite">
               </div>
 
               <div class="col-md-5">
                 <label for="cidadeEnd" class="form-label">Cidade</label>
-                <input type="text" class="form-control" id="cidadeEnd" placeholder="Apartment or suite">
+                <input type="text" class="form-control" id="cidadeEnd" name="cidade" placeholder="Apartment or suite">
 
                 <div class="invalid-feedback">
                   Please select a valid country.
@@ -217,7 +196,7 @@ $resultado_carrinho = $stmt2->fetchAll();
 
               <div class="col-md-4">
                 <label for="estadoEnd" class="form-label">Estado</label>
-                <input type="text" class="form-control" id="estadoEnd" placeholder="Apartment or suite">
+                <input type="text" class="form-control" name="estado" id="estadoEnd" placeholder="Apartment or suite">
                 <div class="invalid-feedback">
                   Please provide a valid state.
                 </div>
@@ -230,39 +209,43 @@ $resultado_carrinho = $stmt2->fetchAll();
               <h4 class="mb-3">Payment</h4>
               <div class="col-md-6">
                 <label for="creditCardNumber" class="form-label">Credit card number</label>
-                <input type="text" class="form-control" id="creditCardNumber" placeholder="" required name="creditCardNumber">
+                <input type="tel" class="form-control" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus value="4111 1111 1111 1111"/>                
+                <!--<input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="" required value="4111111111111111">!-->
                 <div class="invalid-feedback">
                   Credit card number is required
                 </div>
               </div>
-
-              <div class="col-md-3">
-                <label for="creditCardBrand" class="form-label">Bandeira</label>
-                <input type="text" class="form-control" id="creditCardBrand" placeholder="" name="creditCardBrand" required disabled>
-                <div class="invalid-feedback">
-                  Expiration date required
-                </div>
-              </div>
-
+              <?php echo $qtd?>
+              <input type="hidden" name="brand">
+              <input type="hidden" name="token">
+              <input type="hidden" name="senderHash">
+              <input type="hidden" name="valProd" value="<?php echo $row['preco_custo_prod']?>">
+              <input type="hidden" name="amount" value="<?php echo $totd?>">
+              <input type="hidden" name="shippingCoast" value="2">
+              <input type="hidden" name="itemQuantity1" value="<?php echo $qtd?>">
+              <input type="hidden" name="descricao" value="<?php echo $row['desc_prod']?>">
+              <input type="hidden" name="idProd" value="<?php echo $row['id_prod']?>">
               <div class="col-md-3">
                 <label for="creditCardExpMonth" class="form-label">Mês Validade</label>
-                <input type="text" class="form-control" id="creditCardExpMonth" placeholder="" required name="creditCardExpMonth">
+                <input type="tel" class="form-control" name="cardExpiry" placeholder="MM / YY" autocomplete="cc-exp" required value="12/2030"/>
+               <!-- <input type="tel" class="form-control" id="creditCardExpMonth" placeholder="" required name="cardExpiry" value="12/2030 ">!-->
                 <div class="invalid-feedback">
                   Expiration date required
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <!--<div class="col-md-3">
                 <label for="creditCardExpYear" class="form-label">Ano Validade</label>
                 <input type="text" class="form-control" id="creditCardExpYear" placeholder="" required name="creditCardExpYear">
                 <div class="invalid-feedback">
                   Expiration date required
                 </div>
-              </div>
+              </div>!-->
 
               <div class="col-md-3">
                 <label for="creditCardCvv" class="form-label">CVV</label>
-                <input type="text" class="form-control" id="creditCardCvv" placeholder="" required name="creditCardCvv">
+                <input type="tel" class="form-control" name="cardCVC" placeholder="CVV" autocomplete="cc-csc" required value="123"/>
+                <!--<input type="text" class="form-control" id="creditCardCvv" placeholder="" required name="creditCardCvv" value="123">!-->
                 <div class="invalid-feedback">
                   Security code required
                 </div>
@@ -270,18 +253,14 @@ $resultado_carrinho = $stmt2->fetchAll();
             </div>
 
             <div class="col-md-3">
-              <label for="checkoutValue">Valor da parcela</label>
-              <input type="text" class="form-control" id="checkoutValue" name="checkoutValue">
-            </div>
-
-            <div class="col-md-3">
               <label for="installmentCheck" class="form-label"> Parcelamentos </label>
-              <select id="installmentCheck" class="form-control">
-
+              <select name="installments" id="select-installments" class="form-control">
+                <option selected>1</option>
               </select>
+              <input type="hidden" name="installmentValue">
             </div>
 
-            <input type="text" id="checkoutValue" name="checkoutValue" value="<?php echo ($row[1]); ?>" hidden>
+            <!--<input type="text" id="select-installments" name="installments" value="< ?>" hidden>!-->
 
             <div class="col-md-3">
               <div class="tipoCartao">
@@ -309,7 +288,7 @@ $resultado_carrinho = $stmt2->fetchAll();
 
 
   <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+  <script > "https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js" </script>
   <script src="form-validation.js"></script>
   <script>
     'use strict';
@@ -332,84 +311,124 @@ $resultado_carrinho = $stmt2->fetchAll();
     document.getElementById('cepEndec')
       .addEventListener('focusout', pesquisarCep);
   </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript" src="<?= $JS_FILE_URL ?>"></script>
+  
+  <script>
+ var installments = [];
+    
+    $("input[name='cardNumber']").keyup(function(){
+        getInstallments();
+    });
 
-  <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"> </script>
-  <script type="text/javascript" src="./js/JSA.js"> </script>
-  <script type="text/javascript">
-    PagSeguroDirectPayment.setSessionId('<?php echo $session; ?>');
-    console.log('<?php echo $session; ?>');
+    $("#select-installments").change(function(){
+        console.log(installments[$(this).val()-1]);
+        $("input[name='installmentValue']").val(installments[$(this).val()-1].installmentAmount);
+    });
 
+    function getInstallments(){
+        
+        var cardNumber = $("input[name='cardNumber']").val();
+        
+        //if creditcard number is finished, get installments
+        if(cardNumber.length != 19){
+            return;
+        } 
 
-    // Busca o token do cartão a partir do valor fornecido pelo usuário
-    $("#creditCardNumber").keyup(function() {
-      if ($("#creditCardNumber").val().length >= 6) {
         PagSeguroDirectPayment.getBrand({
-          cardBin: $("#creditCardNumber").val().substring(0, 6),
-          success: function(response) {
-            console.log(response);
-            $("#creditCardBrand").val(response['brand']['name']);
-            $("#creditCardCvv").attr('size', response['brand']['cvvSize']);
-          },
-          error: function(response) {
-            console.log(response);
-          }
-        })
-      };
-    })
-    // Função que busca os metodos de pagamento
-    function getPaymentMethods(valor) {
-      PagSeguroDirectPayment.getPaymentMethods({
-        amount: valor,
-        success: function(response) {
-          //console.log(JSON.stringify(response));
-          console.log(response);
-        },
-        error: function(response) {
-          console.log(JSON.stringify(response));
+            cardBin: cardNumber.replace(/ /g,''),
+            success: function(json){
+                console.log(json);
+                var brand = json.brand.name;
+                $("input[name='brand']").val(brand);
+                
+                var amount = parseFloat($("input[name='amount']").val());
+                var shippingCoast = parseFloat($("input[name='shippingCoast']").val());
+                
+                //The maximum installment qty with no extra fees (You must configure it on your PagSeguro dashboard with same value)
+                var max_installment_no_extra_fees = 2;
+
+                PagSeguroDirectPayment.getInstallments({
+                    amount: amount + shippingCoast,
+                    brand: brand,
+                    maxInstallmentNoInterest: max_installment_no_extra_fees,
+                    success: function(response) {
+                        
+                        /*
+                            Available installments options.
+                            Here you have quantity and value options
+                        */
+                        console.log(response);
+                        installments = response.installments[brand];
+                        $("#select-installments").html("");
+                        for(var installment of installments){
+                            $("#select-installments").append("<option value='" + installment.quantity + "'>" + installment.quantity + " x R$ " + installment.installmentAmount + " - " + (installment.quantity <= max_installment_no_extra_fees? "Sem" : "Com")  + " Juros</option>");
+                        }
+
+                    }, error: function(response) {
+                        console.log(response);
+                    }, complete: function(response) {
+                        //Called after sucess or error
+                    } 
+                });
+            }, error: function(json){
+                console.log(json);
+            }, complete: function(json){
+                console.log(json);
+            }
+        });
+    }
+        
+    $("button").click(function(){
+        var param = {
+            cardNumber: $("input[name='cardNumber']").val().replace(/ /g,''),
+            brand: $("input[name='brand']").val(),
+            cvv: $("input[name='cardCVC']").val(),
+            expirationMonth: $("input[name='cardExpiry']").val().split('/')[0],
+            expirationYear: $("input[name='cardExpiry']").val().split('/')[1],
+            success: function(json){
+                var token = json.card.token;
+                $("input[name='token']").val(token);
+                console.log("Token: " + token);
+
+                var senderHash = PagSeguroDirectPayment.getSenderHash();
+                $("input[name='senderHash']").val(senderHash);
+                $("form").submit();
+            }, error: function(json){
+                console.log(json);
+            }, complete:function(json){
+            }
         }
-      })
-    }
-    //Função que demonstra os valores de parcelamento para o usuário 
-    document.getElementById('checkoutValue')
-      .addEventListener('focusout', getInstallments);
 
-    function getInstallments() {
-      var brand = $("#creditCardBrand").val();
-      PagSeguroDirectPayment.getInstallments({
-        amount: $("#checkoutValue").val().replace(",", "."),
-        brand: brand,
-        maxInstallmentNoInterest: 2, //calculo de parcelas sem juros
-        success: function(response) {
-          var installments = response['installments'][brand];
-          buildInstallmentSelect(installments);
-        },
-        error: function(response) {
-          console.log(response);
-        }
-      })
-    }
+        PagSeguroDirectPayment.createCardToken(param);
+    });
 
+    jQuery(function($) {
 
+        var shippingCoast = parseFloat($("input[name='shippingCoast']").val());
+        var amount = parseFloat($("input[name='amount']").val());
+        $("input[name='installmentValue']").val(amount + shippingCoast);
 
-    listaMeiosPagamento();
-    //Função que demonstra os meios de pagamentos
-    function listaMeiosPagamento() {
-      PagSeguroDirectPayment.getPaymentMethods({
-        amount: 500.00,
-        success: function(data) {
-          $.each(data.paymentMethods.CREDIT_CARD.options, function(i, obj) {
-            $('.tipoCartao').append("<div><img src=https://stc.pagseguro.uol.com.br/" + obj.images.SMALL.path + ">" + obj.name + "</div>");
-          });
+        PagSeguroDirectPayment.setSessionId('<?php echo $sessionCode;?>');
 
-          $('.Boleto').append("" + data.paymentMethods.BOLETO.name + "");
+        PagSeguroDirectPayment.getPaymentMethods({
+            success: function(json){
 
-          $.each(data.paymentMethods.ONLINE_DEBIT.options, function(i, obj) {
-            $('.Debito').append("" + obj.name + "");
-          });
-        },
-        complete: function(data) {}
-      });
-    }
+                console.log(json);
+                getInstallments();
+
+            }, error: function(json){
+                console.log(json);
+                var erro = "";
+                for(i in json.errors){
+                    erro = erro + json.errors[i];
+                }
+                
+                alert(erro);
+            }, complete: function(json){
+            }
+        });
+        });
   </script>
 
 </body>

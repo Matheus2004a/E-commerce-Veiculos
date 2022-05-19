@@ -41,9 +41,9 @@ session_start();
 						}
 					?>
 					<?php 
-
+						
 					if(isset($_SESSION['image'])){
-						echo'<a href="./screens/MenuAdmnistrativo/index.php"> <li> <img src="./images/Usuarios/'.$_SESSION['image']  .'" class="img_usuario" alt=""></li> </a>';
+						echo'<a href="./screens/DashboardMecanico/index.php"> <li> <img src="./images/Usuarios/'.$_SESSION['image']  .'" class="img_usuario" alt=""></li> </a>';
 					}else{
 						unset($_SESSION['image']);
 					}

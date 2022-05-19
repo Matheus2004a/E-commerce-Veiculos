@@ -10,10 +10,30 @@ if(!empty($_GET['acao'])){
 	//ADICIONAR CARRINHO
 	if($_GET['acao'] == 'add'){
 		$id = $_GET['id_prod'];
+		$idProdutos = array();
 		if(!isset($_SESSION['carrinho'][$id])){
 			$_SESSION['carrinho'][$id] = 1;
 		} else {
 			$_SESSION['carrinho'][$id] += 1;
+		}
+	}
+}
+if($_GET['acao']== 'del'){
+	$id=($_GET['id']);
+	if(isset($_SESSION['carrinho'][$id])){
+		unset($_SESSION['carrinho'][$id]);
+	}	
+}
+if($_GET['acao'] == 'up'){
+	if(is_array($_POST['idproduto'])){
+		foreach($_POST['idproduto'] as $id => $qtd){
+				$id  = intval($id);
+				$qtd = intval($qtd);
+				if(!empty($qtd) || $qtd <> 0){
+					$_SESSION['carrinho'][$id] = $qtd;
+				}else{
+					unset($_SESSION['carrinho'][$id]);
+				}
 		}
 	}
 }
@@ -87,7 +107,7 @@ $total = 0;
 								<span>Remover</span>
 							</div>
 						</div>
-
+						<form action="./checkout.php" method="post"></form>
 						<?php
 						$count = 0;
 						$total = 0;
@@ -96,7 +116,7 @@ $total = 0;
 						}
 						
 						foreach ($_SESSION['carrinho'] as $cd => $qtd) {
-							
+							echo $cd;
 							$queryCart = "SELECT * FROM tbl_produtos WHERE id_prod = '$cd'";
 								$resultQuery = mysqli_query($conn, $queryCart);
 								$row = mysqli_fetch_assoc($resultQuery);
@@ -104,7 +124,7 @@ $total = 0;
 											
 								<div class="product-cart">
 									<div class="one-forth">
-										<div class="product-img" style="background-image: url(../../../../uploads/' . $row['foto_prod'] . '.jpg);">
+										<div class="product-img" style="background-image: url(../../../../uploads/'.$row["foto_prod"].'.jpg);">
 										</div>
 										<div class="display-tc">
 											<h3 id="nome">' . $row['nome_prod'] . '</h3>
@@ -118,9 +138,9 @@ $total = 0;
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<form method="post" action="../App/Controller/updateQtd.php">
-												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="1" min="1" max="100"> 
-												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" value="' . $row['nome_prod'] . '"> <br>
+											<form method="post" action="?acao=up">
+												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="'.$qtd.'" min="1" max="100"> 
+												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" value="' . $qtd. '"> <br>
 											</form>
 										</div>
 									</div>
@@ -131,17 +151,20 @@ $total = 0;
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<a href="../App/Controller/delete.php?produto=' .$row['nome_prod'] . '" class="closed" style="background-color: #FFC300"></a>
+											<a href="?acao=del&id=' .$row['id_prod'] . '" class="closed" style="background-color: #FFC300"></a>
 										</div>
 									</div>
 								</div>
 							';
 
-							//$count = $row['preco_custo_prod'];
+							$count = $row['preco_custo_prod'] * $qtd;
 							$total = $count + $total;
-						}
 						?>
-
+						<input type="hidden" name="total" value="<?php echo $total?>">
+					<?php 
+						
+						}
+					?>
 					</div>
 				</div>
 				<div class="row">
@@ -166,10 +189,14 @@ $total = 0;
 										echo '<p><a class="btn btn-primary"   style="opacity: 0.5;
   filter: alpha(opacity=50)"> Proximo </a disabled></p>';
 									} else {
-										echo '<p><a href="checkout.php?proximo=true&carrinho=true" class="btn btn-primary"> Proximo </a></p>';
+										echo '<p><a href="checkout.php?id='.$cd.'&&qtd='.$qtd.'&&total='.$total.'" class="btn btn-primary"> Proximo </a></p>';
 									}
+									
 									?>
+									<p><a href="../../index.php" class="btn btn-primary">Voltar</a></p>
+									<p><a href=""></a></p>
 								</div>
+								</form>
 							</div>
 						</div>
 					</div>
