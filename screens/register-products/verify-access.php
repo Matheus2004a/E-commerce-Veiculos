@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['username'] && $_SESSION['category'] != "mecanico") {
+if ($_SESSION['username'] && $_SESSION['category'] != "mecanico" || !$_SESSION['username']) {
 	header("location: ../login/index.php");
 }
 ?>
