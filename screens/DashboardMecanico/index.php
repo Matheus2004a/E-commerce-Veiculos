@@ -5,7 +5,7 @@ $sql = "SELECT * FROM tbl_dados_pessoais WHERE id_dados_pessoais = " . $_SESSION
 $select = mysqli_query($conn, $sql);
 $fetch = mysqli_fetch_assoc($select);
 
-$pedidos = "SELECT a.id_pedido,b.nome_prod,a.qtd_prod,a.total_preco_prod,a.status_entrega FROM tbl_pedidos   as a   INNER JOIN tbl_produtos as b WHERE a.fk_id_cliente = '$_SESSION[idLogado]' LIMIT 9";
+$pedidos = "SELECT a.id_pedido,b.nome_prod,a.qtd_prod,a.total_preco_prod,a.status_entrega FROM tbl_pedidos   as a   INNER JOIN tbl_produtos as b WHERE a.fk_id_cliente = '$_SESSION[idLogado]' ";
 $inner = mysqli_query($conn, $pedidos);
 
 ?>

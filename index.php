@@ -28,8 +28,8 @@ session_start();
 			</a>
 			<div class="navbar-links">
 				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Sobre</a></li>
+					<li><a href="##">Home</a></li>
+					<li><a href="##">Sobre</a></li>
 					<li><a href="./screens/login/index.php">Login</a></li>
 					<li><a href="./screens/compras/index.php">Compras</a></li>
 					
@@ -68,10 +68,7 @@ session_start();
 							</h1>
 							<p>Completamente Responsiva!</p>
 						</header>
-						<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante
-							interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet
-							egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.
-							Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+						<p>O projeto atual foi criado com o objetivo de facilitar ao público em geral a manutenção de seus veículos, a realização de compras e o agendamento de um mecânico. Reconhecemos que lembrar de fazer a manutenção básica do veículo tornou- se bastante difícil hoje. O sistema atual será dividido em duas fases para dois tipos de usuários: primeiro, um sistema de loja onde os usuários poderão cadastrar seus produtos, localizar sua loja e cadastrar os serviços que prestam. O usuário " loja " terá um nível de acesso superior ao usuário "comum" e o usuário "comum" será a base do sistema</p>
 						<ul class="actions">
 							<li><a href="#" class="button big">Learn More</a></li>
 						</ul>
@@ -83,14 +80,14 @@ session_start();
 
 				<!-- Section -->
 				<section>
-					<header class="major">
-						<h2>Erat lacinia</h2>
+					<header class="major" id="##">
+						<h2>Nossos Serviços</h2>
 					</header>
 					<div class="features">
 						<article>
 							<span class="icon fa-gem"></span>
 							<div class="content">
-								<h3>Portitor ullamcorper</h3>
+								<h3>Chat em tempo Real</h3>
 								<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
 									facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 							</div>
@@ -98,7 +95,7 @@ session_start();
 						<article>
 							<span class="icon solid fa-paper-plane"></span>
 							<div class="content">
-								<h3>Sapien veroeros</h3>
+								<h3>Agendamento de serviços</h3>
 								<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
 									facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 							</div>
@@ -106,7 +103,7 @@ session_start();
 						<article>
 							<span class="icon solid fa-rocket"></span>
 							<div class="content">
-								<h3>Quam lorem ipsum</h3>
+								<h3>Compra e venda</h3>
 								<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
 									facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 							</div>
@@ -114,7 +111,7 @@ session_start();
 						<article>
 							<span class="icon solid fa-signal"></span>
 							<div class="content">
-								<h3>Sed magna finibus</h3>
+								<h3>Um e-commerce completo</h3>
 								<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
 									facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 							</div>

@@ -10,7 +10,7 @@ $params = array(
 );
 $header = array();
 
-$response = curlExec($PAGSEGURO_API_URL."/sessions", $params, $header);
+$response = curlExec($PAGSEGURO_API_URL . "/sessions", $params, $header);
 $json = json_decode(json_encode(simplexml_load_string($response)));
 $sessionCode = $json->id;
 
@@ -84,21 +84,22 @@ echo $id;
       <div class="row g-5">
         <div class="col-md-5 col-lg-4 order-md-last">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-primary">Your cart</span>
+            <span class="text-primary">Seus Produtos</span>
           </h4>
           <ul class="list-group mb-3">
             <?php
             // Select Usuario Logado
-            $selectUser = "SELECT cpf,nome,email,telefone FROM tbl_dados_pessoais WHERE id_dados_pessoais = " . $_SESSION['idLogado'] . " ";
-            $queryUser = mysqli_query($conn, $selectUser);
-            $rowUser = mysqli_fetch_assoc($queryUser);
+            
 
             $count = 0;
-            $totd =$_GET['total'];
+            $totd = $_GET['total'];
+            $json = json_encode($_SESSION['carrinho']);
+            echo $json;
+            
             foreach ($_SESSION['carrinho'] as $cd => $qtd) {
               $select = "SELECT * FROM tbl_produtos WHERE id_prod = " . $cd . " ";
               $query = mysqli_query($conn, $select);
-              $row = mysqli_fetch_assoc($query);
+              $row = mysqli_fetch_array($query);
               $count = $row['preco_custo_prod'];
               $total = $count;
               echo '
@@ -111,7 +112,6 @@ echo $id;
 							<span class="text-muted"> ' . number_format($total, 2, ",", ".") . '</span>
 						</li>';
             }
-
             ?>
           </ul>
 
@@ -119,18 +119,18 @@ echo $id;
 
         </div>
         <div class="col-md-7 col-lg-8">
-          <h4 class="mb-3">Billing address</h4>
-          <form class="needs-validation" action="../../PagSeguro/pay.php"  method="post" novalidate>
+          <h4 class="mb-3">Dados Pessoais</h4>
+          <form class="needs-validation" action="../../PagSeguro/pay.php" method="post" novalidate>
             <div class="row g-3">
               <div class="col-sm-6">
-                <label for="NomeCompleto" class="form-label">First name</label>
+                <label for="NomeCompleto" class="form-label">Nome Completo</label>
                 <input type="text" class="form-control" id="NomeCompleto" name="NomeCompleto" placeholder="Primeiro Nome" value="" required>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
 
-              
+
 
 
               <div class="col-12">
@@ -146,21 +146,24 @@ echo $id;
               </div>
 
               <div class="col-12">
-                <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
+                <label for="email" class="form-label">Email </label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
               </div>
-
-              <div class="col-12">
+              <div class="col-md-1">
+                <label for="Telefone" class="form-label">DDD </label>
+                <input type="tel" class="form-control" name="ddd" id="ddd" required>
+              </div>
+              <div class="col-md-8">
                 <label for="Telefone" class="form-label">Telefone </label>
                 <input type="tel" class="form-control" name="telefone" id="Telefone" required>
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
               </div>
-              <div class="col-3">
+              <div class="col-5">
                 <label for="cepEndec" class="form-label">CEP</label>
                 <input type="text" class="form-control" name="cep" id="cepEndec" placeholder="CEP" required>
                 <div class="invalid-feedback">
@@ -169,7 +172,7 @@ echo $id;
               </div>
               <div class="col-12">
                 <label for="endereco" class="form-label">Endereco</label>
-                <input type="text" class="form-control" id="endereco" placeholder="1234 Main St" required>
+                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="1234 Main St" required>
                 <div class="invalid-feedback">
                   Please enter your shipping address.
                 </div>
@@ -209,26 +212,38 @@ echo $id;
               <h4 class="mb-3">Payment</h4>
               <div class="col-md-6">
                 <label for="creditCardNumber" class="form-label">Credit card number</label>
-                <input type="tel" class="form-control" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus value="4111 1111 1111 1111"/>                
+                <div class="input-group">
+                  <input type="tel" class="form-control" name="cardNumber" id="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus value="4111 1111 1111 1111" />
+                  <span class="input-group-addon">
+                    <div class="BandeiraCartao"></div>
+                  </span>
+                </div>
+              <?php 
+              //Transforma dados do select em array 
+           
+              
+            
+              ?>
                 <!--<input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="" required value="4111111111111111">!-->
                 <div class="invalid-feedback">
                   Credit card number is required
                 </div>
               </div>
-              <?php echo $qtd?>
+              <?php echo $qtd ?>
               <input type="hidden" name="brand">
               <input type="hidden" name="token">
               <input type="hidden" name="senderHash">
-              <input type="hidden" name="valProd" value="<?php echo $row['preco_custo_prod']?>">
-              <input type="hidden" name="amount" value="<?php echo $totd?>">
+              <input type="hidden" name="valProd" value="<?php echo $row['preco_custo_prod'] ?>">
+              <input type="hidden" name="amount" value="<?php echo $totd ?>">
               <input type="hidden" name="shippingCoast" value="2">
-              <input type="hidden" name="itemQuantity1" value="<?php echo $qtd?>">
-              <input type="hidden" name="descricao" value="<?php echo $row['desc_prod']?>">
-              <input type="hidden" name="idProd" value="<?php echo $row['id_prod']?>">
+              <input type="hidden" name="itemQuantity1" value="<?php echo $qtd ?>">
+              <input type="hidden" name="descricao" value="<?php echo $row['desc_prod'] ?>">
+              <input type="hidden" name="idProd" value="<?php echo $row['id_prod'] ?>">
+
               <div class="col-md-3">
                 <label for="creditCardExpMonth" class="form-label">Mês Validade</label>
-                <input type="tel" class="form-control" name="cardExpiry" placeholder="MM / YY" autocomplete="cc-exp" required value="12/2030"/>
-               <!-- <input type="tel" class="form-control" id="creditCardExpMonth" placeholder="" required name="cardExpiry" value="12/2030 ">!-->
+                <input type="tel" class="form-control" name="cardExpiry" placeholder="MM / YY" autocomplete="cc-exp" required value="12/2030" />
+                <!-- <input type="tel" class="form-control" id="creditCardExpMonth" placeholder="" required name="cardExpiry" value="12/2030 ">!-->
                 <div class="invalid-feedback">
                   Expiration date required
                 </div>
@@ -244,7 +259,7 @@ echo $id;
 
               <div class="col-md-3">
                 <label for="creditCardCvv" class="form-label">CVV</label>
-                <input type="tel" class="form-control" name="cardCVC" placeholder="CVV" autocomplete="cc-csc" required value="123"/>
+                <input type="tel" class="form-control" name="cardCVC" id="creditCardCvv" placeholder="CVV" autocomplete="cc-csc" required value="123" />
                 <!--<input type="text" class="form-control" id="creditCardCvv" placeholder="" required name="creditCardCvv" value="123">!-->
                 <div class="invalid-feedback">
                   Security code required
@@ -269,8 +284,8 @@ echo $id;
             </div>
 
             <hr class="my-4">
-
-            <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+            <a href="./cart.php"><button class="btn btn-primary btn-lg">Voltar para o carrinho</button></a>
+            <button class=" btn btn-primary btn-lg" type="submit">Continue to checkout</button>
           </form>
         </div>
       </div>
@@ -288,9 +303,13 @@ echo $id;
 
 
   <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script > "https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js" </script>
-  <script src="form-validation.js"></script>
   <script>
+    "https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"
+  </script>
+  <script src="form-validation.js"></script>
+
+  <script>
+    //Uso da api ViaCep para requisitar cep do usuário
     'use strict';
     //APi ViaCep para pesquisa de endereço dinâmico
     const preencherFormulario = (endereco) => {
@@ -311,124 +330,160 @@ echo $id;
     document.getElementById('cepEndec')
       .addEventListener('focusout', pesquisarCep);
   </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js" integrity="sha512-hAJgR+pK6+s492clbGlnrRnt2J1CJK6kZ82FZy08tm6XG2Xl/ex9oVZLE6Krz+W+Iv4Gsr8U2mGMdh0ckRH61Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript" src="<?= $JS_FILE_URL ?>"></script>
-  
+
   <script>
- var installments = [];
-    
-    $("input[name='cardNumber']").keyup(function(){
-        getInstallments();
-    });
+    //Funções responsáveis pra armazenar dados para api PagSeguro
+    $("input[name='cardNumber']").on('keyup', function() {
+      var NumeroCartao = $(this).val();
+      var QtdCaracteres = NumeroCartao.length;
 
-    $("#select-installments").change(function(){
-        console.log(installments[$(this).val()-1]);
-        $("input[name='installmentValue']").val(installments[$(this).val()-1].installmentAmount);
-    });
-
-    function getInstallments(){
-        
-        var cardNumber = $("input[name='cardNumber']").val();
-        
-        //if creditcard number is finished, get installments
-        if(cardNumber.length != 19){
-            return;
-        } 
-
+      if (QtdCaracteres == 6) {
         PagSeguroDirectPayment.getBrand({
-            cardBin: cardNumber.replace(/ /g,''),
-            success: function(json){
-                console.log(json);
-                var brand = json.brand.name;
-                $("input[name='brand']").val(brand);
-                
-                var amount = parseFloat($("input[name='amount']").val());
-                var shippingCoast = parseFloat($("input[name='shippingCoast']").val());
-                
-                //The maximum installment qty with no extra fees (You must configure it on your PagSeguro dashboard with same value)
-                var max_installment_no_extra_fees = 2;
-
-                PagSeguroDirectPayment.getInstallments({
-                    amount: amount + shippingCoast,
-                    brand: brand,
-                    maxInstallmentNoInterest: max_installment_no_extra_fees,
-                    success: function(response) {
-                        
-                        /*
-                            Available installments options.
-                            Here you have quantity and value options
-                        */
-                        console.log(response);
-                        installments = response.installments[brand];
-                        $("#select-installments").html("");
-                        for(var installment of installments){
-                            $("#select-installments").append("<option value='" + installment.quantity + "'>" + installment.quantity + " x R$ " + installment.installmentAmount + " - " + (installment.quantity <= max_installment_no_extra_fees? "Sem" : "Com")  + " Juros</option>");
-                        }
-
-                    }, error: function(response) {
-                        console.log(response);
-                    }, complete: function(response) {
-                        //Called after sucess or error
-                    } 
-                });
-            }, error: function(json){
-                console.log(json);
-            }, complete: function(json){
-                console.log(json);
-            }
+          cardBin: NumeroCartao,
+          success: function(response) {
+            var BandeiraImg = response.brand.name;
+            $('.BandeiraCartao').html("<img src=https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/42x20/" + BandeiraImg + ".png>")
+          },
+          error: function(response) {
+            alert('Cartão não reconhecido');
+            $('.BandeiraCartao').empty();
+          }
         });
-    }
-        
-    $("button").click(function(){
-        var param = {
-            cardNumber: $("input[name='cardNumber']").val().replace(/ /g,''),
-            brand: $("input[name='brand']").val(),
-            cvv: $("input[name='cardCVC']").val(),
-            expirationMonth: $("input[name='cardExpiry']").val().split('/')[0],
-            expirationYear: $("input[name='cardExpiry']").val().split('/')[1],
-            success: function(json){
-                var token = json.card.token;
-                $("input[name='token']").val(token);
-                console.log("Token: " + token);
+      }
+    });
+  </script>
 
-                var senderHash = PagSeguroDirectPayment.getSenderHash();
-                $("input[name='senderHash']").val(senderHash);
-                $("form").submit();
-            }, error: function(json){
-                console.log(json);
-            }, complete:function(json){
+  <script>
+    // Mascaras para input de cep,cpf,telefone    
+    $('#cepEndec').mask('00000-000');
+    $('#cpf').mask('000.000.000-00', {
+      reverse: true
+    });
+    $('#Telefone').mask('00000-0000');
+
+    var installments = [];
+
+    $("input[name='cardNumber']").keyup(function() {
+      getInstallments();
+    });
+
+    $("#select-installments").change(function() {
+      console.log(installments[$(this).val() - 1]);
+      $("input[name='installmentValue']").val(installments[$(this).val() - 1].installmentAmount);
+    });
+    // Função para buscar parcelas
+    function getInstallments() {
+
+      var cardNumber = $("input[name='cardNumber']").val();
+
+      //if creditcard number is finished, get installments
+      if (cardNumber.length != 19) {
+        return;
+      }
+
+      PagSeguroDirectPayment.getBrand({
+        cardBin: cardNumber.replace(/ /g, ''),
+        success: function(json) {
+          console.log(json);
+          var brand = json.brand.name;
+          $("input[name='brand']").val(brand);
+
+          var amount = parseFloat($("input[name='amount']").val());
+          var shippingCoast = parseFloat($("input[name='shippingCoast']").val());
+
+          //The maximum installment qty with no extra fees (You must configure it on your PagSeguro dashboard with same value)
+          var max_installment_no_extra_fees = 2;
+
+          PagSeguroDirectPayment.getInstallments({
+            amount: amount + shippingCoast,
+            brand: brand,
+            maxInstallmentNoInterest: max_installment_no_extra_fees,
+            success: function(response) {
+
+              /*
+                  Available installments options.
+                  Here you have quantity and value options
+              */
+              console.log(response);
+              installments = response.installments[brand];
+              $("#select-installments").html("");
+              for (var installment of installments) {
+                $("#select-installments").append("<option value='" + installment.quantity + "'>" + installment.quantity + " x R$ " + installment.installmentAmount + " - " + (installment.quantity <= max_installment_no_extra_fees ? "Sem" : "Com") + " Juros</option>");
+              }
+
+            },
+            error: function(response) {
+              console.log(response);
+            },
+            complete: function(response) {
+              //Called after sucess or error
             }
+          });
+        },
+        error: function(json) {
+          console.log(json);
+        },
+        complete: function(json) {
+          console.log(json);
         }
+      });
+    }
 
-        PagSeguroDirectPayment.createCardToken(param);
+    $("#creditCardCvv").on('blur',function() {
+      var param = {
+        cardNumber: $("input[name='cardNumber']").val().replace(/ /g, ''),
+        brand: $("input[name='brand']").val(),
+        cvv: $("input[name='cardCVC']").val(),
+        expirationMonth: $("input[name='cardExpiry']").val().split('/')[0],
+        expirationYear: $("input[name='cardExpiry']").val().split('/')[1],
+        success: function(json) {
+          var token = json.card.token;
+          $("input[name='token']").val(token);
+          console.log("Token: " + token);
+
+          var senderHash = PagSeguroDirectPayment.getSenderHash();
+          $("input[name='senderHash']").val(senderHash);
+        },
+        error: function(json) {
+          console.log(json);
+        },
+        complete: function(json) {}
+      }
+      // Pega o token do cartão digitado
+      PagSeguroDirectPayment.createCardToken(param);
     });
 
     jQuery(function($) {
 
-        var shippingCoast = parseFloat($("input[name='shippingCoast']").val());
-        var amount = parseFloat($("input[name='amount']").val());
-        $("input[name='installmentValue']").val(amount + shippingCoast);
+      var shippingCoast = parseFloat($("input[name='shippingCoast']").val());
+      var amount = parseFloat($("input[name='amount']").val());
+      $("input[name='installmentValue']").val(amount + shippingCoast);
 
-        PagSeguroDirectPayment.setSessionId('<?php echo $sessionCode;?>');
+      PagSeguroDirectPayment.setSessionId('<?php echo $sessionCode; ?>');
 
-        PagSeguroDirectPayment.getPaymentMethods({
-            success: function(json){
+      PagSeguroDirectPayment.getPaymentMethods({
+        success: function(json) {
 
-                console.log(json);
-                getInstallments();
+          console.log(json);
+          getInstallments();
 
-            }, error: function(json){
-                console.log(json);
-                var erro = "";
-                for(i in json.errors){
-                    erro = erro + json.errors[i];
-                }
-                
-                alert(erro);
-            }, complete: function(json){
-            }
-        });
-        });
+        },
+        error: function(json) {
+          console.log(json);
+          var erro = "";
+          for (i in json.errors) {
+            erro = erro + json.errors[i];
+          }
+
+          alert(erro);
+        },
+        complete: function(json) {}
+      });
+    });
   </script>
 
 </body>

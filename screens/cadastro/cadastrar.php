@@ -4,7 +4,7 @@ require __DIR__ . "/../../connection/connection.php";
 
 $name_complete = mysqli_real_escape_string($conn, $_POST['nome']);
 $cpf = mysqli_real_escape_string($conn, $_POST['cpf']);
-$photo_profile = mysqli_real_escape_string($conn, $_POST['profile']);
+$photo_profile = mysqli_real_escape_string($conn, $_POST['file']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $password = mysqli_real_escape_string($conn, password_hash($_POST['senha'], PASSWORD_DEFAULT));
 $telephone = mysqli_real_escape_string($conn, $_POST['telefone']);
