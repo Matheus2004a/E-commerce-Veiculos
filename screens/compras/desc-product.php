@@ -13,6 +13,8 @@ require __DIR__ . "/../../connection/connection.php";
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../home/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="desc_product.css">
 </head>
 
 <body>
@@ -28,6 +30,12 @@ require __DIR__ . "/../../connection/connection.php";
     $row = mysqli_fetch_assoc($result_query);
 
     echo "<main>
+        <a href='index.php'>
+            <span class='return-page w-fit flex align-items-center gap-2'>
+                <i class='bx bx-arrow-back'></i>
+                <p>Voltar</p>
+            </span>
+        </a>
         <!-- Image gallery -->
         <div class='mt-6 max-w-2xl mx-auto items-center sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8'>
             <div class='hidden lg:grid lg:grid-cols-1 lg:gap-y-8'>
@@ -43,7 +51,7 @@ require __DIR__ . "/../../connection/connection.php";
                 <p class='text-base text-gray-900'>" . $row['desc_prod'] . "</p>
                 <p class='text-3xl text-gray-900'>R$" . $row['preco_custo_prod'] . "</p>
                 <p class='text-base text-gray-900'>Selecione a quantidade:</p>
-                <input type='number' class='w-1/6 p-1 rounded border border-secondary outline-none' min='1' max=". $row['qtd_estoque'] .">
+                <input type='number' class='w-1/6 p-1 rounded border border-secondary outline-none' min='1' max=" . $row['qtd_estoque'] . ">
 
                 <!-- Reviews -->
                 <div class='mt-6'>
