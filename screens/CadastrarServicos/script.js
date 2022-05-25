@@ -1,5 +1,5 @@
 const horarios = [];
-let idPlaceHour = 1;
+let id = 1;
 let count = 0;
 let format = " (BRT) Horario de Brasilia"
 
@@ -40,12 +40,50 @@ function saveHour(event) {
             console.log("if 2")
             if (horarios.indexOf(hour) == -1) { // VERIFICA SE O HORARIO JÁ FOI CADASTRADO
                 console.log("if 3")
-                let placeHour = document.getElementById(idPlaceHour).value = hour;
-                horarios.push(placeHour)
-                idPlaceHour++
+                // let placeHour = document.getElementById(idPlaceHour).value = hour;
+
+
+                let inputHour = document.createElement("input")
+                inputHour.setAttribute("type", "text")
+                inputHour.setAttribute("readonly", true)
+                inputHour.setAttribute("id", "hora" + id)
+                inputHour.setAttribute("name", "hora" + id)
+                inputHour.setAttribute("onfocus", "editHour(id)")
+                inputHour.setAttribute("onblur", "editedHour(id)")
+                inputHour.value = hour
+
+                let divHour = document.getElementById("horarios")
+                divHour.appendChild(inputHour)
+
+                horarios.push(inputHour.value)
+                id++
                 count++
             }
         }
     }
     console.log(horarios)
+}
+
+
+
+function editHour(id) {
+    let input = document.getElementById(id)
+    let index = horarios.indexOf(input.value)
+    input.type = "time"
+    input.readOnly = false
+    horarios.splice(index, 1)
+    input.focus()
+}
+
+function editedHour(id) {
+    let input = document.getElementById(id)
+    
+    if (input.value == "") {
+        input.remove()
+    } else {
+        input.type = "text"
+        input.readOnly = true
+        input.value += format
+        horarios.push(input.value)
+    }
 }

@@ -13,7 +13,17 @@
 <body onload="setMinDay()">
     <?php
     require "../../connection/connection.php";
+    
+    $sql_profile = "SELECT id, nome, telefone, email FROM dados_mecanico WHERE id = $_GET[id_user]";
+    $profil_data = mysqli_query($conn,$sql_profile);
+
+    while($row = mysqli_fetch_assoc($profil_data)) {
+        $name = $row['nome'];
+        $telefone = $row['telefone'];
+    }
     ?>
+
+
     <div class="container">
         <!-- DIV CONTAINER LADO ESQUERDO DA TELA -->
         <div class="header">header</div>
@@ -23,8 +33,8 @@
             <div class="perfil">
                 <img src="./assets/euPerfil.jpg" alt="img perfil">
                 <div class="divNameDesc">
-                    <span class="spanName">Talison Brendon</span>
-                    <span class="spanDescription">Mecanico formado a 7 anos pelo senai</span>
+                    <span class="spanName"><?php echo $name; ?></span>
+                    <span class="spanDescription"><?php echo $telefone; ?></span>
                 </div>
                 <button id="btnClosePerfil">
                     <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
@@ -37,18 +47,17 @@
             <!-- CONTAINER BOTEOS CHAT E CANCEL -->
             <div class="chatCancel">
                 <button class="chat">Chat</button>
-                <button class="cancel">Cancelar</button>
+                <button class="cancel" onclick="location.href='../listService/#'" >Cancelar</button>
             </div>
 
             <!-- CONTAINER DA DESCRIÇÃO E NOME DO SERVIÇO -->
             <?php
 
-            $sql = "select nome_servico, desc_servico, val_servico from tbl_servicos where id_servico = 14;";
+            $sql = "SELECT nome_servico, desc_servico, val_servico FROM tbl_servicos WHERE id_servico = $_GET[id_servico];";
             $result = mysqli_query($conn, $sql);
 
             while ($row = mysqli_fetch_assoc($result)) {
                 $valor = $row['val_servico'];
-
                 echo '<div class="description">';
                 echo     '<span class="nameService">' . $row['nome_servico'] . '</span>';
                 echo     '<span class="valService">Valor: R$' . $row['val_servico'] . '</span>';
@@ -68,7 +77,7 @@
 
                 <?php
 
-                $sql = "select hora_disponivel  from tbl_horarios where fk_id_servico = 7;";
+                $sql = "SELECT hora_disponivel  FROM tbl_horarios_servicos WHERE fk_id_servico = $_GET[id_servico];";
                 $result = mysqli_query($conn, $sql);
 
                 echo '<div class="buttonHour">';
@@ -98,6 +107,8 @@
                 <form action="scriptResult.php" method="post">
                     <input type="hidden" name="data" id="hiddenData">
                     <input type="hidden" name="hora" id="hiddenHora">
+                    <input type="hidden" name="id_user" value="<?php echo $_GET['id_user'];?>">
+                    <input type="hidden" name="id_service" value="<?php echo $_GET['id_servico'];?>">
                     <input type="hidden" name="observacao" id="hiddenObs">
                     <input type="submit" class="btnConfirm" value="Confirmar" onclick="pickValues()">
                 </form>
