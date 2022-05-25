@@ -53,14 +53,13 @@ require __DIR__ . "/../../connection/connection.php";
 					<input class="form-control" type="search" placeholder="Pesquise aqui o que você procura..." aria-label="Search" name="search">
 				</form>
 
-				<form class="flex gap-2 w-1/4" action="" method="post">
+				<form class="flex gap-2 w-1/4" action="" method="post" id="order">
 					<select class="form-select" name="select-filter" aria-label="select">
 						<option selected>Filtrar por</option>
 						<option value="maior">Maior preço</option>
 						<option value="menor">Menor preço</option>
 						<option value="a-z">De A à Z</option>
 					</select>
-					<button class="bg-blue-600 btn btn-primary" type="submit">Filtrar</button>
 				</form>
 			</div>
 
