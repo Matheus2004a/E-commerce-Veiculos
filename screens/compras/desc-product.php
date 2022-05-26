@@ -52,72 +52,10 @@ require __DIR__ . "/../../connection/connection.php";
                 <p class='text-3xl text-gray-900'>R$" . $row['preco_custo_prod'] . "</p>
                 <p class='text-base text-gray-900'>Selecione a quantidade:</p>
                 <input type='number' class='w-1/6 p-1 rounded border border-secondary outline-none' min='1' max=" . $row['qtd_estoque'] . ">
-
-                <!-- Reviews -->
-                <div class='mt-6'>
-                    <div class='flex items-center'>
-                        <div class='flex items-center'>
-                            <!-- Heroicon name: solid/star Active: 'text-gray-900', Default: 'text-gray-200'-->
-                            <svg class='text-gray-900 h-5 w-5 flex-shrink-0' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-                                <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                            </svg>
-
-                            <!-- Heroicon name: solid/star -->
-                            <svg class='text-gray-900 h-5 w-5 flex-shrink-0' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-                                <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                            </svg>
-
-                            <!-- Heroicon name: solid/star -->
-                            <svg class='text-gray-900 h-5 w-5 flex-shrink-0' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-                                <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                            </svg>
-
-                            <!-- Heroicon name: solid/star -->
-                            <svg class='text-gray-900 h-5 w-5 flex-shrink-0' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-                                <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                            </svg>
-
-                            <!-- Heroicon name: solid/star -->
-                            <svg class='text-gray-200 h-5 w-5 flex-shrink-0' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-                                <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                            </svg>
-                        </div>
-                        <p class='sr-only'>4 out of 5 stars</p>
-                        <a href='#' class='ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500'>117 reviews</a>
-                    </div>
-                </div>
-
                 <!-- Product info -->
                 <!-- Options -->
                 <div class='lg:mt-0 lg:row-span-3'>
-                    <button type='submit' class='mt-4 w-2/6 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>Comprar agora</button>
-                </div>
-            </div>
-
-            <div class='py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8'>
-                <!-- Description and details -->
-                <div class='mt-10'>
-                    <h3 class='text-sm font-medium text-gray-900'>Highlights</h3>
-
-                    <div class='mt-4'>
-                        <ul role='list' class='block pl-4 list-disc text-sm space-y-2'>
-                            <li class='text-gray-400'><span class='text-gray-600'>Hand cut and sewn locally</span></li>
-
-                            <li class='text-gray-400'><span class='text-gray-600'>Dyed with our proprietary colors</span></li>
-
-                            <li class='text-gray-400'><span class='text-gray-600'>Pre-washed &amp; pre-shrunk</span></li>
-
-                            <li class='text-gray-400'><span class='text-gray-600'>Ultra-soft 100% cotton</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class='mt-10'>
-                    <h2 class='text-sm font-medium text-gray-900'>Details</h2>
-
-                    <div class='mt-4 space-y-6'>
-                        <p class='text-sm text-gray-600'>The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming &quot;Charcoal Gray&quot; limited release.</p>
-                    </div>
+                    <button type='submit' class='mt-2 w-2/6 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>Comprar agora</button>
                 </div>
             </div>
         </div>
