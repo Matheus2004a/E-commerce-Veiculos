@@ -2,8 +2,14 @@ main{
     position: relative;
 }
 
-.return-page{
-    position: absolute;
-    left: 4%;
-    top: 7%;
+.wrapper-search span{
+    position: relative;
+    left: 3rem;
+    top: 5rem;
+}
+
+.wrapper-search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

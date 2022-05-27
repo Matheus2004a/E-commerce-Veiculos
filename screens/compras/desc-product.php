@@ -19,7 +19,6 @@ require __DIR__ . "/../../connection/connection.php";
 
 <body>
     <a name="top-page"></a>
-
     <?php
     require "../../components/header.php";
 
@@ -28,14 +27,21 @@ require __DIR__ . "/../../connection/connection.php";
     $result_query = mysqli_query($conn, $sql);
 
     $row = mysqli_fetch_assoc($result_query);
-
     echo "<main>
-        <a href='index.php'>
-            <span class='return-page w-fit flex align-items-center gap-2'>
-                <i class='bx bx-arrow-back'></i>
-                <p>Voltar</p>
-            </span>
-        </a>
+        <div class='container'>
+            <div class='wrapper-search mt-4'>
+                <a href='index.php'>
+                    <span class='return-page w-fit flex align-items-center gap-2'>
+                        <i class='bx bx-arrow-back'></i>
+                        <p>Voltar</p>
+                    </span>
+                </a>
+                <form action='' method='post'>
+                    <input type='search' class='form-control w-70' name='search' placeholder='Pesquise aqui'>
+                </form>
+            </div>
+        </div>
+        
         <!-- Image gallery -->
         <div class='mt-6 max-w-2xl mx-auto items-center sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8'>
             <div class='hidden lg:grid lg:grid-cols-1 lg:gap-y-8'>
@@ -59,10 +65,10 @@ require __DIR__ . "/../../connection/connection.php";
                 </div>
             </div>
         </div>
-</main>";
+    </main>";
 
-    $sql_more_prod = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE categoria_prod LIKE '%$row[categoria_prod]%' ORDER BY nome_prod LIMIT 4";
-    $result_more_prod = mysqli_query($conn, $sql_more_prod);
+    $sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE categoria_prod LIKE '%$row[categoria_prod]%' ORDER BY nome_prod LIMIT 4";
+    $result_more_prod = mysqli_query($conn, $sql);
     ?>
 
     <div class='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
