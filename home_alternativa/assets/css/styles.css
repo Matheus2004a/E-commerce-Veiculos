@@ -27,6 +27,14 @@ body {
     margin: .5rem;
 }
 
+.goog-logo-link {
+    display:none !important;
+} 
+    
+.goog-te-gadget {
+    color: transparent !important;
+}
+
 .navbar-links ul {
     display: flex;
     margin: 0;
