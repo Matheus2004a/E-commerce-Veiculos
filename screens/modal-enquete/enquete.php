@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="../../dist/css/index.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
@@ -21,9 +21,6 @@
                     <form action="../../functions/InserirEnquete.php" method="post">
                         <h4>Digite sua sugestão para melhoria do sistema</h4>
                         <div class="flex-container">
-                            <div class="textArea_Descricao">
-                                <textarea name="descricao_sistem" id="descricao_sistema" cols="30" rows="10" placeholder=""></textarea>
-                            </div>
                             <div class="radioAvaliacao">
 
                                 <p class="radio_cont">Bom</p>
