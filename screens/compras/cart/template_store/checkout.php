@@ -73,14 +73,36 @@ echo $id;
 
 <body class="bg-light">
 
+
   <div class="container">
+
     <main>
       <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="../../../.././images/icones/brand header.png" alt="" width="72" height="57">
+        <a href="../../../../index.php">
+          <img class="mx-auto " src="../../../.././images/icones/brand header.png" alt="" width="72" height="57">
+        </a>
         <h2>Checkout</h2>
 
       </div>
-
+      <h4>Tipos de pagamento:</h4>
+      <div class="d-flex flex-row mb-3">
+        <div class="p-2">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Cartão de crédito
+            </label>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+             Boleto
+            </label>
+          </div>
+        </div>
+      </div>
       <div class="row g-5">
         <div class="col-md-5 col-lg-4 order-md-last">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -89,13 +111,13 @@ echo $id;
           <ul class="list-group mb-3">
             <?php
             // Select Usuario Logado
-            
+
 
             $count = 0;
             $totd = $_GET['total'];
             $json = json_encode($_SESSION['carrinho']);
             echo $json;
-            
+
             foreach ($_SESSION['carrinho'] as $cd => $qtd) {
               $select = "SELECT * FROM tbl_produtos WHERE id_prod = " . $cd . " ";
               $query = mysqli_query($conn, $select);
@@ -218,12 +240,12 @@ echo $id;
                     <div class="BandeiraCartao"></div>
                   </span>
                 </div>
-              <?php 
-              //Transforma dados do select em array 
-           
-              
-            
-              ?>
+                <?php
+                //Transforma dados do select em array 
+
+
+
+                ?>
                 <!--<input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="" required value="4111111111111111">!-->
                 <div class="invalid-feedback">
                   Credit card number is required
@@ -309,34 +331,16 @@ echo $id;
   <script src="form-validation.js"></script>
 
   <script>
-    //Uso da api ViaCep para requisitar cep do usuário
-    'use strict';
-    //APi ViaCep para pesquisa de endereço dinâmico
-    const preencherFormulario = (endereco) => {
-      document.getElementById('endereco').value = endereco.logradouro;
-      document.getElementById('bairroEnd').value = endereco.bairro;
-      document.getElementById('cidadeEnd').value = endereco.localidade;
-      document.getElementById('estadoEnd').value = endereco.uf;
-    }
-    const pesquisarCep = async () => {
-      const cep = document.getElementById('cepEndec').value;
-      const url = 'https://viacep.com.br/ws/' + cep + '/json/';
-      const dados = await fetch(url);
-      const endereco = await dados.json();
-      preencherFormulario(endereco);
-
-    }
-
-    document.getElementById('cepEndec')
-      .addEventListener('focusout', pesquisarCep);
+   
   </script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js" integrity="sha512-hAJgR+pK6+s492clbGlnrRnt2J1CJK6kZ82FZy08tm6XG2Xl/ex9oVZLE6Krz+W+Iv4Gsr8U2mGMdh0ckRH61Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript" src="<?= $JS_FILE_URL ?>"></script>
 
+  <script src="../../PagSeguro/viaCepJs/viaCep.js"></script>
+  
   <script>
-    //Funções responsáveis pra armazenar dados para api PagSeguro
     $("input[name='cardNumber']").on('keyup', function() {
       var NumeroCartao = $(this).val();
       var QtdCaracteres = NumeroCartao.length;
@@ -358,6 +362,7 @@ echo $id;
   </script>
 
   <script>
+    
     // Mascaras para input de cep,cpf,telefone    
     $('#cepEndec').mask('00000-000');
     $('#cpf').mask('000.000.000-00', {
@@ -433,7 +438,7 @@ echo $id;
       });
     }
 
-    $("#creditCardCvv").on('blur',function() {
+    $("#creditCardCvv").on('blur', function() {
       var param = {
         cardNumber: $("input[name='cardNumber']").val().replace(/ /g, ''),
         brand: $("input[name='brand']").val(),
@@ -485,7 +490,6 @@ echo $id;
       });
     });
   </script>
-
 </body>
 
 </html>
