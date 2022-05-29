@@ -12,7 +12,6 @@ session_start();
 	<link rel="stylesheet" href="./home_alternativa/assets/css/main.css" />
 	<link rel="stylesheet" href="./home_alternativa/assets/css/background_styles.css">
 	<link rel="stylesheet" href="./home_alternativa/assets/css/styles.css">
-	<script src="./home_alternativa/assets/js/script.js" defer></script>
 </head>
 
 <body class="is-preload">
@@ -55,9 +54,9 @@ session_start();
 
 	<!-- Wrapper -->
 	<div id="wrapper">
-
 		<!-- Main -->
 		<div id="main">
+		<div id="google_translate_element"></div>
 			<div class="inner">
 				<!-- Banner -->
 				<section id="banner">
@@ -185,12 +184,14 @@ session_start();
 	</div>
 
 	<!-- Scripts -->
+	<script src="./components/traducao.js"></script>
 	<script src="./home_alternativa/assets/js/jquery.min.js"></script>
 	<script src="./home_alternativa/assets/js/browser.min.js"></script>
 	<script src="./home_alternativa/assets/js/breakpoints.min.js"></script>
 	<script src="./home_alternativa/assets/js/util.js"></script>
 	<script src="./home_alternativa/assets/js/main.js"></script>
-
+	<script src="./home_alternativa/assets/js/script.js"></script>
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
