@@ -60,6 +60,11 @@ body.dark .switch::before{
     left: 20px;
 }
 
+input,select,button{
+    border: none;
+    outline: none;
+}
+
 /* Sidebar */
  .sidebar{
     position: fixed;
@@ -83,7 +88,6 @@ body.dark .switch::before{
     list-style: none;
     display: flex;
     align-items: center;
-    margin-top: 10px;
 }
 
 .sidebar header .image,
@@ -179,10 +183,8 @@ header .image-text .profession{
 }
 
 .sidebar .menu-bar{
-    display: grid;
-    gap: 5rem;
-    margin-top: 40px;
-    overflow-y: scroll;
+    margin-top: 2.5rem;
+    overflow-y: auto;
 }
 
 .sidebar li.search-box{
@@ -229,6 +231,10 @@ header .image-text .profession{
 
 .menu-bar::-webkit-scrollbar{
     display: none;
+}
+
+.menu,.menu-links{
+    padding: 0;
 }
 
 .sidebar .menu-bar .mode{
@@ -290,17 +296,55 @@ header .image-text .profession{
     width: calc(100% - 250px);
     background-color: var(--body-color);
     transition: var(--tran-03);
+    padding: .5% 5% 0;
 }
 
 .home .text{
     font-size: 30px;
     font-weight: 500;
     color: var(--text-color);
-    padding: 12px 60px;
+    padding: 12px 0;
+}
+
+.home .input-group-search{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.home input[type='search']{
+    padding: 5px 10px;
+}
+
+.home input[type='search'] span i{
+    position: absolute;
+    right: 5px;
+}
+
+.home button{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .sidebar.close ~ .home{
     left: 78px;
     height: 100vh;
     width: calc(100% - 78px);
+}
+
+.home table tr th img{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.home table td :is(.status-payment,.status-delivery){
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: .25rem;
+    font-size: .75rem;
+    border-radius: .25rem;
 }
