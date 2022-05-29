@@ -82,7 +82,7 @@ require __DIR__ . "/../../connection/connection.php";
                 <!-- Product info -->
                 <!-- Options -->
                 <div class='lg:mt-0 lg:row-span-3'>
-                    <button type='submit' class='mt-4 w-2/6 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>Comprar agora</button>
+                    <a href='./cart/template_store/cart.php?acao=add&id_prod=".$row['id_prod']."' ><button class='mt-4 w-2/6 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>Comprar agora</button></a>
                 </div>
             </div>
 
@@ -117,7 +117,9 @@ require __DIR__ . "/../../connection/connection.php";
 
     $sql_more_prod = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE categoria_prod LIKE '%$row[categoria_prod]%' ORDER BY nome_prod LIMIT 4";
     $result_more_prod = mysqli_query($conn, $sql_more_prod);
+
     ?>
+
 
     <div class='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h2 class='text-2xl font-semibold'>As pessoas também compraram</h2>
