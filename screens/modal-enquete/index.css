@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+.radioAvaliacao{
+   display: flex;
+}
+
+.radio_cont p{
+    text-align: center;
+    padding-right: 30px;
+}
