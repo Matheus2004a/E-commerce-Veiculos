@@ -32,14 +32,7 @@ session_start();
 					<li><a href="##">Sobre</a></li>
 					<li><a href="./screens/login/index.php">Login</a></li>
 					<li><a href="./screens/compras/index.php">Compras</a></li>
-					
 					<li><a href="./screens/listService/index.php">Serviços</a></li>
-					<li><a href="./screens/contact/contato.php">Contato</a></li>
-					<?php
-						if($_SESSION['category'] == "mecânico"){
-							echo '<li> <a href="./screens/CadastrarServicos/index.php"> Cadastrar Serviço</a></li>';
-						}
-						?>
 					<li><a href="./screens/login/logout.php">Sair</a></li>
 					<?php 
 						
@@ -48,6 +41,11 @@ session_start();
 					}else{
 						unset($_SESSION['image']);
 					}
+
+					if(!($_SESSION['category']))
+						{
+							echo '<li><img src="./images/Usuarios/perfil.png" alt=""></li>';
+						}
 					
 					?>
 				</ul>
