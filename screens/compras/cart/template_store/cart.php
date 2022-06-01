@@ -18,13 +18,11 @@ if (!empty($_GET['acao'])) {
 		}
 	}
 }
-/*if ($_GET['acao'] == 'del') {
+if ($_GET['acao'] == 'del') {
 	$id = ($_GET['id']);
 	if (isset($_SESSION['carrinho'][$id])) {
 		unset($_SESSION['carrinho'][$id]);
 	}
-}else{
-	
 }
 if ($_GET['acao'] == 'up') {
 	if (is_array($_POST['idproduto'])) {
@@ -38,9 +36,7 @@ if ($_GET['acao'] == 'up') {
 			}
 		}
 	}
-}else{
-	
-}*/
+}
 
 
 
@@ -141,7 +137,7 @@ $total = 0;
 										<div class="display-tc">
 											<form method="post" action="?acao=up">
 												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="' . $qtd . '" min="1" max="100"> 
-												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" value="' . $qtd . '"> <br>
+												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" id="idproduto" value="' . $qtd . '"> <br>
 											</form>
 										</div>
 									</div>
@@ -205,24 +201,10 @@ $total = 0;
 								<form id="formDestino" action="">
 
 									<input name="sCepOrigem" type="hidden" value="12230610">
-
-
-
-									
-
-
-
 									<input name="nVlPeso" type="hidden" value="1">
-
-
-
 									<input name="nVlComprimento" type="hidden" value="15">
-
-
-
 									<input name="nVlAltura" type="hidden" value="15">
 									<input name="nVlLargura" type="hidden" value="15">
-
 									<div class="col-md-3 col-md-push-1 text-center">
 										<label for="">Cep destino</label>
 										<input name="sCepDestino" type="text" class="form-control">
@@ -232,9 +214,7 @@ $total = 0;
 												<option value="04014">Sedex</option>
 												<option value="04510">PAC</option>
 											</select>
-										
-
-										<p><button type="button" id="calcular">Calcular</button></p>
+										<button type="button" id="calcular" class="btn btn-primary">Calcular</button>
 									</div>
 								</form>
 								<p id="resultado"></p>
