@@ -8,6 +8,17 @@
             );
         ";
           $insert = mysqli_query($conn,$pedidosInsert);
+          if(mysqli_query($conn,$pedidosInsert)){
+            echo "
+            <script>
+            window.onload = function() {
+                  $('#myModal').modal();
+              }
+            </script>
+            ";
+          }else{
+            echo "Erro";
+          }
         }
   
        

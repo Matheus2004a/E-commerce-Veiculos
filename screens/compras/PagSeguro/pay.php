@@ -113,45 +113,59 @@ $header = array('Content-Type' => 'application/json; charset=UTF-8;');
 $response = curlExec($PAGSEGURO_API_URL . "/transactions", $params, $header);
 //Transforma dados em json
 $json = json_decode(json_encode(simplexml_load_string($response)));
+
 ?>
 
 
-
+  <head>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </head>
 <body>
 
-  
-  
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Obrigado por comprar conosco</h4>
-        </div>
-        <div class="modal-body">
-          <p>Valor por item: <?php echo $valItemProd ?></p>
 
-          <p>Valor da Compra: <?php echo $_POST["installments"] . ' x R$ ' . $_POST["installmentValue"]; ?></p>
-          <p>Código do produto: <?php echo $json->code; ?></p>
-        </div>
-        <div class="modal-footer">
-          <a href="../index.php"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></a>
-        </div>
-        
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><b>Obrigado por comprar conosco</b> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-
+      <div class="modal-body">
+        <p>Código da compra: <?php  echo $json->code ?></p>
+        <p>Valor por item: <?php echo $valItemProd ?> </p>
+        <p>Valor da compra: <?php  echo $_POST["installments"] . ' x R$ ' . $_POST["installmentValue"]; ?></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
-
+</div>
+  
+  
+  
+<img src="../index.php" alt="">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script>
     window.onload = function() {
-        $("#myModal").modal();
-    }
+  $("#myModal").modal({
+    show: true
+  });
+}
+   function paginaPrincipal()
+   {
+     window.location.href= "../index.php";
+   }
+   setTimeout(paginaPrincipal,5000);
   </script>
+
 </body>
 <?php
   mysqli_close($conn);
