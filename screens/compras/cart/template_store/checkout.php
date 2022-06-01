@@ -115,8 +115,6 @@ echo $id;
 
             $count = 0;
             $totd = $_GET['total'];
-            $json = json_encode($_SESSION['carrinho']);
-            echo $json;
 
             foreach ($_SESSION['carrinho'] as $cd => $qtd) {
               $select = "SELECT * FROM tbl_produtos WHERE id_prod = " . $cd . " ";
@@ -136,6 +134,11 @@ echo $id;
             }
             ?>
           </ul>
+          <div class="col-md-7 col-lg-8">
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <h6 class="my-0">Total: <?php echo $totd?></h6>
+            </li>
+          </div>
 
 
 
@@ -251,7 +254,7 @@ echo $id;
                   Credit card number is required
                 </div>
               </div>
-              <?php echo $qtd ?>
+
               <input type="hidden" name="brand">
               <input type="hidden" name="token">
               <input type="hidden" name="senderHash">
@@ -306,7 +309,7 @@ echo $id;
             </div>
 
             <hr class="my-4">
-            <a href="./cart.php"><button class="btn btn-primary btn-lg">Voltar para o carrinho</button></a>
+            <a href="./cart.php?acao=''" class="btn btn-primary btn-lg">Voltar para o carrinho</a>
             <button class=" btn btn-primary btn-lg" type="submit">Continue to checkout</button>
           </form>
         </div>
