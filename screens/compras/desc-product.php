@@ -28,23 +28,17 @@ require __DIR__ . "/../../connection/connection.php";
 
     $row = mysqli_fetch_assoc($result_query);
     echo "<main>
-        <div class='container'>
-            <div class='wrapper-search mt-4'>
-                <a href='index.php'>
-                    <span class='return-page w-fit flex align-items-center gap-2'>
-                        <i class='bx bx-arrow-back'></i>
-                        <p>Voltar</p>
-                    </span>
-                </a>
-                <form action='' method='post'>
-                    <input type='search' class='form-control w-70' name='search' placeholder='Pesquise aqui'>
-                </form>
-            </div>
-        </div>
-        
         <!-- Image gallery -->
+        <div class='container wrapper-search'>
+            <a href='index.php'>
+                <span class='return-page w-fit flex align-items-center gap-2'>
+                    <i class='bx bx-arrow-back'></i>
+                    <p>Voltar</p>
+                </span>
+            </a>
+        </div>
         <div class='mt-6 max-w-2xl mx-auto items-center sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8'>
-            <div class='hidden lg:grid lg:grid-cols-1 lg:gap-y-8'>
+            <div class='lg:grid lg:grid-cols-1 lg:gap-y-8'>
                 <div class='aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4'>
                     <figure>
                         <img src='" . $row['foto_prod'] . "' alt='Model wearing plain white basic tee.' class='w-full h-full object-center object-cover'>
@@ -55,7 +49,7 @@ require __DIR__ . "/../../connection/connection.php";
             <div class='grid gap-3 lg:col-span-2 lg:pr-8'>
                 <h1 class='text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl'>" . $row['nome_prod'] . "</h1>
                 <p class='text-base text-gray-900'>" . $row['desc_prod'] . "</p>
-                <p class='text-3xl text-gray-900'>R$" . $row['preco_custo_prod'] . "</p>
+                <p class='text-3xl text-gray-900'>R$ " . number_format($row['preco_custo_prod'], 2, ",", ".") . "</p>
                 <p class='text-base text-gray-900'>Selecione a quantidade:</p>
                 <input type='number' class='w-1/6 p-1 rounded border border-secondary outline-none' min='1' max=" . $row['qtd_estoque'] . ">
                 <!-- Product info -->
@@ -67,7 +61,7 @@ require __DIR__ . "/../../connection/connection.php";
         </div>
     </main>";
 
-    $sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE categoria_prod LIKE '%$row[categoria_prod]%' ORDER BY nome_prod LIMIT 4";
+    $sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE categoria_prod LIKE '%$row[categoria_prod]%' AND `id_prod` <> '$id_product' ORDER BY nome_prod";
     $result_more_prod = mysqli_query($conn, $sql);
     ?>
 
@@ -77,15 +71,15 @@ require __DIR__ . "/../../connection/connection.php";
             <?php
             while ($row_prod = mysqli_fetch_assoc($result_more_prod)) {
                 echo "<div class='group shadow-md rounded-lg'>
-                <a href='desc-product.php?id=" . $row_prod['id_prod'] . "'>
+                    <a href='desc-product.php?id=" . $row_prod['id_prod'] . "'>
                         <div class='w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-t-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8'>
                             <figure>
                                 <img src=' " . $row_prod['foto_prod'] . "' alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
                             </figure>
-                        </div>
-                        <div class='p-3'>
-                            <h3 class='text-base text-gray-700 truncate'>" . $row_prod['nome_prod'] . "</h3>
-                            <p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900'>R$ " . $row_prod['preco_custo_prod'] . "</p>
+                            </div>
+                            <div class='p-3'>
+                                <h3 class='text-base text-gray-700 truncate'>" . $row_prod['nome_prod'] . "</h3>
+                                <p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900'>R$ " . number_format($row_prod['preco_custo_prod'], 2, ",", ".") . "</p>
                             <a href='./cart/App/Controller/addCarrinho.php'>
                                 <button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary'>Adicionar ao carrinho</button>
                             </a>
