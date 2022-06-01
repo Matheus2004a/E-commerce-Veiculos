@@ -8,6 +8,13 @@ body {
     scroll-behavior: smooth;
 }
 
+#google_translate_element {
+    position: absolute;
+    left: 2%;
+    top: 20%;
+    display: block;
+}
+
 .navbar {
     position:-webkit-sticky;
     position: sticky;
