@@ -35,16 +35,17 @@ session_start();
 					<li><a href="./screens/login/logout.php">Sair</a></li>
 					<?php 
 						
-					if(isset($_SESSION['image'])){
-						echo'<a href="./screens/DashboardMecanico/index.php"> <li> <img src="./images/Usuarios/'.$_SESSION['image']  .'" class="img_usuario" alt=""></li> </a>';
+					if($_SESSION['category'] == 'mecânico'){
+						echo'<a href="./screens/requests/index.php"> <li> <img src="./images/Usuarios/'.$_SESSION['image']  .'" class="img_usuario" alt=""></li> </a>';
 					}else{
-						unset($_SESSION['image']);
+						echo'<a href="./screens/DashboardMecanico/index.php"> <li> <img src="./images/Usuarios/'.$_SESSION['image']  .'" class="img_usuario" alt=""></li> </a>';
 					}
 
 					if(!($_SESSION['category']))
 						{
 							echo '<li><img src="./images/Usuarios/perfil.png" alt=""></li>';
 						}
+						
 					
 					?>
 				</ul>
