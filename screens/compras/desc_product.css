@@ -1,15 +1,15 @@
+.wrapper-search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5rem;
+}
+
 main{
-    position: relative;
+    gap: 1rem;
 }
 
 .wrapper-search span{
     position: relative;
     left: 3rem;
-    top: 5rem;
-}
-
-.wrapper-search{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
