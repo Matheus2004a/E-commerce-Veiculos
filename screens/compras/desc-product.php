@@ -27,16 +27,23 @@ require __DIR__ . "/../../connection/connection.php";
     $result_query = mysqli_query($conn, $sql);
 
     $row = mysqli_fetch_assoc($result_query);
-    echo "<main>
-        <!-- Image gallery -->
-        <div class='container wrapper-search'>
-            <a href='index.php'>
-                <span class='return-page w-fit flex align-items-center gap-2'>
-                    <i class='bx bx-arrow-back'></i>
-                    <p>Voltar</p>
-                </span>
-            </a>
+    ?>
+
+    <div class='container wrapper-search'>
+        <a href='index.php'>
+            <span class='return-page w-fit flex align-items-center gap-2'>
+                <i class='bx bx-arrow-back'></i>
+                <p>Voltar</p>
+            </span>
+        </a>
+        <div class='mb-3'>
+            <input type='text' class='form-control' placeholder='Pesquise aqui'>
         </div>
+    </div>
+
+    <?php
+    echo "<section>
+        <!-- Image gallery -->
         <div class='mt-6 max-w-2xl mx-auto items-center sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8'>
             <div class='lg:grid lg:grid-cols-1 lg:gap-y-8'>
                 <div class='aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4'>
@@ -59,13 +66,13 @@ require __DIR__ . "/../../connection/connection.php";
                 </div>
             </div>
         </div>
-    </main>";
+    </section>";
 
     $sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE categoria_prod LIKE '%$row[categoria_prod]%' AND `id_prod` <> '$id_product' ORDER BY nome_prod";
     $result_more_prod = mysqli_query($conn, $sql);
     ?>
 
-    <div class='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
+    <main class='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h2 class='text-2xl font-semibold'>As pessoas também compraram</h2>
         <article class='grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 mt-5'>
             <?php
@@ -87,10 +94,64 @@ require __DIR__ . "/../../connection/connection.php";
                     </a>
                 </div>";
             }
-            mysqli_close($conn);
             ?>
         </article>
-    </div>
+
+        <?php
+        $page = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+        $sql_pagination = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos`";
+        $result_page = mysqli_query($conn, $sql_pagination);
+
+        // Número de registros por página
+        $total_page = 6;
+        $total_rows = mysqli_num_rows($result_page);
+
+        $total_register = ceil($total_rows / $total_page);
+
+        // Calcula o total de registros iniciais para visualização dos produtos
+        $initial_registers = ($total_page * $page) - $total_page;
+        $limit = mysqli_query($conn, "$sql_pagination LIMIT $initial_registers, $total_register");
+
+        $previous_page = $page - 1;
+        $next_page = $page + 1;
+
+        mysqli_close($conn);
+        ?>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <?php
+                if ($page > 1) {
+                ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?pagina=<?php $previous_page ?>" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                <?php } ?>
+
+                <?php
+                for ($i = 1; $i < $total_page; $i++) {
+                    if ($page == $i) {
+                        echo "<li class='page-item active'><a class='page-link' href='?pagina=$i'>$i</a></li>";
+                    } else {
+                        echo "<li class='page-item'><a class='page-link' href='?pagina=$i'>$i</a></li>";
+                    }
+                }
+                ?>
+
+                <?php
+                if ($page < $total_page) {
+                ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?pagina=<?php $next_page ?>" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </nav>
+    </main>
 </body>
 
 </html>
