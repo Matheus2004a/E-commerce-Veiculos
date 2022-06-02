@@ -152,6 +152,10 @@ require __DIR__ . "/../../connection/connection.php";
             </ul>
         </nav>
     </main>
+
+    <?php
+        require "../../components/footer.php";
+    ?>
 </body>
 
 </html>
