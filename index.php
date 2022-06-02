@@ -27,27 +27,13 @@ session_start();
 			</a>
 			<div class="navbar-links">
 				<ul>
+					<div id="google_translate_element"></div>
 					<li><a href="##">Home</a></li>
 					<li><a href="##">Sobre</a></li>
 					<li><a href="./screens/login/index.php">Login</a></li>
 					<li><a href="./screens/compras/index.php">Compras</a></li>
 					<li><a href="./screens/listService/index.php">Serviços</a></li>
 					<li><a href="./screens/login/logout.php">Sair</a></li>
-					<?php 
-						
-					if($_SESSION['category'] == 'mecânico'){
-						echo'<a href="./screens/requests/index.php"> <li> <img src="./images/Usuarios/'.$_SESSION['image']  .'" class="img_usuario" alt=""></li> </a>';
-					}else{
-						echo'<a href="./screens/DashboardMecanico/index.php"> <li> <img src="./images/Usuarios/'.$_SESSION['image']  .'" class="img_usuario" alt=""></li> </a>';
-					}
-
-					if(!($_SESSION['category']))
-						{
-							echo '<li><img src="./images/Usuarios/perfil.png" alt=""></li>';
-						}
-						
-					
-					?>
 				</ul>
 			</div>
 		</nav>
@@ -57,7 +43,6 @@ session_start();
 	<div id="wrapper">
 		<!-- Main -->
 		<div id="main">
-		<div id="google_translate_element"></div>
 			<div class="inner">
 				<!-- Banner -->
 				<section id="banner">
