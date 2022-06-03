@@ -68,15 +68,23 @@ require __DIR__ . "/../../connection/connection.php";
         </div>
     </section>";
 
-    $sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE categoria_prod LIKE '%$row[categoria_prod]%' AND `id_prod` <> '$id_product' ORDER BY nome_prod";
-    $result_more_prod = mysqli_query($conn, $sql);
+    $page = isset($_GET['pagina']) ?  $_GET['pagina'] : 1;
+
+    // Número de registros por página
+    $total_page = 6;
+
+    // Calcula o total de registros iniciais para visualização dos produtos
+    $initial_registers = ($total_page * $page) - $total_page;
+
+    $sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE categoria_prod LIKE '%$row[categoria_prod]%' AND `id_prod` <> '$id_product' ORDER BY nome_prod LIMIT $initial_registers, $total_page";
+    $result_page = mysqli_query($conn, $sql);
     ?>
 
     <main class='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h2 class='text-2xl font-semibold'>As pessoas também compraram</h2>
         <article class='grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 mt-5'>
             <?php
-            while ($row_prod = mysqli_fetch_assoc($result_more_prod)) {
+            while ($row_prod = mysqli_fetch_assoc($result_page)) {
                 echo "<div class='group shadow-md rounded-lg'>
                     <a href='desc-product.php?id=" . $row_prod['id_prod'] . "'>
                         <div class='w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-t-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8'>
@@ -94,38 +102,20 @@ require __DIR__ . "/../../connection/connection.php";
                     </a>
                 </div>";
             }
+            mysqli_close($conn);
             ?>
         </article>
-
-        <?php
-        $page = isset($_GET['pagina']) ?  $_GET['pagina'] : 1;
-        $sql_pagination = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos`";
-        $result_page = mysqli_query($conn, $sql_pagination);
-
-        // Número de registros por página
-        $total_page = 6;
-        $total_rows = mysqli_num_rows($result_page);
-
-        $total_register = ceil($total_rows / $total_page);
-
-        // Calcula o total de registros iniciais para visualização dos produtos
-        $initial_registers = ($total_page * $page) - $total_page;
-        $limit = mysqli_query($conn, "$sql_pagination LIMIT $initial_registers, $total_register");
-
-        $previous_page = $page - 1;
-        $next_page = $page + 1;
-
-        mysqli_close($conn);
-        ?>
 
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <?php
+                $previous_page = $page - 1;
+                $next_page = $page + 1;
                 if ($page > 1) {
                 ?>
                     <li class="page-item">
-                    <?php   echo "<a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $previous_page . "' aria-label='Previous'>"; ?>
-                            <span aria-hidden="true">&laquo;</span>
+                        <?php echo "<a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $previous_page . "' aria-label='Previous'>"; ?>
+                        <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
                 <?php } ?>
@@ -144,8 +134,8 @@ require __DIR__ . "/../../connection/connection.php";
                 if ($page < $total_page) {
                 ?>
                     <li class="page-item">
-                    <?php   echo "<a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $next_page . "' aria-label='Previous'>"; ?>
-                            <span aria-hidden="true">&raquo;</span>
+                        <?php echo "<a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $next_page . "' aria-label='Previous'>"; ?>
+                        <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
                 <?php } ?>
@@ -154,7 +144,7 @@ require __DIR__ . "/../../connection/connection.php";
     </main>
 
     <?php
-        require "../../components/footer.php";
+    require "../../components/footer.php";
     ?>
 </body>
 
