@@ -89,7 +89,7 @@ session_start();
 									<h3 class='text-base text-gray-700 truncate' id='nomeProduto' value='11'>" . $row['nome_prod'] . "</h3>
 									<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900' value='".$row['preco']."' id='precoProduto'>R$ " . $row['preco'] . "" . $_SESSION['status_estoq'] . "</p>
 
-										<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()' ><a href='./cart/template_store/cart.php?acao=add&id_prod=".$row['id_prod']."'> Adicionar ao carrinho </a> </button>
+										<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()' ><a href='./cart/template_store/cart.php?add=carrinho&id_prod=".$row['id_prod']."'> Adicionar ao carrinho </a> </button>
 									</a>
 								</div>
 							</a>
@@ -107,7 +107,6 @@ session_start();
 				}
 				
 				mysqli_close($conn);
-				
 				?>
 			</article>
 		</div>
@@ -118,59 +117,7 @@ session_start();
 		</a>
 	</main>
 
-	<footer class="footer-blog">
-		<div class="list-ordenate">
-			<h5>Contatos</h5>
-			<a href="./">Lorem Ipsum</a>
-			<a href="">Lorem Ipsum</a>
-			<a href="">Lorem Ipsum</a>
-		</div>
-
-		<div class="list-ordenate">
-			<h5>Suporte</h5>
-			<a href="">Lorem Ipsum</a>
-			<a href="">Lorem Ipsum</a>
-			<a href="">Lorem Ipsum</a>
-		</div>
-
-		<div class="list-ordenate">
-			<h5>Serviços</h5>
-			<a href="">Lorem Ipsum</a>
-			<a href="">Lorem Ipsum</a>
-			<a href="">Lorem Ipsum</a>
-		</div>
-
-		<div class="list-ordenate">
-			<h5>Pagamentos</h5>
-			<ul>
-				<li>
-					<figure>
-						<img src="../../images/american.png" alt="icon-card-american">
-					</figure>
-				</li>
-				<li>
-					<figure>
-						<img src="../../images/paypal.png" alt="icon-card-paypal">
-					</figure>
-				</li>
-				<li>
-					<figure>
-						<img src="../../images/mastercard.png" alt="icon-card-mastercard">
-					</figure>
-				</li>
-				<li>
-					<figure>
-						<img src="../../images/pago.png" alt="icon-card-pago">
-					</figure>
-				</li>
-				<li>
-					<figure>
-						<img src="../../images/boleto.png" alt="icon-card-boleto">
-					</figure>
-				</li>
-			</ul>
-		</div>
-	</footer>
+	<?php require_once "../../components/footer.php"; ?>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
