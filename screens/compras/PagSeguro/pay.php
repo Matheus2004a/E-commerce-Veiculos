@@ -22,6 +22,7 @@ $senderHash = htmlspecialchars($_POST["senderHash"]);
 
 
 
+
 $itemAmount = number_format($_POST["amount"], 2, '.', '');
 $shippingCoast = number_format($_POST["shippingCoast"], 2, '.', '');
 $installmentValue = number_format($_POST["installmentValue"], 2, '.', '');
@@ -45,17 +46,26 @@ $senderCPF = str_replace(".", "", $senderCPF);
 $senderCPF = str_replace("-", "", $senderCPF);
 $senderPhone = $_POST['telefone'];
 $senderPhone = str_replace("-", "", $senderPhone);
-echo $senderPhone . "<br>";
 $senderAreaCode = $_POST['ddd'];
 $senderEmail = $_POST['email'];
-echo $shippingAddressPostalCode . "<br>";
-echo $senderCPF . "<br>";
-echo $senderAreaCode;
 
-echo $valItemProd."<br>";
-echo $itemQuantity1."<br>";
-echo $installmentsQty."<br>";
-echo $itemAmount."<br>";
+
+$I =1;
+    foreach($_SESSION['dados'] as $dados)
+    {
+        $id_prod = $dados['id_produto'];
+        $sql = "SELECT * FROM tbl_produtos WHERE id_prod = ".$id_prod." ";
+        $teste = mysqli_query($conn,$sql);
+        $fetch = mysqli_fetch_assoc($teste);
+        
+       $preco = $fetch['preco_custo_prod'];
+       $quantidade = $dados['quantidade'];
+       $total = $dados['total'];
+        $I++;
+
+        InsertPedidos($conn,$preco,$dados['quantidade'],$installmentsQty,$dados['total']);
+    }
+
 
 
 //Dados para requisição da api 
@@ -73,6 +83,7 @@ $params = array(
   'itemDescription1'          => $itemDescription1,
   'itemAmount1'               => $itemAmount,
   'itemQuantity1'             => $itemQuantity1,
+
   'reference'                 => 'REF1234',
   'senderName'                => $senderName,
   'senderCPF'                 => $senderCPF,
@@ -106,7 +117,6 @@ $params = array(
   'billingAddressCountry'    => 'BRA'
 );
 //Função responsável para inserir na tabela de pedidos
-InsertPedidos($conn,$valItemProd,$itemQuantity1,$installmentsQty,$itemAmount);
 
 $header = array('Content-Type' => 'application/json; charset=UTF-8;');
 //Executa requisição da api
