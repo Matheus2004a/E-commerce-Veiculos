@@ -147,6 +147,7 @@ require __DIR__ . "/../../connection/connection.php";
             ?>
         </article>
     </div>
+    <?php require_once "../../components/footer.php";?>
 </body>
 
 </html>
