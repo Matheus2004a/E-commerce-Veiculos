@@ -98,7 +98,7 @@ require __DIR__ . "/../../connection/connection.php";
         </article>
 
         <?php
-        $page = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+        $page = isset($_GET['pagina']) ?  $_GET['pagina'] : 1;
         $sql_pagination = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos`";
         $result_page = mysqli_query($conn, $sql_pagination);
 
@@ -124,7 +124,7 @@ require __DIR__ . "/../../connection/connection.php";
                 if ($page > 1) {
                 ?>
                     <li class="page-item">
-                        <a class="page-link" href="?pagina=<?php $previous_page ?>" aria-label="Previous">
+                    <?php   echo "<a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $previous_page . "' aria-label='Previous'>"; ?>
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
@@ -133,9 +133,9 @@ require __DIR__ . "/../../connection/connection.php";
                 <?php
                 for ($i = 1; $i < $total_page; $i++) {
                     if ($page == $i) {
-                        echo "<li class='page-item active'><a class='page-link' href='?id=$id_product&?pagina=$i'>$i</a></li>";
+                        echo "<li class='page-item active'><a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $i . "'>$i</a></li>";
                     } else {
-                        echo "<li class='page-item'><a class='page-link' href='?id=$id_product&?pagina=$i'>$i</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $i . "'>$i</a></li>";
                     }
                 }
                 ?>
@@ -144,7 +144,7 @@ require __DIR__ . "/../../connection/connection.php";
                 if ($page < $total_page) {
                 ?>
                     <li class="page-item">
-                        <a class="page-link" href="?pagina=<?php $next_page ?>" aria-label="Next">
+                    <?php   echo "<a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $next_page . "' aria-label='Previous'>"; ?>
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
