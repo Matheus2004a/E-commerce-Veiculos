@@ -111,9 +111,9 @@
                         <h6 class="text-uppercase fw-bold mb-4">
                             Métodos de pagamento
                         </h6>
-                        <i><img src="./images/american.png" alt=""></i>
-                        <i><img src="./images/visa.png" alt=""></i>
-                        <i><img src="./images/pago.png" alt=""></i>
+                        <i><img src="../../images/american.png" alt=""></i>
+                        <i><img src="../../images/visa.png" alt=""></i>
+                        <i><img src="../../images/pago.png" alt=""></i>
                     </div>
                     <!-- Grid column -->
                 </div>
