@@ -14,11 +14,7 @@ $response = curlExec($PAGSEGURO_API_URL . "/sessions", $params, $header);
 $json = json_decode(json_encode(simplexml_load_string($response)));
 $sessionCode = $json->id;
 
-
-
 $id = $_GET['id'];
-echo $id;
-
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -115,7 +111,6 @@ echo $id;
 
             $count = 0;
             $totd = $_GET['total'];
-
             foreach ($_SESSION['carrinho'] as $cd => $qtd) {
               $select = "SELECT * FROM tbl_produtos WHERE id_prod = " . $cd . " ";
               $query = mysqli_query($conn, $select);
