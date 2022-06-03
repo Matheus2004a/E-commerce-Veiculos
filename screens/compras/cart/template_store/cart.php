@@ -6,41 +6,38 @@ require __DIR__ . '/../../../../connection/connection.php';
 if (!isset($_SESSION['carrinho'])) {
 	$_SESSION['carrinho'] = array();
 }
-if (!empty($_GET['acao'])) {
-	//ADICIONAR CARRINHO
-	if ($_GET['acao'] == 'add') {
-		$id = $_GET['id_prod'];
-		$idProdutos = array();
-		if (!isset($_SESSION['carrinho'][$id])) {
-			$_SESSION['carrinho'][$id] = 1;
-		} else {
-			$_SESSION['carrinho'][$id] += 1;
-		}
+
+if ( isset( $_GET['add'] ) && $_GET['add'] == "carrinho" ){
+	$idProduto  = $_GET['id_prod'];
+	if (!isset ($_SESSION['carrinho'][$idProduto])){
+		$_SESSION['carrinho'][$idProduto] = 1;
 	}
-}
-if ($_GET['acao'] == 'del') {
-	$id = ($_GET['id']);
-	if (isset($_SESSION['carrinho'][$id])) {
-		unset($_SESSION['carrinho'][$id]);
+	else{
+		$_SESSION['carrinho'][$idProduto] +=1;
 	}
-}
-if ($_GET['acao'] == 'up') {
-	if (is_array($_POST['idproduto'])) {
-		foreach ($_POST['idproduto'] as $id => $qtd) {
-			$id  = intval($id);
-			$qtd = intval($qtd);
-			if (!empty($qtd) || $qtd <> 0) {
-				$_SESSION['carrinho'][$id] = $qtd;
-			} else {
-				unset($_SESSION['carrinho'][$id]);
-			}
-		}
-	}
+	
+	//evita add +1 sempre q a pagina for atualizada
+	header('Location: cart.php');
+	exit;
+	/////
+
 }
 
 
+if ( count( $_SESSION['carrinho'] ) == 0 ) 
+{
+	echo ' <h1>Carrinho vazio</h1>';
+}
+else{
+	$_SESSION['dados'] =array();
+}
 
+if(isset ($_GET['remover'])&& $_GET['remover'] == "carrinho")
+    {
+    $idProduto  = $_GET['id_prod'];
+    unset ($_SESSION['carrinho'][$idProduto]);
 
+}
 
 $total = 0;
 
@@ -113,8 +110,8 @@ $total = 0;
 						$total = 0;
 
 
-						foreach ($_SESSION['carrinho'] as $cd => $qtd) {
-							$queryCart = "SELECT * FROM tbl_produtos WHERE id_prod = '$cd'";
+						foreach ($_SESSION['carrinho'] as $idProduto => $quantidade) {
+							$queryCart = "SELECT * FROM tbl_produtos WHERE id_prod=".$idProduto." ";
 							$resultQuery = mysqli_query($conn, $queryCart);
 							$row = mysqli_fetch_assoc($resultQuery);
 							echo '
@@ -136,8 +133,8 @@ $total = 0;
 									<div class="one-eight text-center">
 										<div class="display-tc">
 											<form method="post" action="?acao=up">
-												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="' . $qtd . '" min="1" max="100"> 
-												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" id="idproduto" value="' . $qtd . '"> <br>
+												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="' . $quantidade . '" min="1" max="100"> 
+												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" id="idproduto" value="' . $quantidade . '"> <br>
 											</form>
 										</div>
 									</div>
@@ -148,17 +145,30 @@ $total = 0;
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<a href="?acao=del&id=' . $row['id_prod'] . '" class="closed" style="background-color: #FFC300"></a>
+											<a href="?remover=carrinho&id_prod=' . $row['id_prod'] . '" class="closed" style="background-color: #FFC300"></a>
 										</div>
 									</div>
 								</div>
 							';
-
-							$count = $row['preco_custo_prod'] * $qtd;
+							
+							$count = $row['preco_custo_prod'] * $quantidade;
 							$total = $count + $total;
+
+							
 						?>
 							<input type="hidden" name="total" value="<?php echo $total ?>">
 						<?php
+						//Transforma dados da sessão "Carrinho" em um array
+
+						array_push($_SESSION['dados'],
+						array (
+							'id_produto' => $row["id_prod"],
+							'nome' => $row["nome_prod"],
+							'quantidade' => $quantidade,
+							'preco' => $row["preco_custo_prod"],
+							'total' => $total
+						)
+						);
 
 						}
 						?>
@@ -187,7 +197,7 @@ $total = 0;
 											if ($count == 0) {
 												echo '<p><a class="btn btn-primary"   style="opacity: 0.5;filter: alpha(opacity=50)"> Proximo </a disabled></p>';
 											} else {
-												echo '<p><a href="checkout.php?id=' . $cd . '&&qtd=' . $qtd . '&&total=' . $total . '" class="btn btn-primary"> Proximo </a></p>';
+												echo '<p><a href="checkout.php?id=' . $idProduto . '&&qtd=' . $quantidade . '&&total=' . $total . '" class="btn btn-primary"> Proximo </a></p>';
 											}
 											?>
 										</div>
@@ -231,7 +241,6 @@ $total = 0;
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
-
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<!-- Ajax para calcular frete !-->
 	<script>
