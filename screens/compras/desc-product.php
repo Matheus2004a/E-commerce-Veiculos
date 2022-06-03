@@ -22,7 +22,7 @@ require __DIR__ . "/../../connection/connection.php";
     <?php
     require "../../components/header.php";
 
-    $id_product = $_GET['id'];
+    $id_product = $_GET['id'] ?? '';
     $sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE id_prod = $id_product";
     $result_query = mysqli_query($conn, $sql);
 
@@ -133,9 +133,9 @@ require __DIR__ . "/../../connection/connection.php";
                 <?php
                 for ($i = 1; $i < $total_page; $i++) {
                     if ($page == $i) {
-                        echo "<li class='page-item active'><a class='page-link' href='?pagina=$i'>$i</a></li>";
+                        echo "<li class='page-item active'><a class='page-link' href='?id=$id_product&?pagina=$i'>$i</a></li>";
                     } else {
-                        echo "<li class='page-item'><a class='page-link' href='?pagina=$i'>$i</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='?id=$id_product&?pagina=$i'>$i</a></li>";
                     }
                 }
                 ?>
