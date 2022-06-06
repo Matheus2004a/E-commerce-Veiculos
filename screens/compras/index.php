@@ -15,6 +15,7 @@ session_start();
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../home/css/style.css">
+	<link rel="stylesheet" href="../../components/styles/button_top_page.css">
 </head>
 
 <body>
@@ -111,10 +112,9 @@ session_start();
 			</article>
 		</div>
 
-		<!-- Button return to top page -->
-		<a href="#top-page">
-			<button class="button-top-page bg-sky-500"><i class="fas fa-arrow-up"></i></button>
-		</a>
+		<?php
+			require "../../components/button_top_page.php"
+		?>
 	</main>
 
 	<?php require_once "../../components/footer.php"; ?>
