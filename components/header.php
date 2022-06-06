@@ -9,32 +9,29 @@
 </head>
 
 <body>
-    <header>
-        <img src="../../images/icones/brand header.png" class="brand">
-        <!-- <a class="brand" href="#">Logomarca</a> !-->
-        <nav class="menus">
+    <header class="navbar">
+        <figure>
+            <img src="./images/icones/brand header.png" alt="" srcset="">
+        </figure>
+        <a href="#" class="toggle-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div id="google_translate_element"></div>
+        <nav class="navbar-links">
             <ul>
-                <li>
-                    <a class="active" aria-current="page" href="../../index.php">Home</a>
-                </li>
-                <li>
-                    <a href="#">Todos os serviços</a>
-                </li>
-                <li>
-                    <a href="#">Sobre</a>
-                </li>
-                <li>
-                    <a href="../../screens/contact/contato.php">Contate - nos</a>
-                </li>
-                <li>
-                    <a href="../../screens/compras/cart/template_store/cart.php?acao=''"><img src="../../images/icones/carrinho-de-compras-de-design-xadrez.png" alt=""></a>
-                </li>
-                <li>
-                    <a href="../../screens/login/index.php">Login</a>
-                </li>
-                <li>
-                    <a href="../../screens/login/logout.php">Sair</a>
-                </li>
+                <li><a href="##">Home</a></li>
+                <li><a href="##">Sobre</a></li>
+                <li><a href="./screens/login/index.php">Login</a></li>
+                <li><a href="./screens/compras/index.php">Compras</a></li>
+                <li><a href="./screens/listService/index.php">Serviços</a></li>
+                <?php
+                if (isset($_SESSION['username']) && $_SESSION['username']) { ?>
+                    <li><a href="./screens/login/logout.php">Sair</a></li>
+                <?php
+                }
+                ?>
             </ul>
         </nav>
     </header>
