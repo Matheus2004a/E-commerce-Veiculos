@@ -1,7 +1,7 @@
 <?php
-$server_name = "127.0.0.1";
-$username = "root";
-$password = "Mapef@09112004a";
+$server_name = "banco-epa-remoto.mysql.database.azure.com";
+$username = "UserPadrao_EPA";
+$password = "vRZb%8T7tguZ";
 $database_name = "bd_veiculos_tcc";
 
 // Create connection
