@@ -1,0 +1,10 @@
+.button-top-page {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    clip-path: circle();
+    padding: .8rem;
+    transform: translateY(100px);
+    transition: .5s;
+    background-color: var(--color-blue);
+}
