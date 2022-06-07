@@ -2822,7 +2822,7 @@ main {
   flex-shrink: 1;
   padding: 0 6em 0.1em 6em;
   max-width: 110em;
-  margin-top: 4.5rem;
+  margin-top: 2rem;
 }
 
 main>section {
@@ -2838,6 +2838,10 @@ main section :is(h1,h2){
   width: fit-content;
   border-bottom: 3px solid #2681ed;
   margin-bottom: 2rem;
+}
+
+.mySlides {
+  display: none;
 }
 
 @media screen and (max-width: 1680px) {
