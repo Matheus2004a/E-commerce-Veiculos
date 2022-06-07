@@ -1,25 +1,32 @@
-<?php 
-    namespace App\WebSerice;
+<?php
 
-    class Correios{
-        private $codigoEmpresa = '';
-        private $senhaEmpresa = '';
+namespace App\WebSerice;
 
-        public function __construct($codigoEmpresa = '', $senhaEmpresa = '')
-        {
-            $this  -> codigoEmpresa = $codigoEmpresa;
-            $this -> senhaEmpresa = $senhaEmpresa;
-        }
+class Correios
+{
+    private $codigoEmpresa = '';
+    private $senhaEmpresa = '';
 
-        public function calcularFrete($codigoServico,$cepOrigem,
-                                     $cepDestino,$peso,
-                                     $formato,$comprimento,
-                                     $altura,$largura,
-                                     $diametro=0,$maoPropria=false,
-                                     $valorDeclarado=0,$avisoRecebimento=false){
-            
-        }
-
+    public function __construct($codigoEmpresa = '', $senhaEmpresa = '')
+    {
+        $this->codigoEmpresa = $codigoEmpresa;
+        $this->senhaEmpresa = $senhaEmpresa;
     }
 
+    public function calcularFrete(
+        $codigoServico,
+        $cepOrigem,
+        $cepDestino,
+        $peso,
+        $formato,
+        $comprimento,
+        $altura,
+        $largura,
+        $diametro = 0,
+        $maoPropria = false,
+        $valorDeclarado = 0,
+        $avisoRecebimento = false
+    ) {
+    }
+}
 ?>
