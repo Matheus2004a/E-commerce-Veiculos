@@ -1,21 +1,19 @@
 <?php
 session_start();
-include_once 'head.html';
 require __DIR__ . '/../../../../connection/connection.php';
 
 if (!isset($_SESSION['carrinho'])) {
 	$_SESSION['carrinho'] = array();
 }
 
-if ( isset( $_GET['add'] ) && $_GET['add'] == "carrinho" ){
+if (isset($_GET['add']) && $_GET['add'] == "carrinho") {
 	$idProduto  = $_GET['id_prod'];
-	if (!isset ($_SESSION['carrinho'][$idProduto])){
+	if (!isset($_SESSION['carrinho'][$idProduto])) {
 		$_SESSION['carrinho'][$idProduto] = 1;
+	} else {
+		$_SESSION['carrinho'][$idProduto] += 1;
 	}
-	else{
-		$_SESSION['carrinho'][$idProduto] +=1;
-	}
-	
+
 	//evita add +1 sempre q a pagina for atualizada
 	header('Location: cart.php');
 	exit;
@@ -24,19 +22,15 @@ if ( isset( $_GET['add'] ) && $_GET['add'] == "carrinho" ){
 }
 
 
-if ( count( $_SESSION['carrinho'] ) == 0 ) 
-{
+if (count($_SESSION['carrinho']) == 0) {
 	echo ' <h1>Carrinho vazio</h1>';
-}
-else{
-	$_SESSION['dados'] =array();
+} else {
+	$_SESSION['dados'] = array();
 }
 
-if(isset ($_GET['remover'])&& $_GET['remover'] == "carrinho")
-    {
-    $idProduto  = $_GET['id_prod'];
-    unset ($_SESSION['carrinho'][$idProduto]);
-
+if (isset($_GET['remover']) && $_GET['remover'] == "carrinho") {
+	$idProduto  = $_GET['id_prod'];
+	unset($_SESSION['carrinho'][$idProduto]);
 }
 
 $total = 0;
@@ -111,7 +105,7 @@ $total = 0;
 
 
 						foreach ($_SESSION['carrinho'] as $idProduto => $quantidade) {
-							$queryCart = "SELECT * FROM tbl_produtos WHERE id_prod=".$idProduto." ";
+							$queryCart = "SELECT * FROM tbl_produtos WHERE id_prod=" . $idProduto . " ";
 							$resultQuery = mysqli_query($conn, $queryCart);
 							$row = mysqli_fetch_assoc($resultQuery);
 							echo '
@@ -150,26 +144,26 @@ $total = 0;
 									</div>
 								</div>
 							';
-							
+
 							$count = $row['preco_custo_prod'] * $quantidade;
 							$total = $count + $total;
 
-							
+
 						?>
 							<input type="hidden" name="total" value="<?php echo $total ?>">
 						<?php
-						//Transforma dados da sessão "Carrinho" em um array
+							//Transforma dados da sessão "Carrinho" em um array
 
-						array_push($_SESSION['dados'],
-						array (
-							'id_produto' => $row["id_prod"],
-							'nome' => $row["nome_prod"],
-							'quantidade' => $quantidade,
-							'preco' => $row["preco_custo_prod"],
-							'total' => $total
-						)
-						);
-
+							array_push(
+								$_SESSION['dados'],
+								array(
+									'id_produto' => $row["id_prod"],
+									'nome' => $row["nome_prod"],
+									'quantidade' => $quantidade,
+									'preco' => $row["preco_custo_prod"],
+									'total' => $total
+								)
+							);
 						}
 						?>
 					</div>
@@ -218,12 +212,12 @@ $total = 0;
 									<div class="col-md-3 col-md-push-1 text-center">
 										<label for="">Cep destino</label>
 										<input name="sCepDestino" type="text" class="form-control">
-										
-											<label for="">Serviço</label>
-											<select name="nCdServico" id="">
-												<option value="04014">Sedex</option>
-												<option value="04510">PAC</option>
-											</select>
+
+										<label for="">Serviço</label>
+										<select name="nCdServico" id="">
+											<option value="04014">Sedex</option>
+											<option value="04510">PAC</option>
+										</select>
 										<button type="button" id="calcular" class="btn btn-primary">Calcular</button>
 									</div>
 								</form>
