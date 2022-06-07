@@ -19,9 +19,9 @@ body {
     height: 100vh;
 
     display: grid;
-    grid-template-areas: "h h" "l r";
+    grid-template-areas: "h h""l r";
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 10fr;
+    grid-template-rows: 0.5fr 10fr;
 }
 
 .nav-left {
@@ -42,8 +42,6 @@ body {
 .header {
     background: #2681ED;
     grid-area: h;
-    text-align: center;
-    height: 10vh;
 }
 
 /* ================ container perfil inicio ====================== */
@@ -95,6 +93,7 @@ body {
     border: 1px solid black;
     border-radius: 15px;
 }
+
 .perfil button:hover {
     border-radius: 15px;
 }
@@ -208,10 +207,10 @@ body {
 .containerAction {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-content: center;
     align-items: center;
-    height: 80%;
+    /* height: 80%; */
     margin: 20px 10px;
     padding: 25px 15px;
     border-radius: 5px;
@@ -230,6 +229,15 @@ input[type="date"] {
     outline: none;
 }
 
+.spanHorario {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: underline;
+    align-content: center;
+    margin-top: 20px;
+}
+
 .buttonHour {
     display: flex;
     flex-wrap: wrap;
@@ -242,7 +250,7 @@ input[type="date"] {
     background-color: #2681ED;
     width: 90px;
     height: 40px;
-    margin: 10px 5px;
+    margin: 5px 5px;
     border-radius: 15px;
     border: none;
     color: white;
@@ -376,7 +384,7 @@ textarea:focus {
 
 @media only screen and (max-width: 820px) {
     .container {
-        grid-template-areas: "h" "l" "r";
+        grid-template-areas: "h""l""r";
         grid-template-columns: 1fr;
     }
 
@@ -385,7 +393,7 @@ textarea:focus {
         padding-bottom: 60px;
     }
 
-   
+
 }
 
 @media only screen and (min-width: 820px) {
@@ -402,4 +410,67 @@ textarea:focus {
         width: 65%;
 
     }
+}
+
+
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 200px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+
+
+
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    flex-direction: column;
+    width: 360px;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, .6);
+    border: none;
+}
+
+/* The Close Button */
+.close {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.img_usuario {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin-right: 10px;
 }

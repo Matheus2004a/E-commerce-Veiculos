@@ -9,24 +9,33 @@ function verificarDados(event) {
     let nameService = document.getElementById("nameService").value
     let descriptionService = document.getElementById("descriptionService").value
     let valService = document.getElementById("valService").value
-
+    let p = document.getElementById("p_modal");
+    let modal = document.getElementById("myModal");
+    let card_modal = document.getElementsByClassName("modal-content")[0];
     // Verificar se os inputs estão vazios
     if (nameService == "" || descriptionService == "" || valService == "" || horarios.length < 3) {
         event.preventDefault()
-        document.getElementById("modal").style.display = "flex"
-        document.getElementById("nav-top").style.display = "none" // deixando a div nav-top fora da tela
-        document.getElementById("nav-bottom").style.display = "none" // deixando a div nav-bottom fora da tela
-        document.getElementById("container").style.background = "rgba(0,0,0,.6)" // alterando o background do container
+        modal.style.display = "block";
+        modal.style.color = "#fff";
+        card_modal.style.backgroundColor = "#F65D74";
+        p.innerHTML = "Por favor preencha os dados corretamente!";
+
     }
 }
 
 function closeModal(event) {
     event.preventDefault()
-    document.getElementById("modal").style.display = "none"
-    document.getElementById("nav-top").style.display = "flex"
-    document.getElementById("nav-bottom").style.display = "flex"
-    document.getElementById("container").style.background = "#D6DAE5" // alterando o background do container
+    let modal = document.getElementById("myModal");
+    modal.style.display = "none";
 }
+
+window.addEventListener("click", function (event) {
+    let modal = document.getElementById("myModal");
+
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+})
 
 function saveHour(event) {
     event.preventDefault()
@@ -77,7 +86,7 @@ function editHour(id) {
 
 function editedHour(id) {
     let input = document.getElementById(id)
-    
+
     if (input.value == "") {
         input.remove()
     } else {
@@ -86,4 +95,27 @@ function editedHour(id) {
         input.value += format
         horarios.push(input.value)
     }
+}
+
+
+// =================== MODAL ===========================
+
+function resultCadastro(status) {
+    let p = document.getElementById("p_modal");
+    let modal = document.getElementById("myModal");
+    let card_modal = document.getElementsByClassName("modal-content")[0];
+    modal.style.display = "block";
+    modal.style.color = "#fff";
+    console.log(typeof(status))
+    if (status == 1) {
+        card_modal.style.backgroundColor = "#23b83e";
+        p.innerHTML = "Serviço cadastrado com sucesso!";
+    } else if (status != Number){
+        card_modal.style.backgroundColor = "#FA9F47";
+        p.innerHTML = `Erro ao salvar imagem: ${status}`;
+    } else {
+        card_modal.style.backgroundColor = "#F65D74";
+        p.innerHTML = `Erro ao cadastrar serviço: ${status}`;
+    }
+
 }
