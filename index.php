@@ -29,9 +29,11 @@ require "./connection/connection.php";
 				<p>O projeto atual foi criado com o objetivo de facilitar ao público em geral a manutenção de seus veículos, a realização de compras e o agendamento de um mecânico. Reconhecemos que lembrar de fazer a manutenção básica do veículo tornou- se bastante difícil hoje. O sistema atual será dividido em duas fases para dois tipos de usuários: primeiro, um sistema de loja onde os usuários poderão cadastrar seus produtos, localizar sua loja e cadastrar os serviços que prestam. O usuário " loja " terá um nível de acesso superior ao usuário "comum" e o usuário "comum" será a base do sistema</p>
 				<button class="button big">Saiba mais</button>
 			</div>
-			<figure class="image object">
-				<img src="./home_alternativa/images/pic10.jpg" alt="image-lamborghini">
-			</figure>
+			<div class="image object">
+				<img class="mySlides" src="./images/cars/car_1.jpg">
+				<img class="mySlides" src="./images/cars/car_2.jpg">
+				<img class="mySlides" src="./images/cars/car_3.jpg">
+			</div>
 		</section>
 
 		<section>
