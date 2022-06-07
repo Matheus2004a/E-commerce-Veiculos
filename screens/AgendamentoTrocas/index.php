@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <link rel="stylesheet" href="../../home_alternativa/assets/css/styles.css">
-    <title>Document</title>
+    <title>Agendamento de troca de peças</title>
 </head>
 
 <body onload="setMinDay()">
@@ -196,11 +196,6 @@
         echo '<script>resultCadastro(' . $_SESSION['error'] . ') </script>';
         unset($_SESSION['error']);
     }
-
-    ?>
-
-
-    <?php
     mysqli_close($conn);
     ?>
 </body>
