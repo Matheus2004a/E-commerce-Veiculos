@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -14,23 +15,15 @@
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #707070;
-
     /* ====== Transition ====== */
     --tran-03: all 0.2s ease;
     --tran-03: all 0.3s ease;
-    --tran-04: all 0.3s ease;
-    --tran-05: all 0.3s ease;
 }
 
 body{
     min-height: 100vh;
     background-color: var(--body-color);
-    transition: var(--tran-05);
-}
-
-::selection{
-    background-color: var(--primary-color);
-    color: #fff;
+    transition: var(--tran-03);
 }
 
 body.dark{
@@ -42,29 +35,59 @@ body.dark{
     --text-color: #ccc;
 }
 
-/* ===== Sidebar ===== */
+body.dark .home .text{
+    color: var(--text-color);
+}
+
+body.dark .sidebar .image i,body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}
+
+body.dark .mode .sun-moon i.sun{
+    opacity: 1;
+}
+
+body.dark .mode .sun-moon i.moon,.sidebar.close .text,.mode .sun-moon i.sun{
+    opacity: 0;
+}
+
+body.dark .switch::before{
+    left: 20px;
+}
+
+input,select,button{
+    border: none;
+    outline: none;
+}
+
+/* Sidebar */
  .sidebar{
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 250px;
-    padding: 10px 14px;
+    padding: 20px 14px;
     background: var(--sidebar-color);
-    transition: var(--tran-05);
+    transition: var(--tran-03);
     z-index: 100;  
 }
+
 .sidebar.close{
     width: 88px;
 }
 
-/* ===== Reusable code - Here ===== */
+/* Reusable code - Here */
 .sidebar li{
     height: 50px;
     list-style: none;
     display: flex;
     align-items: center;
-    margin-top: 10px;
 }
 
 .sidebar header .image,
@@ -95,10 +118,6 @@ body.dark{
     white-space: nowrap;
     opacity: 1;
 }
-.sidebar.close .text{
-    opacity: 0;
-}
-/* =========================== */
 
 .sidebar header{
     position: relative;
@@ -108,10 +127,12 @@ body.dark{
     display: flex;
     align-items: center;
 }
+
 .sidebar header .logo-text{
     display: flex;
     flex-direction: column;
 }
+
 header .image-text .name {
     margin-top: 2px;
     font-size: 18px;
@@ -128,6 +149,10 @@ header .image-text .profession{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.sidebar header i{
+    font-size: 2rem;
 }
 
 .sidebar header .image img{
@@ -150,26 +175,23 @@ header .image-text .profession{
     justify-content: center;
     font-size: 22px;
     cursor: pointer;
-    transition: var(--tran-05);
-}
-
-body.dark .sidebar header .toggle{
-    color: var(--text-color);
+    transition: var(--tran-03);
 }
 
 .sidebar.close .toggle{
     transform: translateY(-50%) rotate(0deg);
 }
 
-.sidebar .menu{
-    margin-top: 40px;
+.sidebar .menu-bar{
+    margin-top: 2.5rem;
+    overflow-y: auto;
 }
 
 .sidebar li.search-box{
     border-radius: 6px;
     background-color: var(--primary-color-light);
     cursor: pointer;
-    transition: var(--tran-05);
+    transition: var(--tran-03);
 }
 
 .sidebar li.search-box input{
@@ -182,8 +204,9 @@ body.dark .sidebar header .toggle{
     border-radius: 6px;
     font-size: 17px;
     font-weight: 500;
-    transition: var(--tran-05);
+    transition: var(--tran-03);
 }
+
 .sidebar li a{
     list-style: none;
     height: 100%;
@@ -200,30 +223,25 @@ body.dark .sidebar header .toggle{
 .sidebar li a:hover{
     background-color: var(--primary-color);
 }
+
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text{
     color: var(--sidebar-color);
 }
-body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text{
-    color: var(--text-color);
-}
 
-.sidebar .menu-bar{
-    height: calc(100% - 55px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: scroll;
-}
 .menu-bar::-webkit-scrollbar{
     display: none;
 }
+
+.menu,.menu-links{
+    padding: 0;
+}
+
 .sidebar .menu-bar .mode{
     border-radius: 6px;
     background-color: var(--primary-color-light);
     position: relative;
-    transition: var(--tran-05);
+    transition: var(--tran-03);
 }
 
 .menu-bar .mode .sun-moon{
@@ -233,15 +251,6 @@ body.dark .sidebar li a:hover .text{
 
 .mode .sun-moon i{
     position: absolute;
-}
-.mode .sun-moon i.sun{
-    opacity: 0;
-}
-body.dark .mode .sun-moon i.sun{
-    opacity: 1;
-}
-body.dark .mode .sun-moon i.moon{
-    opacity: 0;
 }
 
 .menu-bar .bottom-content .toggle-switch{
@@ -255,13 +264,14 @@ body.dark .mode .sun-moon i.moon{
     border-radius: 6px;
     cursor: pointer;
 }
+
 .toggle-switch .switch{
     position: relative;
     height: 22px;
     width: 40px;
     border-radius: 25px;
     background-color: var(--toggle-color);
-    transition: var(--tran-05);
+    transition: var(--tran-03);
 }
 
 .switch::before{
@@ -274,11 +284,7 @@ body.dark .mode .sun-moon i.moon{
     left: 5px;
     transform: translateY(-50%);
     background-color: var(--sidebar-color);
-    transition: var(--tran-04);
-}
-
-body.dark .switch::before{
-    left: 20px;
+    transition: var(--tran-03);
 }
 
 .home{
@@ -289,13 +295,37 @@ body.dark .switch::before{
     height: 100vh;
     width: calc(100% - 250px);
     background-color: var(--body-color);
-    transition: var(--tran-05);
+    transition: var(--tran-03);
+    padding: .5% 5% 0;
 }
+
 .home .text{
     font-size: 30px;
     font-weight: 500;
     color: var(--text-color);
-    padding: 12px 60px;
+    padding: 12px 0;
+}
+
+.home .input-group-search{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.home input[type='search']{
+    padding: 5px 10px;
+}
+
+.home input[type='search'] span i{
+    position: absolute;
+    right: 5px;
+}
+
+.home button{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .sidebar.close ~ .home{
@@ -303,6 +333,18 @@ body.dark .switch::before{
     height: 100vh;
     width: calc(100% - 78px);
 }
-body.dark .home .text{
-    color: var(--text-color);
+
+.home table tr th img{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.home table td :is(.status-payment,.status-delivery){
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: .25rem;
+    font-size: .75rem;
+    border-radius: .25rem;
 }

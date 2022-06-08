@@ -1,0 +1,17 @@
+.enderecoBase{
+    margin-left: 400px;
+    display: flex;
+
+}
+.enderecoComposto{
+    margin-bottom:10px;
+    margin-left: 400px;
+    display: flex;
+}
+.dadosCliente{
+    display: inline-block;
+}
+.inputs{
+    width: 200px;
+    height: 200px;
+}

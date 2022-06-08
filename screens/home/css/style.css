@@ -8,16 +8,15 @@ html{
   scroll-behavior: smooth;
 }
 
-ul,h2,h5,p,figure{
+ul{
   margin: 0 !important;
 }
 
 header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+
+  width: 100vw;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
@@ -103,25 +102,6 @@ button{
   font-size: 3rem;
 }
 
-.button-top-page{
-  position: fixed;
-  right: 15px;
-  bottom: 15px;
-  clip-path: circle();
-  padding: .8rem;
-  transform: translateY(100px);
-  transition: .5s;
-  background-color: var(--color-blue);
-}
-
-.button-top-page i{
-  color: var(--background-white);
-}
-
-.button-top-page.show{
-  transform: translateY(0);
-}
-
 footer{
   display: flex;
   justify-content: space-evenly;
@@ -148,4 +128,19 @@ footer .list-ordenate,footer .list-ordenate :is(h5,ul){
 
 footer .list-ordenate :is(img):hover,button{
   cursor: pointer;
+}
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.mostrarAvaliacao{
+  flex: 30%;
+}
+.demonstrar_avaliacao{
+  flex: 50%;
+}
+.demonstrar_avaliacao p{
+  display: inline-block;
+  margin-left:10px;
 }

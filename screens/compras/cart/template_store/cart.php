@@ -1,48 +1,46 @@
 <?php
-	session_start();
-	include_once 'head.html';
-	require __DIR__ . '/../DataBase/connection.php';
-	require __DIR__ . '/../App/Controller/ClienteController.php';
+session_start();
+require __DIR__ . '/../../../../connection/connection.php';
 
-	$conn = new Conexao();
-	$conn = $conn->conexao();
+if (!isset($_SESSION['carrinho'])) {
+	$_SESSION['carrinho'] = array();
+}
 
-	$user = new ClienteController();
-	$result = $user->isLoggedIn();
-	
-	$stmt4 = $conn->prepare('
-		SELECT * FROM carrinho_has_produto;');
-	$stmt4->execute();
-	$count = 0;
-	$count = $stmt4->rowCount();
-
-	if($result == false){
-		header('Location: login.php');
+if (isset($_GET['add']) && $_GET['add'] == "carrinho") {
+	$idProduto  = $_GET['id_prod'];
+	if (!isset($_SESSION['carrinho'][$idProduto])) {
+		$_SESSION['carrinho'][$idProduto] = 1;
+	} else {
+		$_SESSION['carrinho'][$idProduto] += 1;
 	}
 
-	$cpf = $_SESSION["user_cpf"];
-	$stmt = $conn->prepare('
-		SELECT produto.nome, produto.valor, produto.imagem, produto.idproduto, gerou.quantidade FROM produto 
+	//evita add +1 sempre q a pagina for atualizada
+	header('Location: cart.php');
+	exit;
+	/////
 
-		INNER JOIN
-			(SELECT carrinho_has_produto.produto_idproduto, carrinho_has_produto.quantidade FROM carrinho_has_produto
-				INNER JOIN produto ON carrinho_has_produto.produto_idproduto = produto.idproduto
-				INNER JOIN carrinho ON carrinho_has_produto.carrinho_idcarrinho = carrinho.idcarrinho 
-		        WHERE carrinho.cliente_cpf = "'.$cpf.'"
-			GROUP BY carrinho_has_produto.produto_idproduto) as gerou 
+}
 
-		ON produto.idproduto = gerou.produto_idproduto
-    	GROUP BY produto.nome;');
 
-	$total = 0;
-	$stmt->execute();
-		
-	$resultado_carrinho = $stmt->fetchAll();
+if (count($_SESSION['carrinho']) == 0) {
+	echo ' <h1>Carrinho vazio</h1>';
+} else {
+	$_SESSION['dados'] = array();
+}
+
+if (isset($_GET['remover']) && $_GET['remover'] == "carrinho") {
+	$idProduto  = $_GET['id_prod'];
+	unset($_SESSION['carrinho'][$idProduto]);
+}
+
+$total = 0;
+
 ?>
 
 <!DOCTYPE HTML>
 <html>
-	<body>
+
+<body>
 
 	<div id="page">
 		<nav class="colorlib-nav" role="navigation">
@@ -50,48 +48,16 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="index.php">Use New Mic</a></div>
+							<div id="colorlib-logo"><a href="../../../../index.php"><img src="../../../../images/icones/brand header.png"></a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
-							<ul>
-								<li><a href="index.php">Home</a></li>
-								<li><a href="shop.php">Produtos</a></li>
-								<?php
-									if ($result == true) {
-										echo '<li><a href="list.php"> Seus Produtos </a></li>';
-
-										echo '
-											<li class="active"><a href="cart.php"><i class="icon-shopping-cart"></i> Carrinho </a></li>
-											<li><a href="../App/Controller/logout.php"> Sair </a></li>';
-									}else{
-										echo '<li><a href="login.php"> Login/Cadastre-se </a></li>';
-									}
-								?>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-		</nav>
-		<aside id="colorlib-hero" class="breadcrumbs">
-			<div class="flexslider">
-				<ul class="slides">
-			   	<li style="background-image: url(images/3.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h1>Carrinho de compras</h1>
-				   					<h2 class="bread"><span><a href="index.php">Home</a></span><span>Carrinho de compras</span></h2>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			  	</ul>
-		  	</div>
-		</aside>
+		</nav><br>
+
 
 		<div class="colorlib-shop">
 			<div class="container">
@@ -132,55 +98,74 @@
 								<span>Remover</span>
 							</div>
 						</div>
-
-						<?php 
+						<form action="./checkout.php" method="post"></form>
+						<?php
 						$count = 0;
 						$total = 0;
-						foreach( $resultado_carrinho as $row ) { 
+
+
+						foreach ($_SESSION['carrinho'] as $idProduto => $quantidade) {
+							$queryCart = "SELECT * FROM tbl_produtos WHERE id_prod=" . $idProduto . " ";
+							$resultQuery = mysqli_query($conn, $queryCart);
+							$row = mysqli_fetch_assoc($resultQuery);
 							echo '
 											
 								<div class="product-cart">
 									<div class="one-forth">
-										<div class="product-img" style="background-image: url(images/'.$row[2].'.jpg);">
+										<div class="product-img" style="background-image: url(../../../../uploads/' . $row["foto_prod"] . '.jpg);">
 										</div>
 										<div class="display-tc">
-											<h3 id="nome">'.$row[0].'</h3>
-										</div>
-									</div>
-									<div class="one-eight text-center">
-										<div class="display-tc">
-											<span class="price" for="id_valor" id="id_valor">R$ '.
-											number_format($row[1],2,",",".").'</span>
+											<h3 id="nome">' . $row['nome_prod'] . '</h3>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<form method="post" action="../App/Controller/updateQtd.php">
-												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="'.$row[4].'" min="1" max="100"> 
-												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" value="'.$row[3].'"> <br>
-												<button class="btn btn-primary"> alterar </button>
+											<span class="price" for="id_valor" id="id_valor">R$ ' .
+								number_format($row['preco_custo_prod'], 2, ",", ".") . '</span>
+										</div>
+									</div>
+									<div class="one-eight text-center">
+										<div class="display-tc">
+											<form method="post" action="?acao=up">
+												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="' . $quantidade . '" min="1" max="100"> 
+												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" id="idproduto" value="' . $quantidade . '"> <br>
 											</form>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<span for="id_total" class="price" id="id_total" name="id_total" >R$ '.number_format($row[1]*$row[4],2,",",".").'</span>
+											<span for="id_total" class="price" id="id_total" name="id_total" >R$ ' . number_format($row['preco_custo_prod'], 2, ",", ".") . '</span>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<a href="../App/Controller/delete.php?produto='.$row[3].'" class="closed" style="background-color: #FFC300"></a>
+											<a href="?remover=carrinho&id_prod=' . $row['id_prod'] . '" class="closed" style="background-color: #FFC300"></a>
 										</div>
 									</div>
 								</div>
 							';
 
-							$count = $row[1]*$row[4];
+							$count = $row['preco_custo_prod'] * $quantidade;
 							$total = $count + $total;
 
-						} 
-					?>
 
+						?>
+							<input type="hidden" name="total" value="<?php echo $total ?>">
+						<?php
+							//Transforma dados da sessão "Carrinho" em um array
+
+							array_push(
+								$_SESSION['dados'],
+								array(
+									'id_produto' => $row["id_prod"],
+									'nome' => $row["nome_prod"],
+									'quantidade' => $quantidade,
+									'preco' => $row["preco_custo_prod"],
+									'total' => $total
+								)
+							);
+						}
+						?>
 					</div>
 				</div>
 				<div class="row">
@@ -196,19 +181,47 @@
 								<div class="col-md-3 col-md-push-1 text-center">
 									<div class="total">
 										<div class="grand-total">
-											<p><span><strong>Total:</strong></span> <span>R$ <?php echo number_format($total,2,",",".");
-							?></span></p>
+											<p><span><strong>Total:</strong></span> <span>R$ <?php echo number_format($total, 2, ",", ".");
+																								?></span></p>
 										</div>
 									</div>
-									<?php
-										if ($count == 0) {
-											echo '<p><a class="btn btn-primary"   style="opacity: 0.5;
-  filter: alpha(opacity=50)"> Proximo </a disabled></p>';
-										}else{
-											echo '<p><a href="checkout.php?proximo=true&carrinho=true" class="btn btn-primary"> Proximo </a></p>';
-										}
-									?>
+									<div class="d-flex flex-row mb-3">
+										<div class="p-2">
+											<?php
+											if ($count == 0) {
+												echo '<p><a class="btn btn-primary"   style="opacity: 0.5;filter: alpha(opacity=50)"> Proximo </a disabled></p>';
+											} else {
+												echo '<p><a href="checkout.php?id=' . $idProduto . '&&qtd=' . $quantidade . '&&total=' . $total . '" class="btn btn-primary"> Proximo </a></p>';
+											}
+											?>
+										</div>
+										<div class="p-2">
+											<p><a href="../../index.php" class="btn btn-primary">Voltar</a></p>
+										</div>
+									</div>
 								</div>
+								</form>
+
+								<form id="formDestino" action="">
+
+									<input name="sCepOrigem" type="hidden" value="12230610">
+									<input name="nVlPeso" type="hidden" value="1">
+									<input name="nVlComprimento" type="hidden" value="15">
+									<input name="nVlAltura" type="hidden" value="15">
+									<input name="nVlLargura" type="hidden" value="15">
+									<div class="col-md-3 col-md-push-1 text-center">
+										<label for="">Cep destino</label>
+										<input name="sCepDestino" type="text" class="form-control">
+
+										<label for="">Serviço</label>
+										<select name="nCdServico" id="">
+											<option value="04014">Sedex</option>
+											<option value="04510">PAC</option>
+										</select>
+										<button type="button" id="calcular" class="btn btn-primary">Calcular</button>
+									</div>
+								</form>
+								<p id="resultado"></p>
 							</div>
 						</div>
 					</div>
@@ -216,16 +229,25 @@
 			</div>
 		</div>
 
-		<?php
-			require_once("footer.html")
-		?>
 
 	</div>
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<!-- Ajax para calcular frete !-->
+	<script>
+		$('#calcular').click(function() {
+			let formSerialized = $('#formDestino').serialize();
+			$.post('calcular.php', formSerialized, function(resultado) {
+				resultado = JSON.parse(resultado);
+				let valorFrete = resultado.preco;
+				let prazoEntrega = resultado.prazo;
+				$('#resultado').html(`O valor do frete é <b>R$ ${valorFrete}</b> e o prazo de entrega é <b>${prazoEntrega} dias úteis</b>.`);
+			});
+		});
+	</script>
+</body>
 
-	</body>
 </html>
-

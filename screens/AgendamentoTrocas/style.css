@@ -1,0 +1,476 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    color: #fff;
+}
+
+.container {
+    background: #555;
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-areas: "h h""l r";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 10fr;
+}
+
+.nav-left {
+    background: #D6DAE5;
+    grid-area: l;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.nav-right {
+    background: #D6DAE5;
+    grid-area: r;
+    display: inherit;
+    padding-top: 10px;
+}
+
+.header {
+    background: #2681ED;
+    grid-area: h;
+}
+
+/* ================ container perfil inicio ====================== */
+.perfil {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    margin: 20px 10px;
+    padding: 5px;
+    border-radius: 5px;
+    color: black;
+    background-color: aliceblue;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+.perfil img {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    border-radius: 30px;
+}
+
+.divNameDesc {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 75%;
+}
+
+.spanName {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.spanDescription {
+    font-size: 14px;
+}
+
+.perfil button {
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    align-self: flex-start;
+    margin: 5px;
+}
+
+.perfil button:active {
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.perfil button:hover {
+    border-radius: 15px;
+}
+
+/*  =========== container perfil fim ==================== */
+
+/* ============= container botoes chat e cancelar INICIO =============== */
+.chatCancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.chat {
+    width: 110px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #2681ED;
+    color: white;
+    font-size: 18px;
+    border: none;
+    margin: 5px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+.cancel {
+    width: 110px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #2681ED;
+    color: white;
+    font-size: 18px;
+    border: none;
+    margin: 5px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+.chatCancel button:active {
+    margin-top: 6px;
+    margin-bottom: 4px;
+    border: 1px solid black;
+}
+
+/* =============== container botoes chat e cancelar FIM ==================*/
+
+/* =============== container descrição inicio ============= */
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    margin: 20px 10px;
+    padding: 30px 20px;
+    border-radius: 5px;
+    color: black;
+    background-color: #F4F7FE;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+    width: -webkit-fill-available;
+}
+
+.nameService {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #dadada;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.valService {
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.titleDescription {
+    font-size: 16px;
+    align-self: flex-start;
+    margin: 10px 0;
+}
+
+
+
+.descriptionService {
+    width: 100%;
+    max-height: 240px;
+    height: 100vh;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    background-color: #dadada;
+}
+
+/* ================= container descrição fim =================== */
+
+
+
+/* ================== container Action inicio =================== */
+.containerAction {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    /* height: 80%; */
+    margin: 20px 10px;
+    padding: 25px 15px;
+    border-radius: 5px;
+    color: black;
+    background-color: #F4F7FE;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+input[type="date"] {
+    width: 70%;
+    height: 60px;
+    padding: 0 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid rgb(192, 191, 191);
+    outline: none;
+}
+
+.spanHorario {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: underline;
+    align-content: center;
+    margin-top: 20px;
+}
+
+.buttonHour {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+.buttonHour button {
+    background-color: #2681ED;
+    width: 90px;
+    height: 40px;
+    margin: 5px 5px;
+    border-radius: 15px;
+    border: none;
+    color: white;
+}
+
+.buttonHour button:active {
+    margin-top: 6px;
+    margin-bottom: 4px;
+    border: 1px solid black;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    height: 80px;
+    font-size: 16px;
+    margin-bottom: 25px;
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 10px;
+}
+
+#spanData {
+    margin-left: 0;
+    font-weight: 700;
+}
+
+#spanHora {
+    margin-left: 0;
+    font-weight: 700;
+}
+
+#spanValor {
+    margin-left: 0;
+    font-weight: 700;
+}
+
+.details span {
+    margin-left: 40px;
+    margin-block: 5px;
+    font-weight: 700;
+}
+
+
+#spanTitleDetails {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: underline;
+    margin-bottom: 10px;
+    align-content: center;
+}
+
+.spanObservations {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.containerAction textarea {
+    width: 70%;
+    height: 60px;
+    padding: 5px 5px 60px 5px;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 10px;
+    font-size: 16px;
+    overflow: hidden;
+    outline: none;
+    resize: none;
+    margin-bottom: 10x;
+}
+
+.btnConfirm {
+    width: 70%;
+    height: 50px;
+    margin: 20px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: #2681ED;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.btnConfirm:active {
+    margin-top: 22px;
+    margin-bottom: 18px;
+    border: 1px solid black;
+}
+
+.btnConfirm:hover {
+    background-color: #13293D;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* ================== container Action fim ====================== */
+
+#btnClosePerfil:hover {
+    color: white;
+}
+
+button:hover {
+    background-color: #13293D;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+input[type="date"]:hover {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+input[type="date"]:focus {
+    border: 1px solid #0080ff;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+textarea:hover {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+textarea:focus {
+    border: 1px solid #0080ff;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+@media only screen and (max-width: 820px) {
+    .container {
+        grid-template-areas: "h""l""r";
+        grid-template-columns: 1fr;
+    }
+
+    .containerAction textarea {
+        height: 60px;
+        padding-bottom: 60px;
+    }
+
+
+}
+
+@media only screen and (min-width: 820px) {
+    .containerAction {
+        justify-self: center;
+        width: 60%;
+    }
+
+    .description {
+        width: 60%;
+    }
+
+    .perfil {
+        width: 65%;
+
+    }
+}
+
+
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 200px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+
+
+
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    flex-direction: column;
+    width: 360px;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, .6);
+    border: none;
+}
+
+/* The Close Button */
+.close {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.img_usuario {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin-right: 10px;
+}
