@@ -45,13 +45,19 @@
 
                 <div class="container-cards">
                     <figure>
-                        <img src="./images/american.png" alt="icon-american">
+                        <img src="../../E-commerce-Veiculos/images/cards/american.png" alt="icon-american">
                     </figure>
                     <figure>
-                        <img src="./images/visa.png" alt="icon-visa">
+                        <img src="../../E-commerce-Veiculos/images/cards/visa.png" alt="icon-visa">
                     </figure>
                     <figure>
-                        <img src="./images/pago.png" alt="icon-pago">
+                        <img src="../../E-commerce-Veiculos/images/cards/pago.png" alt="icon-pago">
+                    </figure>
+                    <figure>
+                        <img src="../../E-commerce-Veiculos/images/cards/paypal.png" alt="icon-paypal">
+                    </figure>
+                    <figure>
+                        <img src="../../E-commerce-Veiculos/images/cards/mastercard.png" alt="icon-mastercard">
                     </figure>
                 </div>
             </article>
