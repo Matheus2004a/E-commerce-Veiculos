@@ -108,6 +108,10 @@ footer section article {
     justify-content: flex-start;
 }
 
+footer section article h3 {
+    color: #d4d4d4;
+}
+
 footer section article .container-cards {
     display: flex;
     align-items: center;
