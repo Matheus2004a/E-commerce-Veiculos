@@ -16,6 +16,8 @@ require "./connection/connection.php";
 </head>
 
 <body>
+	<a name="top-page"></a>
+
 	<?php
 	require "./components/header.php";
 	?>
@@ -98,9 +100,9 @@ require "./connection/connection.php";
 			</div>
 		</section>
 
-		<?php
-		require "./components/button_top_page.php";
-		?>
+		<a href="#top-page">
+			<button class="button-top-page bg-sky-500"><i class="fas fa-arrow-up"></i></button>
+		</a>
 	</main>
 
 	<?php
