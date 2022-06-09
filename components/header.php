@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/main.css">
-    <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/styles.css">
+    <!-- <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/main.css"> -->
+    <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/styles.css"> 
 </head>
 
 <body>
@@ -30,10 +30,8 @@
                 <li><a href="/../E-commerce-veiculos/screens/compras/index.php">Compras</a></li>
                 <?php
 
-                if (isset($_SESSION['category'])) {
-                    if ($_SESSION['category'] == "mecânico") {
+                if (isset($_SESSION['category']) && $_SESSION['category'] == "mecânico") {
                         echo "<li><a href='/../E-commerce-veiculos/screens/CadastrarServicos/index.php'>Cadastrar Serviço</a></li>";
-                    }
                 }
 
 
