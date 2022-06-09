@@ -8,7 +8,7 @@ $password = "";
 $database_name = "bd_veiculos_tcc";
 
 
-$conn = mysqli_connect($server_name, $username, $password, $database_name);
+$conn = mysqli_connect($server_name, $username, $password, $database_name, 3307);
 // Check connection
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
