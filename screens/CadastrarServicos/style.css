@@ -16,6 +16,7 @@ body {
     width: 100vw;
     height: 100vh;
     background: #D6DAE5;
+    padding-top: 60px;
 
     display: grid;
     grid-template-areas: "h""t""b";
@@ -509,11 +510,4 @@ input[type="submit"]:active {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-}
-
-.img_usuario {
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    margin-right: 10px;
 }
