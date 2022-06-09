@@ -13,7 +13,6 @@
 
 <body onload="setMinDay()">
     <?php
-    session_start();
     require "../../connection/connection.php";
 
     $sql_profile = "SELECT id, nome, telefone, email, foto FROM dados_mecanico WHERE id = $_GET[id_user]";
@@ -29,54 +28,20 @@
 
 
     <div class="container">
-        <!-- DIV CONTAINER LADO ESQUERDO DA TELA -->
-        <div class="header">
-            <header>
-                <nav class="navbar">
-                    <figure>
-                        <img src="../../images/icones/brand header.png" alt="" srcset="">
-                    </figure>
-                    <a href="#" class="toggle-button">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </a>
-                    <div class="navbar-links">
-                        <ul>
-                            <li><a href="../../#">Home</a></li>
-                            <li><a href="#">Sobre</a></li>
-                            <li><a href="../login/index.php">Login</a></li>
-                            <li><a href="../compras/index.php">Compras</a></li>
-                            <li><a href="../listService/index.php">Serviços</a></li>
-                            <li><a href="../contact/contato.php">Contato</a></li>
-                            <li><a href="../login/logout.php">Sair</a></li>
-                            <?php
-
-                            if (isset($_SESSION['image'])) {
-                                if ($_SESSION['image'] != "") {
-                                    echo '<a href="../DashboardMecanico/index.php"> <li> <img src="../../images/Usuarios/' . $_SESSION['image']  . '" class="img_usuario" alt=""></li> </a>';
-                                }
-                            } else {
-                                echo '<a href="../DashboardMecanico/index.php"> <li> <img src="../../images/Usuarios/2.jpg" class="img_usuario" alt=""></li> </a>';
-                                unset($_SESSION['image']);
-                            }
-
-                            ?>
-                        </ul>
-                    </div>
-                </nav>
-            </header>
-        </div>
+        <?php 
+        
+        include "../../components/header.php";
+        
+        ?>
         <div class="nav-left">
 
             <!-- CONTAINER PERFIL -->
             <div class="perfil">
                 <?php
                 if (isset($foto)) {
-                    echo $foto;
-                    echo '<img src="' . $foto . '" alt="img perfil">';
+                    echo '<img src="../../images/users/' . $foto . '" alt="img perfil">';
                 } else {
-                    echo '<img src="../../images/Usuarios/euPerfil.jpg" alt="img perfil">';
+                    echo '<img src="../../images/users/default-user.png" alt="img perfil">';
                 }
                 ?>
                 <div class="divNameDesc">
