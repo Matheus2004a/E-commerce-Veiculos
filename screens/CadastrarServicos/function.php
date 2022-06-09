@@ -24,7 +24,7 @@ function saveImg($img)
             $novoNome = uniqid(time()) . '.' . $extensao;
 
             // Concatena a pasta com o nome
-            $destino = '../../imagens/' . $novoNome;
+            $destino = '../../images/services_images/' . $novoNome;
 
 
             // tenta mover o arquivo para o destino
