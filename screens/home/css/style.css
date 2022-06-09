@@ -1,18 +1,18 @@
-:root{
+:root {
   --background-white: hsl(0, 0%, 100%);
   --shadow: hsl(0, 0%, 83%);
   --color-blue: hsl(215, 95%, 63%);
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
-ul{
+ul {
   margin: 0 !important;
 }
 
-header{
+header {
 
   width: 100vw;
   display: flex;
@@ -25,84 +25,90 @@ header{
   z-index: 10;
 }
 
-header .brand{
+.bxs-user-circle:before {
+  content: "\eee5";
+  font-size: 3rem;
+}
+
+header .brand {
   font-size: 1.5rem !important;
 }
 
-header .brand,nav{
+header .brand,
+nav {
   height: fit-content !important;
 }
 
-nav a{
+nav a {
   color: var(--color-blue);
 }
 
-.carousel .carousel-inner .images{
+.carousel .carousel-inner .images {
   width: 100%;
   height: 90vh;
 }
 
-.carousel .carousel-indicators [data-bs-target]{
+.carousel .carousel-indicators [data-bs-target] {
   width: 10px;
   height: 10px;
   border-radius: 50%;
 }
 
-main{
+main {
   display: grid;
   margin-top: 8%;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-.menus ul{
+.menus ul {
   gap: 3rem;
 }
 
-ul{
+ul {
   display: flex;
   align-items: center;
   list-style: none;
   padding: 0;
 }
 
-section{
+section {
   display: grid;
   justify-content: center;
   gap: 2rem;
   margin-top: 5%;
 }
 
-section h2{
+section h2 {
   text-align: center;
 }
 
-iframe{
+iframe {
   width: 50rem;
   height: 28rem;
 }
 
-article{
+article {
   display: flex;
   justify-content: center;
 }
 
-button{
+button {
   border: none;
 }
 
-.card{
+.card {
   justify-content: center !important;
 }
 
-.card span{
+.card span {
   margin: 0 auto;
   font-size: 3rem;
 }
 
-footer{
+footer {
   display: flex;
   justify-content: space-evenly;
   padding: 2rem 0;
@@ -110,37 +116,44 @@ footer{
   margin-top: 5%;
 }
 
-footer .list-ordenate{
+footer .list-ordenate {
   display: grid;
 }
 
-footer .list-ordenate :is(h5,a){
+footer .list-ordenate :is(h5, a) {
   margin: 0 0 1rem !important;
 }
 
-article,footer .list-ordenate ul{
+article,
+footer .list-ordenate ul {
   gap: 1rem;
 }
 
-footer .list-ordenate,footer .list-ordenate :is(h5,ul){ 
+footer .list-ordenate,
+footer .list-ordenate :is(h5, ul) {
   height: fit-content;
 }
 
-footer .list-ordenate :is(img):hover,button{
+footer .list-ordenate :is(img):hover,
+button {
   cursor: pointer;
 }
-.flex-container{
+
+.flex-container {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
 }
-.mostrarAvaliacao{
+
+.mostrarAvaliacao {
   flex: 30%;
 }
-.demonstrar_avaliacao{
+
+.demonstrar_avaliacao {
   flex: 50%;
 }
-.demonstrar_avaliacao p{
+
+.demonstrar_avaliacao p {
   display: inline-block;
-  margin-left:10px;
+  margin-left: 10px;
 }

@@ -17,6 +17,7 @@ body {
     background: #555;
     width: 100vw;
     height: 100vh;
+    padding-top: 30px;
 
     display: grid;
     grid-template-areas: "h h""l r";
@@ -207,10 +208,8 @@ body {
 .containerAction {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-content: center;
     align-items: center;
-    /* height: 80%; */
     margin: 20px 10px;
     padding: 25px 15px;
     border-radius: 5px;

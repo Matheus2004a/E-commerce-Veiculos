@@ -136,11 +136,15 @@ footer :is(section:first-child, .row-footer) {
     display: flex;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .navbar-links li {
     list-style: none;
     padding: 1rem 1.5rem;
+}
+li:last-child {
+    padding: 0;
 }
 
 .navbar-links li a {

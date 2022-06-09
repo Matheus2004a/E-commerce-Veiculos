@@ -31,7 +31,7 @@ body {
 }
 
 /* Type */
-body,
+/* body,
 input,
 select,
 textarea {
@@ -39,7 +39,7 @@ textarea {
   font-size: 13pt;
   font-weight: 400;
   line-height: 1.65;
-}
+} */
 
 @media screen and (max-width: 1680px) {
   body,
@@ -66,15 +66,6 @@ textarea {
   textarea {
     font-size: 9pt;
   }
-}
-
-a {
-  -moz-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-  -webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-  -ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-  color: #2681ed;
-  text-decoration: none;
 }
 
 a:hover {
@@ -1929,10 +1920,9 @@ input[type="radio"]+label:before {
 }
 
 .img_usuario {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 30px;
-  margin-right: 10px;
 }
 
 .image {
@@ -2328,10 +2318,7 @@ table.alt tfoot {
   border-top: 0;
 }
 
-input[type="submit"],
 input[type="reset"],
-input[type="button"],
-button,
 .button {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -2846,7 +2833,7 @@ main section :is(h1,h2){
 
 @media screen and (max-width: 1680px) {
   main {
-    padding: 0 5em 0.1em 5em;
+    padding: 5em 5em 0.1em 5em;
   }
 
   main>section {
