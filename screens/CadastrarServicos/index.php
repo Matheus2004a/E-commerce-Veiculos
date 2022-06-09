@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-session_start();
-include "../../connection/connection.php";
-$verificaDadosMecanico = 'SELECT email,telefone,foto_perfil FROM tbl_dados_pessoais WHERE nome = "' . $_SESSION['username'] . '"';
-$realizaConsultaDados = mysqli_query($conn, $verificaDadosMecanico);
 
-$fetchDadod = mysqli_fetch_assoc($realizaConsultaDados);
-
-
-
-?>
 
 <head>
     <meta charset="UTF-8">
@@ -18,55 +8,38 @@ $fetchDadod = mysqli_fetch_assoc($realizaConsultaDados);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <!-- ARRUMAR O ESTILO INTERFERINDO NA TELA EM BOTOES -->
+
+    <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/main.css">
+    <!-- <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/styles.css"> -->
     <title>Document</title>
-    <link rel="stylesheet" href="../../home_alternativa/assets/css/styles.css">
 </head>
 
 <body>
     <form class="container" action="scriptCadastrar.php" method="POST" id="container" enctype="multipart/form-data">
-        <div class="header">
-        <header>
-		<nav class="navbar">
-			<figure>
-				<img src="../../images/icones/brand header.png" alt="" srcset="">
-			</figure>
-			<a href="#" class="toggle-button">
-				<span class="bar"></span>
-				<span class="bar"></span>
-				<span class="bar"></span>
-			</a>
-			<div class="navbar-links">
-				<ul>
-					<li><a href="../../index.php">Home</a></li>
-					<li><a href="../../index.php">Sobre</a></li>
-					<li><a href="../compras/index.php">Compras</a></li>
-					<li><a href="../listService/index.php">Serviços</a></li>
-					<li><a href="./screens/contact/contato.php">Contato</a></li>
-					
-					<li><a href="./screens/login/logout.php">Sair</a></li>
-					<?php 
-						
-                        if (isset($_SESSION['image'])) {
-                            if ($_SESSION['image'] != "") {
-                                echo '<a href="../DashboardMecanico/index.php"> <li> <img src="../../images/Usuarios/' . $_SESSION['image']  . '" class="img_usuario" alt=""></li> </a>';
-                            }
-                        } else {
-                            echo '<a href="../DashboardMecanico/index.php"> <li> <img src="../../images/Usuarios/euPerfil.jpg" class="img_usuario" alt=""></li> </a>';
-                            unset($_SESSION['image']);
-                        }
 
-                        ?>
-				</ul>
-			</div>
-		</nav>
-	</header>
-        </div>
+        <?php
+        include "../../components/header.php";
+        include "../../connection/connection.php";
+        $verificaDadosMecanico = 'SELECT email,telefone,foto_perfil FROM tbl_dados_pessoais WHERE nome = "' . $_SESSION['username'] . '"';
+        $realizaConsultaDados = mysqli_query($conn, $verificaDadosMecanico);
+
+        $fetchDadod = mysqli_fetch_assoc($realizaConsultaDados);
+
+
+
+        ?>
+
+
+
+
+
         <div class="nav-top" id="nav-top">
             <div class="content-top">
                 <div class="left-content-top">
                     <div class="perfil">
 
-                        <?php echo ' <img src="../../images/Usuarios/euPerfil.jpg" alt="">'; ?>
+                        <?php echo ' <img src="/../E-commerce-veiculos/images/Usuarios/euPerfil.jpg" alt="">'; ?>
 
                         <?php echo ' <span class="span-title">' . $_SESSION['username'] . '</span> ' ?>
                     </div>
