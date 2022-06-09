@@ -32,16 +32,16 @@
                 mysqli_query($conn, $sql);
             }
             $_SESSION['status_img'] = 1;
-            header('Location: http://localhost/E-commerce-Veiculos-merge/screens/CadastrarServicos/');
+            header('Location: http://localhost/E-commerce-Veiculos/screens/CadastrarServicos/');
         } else {
             $_SESSION['status_img'] = 0;
             $_SESSION['msg_error'] = die(mysqli_error($conn));
-            header('Location: http://localhost/E-commerce-Veiculos-merge/screens/CadastrarServicos/');
+            header('Location: http://localhost/E-commerce-Veiculos/screens/CadastrarServicos/');
         }
     } else {
         $_SESSION['status_img'] = $status;
         $_SESSION['msg_error'] = $destino;
-        header('Location: http://localhost/E-commerce-Veiculos-merge/screens/CadastrarServicos/');
+        header('Location: http://localhost/E-commerce-Veiculos/screens/CadastrarServicos/');
     }
 
     mysqli_close($conn);
