@@ -64,6 +64,11 @@ footer .row-footer {
     transition: width 0.4s;
 }
 
+nav ul i {
+    font-size: 2rem;
+    color: #000000;
+}
+
 nav ul li a:hover::after {
     width: 100%;
 }
@@ -141,10 +146,7 @@ footer :is(section:first-child, .row-footer) {
 
 .navbar-links li {
     list-style: none;
-    padding: 1rem 1.5rem;
-}
-li:last-child {
-    padding: 0;
+    padding: 0 1.5rem;
 }
 
 .navbar-links li a {
@@ -210,6 +212,6 @@ li:last-child {
 
 /* ESTILO DA LOGO DO HEADER */
 .logoImage {
-    width: 60px;
-    height: 60px;
+    width: 3.75rem;
+    height: 3.75rem;
 }
