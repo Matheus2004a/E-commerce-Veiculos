@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <link rel="stylesheet" href="../../home_alternativa/assets/css/styles.css">
     <title>Agendamento de troca de peças</title>
 </head>
 
@@ -28,10 +27,10 @@
 
 
     <div class="container">
-        <?php 
-        
+        <?php
+
         include "../../components/header.php";
-        
+
         ?>
         <div class="nav-left">
 
@@ -86,26 +85,26 @@
             <div class="containerAction">
                 <input type="date" id="inputDate" onchange="pickDate(value)">
                 <span class="spanHorario">Selecione um horario:</span>
+                <div class="buttonHour">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <?php
 
-                <?php
+                                $sql = "SELECT hora_disponivel  FROM tbl_horarios WHERE fk_id_servico = $_GET[id_servico];";
+                                $result = mysqli_query($conn, $sql);
 
-                $sql = "SELECT hora_disponivel  FROM tbl_horarios WHERE fk_id_servico = $_GET[id_servico];";
-                $result = mysqli_query($conn, $sql);
-
-                echo '<div class="buttonHour">';
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<table>
-                                    <tbody>
-                                        <tr>
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "
                                             <td>
                                             " . '<button value="' . $row['hora_disponivel'] . '" id="btnHora" onclick="pickHour(value)">' . $row['hora_disponivel'] . '</button>' . "
                                             </td>
-                                        </tr>
-                                    </tbody>
-                                </table>";
-                }
-                echo "</div>";
-                ?>
+                                        </tr>";
+                                }
+                                ?>
+                        </tbody>
+                    </table>
+                </div>
                 <hr>
                 <span id="spanTitleDetails">Detalhes</span>
                 <div class="details">
