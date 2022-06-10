@@ -14,17 +14,17 @@
 </head>
 
 <body>
-    <header class="navbar">
-        <figure>
-            <img class="logoImage" src="/../E-commerce-Veiculos/images/icones/logo.jpg">
-        </figure>
+    <header class="header">
         <a href="#" class="toggle-button">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </a>
         <div id="google_translate_element"></div>
-        <nav class="navbar-links">
+        <nav class="navbar">
+            <figure>
+                <img class="logoImage" src="/../E-commerce-Veiculos/images/icones/logo.jpg">
+            </figure>
             <ul>
                 <li><a href="/../E-commerce-veiculos/">Home</a></li>
                 <li><a href="/../E-commerce-veiculos/">Sobre</a></li>
