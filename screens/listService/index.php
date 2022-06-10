@@ -15,6 +15,7 @@ require __DIR__ . "/../../connection/connection.php";
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../../home_alternativa/assets/css/main.css">
 	<link rel="stylesheet" href="../../home_alternativa/assets/css/styles.css">
+	<link rel="stylesheet" href="../../components/styles/button_top_page.css">
 </head>
 
 <body>
@@ -109,8 +110,11 @@ require __DIR__ . "/../../connection/connection.php";
 		</div>
 
 		<?php
-		require "../../components/button_top_page.php";
+		// require "../../components/button_top_page.php";
 		?>
+		<a href="#top-page">
+			<button class="button-top-page bg-sky-500"><i class="fas fa-arrow-up"></i></button>
+		</a>
 	</main>
 
 	<?php
