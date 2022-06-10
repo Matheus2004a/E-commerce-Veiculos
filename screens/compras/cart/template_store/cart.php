@@ -1,7 +1,7 @@
 <?php
 session_start();
 require __DIR__ . '/../../../../connection/connection.php';
-
+include "head.html";
 if (!isset($_SESSION['carrinho'])) {
 	$_SESSION['carrinho'] = array();
 }
