@@ -25,7 +25,11 @@ $fetch = mysqli_fetch_assoc($insert);
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
+<?php 
 
+    include "../../components/header.php";
+
+?>
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
@@ -40,7 +44,7 @@ $fetch = mysqli_fetch_assoc($insert);
 
 
             <div class="text-center">
-                <img src="../../images/Usuarios/<?php echo $_SESSION['image'] ?>" class="avatar img-circle img-thumbnail" alt="avatar">
+                <img src="../../images/users/<?php echo $_SESSION['image'] ?>" class="avatar img-circle img-thumbnail" alt="avatar">
                 <h6>Entre com uma foto diferente ....</h6>
                 <input type="file" class="text-center center-block file-upload">
             </div>
