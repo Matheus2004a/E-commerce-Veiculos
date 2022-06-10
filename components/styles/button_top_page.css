@@ -1,0 +1,22 @@
+.button-top-page {
+    display: grid;
+    align-items: center;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    clip-path: circle();
+    padding: .8rem;
+    border: none;
+    cursor: pointer;
+    transform: translateY(100px);
+    background-color: #2681ed;
+    transition: .5s;
+}
+
+.button-top-page i {
+    color: #fff;
+}
+
+.button-top-page.show {
+    transform: translateY(0);
+}

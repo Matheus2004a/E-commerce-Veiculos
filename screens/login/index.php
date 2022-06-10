@@ -29,7 +29,7 @@ session_start();
   ?>
 
   <header class="login-logo">
-    <a href=""><b>Admin</b>LTE</a>
+    <img src="../" alt="">
   </header>
 
   <main class="card">
@@ -59,7 +59,7 @@ session_start();
         <fieldset>
           <label for="validationCustomUsername" class="form-label">Senha</label>
           <div class="input-group has-validation">
-            <input type="text" class="form-control" name="senha" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Digite sua senha" required>
+            <input type="password" class="form-control" name="senha" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Digite sua senha" required>
             <span class="input-group-text" id="inputGroupPrepend">
               <i class="far fa-eye"></i>
             </span>
@@ -92,7 +92,7 @@ session_start();
 
   <!-- Kit fontawesome -->
   <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
-  <script src="./js/password.js"></script>
+  <script src="../../components/password.js"></script>
   <script src="../../validations/main.js"></script>
   <!-- jQuery -->
   <script src="../../plugins/jquery/jquery.min.js"></script>

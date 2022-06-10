@@ -80,7 +80,7 @@ session_start();
           <fieldset>
             <label for="validationCustomUsername" class="form-label">Senha</label>
             <div class="input-group has-validation">
-              <input type="text" class="form-control" name="senha" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Digite sua senha" required>
+              <input type="password" class="form-control" name="senha" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Digite sua senha" required>
               <span class="input-group-text" id="inputGroupPrepend">
                 <i class="far fa-eye"></i>
               </span>
@@ -115,7 +115,7 @@ session_start();
 
         <fieldset>
           <label for="">Foto de perfil</label>
-          <input type="file" class="form-control" name="profile">
+          <input type="file" class="form-control" name="file">
         </fieldset>
 
         <?php
@@ -133,7 +133,7 @@ session_start();
 
   <!-- Kit fontawesome -->
   <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
-  <script src="./js/password.js"></script>
+  <script src="../../components/password.js"></script>
   <script src="../../validations/forms.js"></script>
   <script src="../../components/preview-image.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

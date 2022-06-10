@@ -1,0 +1,159 @@
+:root {
+  --background-white: hsl(0, 0%, 100%);
+  --shadow: hsl(0, 0%, 83%);
+  --color-blue: hsl(215, 95%, 63%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  margin: 0 !important;
+}
+
+header {
+
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--background-white);
+  box-shadow: 0 2px 5px 0 var(--shadow);
+  z-index: 10;
+}
+
+.bxs-user-circle:before {
+  content: "\eee5";
+  font-size: 3rem;
+}
+
+header .brand {
+  font-size: 1.5rem !important;
+}
+
+header .brand,
+nav {
+  height: fit-content !important;
+}
+
+nav a {
+  color: var(--color-blue);
+}
+
+.carousel .carousel-inner .images {
+  width: 100%;
+  height: 90vh;
+}
+
+.carousel .carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+main {
+  display: grid;
+  margin-top: 8%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.menus ul {
+  gap: 3rem;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+section {
+  display: grid;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 5%;
+}
+
+section h2 {
+  text-align: center;
+}
+
+iframe {
+  width: 50rem;
+  height: 28rem;
+}
+
+article {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  border: none;
+}
+
+.card {
+  justify-content: center !important;
+}
+
+.card span {
+  margin: 0 auto;
+  font-size: 3rem;
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem 0;
+  background-color: #C4C4C4;
+  margin-top: 5%;
+}
+
+footer .list-ordenate {
+  display: grid;
+}
+
+footer .list-ordenate :is(h5, a) {
+  margin: 0 0 1rem !important;
+}
+
+article,
+footer .list-ordenate ul {
+  gap: 1rem;
+}
+
+footer .list-ordenate,
+footer .list-ordenate :is(h5, ul) {
+  height: fit-content;
+}
+
+footer .list-ordenate :is(img):hover,
+button {
+  cursor: pointer;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.mostrarAvaliacao {
+  flex: 30%;
+}
+
+.demonstrar_avaliacao {
+  flex: 50%;
+}
+
+.demonstrar_avaliacao p {
+  display: inline-block;
+  margin-left: 10px;
+}

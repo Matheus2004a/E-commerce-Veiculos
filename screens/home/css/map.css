@@ -1,0 +1,20 @@
+main{
+    display: grid;
+    height: 100vh;
+}
+
+.principle {
+    text-align: center;
+    font-weight: bold;
+    color: #19c397;
+}
+
+.map{
+    width: 100%;
+}
+
+.button-page-principle{
+    background-color:#93E1FA; 
+    font-weight: bold;
+    border: 1px;
+}
