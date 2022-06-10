@@ -207,3 +207,9 @@ li:last-child {
         place-content: center;
     }
 }
+
+/* ESTILO DA LOGO DO HEADER */
+.logoImage {
+    width: 60px;
+    height: 60px;
+}
