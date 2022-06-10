@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/main.css"> -->
+    <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/main.css">
     <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/styles.css"> 
 </head>
 
 <body>
     <header class="navbar">
         <figure>
-            <img src="/E-commerce/images/icones/brand header.png" alt="" srcset="">
+            <img class="logoImage" src="/../E-commerce-Veiculos/images/icones/logo.jpg">
         </figure>
         <a href="#" class="toggle-button">
             <span class="bar"></span>
