@@ -30,30 +30,27 @@ a {
     color: transparent !important;
 }
 
-.navbar {
+.header {
     position: fixed;
     top: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     z-index: 100;
     background-color: #ffffff;
-    padding: .5rem 4.5rem !important;
     box-shadow: 0 1px 5px 0 #d3d3d3;
 }
 
-.navbar ul li,
+.header ul li,
 footer section,
 footer .row-footer {
     font-size: 1rem;
 }
 
-.navbar ul li a {
+.header ul li a {
     position: relative;
 }
 
-.navbar ul li a::after {
+.header ul li a::after {
     content: '';
     width: 0%;
     height: 2px;
@@ -64,20 +61,44 @@ footer .row-footer {
     transition: width 0.4s;
 }
 
-nav ul i {
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 4.5rem;
+}
+
+ul {
+    list-style: none;
+}
+
+.navbar ul i {
     font-size: 2rem;
     color: #000000;
 }
 
-nav ul li a:hover::after {
+.navbar ul li a:hover::after {
     width: 100%;
+}
+
+.navbar ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 2rem;
+}
+
+.navbar li a {
+    color: #3d4449;
 }
 
 figure {
     height: fit-content;
 }
 
-.navbar figure,
+.header figure,
 footer section article:nth-child(3) figure,
 p {
     margin: 0;
@@ -87,7 +108,7 @@ section button {
     margin-top: 1rem;
 }
 
-footer a {
+footer :is(p, a) {
     color: #7f888f;
     font-size: 1rem;
 }
@@ -105,12 +126,16 @@ footer section:first-child {
 
 footer section:nth-child(2) {
     justify-content: space-around;
+    align-items: initial;
     padding: 4rem 0;
 }
 
 footer section article {
     display: grid;
-    justify-content: flex-start;
+}
+
+footer section article:last-child {
+    gap: 1rem;
 }
 
 footer section article h3 {
@@ -137,22 +162,6 @@ footer :is(section:first-child, .row-footer) {
     margin: .5rem;
 }
 
-.navbar-links ul {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-}
-
-.navbar-links li {
-    list-style: none;
-    padding: 0 1.5rem;
-}
-
-.navbar-links li a {
-    color: #3d4449;
-}
-
 .toggle-button {
     position: absolute;
     top: .75rem;
@@ -172,7 +181,7 @@ footer :is(section:first-child, .row-footer) {
 }
 
 @media (max-width: 800px) {
-    .navbar {
+    .header {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -181,25 +190,25 @@ footer :is(section:first-child, .row-footer) {
         display: flex;
     }
 
-    .navbar-links {
+    .navbar {
         display: none;
         width: 100%;
     }
 
-    .navbar-links ul {
+    .navbar ul {
         width: 100%;
         flex-direction: column;
     }
 
-    .navbar-links ul li {
+    .navbar ul li {
         text-align: center;
     }
 
-    .navbar-links ul li a {
+    .navbar ul li a {
         padding: .5rem 1rem;
     }
 
-    .navbar-links.active {
+    .navbar.active {
         display: flex;
     }
 
