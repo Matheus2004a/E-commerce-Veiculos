@@ -86,8 +86,8 @@ require "./connection/connection.php";
 				while ($row = mysqli_fetch_assoc($result)) {
 				?>
 					<article>
-						<a href="#" class="image">
-							<img src="./home_alternativa/images/pic01.jpg" alt="<?php $row['nome_prod'] ?>">
+						<a href="./screens/compras/desc-product.php?id=<?php echo $row['id_prod']?>" class="image">
+							<img src="./images/products-images/<?php echo $row['foto_prod'] ?>" alt="<?php $row['nome_prod'] ?>">
 						</a>
 						<h3><?php echo $row['nome_prod'] ?></h3>
 						<h4><?php echo $row['desc_prod'] ?></h4>
