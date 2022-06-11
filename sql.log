@@ -1,0 +1,77 @@
+CRIANDO UMA VIEW NO BANCO:
+
+create or replace view dados_mecanico as
+select 
+tbl_mecanicos.id_mecanico as id_mecanico, 
+nome, 
+telefone, 
+email, 
+foto_perfil as foto,
+id_dados_pessoais
+from tbl_dados_pessoais 
+inner join tbl_mecanicos 
+on tbl_mecanicos.fk_id_dados_pessoais = tbl_dados_pessoais.id_dados_pessoais;
+
+
+
+============ VIEW LISTA DE PEDIDOS ===================
+create or replace view dados_pedidos as
+select 
+	tbl_pedidos.data_pedido, 
+	tbl_pedidos.qtd_prod, 
+	tbl_pedidos.total_preco_prod, 
+	tbl_pedidos.status_entrega, 
+	tbl_pedidos.fk_id_cliente, 
+	tbl_pedidos.fk_id_pagto,
+    tbl_pagtos.status_pagto,
+    tbl_pagtos.val_frete,
+    tbl_dados_pessoais.nome,
+    tbl_dados_pessoais.foto_perfil
+from tbl_pedidos
+inner join tbl_pagtos 
+on tbl_pedidos.fk_id_pagto = tbl_pagtos.id_pagto
+inner join tbl_clientes
+on tbl_pedidos.fk_id_cliente = tbl_clientes.id_cliente
+inner join tbl_dados_pessoais
+on tbl_clientes.fk_id_dados_pessoais = tbl_dados_pessoais.id_dados_pessoais;
+
+
+================= trigger tbl clientes e mecanicos =====================
+delimiter $$
+create trigger t_client 
+after insert
+on tbl_dados_pessoais
+for each row
+begin
+	set @categoria = (select categoria from tbl_dados_pessoais where id_dados_pessoais = new.id_dados_pessoais);
+if @categoria = 'cliente' 
+then insert into tbl_clientes (data_criacao, data_atualizacao, fk_id_dados_pessoais) value (now(), now(), new.id_dados_pessoais);
+else insert into tbl_mecanicos (data_criacao, data_atualizacao, fk_id_dados_pessoais) value (now(), now(), new.id_dados_pessoais);
+end if;
+end$$
+delimiter ;
+
+
+
+================= VIEW PAGINA COMPRAS DO USUÁRIO =========================
+
+create view dados_compras as 
+select
+tbl_vendas.val_pagto_prod,
+tbl_vendas.qtd_comprada,
+tbl_vendas.fk_id_pedido,
+tbl_vendas.fk_cod_prod,
+tbl_pedidos.id_pedido,
+tbl_pedidos.qtd_prod,
+tbl_pedidos.fk_id_pagto,
+tbl_produtos.id_prod,
+tbl_produtos.nome_prod,
+tbl_pagtos.status_pagto,
+tbl_pagtos.id_pagto
+from tbl_vendas
+inner join tbl_pedidos
+on tbl_vendas.fk_id_pedido = tbl_pedidos.id_pedido
+inner join tbl_produtos
+inner join tbl_pagtos
+on tbl_pedidos.fk_id_pagto = tbl_pagtos.id_pagto;
+
