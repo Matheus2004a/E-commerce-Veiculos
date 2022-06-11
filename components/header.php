@@ -50,7 +50,7 @@
                 <?php
                 if (isset($_SESSION['image'])) {
                     if ($_SESSION['image'] != null) {
-                        echo '<a href="/../E-commerce-veiculos/screens/DashboardMecanico/">
+                        echo '<a href="/../E-commerce-veiculos/screens/dashboard-usuario/">
                         <li>
                             <img src="/../E-commerce-veiculos/images/users/' . $_SESSION['image']  . '" class="img_usuario" alt="">
                         </li>
