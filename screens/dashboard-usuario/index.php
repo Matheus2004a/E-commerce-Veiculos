@@ -30,9 +30,9 @@ $inner = mysqli_query($conn, $pedidos);
             <div class="d-flex flex-column align-items-center text-center">
               <?php
               if (isset($_SESSION['image']) && $_SESSION['image'] != null) {
-                echo "<img src='../../images/Usuarios/" . $fetch['foto_perfil'] . " alt='Admin' width='150'>";
+                echo "<img src='/../E-commerce-veiculos/images/users/" . $fetch['foto_perfil'] . "' alt='Admin' width='150'>";
               } else {
-                echo '<a href="/../E-commerce-Veiculos/screens/DashboardMecanico/">
+                echo '<a href="/../E-commerce-Veiculos/screens/dashboard-usuario/crud.php">
                 <i class="bx bxs-user-circle icon-user"></i>
                 </a>';
               }
