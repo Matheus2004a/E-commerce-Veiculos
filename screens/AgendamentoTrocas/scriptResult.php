@@ -15,11 +15,11 @@
     if (mysqli_query($conn, $sql)) {
 
         $_SESSION['status'] = 1;
-        header("Location: http://localhost/E-commerce-Veiculos-merge/screens/AgendamentoTrocas/index.php?id_user=$id_user&id_servico=$id_service");
+        header("Location: http://localhost/E-commerce-Veiculos/screens/AgendamentoTrocas/index.php?id_user=$id_user&id_servico=$id_service");
     } else {
         $_SESSION['status'] = 0;
         $_SESSION['error'] = die(mysqli_error($conn));
-        header('Location: http://localhost/E-commerce-Veiculos-merge/screens/AgendamentoTrocas/');
+        header('Location: http://localhost/E-commerce-Veiculos/screens/AgendamentoTrocas/');
     }
 
 
