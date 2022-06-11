@@ -21,7 +21,7 @@
         <?php
         include "../../components/header.php";
         include "../../connection/connection.php";
-        $verificaDadosMecanico = 'SELECT email,telefone,foto_perfil FROM tbl_dados_pessoais WHERE nome = "' . $_SESSION['username'] . '"';
+        $verificaDadosMecanico = 'SELECT nome, email, telefone, foto_perfil FROM tbl_dados_pessoais WHERE id_dados_pessoais = "' . $_SESSION['idLogado'] . '"';
         $realizaConsultaDados = mysqli_query($conn, $verificaDadosMecanico);
 
         $fetchDadod = mysqli_fetch_assoc($realizaConsultaDados);
@@ -41,7 +41,7 @@
 
                         <?php echo ' <img src="/../E-commerce-veiculos/images/Usuarios/euPerfil.jpg" alt="">'; ?>
 
-                        <?php echo ' <span class="span-title">' . $_SESSION['username'] . '</span> ' ?>
+                        <?php echo ' <span class="span-title">' . $fetchDadod['nome'] . '</span> ' ?>
                     </div>
                     <span class="span-title">Email:</span>
                     <?php echo ' <span class="span-content">' . $fetchDadod['email'] . '</span> ' ?>
