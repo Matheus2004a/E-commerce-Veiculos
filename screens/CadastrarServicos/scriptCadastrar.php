@@ -21,7 +21,7 @@
     }
 
     if($status == 0) {
-        $insertTblservicos = "INSERT INTO `bd_veiculos_tcc`.`tbl_servicos` (`nome_servico`, `desc_servico`, `val_servico`, `img_servico`,`fk_id_mecanico`) VALUES ('$name', '$descricao', '$valor', '$destino', '1')";
+        $insertTblservicos = "INSERT INTO `bd_veiculos_tcc`.`tbl_servicos` (`nome_servico`, `desc_servico`, `val_servico`, `img_servico`,`fk_id_mecanico`) VALUES ('$name', '$descricao', '$valor', '$destino', '".$_SESSION['id_mecanico']."')";
         
         if (mysqli_query($conn, $insertTblservicos)) {
 
