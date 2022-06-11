@@ -237,13 +237,19 @@ input[type="date"] {
     margin-top: 20px;
 }
 
-.buttonHour {
+.buttonHour > table,tbody {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    border: none;
 }
+
+.buttonHour > table,td {
+    margin: 0;
+}
+
+
 
 .buttonHour button {
     background-color: #2681ED;
@@ -398,7 +404,7 @@ textarea:focus {
 @media only screen and (min-width: 820px) {
     .containerAction {
         justify-self: center;
-        width: 60%;
+        width: 59%;
     }
 
     .description {
