@@ -28,7 +28,7 @@ $fetch = mysqli_fetch_assoc($insert);
     <main class="container bootstrap snippet">
         <div class="row">
             <div class="col-sm-10">
-                <h2><?php echo $_SESSION['username'] ?></h2>
+                <h2><?php echo $fetch['nome'] ?></h2>
             </div>
         </div>
 
@@ -46,7 +46,7 @@ $fetch = mysqli_fetch_assoc($insert);
                 <div class="text-center">
                     <?php
                     if (isset($_SESSION['image']) && $_SESSION['image'] != null) {
-                        echo "<img src='../../images/users/" . $fetch['foto_perfil'] . " alt='avatar' width='150' class='avatar img-circle img-thumbnail'>";
+                        echo "<img src='/../E-commerce-veiculos/images/users/" . $fetch['foto_perfil'] . " alt='avatar' width='150' class='avatar img-circle img-thumbnail'>";
                     } else {
                         echo '<a href="/../E-commerce-Veiculos/screens/DashboardMecanico/">
                         <i class="bx bxs-user-circle icon-user"></i>
