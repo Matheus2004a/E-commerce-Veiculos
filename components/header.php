@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/styles.css">
     <link rel="stylesheet" href="../screens/requests/style.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+	<script src="./components/traducao.js"></script>
+
 </head>
 
 <body>
@@ -27,7 +30,6 @@
             </figure>
             <ul>
                 <li><a href="/../E-commerce-veiculos/">Home</a></li>
-                <li><a href="/../E-commerce-veiculos/">Sobre</a></li>
                 <li><a href="/../E-commerce-veiculos/screens/listService/">Serviços</a></li>
                 <li><a href="/../E-commerce-veiculos/screens/compras/">Compras</a></li>
 
