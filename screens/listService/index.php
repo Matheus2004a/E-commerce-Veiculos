@@ -47,8 +47,8 @@ require __DIR__ . "/../../connection/connection.php";
 
 	<a name="top-page"></a>
 
-	<?php 
-	
+	<?php
+
 	include "../../components/header.php"
 
 	?>
@@ -118,9 +118,9 @@ require __DIR__ . "/../../connection/connection.php";
 	</main>
 
 	<?php
-	
+
 	include "../../components/footer.php";
-	
+
 	?>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
