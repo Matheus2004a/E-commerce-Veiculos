@@ -56,7 +56,7 @@
                         </li>
                         </a>';
                     } else {
-                        echo '<a href="/../E-commerce-Veiculos/screens/DashboardMecanico/">
+                        echo '<a href="/../E-commerce-Veiculos/screens/dashboard-usuario/">
                         <i class="bx bxs-user-circle icon-user"></i>
                         </a>';
                     }
