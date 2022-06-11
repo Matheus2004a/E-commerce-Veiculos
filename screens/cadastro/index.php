@@ -105,7 +105,7 @@ session_start();
             <select name="categoria" class="form-select" id="validationCustom04" required>
               <option selected disabled value="">Selecione sua categoria</option>
               <option value="cliente">Cliente</option>
-              <option value="mecânico">Mecânico</option>
+              <option value="mecanico">Mecânico</option>
             </select>
             <div class="invalid-feedback">
               Insira a categoria de usuário.
