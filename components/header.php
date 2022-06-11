@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/styles.css">
     <link rel="stylesheet" href="../screens/requests/style.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 	<script src="./components/traducao.js"></script>
 
@@ -34,7 +35,7 @@
                 <li><a href="/../E-commerce-veiculos/screens/compras/">Compras</a></li>
 
                 <?php
-                if (isset($_SESSION['category']) && $_SESSION['category'] == "mecânico") {
+                if (isset($_SESSION['category']) && $_SESSION['category'] == "mecanico") {
                     echo "<li><a href='/../E-commerce-veiculos/screens/CadastrarServicos/'>Cadastrar Serviço</a></li>";
                 }
 
@@ -48,7 +49,7 @@
                 ?>
 
                 <?php
-                if (isset($_SESSION['image'])) {
+                if (isset($_SESSION['image']) && $_SESSION['category'] != "mecanico") {
                     if ($_SESSION['image'] != null) {
                         echo '<a href="/../E-commerce-veiculos/screens/dashboard-usuario/">
                         <li>
