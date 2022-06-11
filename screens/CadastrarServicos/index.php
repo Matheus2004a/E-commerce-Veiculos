@@ -21,11 +21,11 @@
         <?php
         include "../../components/header.php";
         include "../../connection/connection.php";
-        $verificaDadosMecanico = 'SELECT nome, email, telefone, foto_perfil FROM tbl_dados_pessoais WHERE id_dados_pessoais = "' . $_SESSION['idLogado'] . '"';
+        $verificaDadosMecanico = 'SELECT id_mecanico, nome, email, telefone, foto FROM dados_mecanico WHERE id_dados_pessoais = "' . $_SESSION['idLogado'] . '"';
         $realizaConsultaDados = mysqli_query($conn, $verificaDadosMecanico);
 
-        $fetchDadod = mysqli_fetch_assoc($realizaConsultaDados);
-
+        $fetchDados = mysqli_fetch_assoc($realizaConsultaDados);
+        $_SESSION['id_mecanico'] = $fetchDados['id_mecanico'];
 
 
         ?>
@@ -39,14 +39,14 @@
                 <div class="left-content-top">
                     <div class="perfil">
 
-                        <?php echo ' <img src="/../E-commerce-veiculos/images/Usuarios/euPerfil.jpg" alt="">'; ?>
+                        <?php echo ' <img src="/../E-commerce-veiculos/images/users/'.$_SESSION['image'].'" alt="">'; ?>
 
-                        <?php echo ' <span class="span-title">' . $fetchDadod['nome'] . '</span> ' ?>
+                        <?php echo ' <span class="span-title">' . $fetchDados['nome'] . '</span> ' ?>
                     </div>
                     <span class="span-title">Email:</span>
-                    <?php echo ' <span class="span-content">' . $fetchDadod['email'] . '</span> ' ?>
+                    <?php echo ' <span class="span-content">' . $fetchDados['email'] . '</span> ' ?>
                     <span class="span-title">Telefone</span>
-                    <?php echo ' <span class="span-content">' . $fetchDadod['telefone'] . '</span> ' ?>
+                    <?php echo ' <span class="span-content">' . $fetchDados['telefone'] . '</span> ' ?>
                 </div>
                 <div class="right-content-top">
                     <span class="span-title">Digite o nome do serviço</span>
