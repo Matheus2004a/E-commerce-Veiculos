@@ -1,11 +1,3 @@
-<?php
-session_start();
-include "../../connection/connection.php";
-$sql = "SELECT * FROM tbl_dados_pessoais WHERE id_dados_pessoais = " . $_SESSION['idLogado'] . " ";
-$insert = mysqli_query($conn, $sql);
-$fetch = mysqli_fetch_assoc($insert);
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,12 +8,18 @@ $fetch = mysqli_fetch_assoc($insert);
     <title>Seus dados</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
     <?php
     include "../../components/messages-alerts/icons.php";
     include "../../components/header.php";
+    include "../../connection/connection.php";
+    
+    $sql = "SELECT * FROM tbl_dados_pessoais WHERE id_dados_pessoais = " . $_SESSION['idLogado'] . " ";
+    $insert = mysqli_query($conn, $sql);
+    $fetch = mysqli_fetch_assoc($insert);
     ?>
 
     <hr>
@@ -33,13 +31,13 @@ $fetch = mysqli_fetch_assoc($insert);
         </div>
 
         <?php
-            if (isset($_SESSION['success'])) {
-                echo $_SESSION['success'];
-                unset($_SESSION['success']);
-            } else if (isset($_SESSION['error'])) {
-                echo $_SESSION['error'];
-                unset($_SESSION['error']);
-            }
+        if (isset($_SESSION['success'])) {
+            echo $_SESSION['success'];
+            unset($_SESSION['success']);
+        } else if (isset($_SESSION['error'])) {
+            echo $_SESSION['error'];
+            unset($_SESSION['error']);
+        }
         ?>
         <div class="row">
             <div class="col-sm-3">
