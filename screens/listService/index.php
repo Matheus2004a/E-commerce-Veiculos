@@ -54,7 +54,7 @@ require __DIR__ . "/../../connection/connection.php";
 	?>
 
 	<main>
-		<div class="max-w-2xl mx-auto py-0 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+		<div class="max-w-2xl mx-auto py-6 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
 			<div class="flex items-center justify-between mb-8">
 				<form class="w-1/3" action="" method="POST">
 					<input class="form-control" type="search" placeholder="Pesquise aqui o que você procura..." aria-label="Search" name="search">
