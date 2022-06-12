@@ -70,7 +70,7 @@ session_start();
         </fieldset>
 
         <div class="icheck-primary">
-          <input type="checkbox" id="remember">
+          <input type="checkbox" name="check_box" id="remember">
           <label for="remember" class="mb-3">Lembrar - me</label>
           <p>
             Já possui conta? Cadastre - se <a href="../cadastro/index.php" class="text-center">aqui</a>
