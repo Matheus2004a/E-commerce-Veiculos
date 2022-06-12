@@ -16,6 +16,7 @@ require __DIR__ . "/../../connection/connection.php";
 	<link rel="stylesheet" href="../../home_alternativa/assets/css/main.css">
 	<link rel="stylesheet" href="../../home_alternativa/assets/css/styles.css">
 	<link rel="stylesheet" href="../../components/styles/button_top_page.css">
+	<link rel="stylesheet" href="style-modal.css">
 </head>
 
 <body>
@@ -115,6 +116,20 @@ require __DIR__ . "/../../connection/connection.php";
 		<a href="#top-page">
 			<button class="button-top-page bg-sky-500"><i class="fas fa-arrow-up"></i></button>
 		</a>
+
+		<div id="myModal" class="modal">
+
+			<div class="modal_content">
+				<p id="p_modal">
+					Para agendar um serviço você precisar estar logado como CLIENTE!
+				</p>
+				<div class="buttons">
+					<span onclick="closeModal(event)" class="close">Sim</span>
+					<span onclick="closeModal(event)" class="close">Não</span>
+				</div>
+			</div>
+
+		</div>
 	</main>
 
 	<?php
