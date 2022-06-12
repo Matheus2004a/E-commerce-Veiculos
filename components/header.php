@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/styles.css">
     <link rel="stylesheet" href="../screens/requests/style.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-	<script src="./components/traducao.js"></script>
-
 </head>
 
 <body>
@@ -66,6 +62,9 @@
             </ul>
         </nav>
     </header>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="./components/traducao.js"></script>
 </body>
 
 </html>
