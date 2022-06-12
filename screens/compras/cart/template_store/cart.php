@@ -1,6 +1,11 @@
 <?php
-session_start();
 require __DIR__ . '/../../../../connection/connection.php';
+require "../../../login/verify-session.php";
+
+if ($_SESSION['category'] != "cliente") {
+	header('location: ../../../login/index.php');
+	exit;
+}
 
 if (!isset($_SESSION['carrinho'])) {
 	$_SESSION['carrinho'] = array();
