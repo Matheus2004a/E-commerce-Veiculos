@@ -1,4 +1,4 @@
-<?php session_start() ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -45,7 +45,9 @@
                 ?>
 
                 <?php
-                if (isset($_SESSION['image']) && $_SESSION['category'] != "mecanico") {
+                if (isset($_SESSION['image']) && $_SESSION['category'] == "cliente") {
+                    // se for mecânico não pode ir para a tela de produtos comprados e sim para o request de produtos e serviços
+                    // tem que arrumar isso aqui ainda
                     if ($_SESSION['image'] != null) {
                         echo '<a href="/../E-commerce-veiculos/screens/dashboard-usuario/">
                         <li>
@@ -54,6 +56,18 @@
                         </a>';
                     } else {
                         echo '<a href="/../E-commerce-Veiculos/screens/dashboard-usuario/">
+                        <i class="bx bxs-user-circle icon-user"></i>
+                        </a>';
+                    }
+                } elseif (isset($_SESSION['image']) && $_SESSION['category'] == "mecanico") {
+                    if ($_SESSION['image'] != null) {
+                        echo '<a href="/../E-commerce-veiculos/screens/dashboard-usuario/crud.php">
+                        <li>
+                            <img src="/../E-commerce-veiculos/images/users/' . $_SESSION['image']  . '" class="img_usuario" alt="">
+                        </li>
+                        </a>';
+                    } else {
+                        echo '<a href="/../E-commerce-Veiculos/screens/dashboard-usuario/crud.php">
                         <i class="bx bxs-user-circle icon-user"></i>
                         </a>';
                     }

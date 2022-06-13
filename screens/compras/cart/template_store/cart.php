@@ -110,7 +110,7 @@ $total = 0;
 					$row = mysqli_fetch_assoc($resultQuery);
 					echo '<div class="product-cart">
 									<div class="one-forth">
-										<img src=' . $row["foto_prod"] . ' class="product-img">
+										<img src="../../' . $row["foto_prod"] . '" class="product-img">
 										<div class="display-tc">
 											<h3 id="nome">' . $row['nome_prod'] . '</h3>
 										</div>
