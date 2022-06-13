@@ -204,7 +204,7 @@ $total = 0;
 						<button type='button' class='btn btn-primary' disabled='disabled' style='opacity: 0.5;filter: alpha(opacity=50)'>Proximo</button>
 						</a>";
 					} else {
-						echo "<a href='checkout.php?id=" . $idProduto . "&&qtd=" . $quantidade . "&&total=" . $total . ">
+						echo "<a href='checkout.php?id=" . $idProduto . "&&qtd=" . $quantidade . "&&total=" . $total . "'>
 						<button type='button' class='btn btn-primary'>Proximo</button>
 						</a>";
 					}
