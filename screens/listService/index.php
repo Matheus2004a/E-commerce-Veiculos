@@ -17,6 +17,7 @@ require __DIR__ . "/../../connection/connection.php";
 	<link rel="stylesheet" href="../../home_alternativa/assets/css/styles.css">
 	<link rel="stylesheet" href="../../components/styles/button_top_page.css">
 	<link rel="stylesheet" href="style-modal.css">
+	<script src="script.js"></script>
 </head>
 
 <body>
@@ -88,10 +89,13 @@ require __DIR__ . "/../../connection/connection.php";
 								</div>
 								<div class='p-3'>
 									<h3 class='text-base text-gray-700 truncate' id='nomeservicouto' value='11'>" . $row['nome_servico'] . "</h3>
-									<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900' value='" . $row['val_servico'] . "' id='precoservicouto'>R$ " . $row['val_servico'] . "</p>
-
-										<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()' ><a href='../AgendamentoTrocas/index.php?id_user=" . $row['fk_id_mecanico'] . "&id_servico=" . $row['id_servico'] . "'> Agendar serviço </a> </button>
-									</a>
+									<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900' value='" . $row['val_servico'] . "' id='precoservicouto'>R$ " . $row['val_servico'] . "</p>";
+						if (isset($_SESSION['category']) && $_SESSION['category'] == "cliente") {
+							echo "<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()' ><a href='../AgendamentoTrocas/index.php?id_servico=" . $row['id_servico'] . "'> Agendar serviço </a> </button>";
+						} else {
+							echo "<button onclick='showModal()' type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()'> Agendar serviço </button>";
+						}
+						echo "</a>
 								</div>
 							</div>";
 					}
@@ -120,12 +124,16 @@ require __DIR__ . "/../../connection/connection.php";
 		<div id="myModal" class="modal">
 
 			<div class="modal_content">
+				<i class="fa-solid fa-triangle-exclamation"></i>
 				<p id="p_modal">
-					Para agendar um serviço você precisar estar logado como CLIENTE!
+					Para agendar um serviço você precisa ser um <b>CLIENTE!</b>
 				</p>
 				<div class="buttons">
-					<span onclick="closeModal(event)" class="close">Sim</span>
-					<span onclick="closeModal(event)" class="close">Não</span>
+					<p>
+						Deseja entrar como cliente?
+					</p>
+					<span onclick="closeModal()" class="close"><a href="/../E-commerce-Veiculos/screens/login/">Sim</a></span>
+					<span onclick="closeModal()" class="close">Não</span>
 				</div>
 			</div>
 
