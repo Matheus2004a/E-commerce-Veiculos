@@ -14,7 +14,7 @@
     <?php
     require "../../connection/connection.php";
 
-    $sql_profile = "SELECT id, nome, telefone, email, foto FROM dados_mecanico WHERE id = $_GET[id_user]";
+    $sql_profile = 'SELECT id_mecanico, nome, email, telefone, foto FROM dados_mecanico WHERE id_mecanico in (SELECT fk_id_mecanico FROM tbl_servicos WHERE id_servico = '.$_GET['id_servico'].')';
     $profil_data = mysqli_query($conn, $sql_profile);
 
     while ($row = mysqli_fetch_assoc($profil_data)) {
@@ -116,10 +116,10 @@
 
                 <span class="spanObservations">Observações</span>
                 <textarea id="obs" rows="3" placeholder="Digite aqui"></textarea>
-                <form <?php echo 'action="scriptResult.php?id_user=' . $_GET['id_user'] . '&id_servico=' . $_GET['id_servico'] . '"'; ?> method="post">
+                <form <?php echo 'action="scriptResult.php"'; ?> method="post">
                     <input type="hidden" name="data" id="hiddenData">
                     <input type="hidden" name="hora" id="hiddenHora">
-                    <input type="hidden" name="id_user" value="<?php echo $_GET['id_user']; ?>">
+                    <input type="hidden" name="id_user" value="<?php echo $row['id_mecanico']; ?>">
                     <input type="hidden" name="id_service" value="<?php echo $_GET['id_servico']; ?>">
                     <input type="hidden" name="observacao" id="hiddenObs">
                     <input type="submit" class="btnConfirm" value="Confirmar" onclick="pickValues(event)">
@@ -133,17 +133,6 @@
     <div id="myModal" class="modal">
 
         <!-- Modal content -->
-        <div class="modal-content">
-            <span onclick="closeModal(event)" class="close">&times;</span>
-            <p id="p_modal">
-            </p>
-        </div>
-
-    </div>
-
-    <!-- MODAL STATUS AGENDAMENTO -->
-    <div id="myModal" class="modal">
-
         <div class="modal-content">
             <span onclick="closeModal(event)" class="close">&times;</span>
             <p id="p_modal">
