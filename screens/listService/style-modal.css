@@ -26,7 +26,7 @@
     display: flex;
     background-color: #f8d7da;
     margin: auto;
-    padding: 20px;
+    padding:  10px 20px 10px 20px;
     flex-direction: column;
     width: 370px;
     border-radius: 5px;
@@ -34,7 +34,7 @@
     border: none;
     color: #842029;
     border: .5px solid #f5c2c7;
-    
+    font-size: 15px;
 }
 .modal_content  p > b{
     color: #842029 !important;
@@ -50,7 +50,8 @@
 
 /* The Close Button */
 .close {
-    color: rgb(0, 0, 0);
+    align-self: center;
+    color: #842029;
     float: right;
     font-size: 15px;
     font-weight: bold;
@@ -65,5 +66,4 @@
 
 .modal_content>i {
     font-size: 25px;
-
 }
