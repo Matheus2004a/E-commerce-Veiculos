@@ -1,11 +1,8 @@
 <?php
-if(!isset($_SESSION))
-{
+if (!isset($_SESSION)) {
 	session_start();
 }
-
-if (!$_SESSION['username'] && $_SESSION['category'] != "Mecânico") {
-	header('location: ../login/index.php');
-	exit();
+if ($_SESSION['username'] && $_SESSION['category'] != "mecanico" || !$_SESSION['username']) {
+	header("location: ../login/index.php");
 }
 ?>

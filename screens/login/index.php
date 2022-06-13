@@ -35,8 +35,6 @@ session_destroy();
 
   <main class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Faça login para iniciar sua sessão</p>
-
       <form action="login.php" method="POST" class="needs-validation" novalidate>
         <?php
         if (isset($_SESSION['no-authenticated'])) {
