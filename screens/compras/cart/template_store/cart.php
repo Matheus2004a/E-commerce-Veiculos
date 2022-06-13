@@ -13,6 +13,22 @@ if ($_SESSION['category'] != "cliente") {
 	exit;
 }
 
+/* $sql_estoq_empty = "SELECT `id_prod`, `nome_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE qtd_estoque = 0";
+$result = mysqli_query($conn, $sql_estoq_empty);
+$rows_prod_empty = mysqli_fetch_assoc($result); */
+
+// TODO: Não adicionar produto ao carrinho quando está sem estoque
+if (empty($_SESSION['status_estoq'])) {
+	$_SESSION['msg-estoq-empty'] = "<div class='alert alert-danger d-flex align-items-center w-fit' role='alert'>
+	<svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#exclamation-triangle-fill'/></svg>
+	<div>
+	Produto sem estoque
+	</div>
+	</div>";
+	header('location: ../../../compras/index.php');
+	exit;
+}
+
 if (!isset($_SESSION['carrinho'])) {
 	$_SESSION['carrinho'] = array();
 }
