@@ -174,7 +174,7 @@ $id = $_GET['id'];
               </div>
               <div class="col-md-1">
                 <label for="Telefone" class="form-label">DDD </label>
-                <input type="tel" class="form-control" name="ddd" id="ddd" required>
+                <input type="tel" class="form-control" name="ddd" id="ddd" required maxlength="2" minlength="2">
               </div>
               <div class="col-md-8">
                 <label for="Telefone" class="form-label">Telefone </label>
