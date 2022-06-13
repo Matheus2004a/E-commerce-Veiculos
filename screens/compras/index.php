@@ -62,6 +62,13 @@ require __DIR__ . "/../../connection/connection.php";
 				</form>
 			</div>
 
+			<?php
+			if (isset($_SESSION['msg-alert-mechanic'])) {
+				echo $_SESSION['msg-alert-mechanic'];
+				unset($_SESSION['msg-alert-mechanic']);
+			}
+			?>
+
 			<h2 class="mb-4 text-2xl font-bold">Produtos</h2>
 			<article class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 				<?php
@@ -73,7 +80,8 @@ require __DIR__ . "/../../connection/connection.php";
 							$_SESSION['status_estoq'] = "<span class='text-xs text-red-600 bg-red-100 p-1 rounded'>Indisponível</span>";
 						}
 
-						echo "<div class='group shadow-md rounded-lg'>
+						echo "
+						<div class='group shadow-md rounded-lg'>
 						<a href='desc-product.php?id=" . $row['id_prod'] . "'>
 								<div class='w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-t-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8'>
 									<figure>
@@ -92,14 +100,13 @@ require __DIR__ . "/../../connection/connection.php";
 							</div>";
 					}
 				} else {
-					echo "<div class='alert alert-warning flex items-center w-full' role='alert'>
+					echo "<div class='alert alert-warning flex items-center w-fit' role='alert'>
 									<svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Warning:'><use xlink:href='#exclamation-triangle-fill'/></svg>
 									<div>
 									  Nenhum produto encontrado
 									</div>
 								  </div>";
 				}
-
 				mysqli_close($conn);
 				?>
 			</article>

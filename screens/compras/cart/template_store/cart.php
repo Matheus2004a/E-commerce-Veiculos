@@ -3,7 +3,13 @@ require __DIR__ . '/../../../../connection/connection.php';
 require "../../../login/verify-session.php";
 
 if ($_SESSION['category'] != "cliente") {
-	header('location: ../../../login/index.php');
+	$_SESSION['msg-alert-mechanic'] = "<div class='alert alert-danger d-flex align-items-center w-fit' role='alert'>
+	<svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#exclamation-triangle-fill'/></svg>
+	<div>
+	Você não tem permissão para adicionar ao carrinho
+	</div>
+  </div>";
+	header('location: ../../../compras/index.php');
 	exit;
 }
 
