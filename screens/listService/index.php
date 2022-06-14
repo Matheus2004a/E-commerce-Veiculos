@@ -95,8 +95,7 @@ require __DIR__ . "/../../connection/connection.php";
 						} else {
 							echo "<button onclick='showModal()' type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()'> Agendar serviço </button>";
 						}
-						echo "</a>
-								</div>
+						echo "</div>
 							</div>";
 					}
 				} else {
