@@ -94,7 +94,7 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
 
                 <div class="col-6">
                     <a href="">
-                        <button class="btn btn-secondary">Voltar</button>
+                        <button  class="btn btn-secondary" onclick="history.back()">Voltar</button>
                     </a>
                     <button class="btn btn-primary" type="submit">Cadastrar produto</button>
                 </div>
