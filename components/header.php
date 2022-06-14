@@ -27,20 +27,19 @@
             </figure>
             <ul>
                 <li><a href="/../E-commerce-veiculos/">Home</a></li>
-                <li><a href="/../E-commerce-veiculos/screens/listService/">Serviços</a></li>
-                <li><a href="/../E-commerce-veiculos/screens/compras/">Compras</a></li>
+                <li><a href='/../E-commerce-veiculos/screens/listService/'>Serviços</a></li>
+                <li><a href='/../E-commerce-veiculos/screens/compras/'>Compras</a></li>
+
 
                 <?php
                 if (isset($_SESSION['category']) && $_SESSION['category'] == "mecanico") {
-                    echo "<li><a href='/../E-commerce-veiculos/screens/CadastrarServicos/'>Cadastrar Serviço</a></li>";
+                    echo "<li><a href='/../E-commerce-veiculos/screens/opcoes/'>Opções</a></li>";
                 }
-
-                if (isset($_SESSION['username']) && $_SESSION['username']) { ?>
-                    <li><a href="/../E-commerce-veiculos/screens/login/logout.php">Sair</a></li>
-                <?php
-                } else { ?>
-                    <li><a href="/../E-commerce-veiculos/screens/login/">Login</a></li>
-                <?php
+                if (isset($_SESSION['username']) && $_SESSION['username']) { 
+                    echo "<li><a href='/../E-commerce-veiculos/screens/login/logout.php'>Sair</a></li>";
+                
+                } else { 
+                    echo "<li><a href='/../E-commerce-veiculos/screens/login/'>Login</a></li>";
                 }
                 ?>
 
