@@ -74,9 +74,7 @@ require __DIR__ . "/../../connection/connection.php";
 				<?php
 				if (mysqli_num_rows($result_query) > 0) {
 					while ($row = mysqli_fetch_assoc($result_query)) {
-						if ($row['qtd_estoque'] > 0) {
-							$_SESSION['status_estoq'] = "";
-						} else {
+						if ($row['qtd_estoque'] <= 0) {
 							$_SESSION['status_estoq'] = "<span class='text-xs text-red-600 bg-red-100 p-1 rounded'>Indisponível</span>";
 						}
 
