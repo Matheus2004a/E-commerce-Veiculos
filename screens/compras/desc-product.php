@@ -13,24 +13,39 @@ require __DIR__ . "/../../connection/connection.php";
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../home/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="desc_product.css">
 </head>
 
 <body>
     <a name="top-page"></a>
-
     <?php
     require "../../components/header.php";
 
-    $id_product = $_GET['id'];
+    $id_product = $_GET['id'] ?? '';
     $sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE id_prod = $id_product";
     $result_query = mysqli_query($conn, $sql);
 
     $row = mysqli_fetch_assoc($result_query);
+    ?>
 
-    echo "<main>
+    <div class='container wrapper-search'>
+        <a href='index.php'>
+            <span class='return-page w-fit flex align-items-center gap-2'>
+                <i class='bx bx-arrow-back'></i>
+                <p>Voltar</p>
+            </span>
+        </a>
+        <div class='mb-3'>
+            <input type='text' class='form-control' placeholder='Pesquise aqui'>
+        </div>
+    </div>
+
+    <?php
+    echo "<section>
         <!-- Image gallery -->
         <div class='mt-6 max-w-2xl mx-auto items-center sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8'>
-            <div class='hidden lg:grid lg:grid-cols-1 lg:gap-y-8'>
+            <div class='lg:grid lg:grid-cols-1 lg:gap-y-8'>
                 <div class='aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4'>
                     <figure>
                         <img src='" . $row['foto_prod'] . "' alt='Model wearing plain white basic tee.' class='w-full h-full object-center object-cover'>
@@ -41,101 +56,45 @@ require __DIR__ . "/../../connection/connection.php";
             <div class='grid gap-3 lg:col-span-2 lg:pr-8'>
                 <h1 class='text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl'>" . $row['nome_prod'] . "</h1>
                 <p class='text-base text-gray-900'>" . $row['desc_prod'] . "</p>
-                <p class='text-3xl text-gray-900'>R$" . $row['preco_custo_prod'] . "</p>
+                <p class='text-3xl text-gray-900'>R$ " . number_format($row['preco_custo_prod'], 2, ",", ".") . "</p>
                 <p class='text-base text-gray-900'>Selecione a quantidade:</p>
-                <input type='number' class='w-1/6 p-1 rounded border border-secondary outline-none' min='1' max=". $row['qtd_estoque'] .">
-
-                <!-- Reviews -->
-                <div class='mt-6'>
-                    <div class='flex items-center'>
-                        <div class='flex items-center'>
-                            <!-- Heroicon name: solid/star Active: 'text-gray-900', Default: 'text-gray-200'-->
-                            <svg class='text-gray-900 h-5 w-5 flex-shrink-0' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-                                <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                            </svg>
-
-                            <!-- Heroicon name: solid/star -->
-                            <svg class='text-gray-900 h-5 w-5 flex-shrink-0' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-                                <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                            </svg>
-
-                            <!-- Heroicon name: solid/star -->
-                            <svg class='text-gray-900 h-5 w-5 flex-shrink-0' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-                                <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                            </svg>
-
-                            <!-- Heroicon name: solid/star -->
-                            <svg class='text-gray-900 h-5 w-5 flex-shrink-0' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-                                <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                            </svg>
-
-                            <!-- Heroicon name: solid/star -->
-                            <svg class='text-gray-200 h-5 w-5 flex-shrink-0' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-                                <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                            </svg>
-                        </div>
-                        <p class='sr-only'>4 out of 5 stars</p>
-                        <a href='#' class='ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500'>117 reviews</a>
-                    </div>
-                </div>
-
+                <input type='number' class='w-1/6 p-1 rounded border border-secondary outline-none' min='1' max=" . $row['qtd_estoque'] . ">
                 <!-- Product info -->
                 <!-- Options -->
                 <div class='lg:mt-0 lg:row-span-3'>
                     <a href='./cart/template_store/cart.php?acao=add&id_prod=".$row['id_prod']."' ><button class='mt-4 w-2/6 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>Comprar agora</button></a>
                 </div>
             </div>
-
-            <div class='py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8'>
-                <!-- Description and details -->
-                <div class='mt-10'>
-                    <h3 class='text-sm font-medium text-gray-900'>Highlights</h3>
-
-                    <div class='mt-4'>
-                        <ul role='list' class='block pl-4 list-disc text-sm space-y-2'>
-                            <li class='text-gray-400'><span class='text-gray-600'>Hand cut and sewn locally</span></li>
-
-                            <li class='text-gray-400'><span class='text-gray-600'>Dyed with our proprietary colors</span></li>
-
-                            <li class='text-gray-400'><span class='text-gray-600'>Pre-washed &amp; pre-shrunk</span></li>
-
-                            <li class='text-gray-400'><span class='text-gray-600'>Ultra-soft 100% cotton</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class='mt-10'>
-                    <h2 class='text-sm font-medium text-gray-900'>Details</h2>
-
-                    <div class='mt-4 space-y-6'>
-                        <p class='text-sm text-gray-600'>The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming &quot;Charcoal Gray&quot; limited release.</p>
-                    </div>
-                </div>
-            </div>
         </div>
-</main>";
+    </section>";
 
-    $sql_more_prod = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE categoria_prod LIKE '%$row[categoria_prod]%' ORDER BY nome_prod LIMIT 4";
-    $result_more_prod = mysqli_query($conn, $sql_more_prod);
+    $page = isset($_GET['pagina']) ?  $_GET['pagina'] : 1;
 
+    // Número de registros por página
+    $total_page = 6;
+
+    // Calcula o total de registros iniciais para visualização dos produtos
+    $initial_registers = ($total_page * $page) - $total_page;
+
+    $sql = "SELECT `id_prod`, `nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque` FROM `tbl_produtos` WHERE categoria_prod LIKE '%$row[categoria_prod]%' AND `id_prod` <> '$id_product' ORDER BY nome_prod LIMIT $initial_registers, $total_page";
+    $result_page = mysqli_query($conn, $sql);
     ?>
 
-
-    <div class='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
+    <main class='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h2 class='text-2xl font-semibold'>As pessoas também compraram</h2>
         <article class='grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 mt-5'>
             <?php
-            while ($row_prod = mysqli_fetch_assoc($result_more_prod)) {
+            while ($row_prod = mysqli_fetch_assoc($result_page)) {
                 echo "<div class='group shadow-md rounded-lg'>
-                <a href='desc-product.php?id=" . $row_prod['id_prod'] . "'>
+                    <a href='desc-product.php?id=" . $row_prod['id_prod'] . "'>
                         <div class='w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-t-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8'>
                             <figure>
                                 <img src=' " . $row_prod['foto_prod'] . "' alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
                             </figure>
-                        </div>
-                        <div class='p-3'>
-                            <h3 class='text-base text-gray-700 truncate'>" . $row_prod['nome_prod'] . "</h3>
-                            <p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900'>R$ " . $row_prod['preco_custo_prod'] . "</p>
+                            </div>
+                            <div class='p-3'>
+                                <h3 class='text-base text-gray-700 truncate'>" . $row_prod['nome_prod'] . "</h3>
+                                <p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900'>R$ " . number_format($row_prod['preco_custo_prod'], 2, ",", ".") . "</p>
                             <a href='./cart/App/Controller/addCarrinho.php'>
                                 <button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary'>Adicionar ao carrinho</button>
                             </a>
@@ -146,8 +105,47 @@ require __DIR__ . "/../../connection/connection.php";
             mysqli_close($conn);
             ?>
         </article>
-    </div>
-    <?php require_once "../../components/footer.php";?>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <?php
+                $previous_page = $page - 1;
+                $next_page = $page + 1;
+                if ($page > 1) {
+                ?>
+                    <li class="page-item">
+                        <?php echo "<a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $previous_page . "' aria-label='Previous'>"; ?>
+                        <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                <?php } ?>
+
+                <?php
+                for ($i = 1; $i < $total_page; $i++) {
+                    if ($page == $i) {
+                        echo "<li class='page-item active'><a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $i . "'>$i</a></li>";
+                    } else {
+                        echo "<li class='page-item'><a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $i . "'>$i</a></li>";
+                    }
+                }
+                ?>
+
+                <?php
+                if ($page < $total_page) {
+                ?>
+                    <li class="page-item">
+                        <?php echo "<a class='page-link' href='desc-product.php?id=" . $id_product . "&pagina=" . $next_page . "' aria-label='Previous'>"; ?>
+                        <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </nav>
+    </main>
+
+    <?php
+    require "../../components/footer.php";
+    ?>
 </body>
 
 </html>
