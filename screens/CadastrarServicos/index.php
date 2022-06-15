@@ -8,11 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <!-- ARRUMAR O ESTILO INTERFERINDO NA TELA EM BOTOES -->
-
     <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/main.css">
     <!-- <link rel="stylesheet" href="/../E-commerce-Veiculos/home_alternativa/assets/css/styles.css"> -->
-    <title>Document</title>
+    <title>Cadastro de serviços</title>
 </head>
 
 <body>
@@ -23,30 +21,21 @@
         include "../../connection/connection.php";
         $verificaDadosMecanico = 'SELECT id_mecanico, nome, email, telefone, foto FROM dados_mecanico WHERE id_dados_pessoais = "' . $_SESSION['idLogado'] . '"';
         $realizaConsultaDados = mysqli_query($conn, $verificaDadosMecanico);
-
         $fetchDados = mysqli_fetch_assoc($realizaConsultaDados);
         $_SESSION['id_mecanico'] = $fetchDados['id_mecanico'];
-
-
         ?>
-
-
-
-
 
         <div class="nav-top" id="nav-top">
             <div class="content-top">
                 <div class="left-content-top">
                     <div class="perfil">
-
-                        <?php echo ' <img src="/../E-commerce-veiculos/images/users/'.$_SESSION['image'].'" alt="">'; ?>
-
-                        <?php echo ' <span class="span-title">' . $fetchDados['nome'] . '</span> ' ?>
+                        <?php echo '<img src="/../E-commerce-veiculos/images/users/' . $_SESSION['image'] . '" alt="">'; ?>
+                        <?php echo '<span class="span-title">' . $fetchDados['nome'] . '</span>' ?>
                     </div>
                     <span class="span-title">Email:</span>
-                    <?php echo ' <span class="span-content">' . $fetchDados['email'] . '</span> ' ?>
+                    <?php echo ' <span class="span-content">' . $fetchDados['email'] . '</span>' ?>
                     <span class="span-title">Telefone</span>
-                    <?php echo ' <span class="span-content">' . $fetchDados['telefone'] . '</span> ' ?>
+                    <?php echo ' <span class="span-content">' . $fetchDados['telefone'] . '</span>' ?>
                 </div>
                 <div class="right-content-top">
                     <span class="span-title">Digite o nome do serviço</span>
@@ -56,6 +45,7 @@
                 </div>
             </div>
         </div>
+
         <div class="nav-bottom" id="nav-bottom">
             <div class="content-bottom">
                 <div class="left-content-bottom">
@@ -81,29 +71,24 @@
                     <span class="span-title">Seus horários cadastrados</span>
                     <div class="horarios" id="horarios">
                         <!-- INPUTS GERADOS DINAMICAMENTE NO JS FICAM AQUI -->
-
                     </div>
-
                 </div>
             </div>
             <input type="hidden" name="horasCadastradas" id="horasCadastradas">
             <input type="submit" value="Cadastrar serviço" onclick="verificarDados(event)">
         </div>
-
     </form>
-    <div id="myModal" class="modal">
 
+    <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <span onclick="closeModal(event)" class="close">&times;</span>
             <p id="p_modal">
             </p>
         </div>
-
     </div>
 
     <?php
-
     if (isset($_SESSION['status_img'])) {
         if ($_SESSION['status_img'] == 1) {
             echo '<script>resultCadastro(' . $_SESSION['status_img'] . ') </script>';
@@ -121,7 +106,6 @@
         unset($_SESSION['msg_error'], $_SESSION['status_img']);
     }
     ?>
-
 
     <script src="https://kit.fontawesome.com/51dc1929bd.js" crossorigin="anonymous"></script>
     <script src="../../components/password.js"></script>
