@@ -18,24 +18,6 @@ require __DIR__ . "/../register-products/verify-access.php";
 </head>
 
 <body>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Confirmação de exclusão</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Você realmente deseja excluir esse pedido? <strong>Não será possível recuperá - lo.</strong></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-danger">Excluir</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <nav class="sidebar close">
         <header>
             <div class="image-text">
@@ -81,18 +63,6 @@ require __DIR__ . "/../register-products/verify-access.php";
                                 <i class='bx bx-log-out icon'></i>
                                 <span class="text nav-text">Sair</span>
                             </a>
-                        </li>
-
-                        <li class="mode">
-                            <span class="sun-moon">
-                                <i class='bx bx-moon icon moon'></i>
-                                <i class='bx bx-sun icon sun'></i>
-                            </span>
-                            <p class="mode-text text">Modo Noite</p>
-
-                            <div class="toggle-switch">
-                                <span class="switch"></span>
-                            </div>
                         </li>
                     </ul>
                 </ul>
@@ -140,7 +110,6 @@ require __DIR__ . "/../register-products/verify-access.php";
                     <th scope="col">Quantidade</th>
                     <th scope="col">Pagamento</th>
                     <th scope="col">Entrega</th>
-                    <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -165,11 +134,6 @@ require __DIR__ . "/../register-products/verify-access.php";
                             <i class='bx bxs-error-circle'></i>
                         </span>
                     </td>
-                    <td>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Excluir
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <th scope="row">
@@ -192,11 +156,6 @@ require __DIR__ . "/../register-products/verify-access.php";
                             <i class='bx bxs-error-circle'></i>
                         </span>
                     </td>
-                    <td>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Excluir
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <th scope="row">
@@ -218,11 +177,6 @@ require __DIR__ . "/../register-products/verify-access.php";
                         <span class='status-delivery gap-2 text-red-600 bg-red-100'>Não entregue
                             <i class='bx bxs-error-circle'></i>
                         </span>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Excluir
-                        </button>
                     </td>
                 </tr>
             </tbody>
