@@ -81,7 +81,7 @@ require __DIR__ . "/../../connection/connection.php";
 							<a href='desc-product.php?id=<?php echo $row['id_prod'] ?>&pagina=1'>
 								<div class='w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-t-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8'>
 									<figure>
-										<img src=' "<?php $row['foto_prod'] ?> "' alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
+										<img src="<?php echo $row['foto_prod'] ?> " alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
 									</figure>
 								</div>
 								<div class='p-3'>
@@ -94,22 +94,25 @@ require __DIR__ . "/../../connection/connection.php";
 										</a>
 									<?php
 									} else { ?>
-										<p class='mt-2 text-center text-red-600 bg-red-100 p-2 rounded font-bold'>Indisponível</p>
+										<div class="flex justify-end mt-3">
+											<p class='text-center text-red-600 bg-red-100 py-1 pl-2.5 pr-2.5 rounded font-bold'>Indisponível</p>
+										</div>
 									<?php } ?>
 								</div>
 							</a>
 						</div>
-				<?php
+					<?php
 					}
-				} else {
-					echo "<div class='alert alert-warning flex items-center w-fit' role='alert'>
-					<svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Warning:'>
-						<use xlink:href='#exclamation-triangle-fill' />
-					</svg>
-					<div>
-						Nenhum produto encontrado
+				} else { ?>
+					<div class='alert alert-warning flex items-center w-full' role='alert'>
+						<svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Warning:'>
+							<use xlink:href='#exclamation-triangle-fill' />
+						</svg>
+						<div>
+							Nenhum produto encontrado
+						</div>
 					</div>
-				</div>";
+				<?php
 				}
 				mysqli_close($conn);
 				?>
