@@ -53,11 +53,6 @@ require __DIR__ . "/../register-products/verify-access.php";
 
         <nav class="menu-bar d-flex flex-column">
             <ul class="menu">
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Pesquisar...">
-                </li>
-
                 <ul class="menu-links flex flex-column justify-content-between gap-3 mt-3">
                     <li>
                         <a href="../../index.php">
