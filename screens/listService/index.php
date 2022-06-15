@@ -9,7 +9,7 @@ require __DIR__ . "/../../connection/connection.php";
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Página de compras</title>
+	<title>Agendamento de serviços</title>
 	<link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.min.css">
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,7 +21,6 @@ require __DIR__ . "/../../connection/connection.php";
 </head>
 
 <body>
-
 	<?php
 	require __DIR__ . "/../../components/messages-alerts/icons.php";
 
@@ -46,13 +45,10 @@ require __DIR__ . "/../../connection/connection.php";
 	$result_query = mysqli_query($conn, $sql);
 	?>
 
-
 	<a name="top-page"></a>
 
 	<?php
-
 	include "../../components/header.php"
-
 	?>
 
 	<main>
@@ -62,23 +58,19 @@ require __DIR__ . "/../../connection/connection.php";
 					<input class="form-control" type="search" placeholder="Pesquise aqui o que você procura..." aria-label="Search" name="search">
 				</form>
 
-				<form class="flex gap-2 w-1/4" action="" method="post">
+				<form class="flex gap-2 w-1/4" action="" method="post" id="order">
 					<select class="form-select" name="select-filter" aria-label="select">
 						<option selected>Filtrar por</option>
 						<option value="maior">Maior preço</option>
 						<option value="menor">Menor preço</option>
 						<option value="a-z">De A à Z</option>
 					</select>
-					<button class="bg-blue-600 btn btn-primary" type="submit">Filtrar</button>
 				</form>
 			</div>
 
-			<h2 class="mb-4 text-2xl font-bold">serviços</h2>
+			<h2 class="mb-4 text-2xl font-bold">Serviços</h2>
 			<article class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 				<?php
-
-
-
 				if (mysqli_num_rows($result_query) > 0) {
 					while ($row = mysqli_fetch_assoc($result_query)) {
 						echo "<div class='group shadow-md rounded-lg'>
@@ -106,9 +98,7 @@ require __DIR__ . "/../../connection/connection.php";
 									</div>
 								  </div>";
 				}
-
 				mysqli_close($conn);
-
 				?>
 			</article>
 		</div>
@@ -121,7 +111,6 @@ require __DIR__ . "/../../connection/connection.php";
 		</a>
 
 		<div id="myModal" class="modal">
-
 			<div class="modal_content">
 				<i class="fa-solid fa-triangle-exclamation"></i>
 				<p id="p_modal">
@@ -135,14 +124,11 @@ require __DIR__ . "/../../connection/connection.php";
 					<span onclick="closeModal()" class="close">Não</span>
 				</div>
 			</div>
-
 		</div>
 	</main>
 
 	<?php
-
 	include "../../components/footer.php";
-
 	?>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
