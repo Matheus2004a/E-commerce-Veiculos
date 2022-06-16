@@ -22,6 +22,11 @@
 				</button>
 			</li>
 			<li>
+				<button onclick="goTo('screens/requests/')">
+					Vendas
+				</button>
+			</li>
+			<li>
 				<button onclick="goTo('screens/CadastrarServicos/')">
 					Cadastrar serviços
 				</button>
@@ -32,11 +37,6 @@
 				</button>
 			</li>
 			
-			<li>
-				<button onclick="goTo('screens/requests/')">
-					Vendas
-				</button>
-			</li>
 			<li>
 				<button >
 					Alterar ou excluir Produto "não sei oq por aqui"
