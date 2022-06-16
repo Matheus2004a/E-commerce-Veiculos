@@ -27,8 +27,8 @@
 				</button>
 			</li>
 			<li>
-				<button onclick="goTo('screens/requestServices/')">
-					Agendamentos
+				<button onclick="goTo('screens/meusServicos/')">
+					Serviços
 				</button>
 			</li>
 			
