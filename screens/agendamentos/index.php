@@ -74,6 +74,13 @@ require __DIR__ . "/../register-products/verify-access.php";
                             <span class="text nav-text">Opções</span>
                         </a>
                     </li>
+                    
+                    <li>
+                        <a href="../meusServicos/index.php">
+                            <i class='bx bx-arrow-back icon'></i>
+                            <span class="text nav-text">Voltar para serviços</span>
+                        </a>
+                    </li>
 
                     <li>
                         <a href="../requests/index.php">
@@ -175,6 +182,7 @@ require __DIR__ . "/../register-products/verify-access.php";
     </main>
 
     <script src="./js/main.js"></script>
+    <script src="../home/js/main.js"></script>
     <script src="../../bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 <?php mysqli_close($conn)?>
