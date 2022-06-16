@@ -1,7 +1,5 @@
 <?php
 
-use LDAP\Result;
-
 require __DIR__ . "/../../connection/connection.php";
 require __DIR__ . "/../register-products/verify-access.php";
 
@@ -229,6 +227,7 @@ require __DIR__ . "/../register-products/verify-access.php";
         }
     </script>
     <script src="./js/main.js"></script>
+    <script src="../home/js/main.js"></script>
     <script src="../../bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
