@@ -79,7 +79,11 @@ body {
     border-radius: 30px;
     margin-right: 10px;
 }
-
+.perfil i {
+    font-size: 60px;
+    color: #000000;
+    margin-right: 10px;
+}
 /* ======================================================== */
 
 .perfil .span-title {
@@ -511,3 +515,4 @@ input[type="submit"]:active {
     text-decoration: none;
     cursor: pointer;
 }
+
