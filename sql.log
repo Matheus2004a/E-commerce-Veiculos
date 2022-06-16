@@ -75,3 +75,23 @@ inner join tbl_produtos
 inner join tbl_pagtos
 on tbl_pedidos.fk_id_pagto = tbl_pagtos.id_pagto;
 
+======================== DADOS SERVICOS ========================
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = root@localhost 
+    SQL SECURITY DEFINER
+VIEW dados_servicos AS
+    SELECT 
+        tbl_servicos.id_servico AS id_servico,
+        tbl_servicos.nome_servico AS nome_servico,
+        tbl_servicos.desc_servico AS desc_servico,
+        tbl_servicos.val_servico AS val_servico,
+        tbl_servicos.img_servico AS img_servico,
+        tbl_servicos.status_servico AS status,
+        tbl_servicos.fk_id_mecanico AS fk_id_mecanico,
+        tbl_dados_pessoais.id_dados_pessoais AS id_dados_pessoais
+    FROM
+        ((tbl_servicos
+        JOIN tbl_mecanicos ON (tbl_servicos.fk_id_mecanico = tbl_mecanicos.id_mecanico))
+        JOIN tbl_dados_pessoais ON (tbl_mecanicos.fk_id_dados_pessoais = tbl_dados_pessoais.id_dados_pessoais))
