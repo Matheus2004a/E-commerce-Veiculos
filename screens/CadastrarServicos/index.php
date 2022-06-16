@@ -29,8 +29,13 @@
             <div class="content-top">
                 <div class="left-content-top">
                     <div class="perfil">
-                        <?php echo '<img src="/../E-commerce-veiculos/images/users/' . $_SESSION['image'] . '" alt="">'; ?>
-                        <?php echo '<span class="span-title">' . $fetchDados['nome'] . '</span>' ?>
+                        <?php 
+                        if(isset($_SESSION['image']) && $_SESSION['image'] != null) {
+                            echo '<img src="/../E-commerce-veiculos/images/users/' . $_SESSION['image'] . '" alt="">'; 
+                        } else {
+                            echo "<i class='bx bxs-user-circle icon-user'></i>";
+                        }
+                         echo '<span class="span-title">' . $fetchDados['nome'] . '</span>' ?>
                     </div>
                     <span class="span-title">Email:</span>
                     <?php echo ' <span class="span-content">' . $fetchDados['email'] . '</span>' ?>
