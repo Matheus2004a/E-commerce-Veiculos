@@ -26,7 +26,7 @@ require __DIR__ . "/../../connection/connection.php";
 
 	$filter = $_POST['search'] ?? '';
 
-	$sql = "SELECT `id_servico`, `nome_servico`, `desc_servico`, `val_servico`, `img_servico`, `fk_id_mecanico` FROM `tbl_servicos` WHERE nome_servico LIKE '%$filter%' ORDER BY nome_servico";
+	$sql = "SELECT `id_servico`, `nome_servico`, `desc_servico`, `val_servico`, `img_servico`, `status_servico`, `fk_id_mecanico` FROM `tbl_servicos` WHERE nome_servico LIKE '%$filter%' ORDER BY nome_servico";
 
 	$filter_selected = $_POST['select-filter'] ?? '';
 
@@ -34,12 +34,12 @@ require __DIR__ . "/../../connection/connection.php";
 
 	if ($filter_selected == "maior") {
 		$order = "ORDER BY val_servico DESC";
-		$sql = "SELECT `id_servico`, `nome_servico`, `desc_servico`, `val_servico`, `img_servico`, `fk_id_mecanico` FROM `tbl_servicos` $order";
+		$sql = "SELECT `id_servico`, `nome_servico`, `desc_servico`, `val_servico`, `img_servico`, `status_servico`, `fk_id_mecanico` FROM `tbl_servicos` $order";
 	} elseif ($filter_selected == "menor") {
 		$order = "ORDER BY val_servico ASC";
-		$sql = "SELECT `id_servico`, `nome_servico`, `desc_servico`, `val_servico`, `img_servico`, `fk_id_mecanico` FROM `tbl_servicos` $order";
+		$sql = "SELECT `id_servico`, `nome_servico`, `desc_servico`, `val_servico`, `img_servico`, `status_servico`, `fk_id_mecanico` FROM `tbl_servicos` $order";
 	} else {
-		$sql = "SELECT `id_servico`, `nome_servico`, `desc_servico`, `val_servico`, `img_servico`, `fk_id_mecanico` FROM `tbl_servicos` WHERE nome_servico LIKE '%$filter%' ORDER BY nome_servico";
+		$sql = "SELECT `id_servico`, `nome_servico`, `desc_servico`, `val_servico`, `img_servico`, `status_servico`, `fk_id_mecanico` FROM `tbl_servicos` WHERE nome_servico LIKE '%$filter%' ORDER BY nome_servico";
 	}
 
 	$result_query = mysqli_query($conn, $sql);
@@ -73,22 +73,24 @@ require __DIR__ . "/../../connection/connection.php";
 				<?php
 				if (mysqli_num_rows($result_query) > 0) {
 					while ($row = mysqli_fetch_assoc($result_query)) {
-						echo "<div class='group shadow-md rounded-lg'>
-								<div class='w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-t-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8'>
-									<figure>
-										<img src='" . $row['img_servico'] . "' id='Imageservico' alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
-									</figure>
-								</div>
-								<div class='p-3'>
-									<h3 class='text-base text-gray-700 truncate' id='nomeservicouto' value='11'>" . $row['nome_servico'] . "</h3>
-									<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900' value='" . $row['val_servico'] . "' id='precoservicouto'>R$ " . $row['val_servico'] . "</p>";
-						if (isset($_SESSION['category']) && $_SESSION['category'] == "cliente") {
-							echo "<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()' ><a href='../AgendamentoTrocas/index.php?id_servico=" . $row['id_servico'] . "'> Agendar serviço </a> </button>";
-						} else {
-							echo "<button onclick='showModal()' type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()'> Agendar serviço </button>";
+						if($row['status_servico'] == 0) {
+							echo "<div class='group shadow-md rounded-lg'>
+									<div class='w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-t-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8'>
+										<figure>
+											<img src='" . $row['img_servico'] . "' id='Imageservico' alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
+										</figure>
+									</div>
+									<div class='p-3'>
+										<h3 class='text-base text-gray-700 truncate' id='nomeservicouto' value='11'>" . $row['nome_servico'] . "</h3>
+										<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900' value='" . $row['val_servico'] . "' id='precoservicouto'>R$ " . $row['val_servico'] . "</p>";
+							if (isset($_SESSION['category']) && $_SESSION['category'] == "cliente") {
+								echo "<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()' ><a href='../AgendamentoTrocas/index.php?id_servico=" . $row['id_servico'] . "'> Agendar serviço </a> </button>";
+							} else {
+								echo "<button onclick='showModal()' type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()'> Agendar serviço </button>";
+							}
+							echo "</div>
+								</div>";
 						}
-						echo "</div>
-							</div>";
 					}
 				} else {
 					echo "<div class='alert alert-warning flex items-center w-full' role='alert'>
