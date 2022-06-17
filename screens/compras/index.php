@@ -88,7 +88,7 @@ require __DIR__ . "/../../connection/connection.php";
 									<p class='flex items-center justify-between mt-1 text-lg font-medium text-gray-900'>R$ <?php echo $row['preco_custo_prod'] ?></p>
 									<?php
 									if ($row['qtd_estoque'] > 0) { ?>
-										<a href='./cart/template_store/cart.php?add=carrinho&id_prod="<?php $row['id_prod'] ?>"'>
+										<a href='./cart/template_store/cart.php?add=carrinho&id_prod=<?php echo $row['id_prod'] ?>'>
 											<button type='button' class='bg-slate-500 w-100 mt-2 btn btn-secondary' onclick='saveData()'>Adicionar ao carrinho</button>
 										</a>
 									<?php
