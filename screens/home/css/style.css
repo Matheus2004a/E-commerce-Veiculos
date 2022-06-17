@@ -13,13 +13,11 @@ ul {
 }
 
 header {
-
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
   background-color: var(--background-white);
   box-shadow: 0 2px 5px 0 var(--shadow);
   z-index: 10;
