@@ -1,0 +1,10 @@
+.stars input[type="radio"] {
+    display: none;
+}
+.stars label i.fa::before {
+    content: '\f005';
+    color: #FC0;
+}
+.stars input[type="radio"]:checked ~ label i.fa::before {
+    color: #CCC;
+}
