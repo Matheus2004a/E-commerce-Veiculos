@@ -49,12 +49,7 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
 
                 <fieldset class="col-md-6">
                     <label for="validationCustom04" class="form-label">Categoria do produto</label>
-                    <select class="form-select" name="category-product" id="validationCustom04" required>
-                        <option selected disabled value="">Selecione sua categoria</option>
-                        <option value="Rodas">Rodas</option>
-                        <option value="Filtros de ar">Filtros de ar</option>
-                        <option value="Óleo">Óleo</option>
-                    </select>
+                    <input type="text" class="form-control" name="category-product" id="category-product" required>
                     <div class="invalid-feedback">
                         Digite a categoria do produto.
                     </div>
@@ -62,7 +57,7 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
 
                 <fieldset class="col-md-6">
                     <label for="validationCustom05" class="form-label">Preço</label>
-                    <input type="text" class="form-control" name="price-product" id="price-product" maxlength="10" autocomplete="off" required>
+                    <input type="text" class="form-control" name="price-product" id="price-product" maxlength="10" required>
                     <div class="invalid-feedback">
                         Digite o preço do produto.
                     </div>
@@ -94,7 +89,7 @@ require __DIR__ . '/../../components/messages-alerts/icons.php';
 
                 <div class="col-6">
                     <a href="">
-                        <button  class="btn btn-secondary" onclick="history.back()">Voltar</button>
+                        <button class="btn btn-secondary" onclick="history.back()">Voltar</button>
                     </a>
                     <button class="btn btn-primary" type="submit">Cadastrar produto</button>
                 </div>
