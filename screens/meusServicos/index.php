@@ -12,7 +12,7 @@ require __DIR__ . "/../register-products/verify-access.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de pedidos</title>
+    <title>Meus serviços</title>
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
