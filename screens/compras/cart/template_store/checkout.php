@@ -94,7 +94,7 @@ $id = $_GET['id'];
           <div class="form-check">
             <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
             <label class="form-check-label" for="exampleRadios2">
-             Boleto
+              Boleto
             </label>
           </div>
         </div>
@@ -131,7 +131,7 @@ $id = $_GET['id'];
           </ul>
           <div class="col-md-7 col-lg-8">
             <li class="list-group-item d-flex justify-content-between lh-sm">
-              <h6 class="my-0">Total: <?php echo $totd?></h6>
+              <h6 class="my-0">Total: <?php echo $totd ?></h6>
             </li>
           </div>
 
@@ -144,7 +144,7 @@ $id = $_GET['id'];
             <div class="row g-3">
               <div class="col-sm-6">
                 <label for="NomeCompleto" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="NomeCompleto" name="NomeCompleto" placeholder="Primeiro Nome" value="" required>
+                <input type="text" class="form-control" id="NomeCompleto" name="NomeCompleto" autofocus placeholder="Primeiro Nome" value="" required>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
@@ -233,7 +233,7 @@ $id = $_GET['id'];
               <div class="col-md-6">
                 <label for="creditCardNumber" class="form-label">Credit card number</label>
                 <div class="input-group">
-                  <input type="tel" class="form-control" name="cardNumber" id="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus value="4111 1111 1111 1111" />
+                  <input type="tel" class="form-control" name="cardNumber" id="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required value="4111 1111 1111 1111" />
                   <span class="input-group-addon">
                     <div class="BandeiraCartao"></div>
                   </span>
@@ -329,7 +329,7 @@ $id = $_GET['id'];
   <script src="form-validation.js"></script>
 
   <script>
-   
+
   </script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -337,7 +337,7 @@ $id = $_GET['id'];
   <script type="text/javascript" src="<?= $JS_FILE_URL ?>"></script>
 
   <script src="../../PagSeguro/viaCepJs/viaCep.js"></script>
-  
+
   <script>
     $("input[name='cardNumber']").on('keyup', function() {
       var NumeroCartao = $(this).val();
@@ -360,7 +360,6 @@ $id = $_GET['id'];
   </script>
 
   <script>
-    
     // Mascaras para input de cep,cpf,telefone    
     $('#cepEndec').mask('00000-000');
     $('#cpf').mask('000.000.000-00', {

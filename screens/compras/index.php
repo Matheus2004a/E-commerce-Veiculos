@@ -119,7 +119,7 @@ require __DIR__ . "/../../connection/connection.php";
 		</div>
 
 		<a href="#top-page">
-			<button class="button-top-page bg-sky-500"><i class="fas fa-arrow-up"></i></button>
+			<button class="button-top-page"><i class="fas fa-arrow-up"></i></button>
 		</a>
 	</main>
 

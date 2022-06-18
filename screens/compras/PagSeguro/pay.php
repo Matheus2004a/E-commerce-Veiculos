@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once '../cart/template_store/head.html';
+// include_once '../cart/template_store/head.html';
 
 require_once('config.php');
 require_once('utils.php');
@@ -13,6 +13,9 @@ require "./insertPedidos.php";
 
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="styleStar.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <?php
 
@@ -50,21 +53,20 @@ $senderAreaCode = $_POST['ddd'];
 $senderEmail = $_POST['email'];
 
 
-$I =1;
-    foreach($_SESSION['dados'] as $dados)
-    {
-        $id_prod = $dados['id_produto'];
-        $sql = "SELECT * FROM tbl_produtos WHERE id_prod = ".$id_prod." ";
-        $teste = mysqli_query($conn,$sql);
-        $fetch = mysqli_fetch_assoc($teste);
-        
-       $preco = $fetch['preco_custo_prod'];
-       $quantidade = $dados['quantidade'];
-       $total = $dados['total'];
-        $I++;
+$I = 1;
+foreach ($_SESSION['dados'] as $dados) {
+  $id_prod = $dados['id_produto'];
+  $sql = "SELECT * FROM tbl_produtos WHERE id_prod = " . $id_prod . " ";
+  $teste = mysqli_query($conn, $sql);
+  $fetch = mysqli_fetch_assoc($teste);
 
-        InsertPedidos($conn,$preco,$dados['quantidade'],$installmentsQty,$dados['total']);
-    }
+  $preco = $fetch['preco_custo_prod'];
+  $quantidade = $dados['quantidade'];
+  $total = $dados['total'];
+  $I++;
+
+  InsertPedidos($conn, $preco, $dados['quantidade'], $installmentsQty, $dados['total']);
+}
 
 
 
@@ -127,58 +129,82 @@ $json = json_decode(json_encode(simplexml_load_string($response)));
 ?>
 
 
-  <head>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  </head>
+
+
+
 <body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 
-<div id="myModal" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"><b>Obrigado por comprar conosco</b> </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Código da compra: <?php  echo $json->code ?></p>
-        <p>Valor por item: <?php echo $valItemProd ?> </p>
-        <p>Valor da compra: <?php  echo $_POST["installments"] . ' x R$ ' . $_POST["installmentValue"]; ?></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <div id="myModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><b>Obrigado por comprar conosco</b> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Código da compra: <?php echo $json->code ?></p>
+          <p>Valor por item: <?php echo $valItemProd ?> </p>
+          <p>Valor da compra: <?php echo $_POST["installments"] . ' x R$ ' . $_POST["installmentValue"]; ?></p>
+        </div>
+        <!--  AQUI Q VAI FICAR A AVALIÇÃO!!!!!!!!!!!!!!!!!!!! -->
+        <form action="scriptAvaliacao.php" method="post" enctype="multipart/form-data">
+          <div class="stars">
+
+            <input type="radio" name="star" id="empty" value="" checked>
+
+            <label for="star_one"><i class="fa"></i></label>
+            <input type="radio" name="star" id="star_one" value="1">
+
+            <label for="star_two"><i class="fa"></i></label>
+            <input type="radio" name="star" id="star_two" value="2">
+
+            <label for="star_three"><i class="fa"></i></label>
+            <input type="radio" name="star" id="star_three" value="3">
+
+            <label for="star_four"><i class="fa"></i></label>
+            <input type="radio" name="star" id="star_four" value="4">
+
+            <label for="star_five"><i class="fa"></i></label>
+            <input type="radio" name="star" id="star_five" value="5">
+
+          </div>
+          <input type="submit" value="Avaliar">
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-  
-  
-  
-<img src="../index.php" alt="">
+
+
+
+  <img src="../index.php" alt="">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script>
     window.onload = function() {
-  $("#myModal").modal({
-    show: true
-  });
-}
-   function paginaPrincipal()
-   {
-     window.location.href= "../index.php";
-   }
-   setTimeout(paginaPrincipal,5000);
+      $("#myModal").modal({
+        show: true
+      });
+    }
+
+    function paginaPrincipal() {
+      window.location.href = "../index.php";
+    }
+    //  setTimeout(paginaPrincipal,5000);
   </script>
 
 </body>
 <?php
-  mysqli_close($conn);
+mysqli_close($conn);
 ?>
 
 </html>
