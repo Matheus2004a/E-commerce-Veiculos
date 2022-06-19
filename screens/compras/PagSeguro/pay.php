@@ -53,7 +53,7 @@ $senderAreaCode = $_POST['ddd'];
 $senderEmail = $_POST['email'];
 
 
-$I = 1;
+
 foreach ($_SESSION['dados'] as $dados) {
   $id_prod = $dados['id_produto'];
   $sql = "SELECT * FROM tbl_produtos WHERE id_prod = " . $id_prod . " ";
@@ -63,9 +63,10 @@ foreach ($_SESSION['dados'] as $dados) {
   $preco = $fetch['preco_custo_prod'];
   $quantidade = $dados['quantidade'];
   $total = $dados['total'];
-  $I++;
 
-  InsertPedidos($conn, $preco, $dados['quantidade'], $installmentsQty, $dados['total']);
+
+  InsertPedidos($conn,$preco,$quantidade,$installmentsQty,$total,$idCliente);
+  insertVendas($conn,$quantidade,$preco,$id_prod);
 }
 
 
