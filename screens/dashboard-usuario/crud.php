@@ -26,11 +26,7 @@ require "../../connection/connection.php";
 
     <hr>
     <main class="container bootstrap snippet">
-        <div class="row">
-            <div class="col-sm-10">
-                <h2><?php echo $fetch['nome'] ?></h2>
-            </div>
-        </div>
+        <h2><?php echo $fetch['nome'] ?></h2>
 
         <?php
         if (isset($_SESSION['success'])) {
@@ -41,8 +37,8 @@ require "../../connection/connection.php";
             unset($_SESSION['error']);
         }
         ?>
-        <div class="row">
-            <div class="col-sm-3">
+        <div class="profile">
+            <section>
                 <div class="text-center">
                     <?php
                     if (isset($_SESSION['image']) && $_SESSION['image'] != null) {
@@ -56,71 +52,41 @@ require "../../connection/connection.php";
                     <h6>Entre com uma foto diferente ...</h6>
                     <input type="file" class="text-center center-block file-upload">
                 </div>
-            </div>
+            </section>
 
-            <div class="col-sm-9">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="home">
-                        <hr>
-                        <form class="form" action="trocaDados.php" method="post" id="registrationForm">
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="first_name">
-                                        <h4>Nome</h4>
-                                    </label>
-                                    <input type="text" class="form-control" name="nome" id="nome" placeholder="first name" title="enter your first name if any." value="<?php echo $fetch['nome'] ?>">
-                                </div>
-                            </div>
+            <section>
+                <form class="form" action="trocaDados.php" method="post" id="registrationForm">
+                    <fieldset>
+                        <label for="first_name">Nome</label>
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="first name" title="enter your first name if any." value="<?php echo $fetch['nome'] ?>">
+                    </fieldset>
 
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="phone">
-                                        <h4>Telefone</h4>
-                                    </label>
-                                    <input type="text" class="form-control" name="telefone" id="telefone" placeholder="enter phone" title="enter your phone number if any." value="<?php echo $fetch['telefone'] ?>">
-                                </div>
-                            </div>
+                    <fieldset>
+                        <label for="phone">Telefone</label>
+                        <input type="text" class="form-control" name="telefone" id="telefone" placeholder="enter phone" title="enter your phone number if any." value="<?php echo $fetch['telefone'] ?>">
+                    </fieldset>
 
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="email">
-                                        <h4>Email</h4>
-                                    </label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email." value="<?php echo $fetch['email'] ?>">
-                                </div>
-                            </div>
+                    <fieldset>
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email." value="<?php echo $fetch['email'] ?>">
+                    </fieldset>
 
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="cpf">
-                                        <h4>CPF</h4>
-                                    </label>
-                                    <input type="text" class="form-control" name="cpf" id="cpf" title="Entre com seu CPF." value="<?php echo $fetch['cpf'] ?>">
-                                </div>
-                            </div>
+                    <fieldset>
+                        <label for="cpf">CPF</label>
+                        <input type="text" class="form-control" name="cpf" id="cpf" title="Entre com seu CPF." value="<?php echo $fetch['cpf'] ?>">
+                    </fieldset>
 
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="categoria">
-                                        <h4>Categoria</h4>
-                                    </label>
-                                    <input type="text" disabled class="form-control" name="categoria" id="categoria" title="Sua categoria." value="<?php echo $_SESSION['category'] ?>">
-                                </div>
-                            </div>
+                    <fieldset>
+                        <label for="categoria">Categoria </label>
+                        <input type="text" disabled class="form-control" name="categoria" id="categoria" title="Sua categoria." value="<?php echo $_SESSION['category'] ?>">
+                    </fieldset>
 
-                            <div class="form-group">
-                                <div class="col-xs-12">
-                                    <br>
-                                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Salvar</button>
-                                    <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Resetar</button>
-                                </div>
-                            </div>
-                        </form>
-
-                        <hr>
+                    <div class="col-xs-12">
+                        <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Salvar</button>
+                        <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Resetar</button>
                     </div>
-                </div>
-            </div>
+                </form>
+            </section>
         </div>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
