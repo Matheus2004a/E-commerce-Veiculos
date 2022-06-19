@@ -55,7 +55,7 @@ delimiter ;
 
 ================= VIEW PAGINA COMPRAS DO USUÁRIO =========================
 
-create view dados_compras as 
+create or replace view dados_compras as 
 select
 tbl_vendas.val_pagto_prod,
 tbl_vendas.qtd_comprada,
@@ -67,12 +67,12 @@ tbl_pedidos.fk_id_pagto,
 tbl_produtos.id_prod,
 tbl_produtos.nome_prod,
 tbl_pagtos.status_pagto,
-tbl_pagtos.id_pagto
+tbl_pagtos.id_pagto,
+tbl_pedidos.fk_id_cliente
 from tbl_vendas
 inner join tbl_pedidos
 on tbl_vendas.fk_id_pedido = tbl_pedidos.id_pedido
 inner join tbl_produtos
-on tbl_vendas.fk_cod_prod = tbl_produtos.id_prod;
 inner join tbl_pagtos
 on tbl_pedidos.fk_id_pagto = tbl_pagtos.id_pagto;
 
