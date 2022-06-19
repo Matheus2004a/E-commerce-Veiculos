@@ -96,3 +96,22 @@ VIEW dados_servicos AS
         ((tbl_servicos
         JOIN tbl_mecanicos ON (tbl_servicos.fk_id_mecanico = tbl_mecanicos.id_mecanico))
         JOIN tbl_dados_pessoais ON (tbl_mecanicos.fk_id_dados_pessoais = tbl_dados_pessoais.id_dados_pessoais))
+
+
+=========================== SERVICOS AGENDADOS =================================
+
+create or replace view servicos_agendados as
+select
+nome_servico,
+val_servico,
+fk_id_cliente,
+tbl_agendamentos_servicos.data_agend,
+tbl_agendamentos_servicos.hora_agend,
+tbl_dados_pessoais.nome as mecanico
+from tbl_servicos
+inner join tbl_agendamentos_servicos
+on id_servico = tbl_agendamentos_servicos.fk_id_servico
+inner join tbl_mecanicos
+on tbl_servicos.fk_id_mecanico = id_mecanico 
+inner join tbl_dados_pessoais
+on tbl_mecanicos.fk_id_dados_pessoais = id_dados_pessoais;
