@@ -1,17 +1,40 @@
 <?php 
-
-        function InsertPedidos($conn,$preco,$quantidade,$installmentsQty,$total)
+  $sqlqidCliente = "SELECT id_cliente FROM tbl_clientes WHERE fk_id_dados_pessoais =  ".$_SESSION['idLogado']."";
+  $sqlIdCliente = mysqli_query($conn,$sqlqidCliente);
+  $fetchIdCliente = mysqli_fetch_assoc($sqlIdCliente);
+  $idCliente = $fetchIdCliente['id_cliente'];
+  
+        function InsertPedidos($conn,$preco,$quantidade,$installmentsQty,$total,$idCliente)
         {
+        
           $pedidosInsert = "INSERT INTO tbl_pedidos (data_pedido,preco_unit_prod,qtd_prod,qtd_parcelas,total_preco_prod,status_entrega,fk_id_cliente,fk_id_pagto)
           VALUES (
-            NOW(),".$preco.",".$quantidade.",".$installmentsQty.", ".$total.",2,".$_SESSION['idLogado'].",1
+            NOW(),".$preco.",".$quantidade.",".$installmentsQty.",".$total.",2,".$idCliente.",1
             );
         ";
         unset($_SESSION['carrinho']);
         unset($_SESSION['dados']);
-          $insert = mysqli_query($conn,$pedidosInsert);
-          
+          if( mysqli_query($conn,$pedidosInsert))
+          {
+            echo "sucesso";
+          }else{
+            echo "erro". mysqli_error($conn);
+          }
+          return "<script> alert('Ola') </script>";
+        }
+
+        function insertVendas($conn,$quantidade,$preco,$id_prod)
+        {
+          $ultimoID = mysqli_insert_id($conn);
+          $vendasInsert = "INSERT INTO tbl_vendas (qtd_comprada,val_pagto_prod,fk_cod_prod,fk_id_pedido)
+            VALUES(".$quantidade.",".$preco.",".$id_prod.",".$ultimoID.");
+          ";
+         if( mysqli_query($conn,$vendasInsert))
+         {
+          echo "sucesso";
+         }else{
+          echo "erro". mysqli_error($conn);
+         }
         }
        
 ?>
-
