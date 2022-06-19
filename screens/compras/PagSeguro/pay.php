@@ -143,7 +143,7 @@ $json = json_decode(json_encode(simplexml_load_string($response)));
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"><b>Obrigado por comprar conosco</b> </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" onclick='window.open("../index.php", "_PARENT")' class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -154,6 +154,7 @@ $json = json_decode(json_encode(simplexml_load_string($response)));
         </div>
         <!--  AQUI Q VAI FICAR A AVALIÇÃO!!!!!!!!!!!!!!!!!!!! -->
         <form action="scriptAvaliacao.php" method="post" enctype="multipart/form-data">
+          <h3>Avalie nosso site!</h3>
           <div class="stars">
 
             <input type="radio" name="star" id="empty" value="" checked>
@@ -177,8 +178,8 @@ $json = json_decode(json_encode(simplexml_load_string($response)));
           <input type="submit" value="Avaliar">
         </form>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Save changes</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a href="/../E-commerce-veiculos/index.php"><button type="button" class="btn btn-primary">Concluir</button></a>
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
         </div>
       </div>
     </div>

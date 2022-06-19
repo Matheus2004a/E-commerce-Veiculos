@@ -11,6 +11,7 @@ require "../../connection/connection.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seus dados</title>
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -48,7 +49,7 @@ require "../../connection/connection.php";
                         </a>';
                     }
                     ?>
-                    <h6>Entre com uma foto diferente ....</h6>
+                    <h6>Entre com uma foto diferente ...</h6>
                     <input type="file" class="text-center center-block file-upload">
                 </div>
             </section>
