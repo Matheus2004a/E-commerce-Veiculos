@@ -1,3 +1,7 @@
+<?php
+require "../../connection/connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,17 +10,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seus dados</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.min.css">
 </head>
 
 <body>
     <?php
     include "../../components/messages-alerts/icons.php";
     include "../../components/header.php";
-    include "../../connection/connection.php";
-    
+
     $sql = "SELECT * FROM tbl_dados_pessoais WHERE id_dados_pessoais = " . $_SESSION['idLogado'] . " ";
     $insert = mysqli_query($conn, $sql);
     $fetch = mysqli_fetch_assoc($insert);

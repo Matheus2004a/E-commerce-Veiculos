@@ -15,6 +15,9 @@
 
 <body>
     <header class="header">
+        <figure>
+            <img class="logoImage" src="/../E-commerce-Veiculos/images/icones/logo.jpg">
+        </figure>
         <a href="#" class="toggle-button">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -22,14 +25,10 @@
         </a>
         <div id="google_translate_element"></div>
         <nav class="navbar">
-            <figure>
-                <img class="logoImage" src="/../E-commerce-Veiculos/images/icones/logo.jpg">
-            </figure>
             <ul>
                 <li><a href="/../E-commerce-veiculos/">Home</a></li>
                 <li><a href='/../E-commerce-veiculos/screens/listService/'>Serviços</a></li>
                 <li><a href='/../E-commerce-veiculos/screens/compras/'>Compras</a></li>
-
 
                 <?php
 

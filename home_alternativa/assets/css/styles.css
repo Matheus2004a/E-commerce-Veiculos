@@ -35,7 +35,10 @@ a {
     top: 0;
     width: 100%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     z-index: 100;
+    padding: .2rem 4.5rem;
     background-color: #ffffff;
     box-shadow: 0 1px 5px 0 #d3d3d3;
 }
@@ -62,11 +65,7 @@ footer .row-footer {
 }
 
 .navbar {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .5rem 4.5rem;
 }
 
 ul {
