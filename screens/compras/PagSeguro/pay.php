@@ -143,7 +143,7 @@ $json = json_decode(json_encode(simplexml_load_string($response)));
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"><b>Obrigado por comprar conosco</b> </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" onclick='window.open("../index.php", "_PARENT")' class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
