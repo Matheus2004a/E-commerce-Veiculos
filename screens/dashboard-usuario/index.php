@@ -4,8 +4,14 @@ include "../../connection/connection.php";
 $sql = "SELECT * FROM tbl_dados_pessoais WHERE id_dados_pessoais = " . $_SESSION['idLogado'] . " ";
 $select = mysqli_query($conn, $sql);
 $fetch = mysqli_fetch_assoc($select);
-
-$pedidos = "SELECT a.id_pedido,b.nome_prod,a.qtd_prod,a.total_preco_prod,a.status_entrega FROM tbl_pedidos as a INNER JOIN tbl_produtos as b WHERE a.fk_id_cliente = '$_SESSION[idLogado]'";
+//$pedidos = "SELECT * FROM dados_compras";
+$teste = "SELECT id_cliente FROM tbl_clientes WHERE fk_id_dados_pessoais = ".$_SESSION['idLogado']." ";
+$sqlTeste = mysqli_query($conn,$teste);
+$fetchTeste = mysqli_fetch_assoc($sqlTeste);
+$idCliente = $fetchTeste['id_cliente'];
+//$pedidos = "SELECT a.id_pedido,b.nome_prod,a.qtd_prod,a.total_preco_prod,a.status_entrega FROM tbl_pedidos as a INNER JOIN tbl_produtos as b WHERE a.fk_id_cliente = '$idCliente'";
+$pedidos = "SELECT * FROM dados_compras WHERE fk_id_cliente = '$idCliente'";
+//$pedidos = "SELECT a.id_venda,b.nome_prod FROM tbl_vendas as a INNER JOIN tbl_produtos as b WHERE a.fk_cod_prod = 2  = b.id_prod;";
 $inner = mysqli_query($conn, $pedidos);
 ?>
 
@@ -70,8 +76,8 @@ $inner = mysqli_query($conn, $pedidos);
                         <th scope="row">' . $row['id_pedido'] . '</th>
                         <td>' . $row['nome_prod'] . '</td>
                         <td>' . $row['qtd_prod'] . '</td>
-                        <td>' . $row['total_preco_prod'] . '</td>
-                        <td> ' . $row['status_entrega'] . '</td>
+                        <td>' . $row['val_pagto_prod'] . '</td>
+                        <td> ' . $row['status_pagto'] . '</td>
                       </tr>';
               }
             } else {
