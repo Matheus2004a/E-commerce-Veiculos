@@ -32,18 +32,25 @@
 
 
                 <?php
+
+                if (isset($_SESSION['category']) && $_SESSION['category'] == "cliente") {
+                    echo "<li><a href='/../E-commerce-veiculos/screens/meusAgendamentos/'>Agendamentos</a></li>";
+                }
+
+
                 if (isset($_SESSION['category']) && $_SESSION['category'] == "mecanico") {
                     echo "<li><a href='/../E-commerce-veiculos/screens/opcoes/'>Opções</a></li>";
                 }
-                if (isset($_SESSION['username']) && $_SESSION['username']) { 
+                if (isset($_SESSION['username']) && $_SESSION['username']) {
                     echo "<li><a href='/../E-commerce-veiculos/screens/login/logout.php'>Sair</a></li>";
-                
-                } else { 
+                } else {
                     echo "<li><a href='/../E-commerce-veiculos/screens/login/'>Login</a></li>";
                 }
                 ?>
 
                 <?php
+
+
                 if (isset($_SESSION['image']) && $_SESSION['category'] == "cliente") {
                     // se for mecânico não pode ir para a tela de produtos comprados e sim para o request de produtos e serviços
                     // tem que arrumar isso aqui ainda
