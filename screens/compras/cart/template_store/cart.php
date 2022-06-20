@@ -69,25 +69,6 @@ $total = 0;
 	<main class="container" id="page">
 		<section class="row row-pb-md">
 			<div class="col-md-10 col-md-offset-1">
-				<div class="process-wrap">
-					<div class="process text-center active">
-						<p><span>01</span></p>
-						<h3>Carrinho de compras</h3>
-					</div>
-					<div class="process text-center">
-						<p><span>02</span></p>
-						<h3> Pagamento </h3>
-					</div>
-					<div class="process text-center">
-						<p><span>03</span></p>
-						<h3>Finalizado</h3>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="row row-pb-md">
-			<div class="col-md-10 col-md-offset-1">
 				<div class="product-name">
 					<div class="one-forth text-center">
 						<span>Detalhes dos produtos</span>
