@@ -67,6 +67,7 @@ foreach ($_SESSION['dados'] as $dados) {
 
   InsertPedidos($conn,$preco,$quantidade,$installmentsQty,$total,$idCliente);
   insertVendas($conn,$quantidade,$preco,$id_prod);
+  removeItemEstoque($conn, $quantidade, $id_prod);
 }
 
 

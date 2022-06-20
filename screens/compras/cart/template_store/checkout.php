@@ -255,7 +255,7 @@ $id = $_GET['id'];
               <input type="hidden" name="senderHash">
               <input type="hidden" name="valProd" value="<?php echo $row['preco_custo_prod'] ?>">
               <input type="hidden" name="amount" value="<?php echo $totd ?>">
-              <input type="hidden" name="shippingCoast" value="2">
+              <input type="hidden" name="shippingCoast" value="0">
               <input type="hidden" name="itemQuantity1" value="<?php echo $qtd ?>">
               <input type="hidden" name="descricao" value="<?php echo $row['desc_prod'] ?>">
               <input type="hidden" name="idProd" value="<?php echo $row['id_prod'] ?>">
