@@ -34,7 +34,7 @@ session_start();
   <main class="card">
     <div class="card-body register-card-body">
       <p class="login-box-msg">Crie sua conta</p>
-      <form action="cadastrar.php" method="POST" class="needs-validation" novalidate>
+      <form action="cadastrar.php" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
         <?php
         if (isset($_SESSION["success-register"])) {
           echo $_SESSION["success-register"];
