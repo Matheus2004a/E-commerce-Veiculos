@@ -64,10 +64,6 @@ footer .row-footer {
     transition: width 0.4s;
 }
 
-.navbar {
-    display: flex;
-}
-
 ul {
     list-style: none;
 }
