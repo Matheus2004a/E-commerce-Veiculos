@@ -37,7 +37,10 @@
                     </h4>
                     <a href="./screens/home/mapa_site.php" class="text-reset">Mapa do site</a>
             </article>
-
+            <article>
+                <h3 class="text-uppercase fw-bold">Entre em contato conosco</h3>
+                <a href="./screens/contact/contato.php" class="text-reset">Contato</a>
+            </article>
             <article>
                 <h3 class="text-uppercase fw-bold">
                     Métodos de pagamento
