@@ -36,5 +36,17 @@
           echo "erro". mysqli_error($conn);
          }
         }
+        function removeItemEstoque ($conn, $quantidade, $id_prod)
+        {
+          $sqlEstoque = " UPDATE tbl_produtos SET qtd_estoque = qtd_estoque-'$quantidade' WHERE id_prod='$id_prod'";
+          if(mysqli_query($conn,$sqlEstoque))
+          {
+            echo "sucesso";
+          }
+          else 
+          {
+            echo "erro". mysqli_error($conn);
+          }
+        }
        
 ?>
