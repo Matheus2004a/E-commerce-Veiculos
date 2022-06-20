@@ -36,16 +36,10 @@ session_destroy();
   <main class="card">
     <div class="card-body login-card-body">
       <form action="login.php" method="POST" class="needs-validation" novalidate>
-        <?php
-        if (isset($_SESSION['no-authenticated'])) {
-          echo $_SESSION['no-authenticated'];
-          unset($_SESSION['no-authenticated']);
-        }
-        ?>
         <fieldset>
           <label for="validationCustomUsername" class="form-label">Email</label>
           <div class="input-group has-validation">
-            <input type="text" class="form-control" name="email" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Digite seu email" required>
+            <input type="email" class="form-control" name="email" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Digite seu email" required>
             <span class="input-group-text" id="inputGroupPrepend">
               <i class="fas fa-envelope"></i>
             </span>
@@ -72,7 +66,7 @@ session_destroy();
           <input type="checkbox" name="check_box" id="remember">
           <label for="remember" class="mb-3">Lembrar - me</label>
           <p>
-            Já possui conta? Cadastre - se <a href="../cadastro/index.php" class="text-center">aqui</a>
+            Não possui conta? Cadastre - se <a href="../cadastro/index.php" class="text-center">aqui</a>
           </p>
         </div>
         <button type="submit" class="btn btn-primary btn-block mb-3" name="btnLogin" id="btnLogin" value="Enviar">Login</button>

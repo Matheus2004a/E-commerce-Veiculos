@@ -15,12 +15,6 @@
 			compare_password_with_hash($password, $row);
 		}
 	} else {
-		$_SESSION['no-authenticated'] = "<div class='alert alert-danger d-flex align-items-center' role='alert'>
-			<svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#exclamation-triangle-fill'/></svg>
-				<div>
-					Campos inválidos ou vazios
-				</div>
-			</div>";
 		header('location: index.php');
 	}
 
