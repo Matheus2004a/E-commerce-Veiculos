@@ -80,7 +80,7 @@ require __DIR__ . "/../../connection/connection.php";
 							<a href='desc-product.php?id=<?php echo $row['id_prod'] ?>&pagina=1'>
 								<div class='w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-t-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8'>
 									<figure>
-										<img src="<?php echo $row['foto_prod'] ?> " alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
+										<img src="<?php echo "../../images/products-images/" . $row['foto_prod'] ?> " alt='' class='w-full h-60 object-center object-cover group-hover:opacity-75'>
 									</figure>
 								</div>
 								<div class='p-3'>
