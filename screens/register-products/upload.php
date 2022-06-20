@@ -24,10 +24,11 @@ if (isset($_FILES['file'])) {
     $new_name_file = uniqid();
     // Converte a extensão do arquivo para letras minúsculas
     $extension_file = strtolower(pathinfo($name_file, PATHINFO_EXTENSION));
+    $local_name_file = $new_name_file . "." . $extension_file;
     $path_file = "../../images/products-images/" . $new_name_file . "." . $extension_file;
 
     if (in_array($extension_file, $extensions_allows)) {
-        $sql ="INSERT INTO `tbl_produtos`(`nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque`) VALUES ('$name_product','$category_product','$price_product','$desc_product','$path_file',$qtd_product)";
+        $sql ="INSERT INTO `tbl_produtos`(`nome_prod`, `categoria_prod`, `preco_custo_prod`, `desc_prod`, `foto_prod`, `qtd_estoque`) VALUES ('$name_product','$category_product','$price_product','$desc_product','$local_name_file',$qtd_product)";
         register_product($conn, $sql, $file, $path_file);
     } else {
         die("Tipo de extensão inválida.");
@@ -45,7 +46,6 @@ function register_product($conn, $sql, $file, $path_file)
               Produto cadastrado com sucesso
             </div>
             </div>";
-            move_uploaded_file($file['tmp_name'], $path_file);
         header("location: index.php");
     } else {
         $_SESSION['no-register-product'] = "<div class='alert alert-danger d-flex align-items-center' role='alert'>
