@@ -32,9 +32,9 @@ require __DIR__ . "/../../connection/connection.php";
     } elseif ($filter == 2) {
         $sql = "SELECT * FROM `vw_dados_pedidos` WHERE status_pagto = 2";
     } elseif ($filter == 3) {
-        $sql = "SELECT * FROM `vw_dados_pedidos` WHERE status_entrega = 1";
-    } elseif ($filter == 4) {
         $sql = "SELECT * FROM `vw_dados_pedidos` WHERE status_entrega = 2";
+    } elseif ($filter == 4) {
+        $sql = "SELECT * FROM `vw_dados_pedidos` WHERE status_entrega = 3";
     } else {
         $sql = "SELECT * FROM vw_dados_pedidos WHERE nome LIKE '%$search_user%' ORDER BY nome";
     }
