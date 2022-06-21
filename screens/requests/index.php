@@ -121,18 +121,21 @@ require __DIR__ . "/../../connection/connection.php";
             <tbody>
                 <?php
                 if (mysqli_num_rows($result_requests) > 0) {
-                    while ($row = mysqli_fetch_assoc($result_requests)) {
-                        if (empty($row['foto_perfil'])) {
-                            $_SESSION['photo-profile'] = "<a href='/../E-commerce-Veiculos/screens/dashboard-usuario/'>
-                                <i class='bx bxs-user-circle icon-user'></i>
-                                </a>";
-                        }
-                ?>
-
+                    while ($row = mysqli_fetch_assoc($result_requests)) { ?>
                         <tr>
                             <th scope="row">
                                 <figure class="overflow-hidden flex align-items-center gap-2">
-                                    <?php echo $_SESSION['photo-profile'] ?>
+                                    <?php
+                                    if (isset($row['foto_perfil'])) {
+                                        echo "<a href='/../E-commerce-Veiculos/screens/dashboard-usuario/'>
+                                            <i class='bx bxs-user-circle icon-user'></i>
+                                            </a>";
+                                    } else {
+                                        echo "<a href='/../E-commerce-Veiculos/screens/dashboard-usuario/'>
+                                            <img src=" . $row['foto_perfil'] . "></img>
+                                            </a>";
+                                    }
+                                    ?>
                                     <figcaption><?php echo $row['nome'] ?></figcaption>
                                 </figure>
                             </th>
