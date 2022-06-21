@@ -20,7 +20,25 @@ require __DIR__ . "/../../connection/connection.php";
 
 <body>
     <?php
-    $sql = "SELECT * FROM vw_dados_pedidos";
+    include "../../components/messages-alerts/icons.php";
+    $search_user = $_POST['search'] ?? '';
+    $sql = "SELECT * FROM vw_dados_pedidos WHERE nome LIKE '%$search_user%' ORDER BY nome";
+
+    $filter = $_POST['filter-status'] ?? "";
+    echo $filter;
+
+    if ($filter == 1) {
+        $sql = "SELECT * FROM `vw_dados_pedidos` WHERE status_pagto = 1";
+    } elseif ($filter == 2) {
+        $sql = "SELECT * FROM `vw_dados_pedidos` WHERE status_pagto = 2";
+    } elseif ($filter == 3) {
+        $sql = "SELECT * FROM `vw_dados_pedidos` WHERE status_entrega = 1";
+    } elseif ($filter == 4) {
+        $sql = "SELECT * FROM `vw_dados_pedidos` WHERE status_entrega = 2";
+    } else {
+        $sql = "SELECT * FROM vw_dados_pedidos WHERE nome LIKE '%$search_user%' ORDER BY nome";
+    }
+
     $result_requests = mysqli_query($conn, $sql);
     ?>
 
@@ -81,7 +99,7 @@ require __DIR__ . "/../../connection/connection.php";
 
         <div class="container px-0 d-flex justify-content-between ms-0 mb-4">
             <form action="" method="post">
-                <input type="search" name="search-prod" placeholder="Pesquise aqui" class="rounded-1">
+                <input type="search" name="search" placeholder="Pesquise aqui" class="rounded-1">
             </form>
 
             <div class="content-2 d-flex gap-3">
@@ -94,8 +112,8 @@ require __DIR__ . "/../../connection/connection.php";
                     </button>
                 </a>
 
-                <form action="" method="post">
-                    <select class="form-select" aria-label="Default select example">
+                <form action="" method="post" id="order">
+                    <select class="form-select" name="filter-status" aria-label="Default select example">
                         <option selected>Filtrar por</option>
                         <option value="1">Aprovado</option>
                         <option value="2">Pendente</option>
@@ -164,9 +182,21 @@ require __DIR__ . "/../../connection/connection.php";
                                 ?>
                             </td>
                             <td>
-                                <span class='status-delivery gap-2 text-red-600 bg-red-100'>Não entregue
-                                    <i class='bx bxs-error-circle'></i>
-                                </span>
+                                <?php
+                                if ($row['status_entrega'] == 1) {
+                                    echo "<span class='status-delivery gap-2 text-red-600 bg-red-100'>Não entregue
+                                        <i class='bx bxs-error-circle'></i>
+                                    </span>";
+                                } else if ($row['status_entrega'] == 2) {
+                                    echo "<span class='status-delivery gap-2 text-green-600 bg-green-100'>Entregue
+                                        <i class='bx bx-check'></i>
+                                    </span>";
+                                } else {
+                                    echo "<span class='status-delivery gap-2 text-yellow-600 bg-yellow-100'>Pendente
+                                        <i class='bx bx-error'></i>
+                                    </span>";
+                                }
+                                ?>
                             </td>
                         </tr>
                     <?php
@@ -189,6 +219,7 @@ require __DIR__ . "/../../connection/connection.php";
     </main>
 
     <script src="./js/main.js"></script>
+    <script src="../home/js/main.js"></script>
     <script src="../../bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
