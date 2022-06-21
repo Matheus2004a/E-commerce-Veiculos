@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . "/../register-products/verify-access.php";
+require __DIR__ . "/../../connection/connection.php";
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +19,11 @@ require __DIR__ . "/../register-products/verify-access.php";
 </head>
 
 <body>
+    <?php
+    $sql = "SELECT * FROM vw_dados_pedidos";
+    $result_requests = mysqli_query($conn, $sql);
+    ?>
+
     <nav class="sidebar close">
         <header>
             <div class="image-text">
@@ -113,72 +119,68 @@ require __DIR__ . "/../register-products/verify-access.php";
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">
-                        <figure class="overflow-hidden flex align-items-center gap-2">
-                            <img src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                            <figcaption>Mark</figcaption>
-                        </figure>
-                    </th>
-                    <td>Troca de pneu</td>
-                    <td>12/12/2021</td>
-                    <td>R$ 400.00</td>
-                    <td>10</td>
-                    <td>
-                        <span class='flex w-fit align-center gap-1 text-xs text-green-600 bg-green-100 p-1 rounded'>Aprovado
-                            <i class='bx bx-check text-xs'></i>
-                        </span>
-                    </td>
-                    <td>
-                        <span class='status-delivery gap-2 text-red-600 bg-red-100'>Não entregue
-                            <i class='bx bxs-error-circle'></i>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <figure class="overflow-hidden flex align-items-center gap-2">
-                            <img src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                            <figcaption>Ana</figcaption>
-                        </figure>
-                    </th>
-                    <td>Troca de pneu</td>
-                    <td>12/12/2021</td>
-                    <td>R$ 400.00</td>
-                    <td>10</td>
-                    <td>
-                        <span class='status-payment gap-2 text-yellow-600 bg-yellow-100'>Pendente
-                            <i class='bx bx-error'></i>
-                        </span>
-                    </td>
-                    <td>
-                        <span class='status-delivery gap-2 text-red-600 bg-red-100'>Não entregue
-                            <i class='bx bxs-error-circle'></i>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <figure class="overflow-hidden flex align-items-center gap-2">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="">
-                            <figcaption>Ronaldo</figcaption>
-                        </figure>
-                    </th>
-                    <td>Troca de pneu</td>
-                    <td>12/12/2021</td>
-                    <td>R$ 400.00</td>
-                    <td>10</td>
-                    <td>
-                        <span class='status-payment gap-2 text-red-600 bg-red-100'>Bloqueado
-                            <i class='bx bxs-error-circle'></i>
-                        </span>
-                    </td>
-                    <td>
-                        <span class='status-delivery gap-2 text-red-600 bg-red-100'>Não entregue
-                            <i class='bx bxs-error-circle'></i>
-                        </span>
-                    </td>
-                </tr>
+                <?php
+                if (mysqli_num_rows($result_requests) > 0) {
+                    while ($row = mysqli_fetch_assoc($result_requests)) {
+                        if (empty($row['foto_perfil'])) {
+                            $_SESSION['photo-profile'] = "<a href='/../E-commerce-Veiculos/screens/dashboard-usuario/'>
+                                <i class='bx bxs-user-circle icon-user'></i>
+                                </a>";
+                        }
+                ?>
+
+                        <tr>
+                            <th scope="row">
+                                <figure class="overflow-hidden flex align-items-center gap-2">
+                                    <?php echo $_SESSION['photo-profile'] ?>
+                                    <figcaption><?php echo $row['nome'] ?></figcaption>
+                                </figure>
+                            </th>
+                            <td>Troca de pneu</td>
+                            <td><?php echo implode("/", array_reverse(explode("-", $row['data_pedido']))) ?></td>
+                            <td><?php echo "R$ " . $row['total_preco_prod'] ?></td>
+                            <td><?php echo $row['qtd_prod'] ?></td>
+                            <td>
+                                <?php
+                                if ($row['status_pagto'] == 1) {
+                                    echo "<span class='status-payment gap-2 text-green-600 bg-green-100'>
+                                        Aprovado
+                                        <i class='bx bx-check'></i>
+                                    </span>";
+                                } else if ($row['status_pagto'] == 2) {
+                                    echo "<span class='status-payment gap-2 text-yellow-600 bg-yellow-100'>
+                                        Pendente
+                                        <i class='bx bx-error'></i>
+                                    </span>";
+                                } else {
+                                    echo "<span class='status-payment gap-2 text-red-600 bg-red-100'>
+                                        Bloqueado
+                                        <i class='bx bx-error'></i>
+                                    </span>";
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <span class='status-delivery gap-2 text-red-600 bg-red-100'>Não entregue
+                                    <i class='bx bxs-error-circle'></i>
+                                </span>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                } else { ?>
+                    <div class='alert alert-warning flex items-center w-full' role='alert'>
+                        <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Warning:'>
+                            <use xlink:href='#exclamation-triangle-fill' />
+                        </svg>
+                        <div>
+                            Nenhum pedido realizado
+                        </div>
+                    </div>
+                <?php
+                }
+                mysqli_close($conn);
+                ?>
             </tbody>
         </table>
     </main>
