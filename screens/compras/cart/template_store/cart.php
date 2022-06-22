@@ -92,48 +92,48 @@ $total = 0;
 				$total = 0;
 
 				foreach ($_SESSION['carrinho'] as $idProduto => $quantidade) {
-					$queryCart = "SELECT * FROM tbl_produtos WHERE id_prod=" . $idProduto . " ";
+					$queryCart = "SELECT * FROM tbl_produtos WHERE id_prod = $idProduto";
 					$resultQuery = mysqli_query($conn, $queryCart);
 					$row = mysqli_fetch_assoc($resultQuery);
-					echo '<div class="product-cart">
-									<div class="one-forth">
-										<img src="../../../../images/products-images/' . $row["foto_prod"] . '" class="product-img">
-										<div class="display-tc">
-											<h3 id="nome">' . $row['nome_prod'] . '</h3>
-										</div>
-									</div>
-									<div class="one-eight text-center">
-										<div class="display-tc">
-											<span class="price" for="id_valor" id="id_valor">R$ ' .
-						number_format($row['preco_custo_prod'], 2, ",", ".") . '</span>
-										</div>
-									</div>
-									<div class="one-eight text-center">
-										<div class="display-tc">
-											<form method="post" action="?acao=up">
-												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="' . $quantidade . '" min="1" max="100"> 
-												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" id="idproduto" value="' . $quantidade . '"> <br>
-											</form>
-										</div>
-									</div>
-									<div class="one-eight text-center">
-										<div class="display-tc">
-											<span for="id_total" class="price" id="id_total" name="id_total" >R$ ' . number_format($row['preco_custo_prod'], 2, ",", ".") . '</span>
-										</div>
-									</div>
-									<div class="one-eight text-center">
-										<div class="display-tc">
-											<a href="?remover=carrinho&id_prod=' . $row['id_prod'] . '">
-											<i class="bx bx-trash icon-trash"></i>
-											</a>
-										</div>
-									</div>
-								</div>
-							';
-
+				?>
+					<div class="product-cart">
+						<div class="one-forth">
+							<img src="../../../../images/products-images/<?php echo $row["foto_prod"] ?>" class="product-img">
+							<div class="display-tc">
+								<h3 id="nome"><?php echo $row['nome_prod'] ?></h3>
+							</div>
+						</div>
+						<div class="one-eight text-center">
+							<div class="display-tc">
+								<span class="price" for="id_valor" id="id_valor">R$ <?php echo number_format($row['preco_custo_prod'], 2, ",", ".") ?></span>
+							</div>
+						</div>
+						<div class="one-eight text-center">
+							<div class="display-tc">
+								<form method="post" action="?acao=up">
+									<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control input-number text-center" value="<?php echo $quantidade ?>" min="1" max="100">
+									<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" id="idproduto" value="<?php echo $quantidade ?>">
+									<br>
+								</form>
+							</div>
+						</div>
+						<div class="one-eight text-center">
+							<div class="display-tc">
+								<span for="id_total" class="price" id="id_total" name="id_total">R$ <?php echo number_format($row['preco_custo_prod'], 2, ",", ".") ?></span>
+							</div>
+						</div>
+						<div class="one-eight text-center">
+							<div class="display-tc">
+								<a href="?remover=carrinho&id_prod=<?php echo $row['id_prod'] ?>">
+									<i class="bx bx-trash icon-trash"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+					<?php
 					$count = $row['preco_custo_prod'] * $quantidade;
 					$total += $count;
-				?>
+					?>
 					<input type="hidden" name="total" value="<?php echo $total ?>">
 				<?php
 					//Transforma dados da sessão "Carrinho" em um array
